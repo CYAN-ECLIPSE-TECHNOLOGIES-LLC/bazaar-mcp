@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Eclipse Bazaar MCP
+# Copyright © 2026 Cyan Eclipse Technologies LLC · cetech.ai
+# Single-source verdict sync for Eclipse Bazaar (EB-09).
+
 """Single-source verdict sync for Eclipse Bazaar (EB-09).
 
 Source of truth: test-bench scorecards in ../test-bench/results/.
@@ -300,3 +304,5 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+# Eclipse Bazaar MCP · © 2026 Cyan Eclipse Technologies LLC · cetech.ai

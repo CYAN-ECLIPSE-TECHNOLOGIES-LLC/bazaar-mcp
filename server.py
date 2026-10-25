@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Eclipse Bazaar MCP
+# Copyright © 2026 Cyan Eclipse Technologies LLC · cetech.ai
+
 """Eclipse Bazaar MCP — v0.1.0, the agent-facing discovery layer for
 Eclipse Bazaar, Cyan Eclipse Technologies' tested MCP marketplace.
 
@@ -336,3 +339,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Eclipse Bazaar MCP · © 2026 Cyan Eclipse Technologies LLC · cetech.ai

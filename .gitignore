@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.template
+!.env.example
+config.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+id_ecdsa*
+*.zip
+.DS_Store

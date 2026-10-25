@@ -18,7 +18,7 @@ v0.1.0, in development / dogfood. Catalog covers 14 CETech products only
 scorecards — no invented products or verdicts). Discovery only: **no
 purchasing**. Third-party listings are P2.
 
-Catalog snapshot: Agent Wallet CERTIFIED(sandbox), CertBridge
+Catalog snapshot: <img src="../seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> Agent Wallet CERTIFIED(sandbox), CertBridge
 CERTIFIED(staging), HostBridge CERTIFIED(simulator), Eclipse Connect
 CERTIFIED(dogfood), White Report MCP PARTIAL (logic-level); AgentReady,
 Florida Bid Intel and this server not yet certified (bench pending); six

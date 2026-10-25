@@ -33,10 +33,10 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 
 | Product | Status | Bench verdict |
 |---|---|---|
-| Eclipse Agent Wallet MCP | in-development | CERTIFIED(sandbox) |
-| CertBridge MCP | in-development | CERTIFIED(staging) |
-| HostBridge MCP | in-development | CERTIFIED(simulator) |
-| Eclipse Connect | dogfood | CERTIFIED(dogfood) |
+| Eclipse Agent Wallet MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
+| CertBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(staging) |
+| HostBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Connect | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood) |
 | The White Report MCP | live | PARTIAL (logic-level) |
 | AgentReady MCP | in-development | not yet certified (bench pending) |
 | Florida Bid Intel MCP | in-development | not yet certified (bench pending) |

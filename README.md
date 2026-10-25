@@ -74,6 +74,13 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Book MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Forecast MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Strike MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Meter MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Tripwire MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Umbra MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Test Bench | in-development | not certified — in-house artifact, productization in progress (slate T1) |
+| Eclipse Stocktake | in-development | not certified — in-house artifact, productization in progress (slate T4) |
+| Eclipse Press | in-development | not certified — in-house artifact, productization in progress (slate T3) |
+| Herald Card Kit | in-development | not certified — in-house artifact, productization in progress (slate T7) |
 | BidMatrix · Section 508 Evidence · FedScope · MCP Health Check · Legacy Recon · Eclipse Mail | spec | not certified (not built) |
 
 ## Run it

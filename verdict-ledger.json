@@ -192,6 +192,25 @@
    "scorecard_ref": "test-bench/results/eclipse-beacon-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-blackbox-mcp": {
+   "tool": "eclipse-blackbox-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 22,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-blackbox-mcp-2026-10-25-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-book-mcp": {
    "tool": "eclipse-book-mcp",
    "verdict": "CERTIFIED(local)",
@@ -362,6 +381,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-dispatch-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-docket-mcp": {
+   "tool": "eclipse-docket-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 4,
+   "counts": {
+    "pass": 18,
+    "fail": 1,
+    "na": 1,
+    "untestable": 0,
+    "total": 20
+   },
+   "scorecard_ref": "test-bench/results/eclipse-docket-mcp-2026-10-25-4.json",
+   "cards_on_record": 4
   },
   "eclipse-environment-mcp": {
    "tool": "eclipse-environment-mcp",
@@ -534,6 +572,25 @@
    "scorecard_ref": "test-bench/results/eclipse-marquee-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-meter-mcp": {
+   "tool": "eclipse-meter-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 19,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 20
+   },
+   "scorecard_ref": "test-bench/results/eclipse-meter-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-muster-mcp": {
    "tool": "eclipse-muster-mcp",
    "verdict": "CERTIFIED(local)",
@@ -705,6 +762,25 @@
    "scorecard_ref": "test-bench/results/eclipse-till-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
+  "eclipse-tripwire-mcp": {
+   "tool": "eclipse-tripwire-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-tripwire-mcp-2026-10-25-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-trunk-mcp": {
    "tool": "eclipse-trunk-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -722,6 +798,25 @@
     "total": 17
    },
    "scorecard_ref": "test-bench/results/eclipse-trunk-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-umbra-mcp": {
+   "tool": "eclipse-umbra-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-umbra-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
   "eclipse-voice-core-mcp": {
@@ -849,6 +944,8 @@
  "unmapped_tools": [
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
-  "commerce-fixture-store"
+  "commerce-fixture-store",
+  "eclipse-blackbox-mcp",
+  "eclipse-docket-mcp"
  ]
 }

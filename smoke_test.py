@@ -127,7 +127,7 @@ def misc():
     assert [r["id"] for r in cmp_] == ["hostbridge-mcp", "certbridge-mcp"]
     assert all(r["certification"].startswith("CERTIFIED") for r in cmp_), cmp_
     cats = payload(12)
-    assert cats["product_total"] == 39, cats["product_total"]  # 33 + 6 family/facade products, publish pass 2 2026-10-25
+    assert cats["product_total"] == 54, cats["product_total"]  # 47 + wave-1 (Meter/Tripwire/Umbra) + 4 tool listings, publish pass 4 2026-10-25
     assert cats["data_freshness"]["catalog_built"] == "2026-10-25"
     wr = payload(13)
     assert wr["bench_verdict"] == "CERTIFIED(live)" and wr["certified"] is True, wr

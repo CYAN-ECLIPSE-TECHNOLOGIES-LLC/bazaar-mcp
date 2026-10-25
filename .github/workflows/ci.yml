@@ -36,5 +36,16 @@ jobs:
         run: |
           printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' | timeout 30 python server.py | grep -q '"result"'
 
-      - name: Run smoke test
-        run: python smoke_test.py
+      # smoke_test.py is a workspace integration test: get_certification reads
+      # scorecards live from ../test-bench/results/ (a sibling, private repo),
+      # so it cannot run in an isolated checkout. It stays a local check.
+      - name: tools/list probe (data-independent)
+        run: |
+          out=$(printf '%s\n%s\n%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
+            '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+            | timeout 30 python server.py)
+          echo "$out" | grep -q '"name": "find_solutions"'
+          echo "$out" | grep -q '"name": "get_certification"'
+          echo "$out" | grep -q '"name": "compare_products"'

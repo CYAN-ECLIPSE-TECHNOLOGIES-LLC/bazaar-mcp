@@ -1,0 +1,708 @@
+{
+ "source_of_truth": "test-bench/results/*.json (newest card per tool by bench_date + run-sequence suffix)",
+ "dogfood_rule": "dogfood logs annotate live state only; they never change a bench verdict",
+ "tools": {
+  "agent-ready-mcp": {
+   "tool": "agent-ready-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/agent-ready-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "allbirds-shopify-ucp": {
+   "tool": "allbirds-shopify-ucp",
+   "verdict": "PARTIAL",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "live",
+   "qualifier": "read-only",
+   "seq": 4,
+   "counts": {
+    "pass": 6,
+    "fail": 0,
+    "na": 11,
+    "untestable": 13,
+    "total": 30
+   },
+   "scorecard_ref": "test-bench/results/allbirds-shopify-ucp-2026-10-25-4.json",
+   "cards_on_record": 4
+  },
+  "certbridge-mcp": {
+   "tool": "certbridge-mcp",
+   "verdict": "CERTIFIED(staging)",
+   "certified": true,
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "environment": "staging",
+   "qualifier": "staging",
+   "seq": 2,
+   "counts": {
+    "pass": 12,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 13
+   },
+   "scorecard_ref": "test-bench/results/certbridge-mcp-2026-10-24-2.json",
+   "cards_on_record": 2
+  },
+  "commerce-fixture-adversarial": {
+   "tool": "commerce-fixture-adversarial",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "test-store",
+   "seq": 4,
+   "counts": {
+    "pass": 16,
+    "fail": 10,
+    "na": 4,
+    "untestable": 0,
+    "total": 30
+   },
+   "scorecard_ref": "test-bench/results/commerce-fixture-adversarial-2026-10-25-4.json",
+   "cards_on_record": 4
+  },
+  "commerce-fixture-store": {
+   "tool": "commerce-fixture-store",
+   "verdict": "CERTIFIED(test-store)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "test-store",
+   "qualifier": "test-store",
+   "seq": 4,
+   "counts": {
+    "pass": 26,
+    "fail": 0,
+    "na": 4,
+    "untestable": 0,
+    "total": 30
+   },
+   "scorecard_ref": "test-bench/results/commerce-fixture-store-2026-10-25-4.json",
+   "cards_on_record": 4
+  },
+  "eclipse-agent-wallet-mcp": {
+   "tool": "eclipse-agent-wallet-mcp",
+   "verdict": "CERTIFIED(sandbox)",
+   "certified": true,
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "environment": "sandbox",
+   "qualifier": "sandbox",
+   "seq": 2,
+   "counts": {
+    "pass": 12,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 13
+   },
+   "scorecard_ref": "test-bench/results/eclipse-agent-wallet-mcp-2026-10-24-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-aperture-mcp": {
+   "tool": "eclipse-aperture-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 11,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 12
+   },
+   "scorecard_ref": "test-bench/results/eclipse-aperture-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-apply-mcp": {
+   "tool": "eclipse-apply-mcp",
+   "verdict": "CERTIFIED(sandbox)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "sandbox",
+   "qualifier": "sandbox",
+   "seq": 1,
+   "counts": {
+    "pass": 17,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 18
+   },
+   "scorecard_ref": "test-bench/results/eclipse-apply-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-bazaar-mcp": {
+   "tool": "eclipse-bazaar-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 4,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-bazaar-mcp-2026-10-25-4.json",
+   "cards_on_record": 4
+  },
+  "eclipse-beacon-mcp": {
+   "tool": "eclipse-beacon-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-beacon-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-cluster-mcp": {
+   "tool": "eclipse-cluster-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-cluster-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-compass-mcp": {
+   "tool": "eclipse-compass-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 2,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-compass-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-connect": {
+   "tool": "eclipse-connect",
+   "verdict": "CERTIFIED(dogfood)",
+   "certified": true,
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "environment": "dogfood",
+   "qualifier": "dogfood",
+   "seq": 2,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-connect-2026-10-24-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-connect-mcp": {
+   "tool": "eclipse-connect-mcp",
+   "verdict": "CERTIFIED(dogfood-facade)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "dogfood-facade",
+   "qualifier": "dogfood-facade",
+   "seq": 1,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-connect-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-constellation-mcp": {
+   "tool": "eclipse-constellation-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-constellation-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-deepfield-mcp": {
+   "tool": "eclipse-deepfield-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-deepfield-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-dispatch-mcp": {
+   "tool": "eclipse-dispatch-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/eclipse-dispatch-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-environment-mcp": {
+   "tool": "eclipse-environment-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-environment-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-gig-core-mcp": {
+   "tool": "eclipse-gig-core-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-gig-core-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-haven-mcp": {
+   "tool": "eclipse-haven-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 3,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/eclipse-haven-mcp-2026-10-25-3.json",
+   "cards_on_record": 3
+  },
+  "eclipse-herald-mcp": {
+   "tool": "eclipse-herald-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-herald-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-marquee-mcp": {
+   "tool": "eclipse-marquee-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-marquee-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-muster-mcp": {
+   "tool": "eclipse-muster-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-muster-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-orbit-mcp": {
+   "tool": "eclipse-orbit-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-orbit-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-pantry-mcp": {
+   "tool": "eclipse-pantry-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-pantry-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-procure-mcp": {
+   "tool": "eclipse-procure-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 14,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 15
+   },
+   "scorecard_ref": "test-bench/results/eclipse-procure-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-social-core-mcp": {
+   "tool": "eclipse-social-core-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-social-core-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-stage-mcp": {
+   "tool": "eclipse-stage-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-stage-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-thread-mcp": {
+   "tool": "eclipse-thread-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/eclipse-thread-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-trunk-mcp": {
+   "tool": "eclipse-trunk-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 2,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-trunk-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-voice-core-mcp": {
+   "tool": "eclipse-voice-core-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 19,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 20
+   },
+   "scorecard_ref": "test-bench/results/eclipse-voice-core-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-zenith-mcp": {
+   "tool": "eclipse-zenith-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-zenith-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-zephyr-mcp": {
+   "tool": "eclipse-zephyr-mcp",
+   "verdict": "CERTIFIED(live-read)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "live-read",
+   "qualifier": "live-read",
+   "seq": 2,
+   "counts": {
+    "pass": 12,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 13
+   },
+   "scorecard_ref": "test-bench/results/eclipse-zephyr-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "florida-bid-intel-mcp": {
+   "tool": "florida-bid-intel-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/florida-bid-intel-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "hostbridge-mcp": {
+   "tool": "hostbridge-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "environment": "simulator",
+   "qualifier": "simulator",
+   "seq": 3,
+   "counts": {
+    "pass": 15,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/hostbridge-mcp-2026-10-24-3.json",
+   "cards_on_record": 3
+  },
+  "white-report-mcp": {
+   "tool": "white-report-mcp",
+   "verdict": "CERTIFIED(live)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "live host",
+   "qualifier": "live",
+   "seq": 11,
+   "counts": {
+    "pass": 10,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 11
+   },
+   "scorecard_ref": "test-bench/results/white-report-mcp-2026-10-25-11.json",
+   "cards_on_record": 13
+  }
+ },
+ "live_state_annotations": {
+  "certbridge-mcp": {
+   "log_ref": "test-bench/results/certbridge-mcp-dogfood-2026-10-25.md",
+   "date": "2026-10-25",
+   "label": "live issuance PROVEN by dogfood"
+  }
+ },
+ "unmapped_tools": [
+  "allbirds-shopify-ucp",
+  "commerce-fixture-adversarial",
+  "commerce-fixture-store",
+  "eclipse-connect-mcp",
+  "eclipse-haven-mcp",
+  "eclipse-muster-mcp",
+  "eclipse-orbit-mcp",
+  "eclipse-trunk-mcp",
+  "eclipse-voice-core-mcp"
+ ]
+}

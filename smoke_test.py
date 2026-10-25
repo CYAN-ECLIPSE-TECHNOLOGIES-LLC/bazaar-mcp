@@ -127,13 +127,13 @@ def misc():
     assert [r["id"] for r in cmp_] == ["hostbridge-mcp", "certbridge-mcp"]
     assert all(r["certification"].startswith("CERTIFIED") for r in cmp_), cmp_
     cats = payload(12)
-    assert cats["product_total"] == 14, cats["product_total"]
-    assert cats["data_freshness"]["catalog_built"] == "2026-10-24"
+    assert cats["product_total"] == 33, cats["product_total"]  # 15 + 18 Wave-1 products, publish pass 2026-10-25
+    assert cats["data_freshness"]["catalog_built"] == "2026-10-25"
     wr = payload(13)
-    assert wr["bench_verdict"] == "PARTIAL" and wr["certified"] is False, wr
+    assert wr["bench_verdict"] == "CERTIFIED(live)" and wr["certified"] is True, wr
     sp = payload(7)
     assert sp["count"] >= 1 and sp["results"][0]["match_reasons"], sp
-check("compare + categories + WR PARTIAL honesty + search reasons", misc)
+check("compare + categories + WR CERTIFIED(live) honesty + search reasons", misc)
 
 
 failed = 0

@@ -12,7 +12,7 @@ This MCP server is how agents query that catalog:
 - **By problem** — `find_solutions` matches a plain-language problem against problem statements + capabilities and explains the fit, with status and certification badges inline.
 - **By keyword** — `search_products` ranks across names, capabilities, and categories, and every hit carries `match_reasons[]`: the ranking is never a black box.
 - **With receipts** — `get_certification` returns the latest Test Bench verdict plus a live summary of the underlying scorecard (check counts, environment, date), the certified scope, and the `not_tested` list.
-- **Honestly labelled** — spec-stage products are `status: spec` and `certified: false`; products whose bench run is pending say "not yet certified"; The White Report MCP's verdict is PARTIAL (logic-level bench) and is presented as exactly that.
+- **Honestly labelled** — spec-stage products are `status: spec` and `certified: false`; products whose bench run is pending say "not yet certified"; The White Report MCP's verdict is CERTIFIED(live) — the 2026-10-25 live-host bench (card -11) superseded its earlier logic-level PARTIAL, and every surface is kept in sync from the newest scorecard by `sync_verdicts.py`.
 
 ## Tools (6)
 
@@ -37,7 +37,26 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | CertBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(staging) |
 | HostBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Connect | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood) |
-| The White Report MCP | live | PARTIAL (logic-level) |
+| The White Report MCP | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(live) |
+| Eclipse Apply MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
+| Eclipse Herald MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Beacon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Cluster MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Thread MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Constellation MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Deep Field MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Pantry MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Marquee MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Dispatch MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Social Core MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Aperture MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Zephyr MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(live-read) |
+| Eclipse Environment MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Procure MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Gig Core MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Compass MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Stage MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Zenith MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | AgentReady MCP | in-development | not yet certified (bench pending) |
 | Florida Bid Intel MCP | in-development | not yet certified (bench pending) |
 | Eclipse Bazaar MCP (this server) | in-development | not yet certified (bench pending) |
@@ -51,6 +70,10 @@ python3 smoke_test.py    # protocol + routing + honesty assertions (9 checks)
 ```
 
 Catalog lives in `catalog.json` beside the server (override with `$BAZAAR_CATALOG`).
+
+## Verdict sync (EB-09)
+
+Bench verdicts have ONE source of truth: the newest scorecard per tool in `../test-bench/results/` (run-sequence suffix decides — a `-11` card supersedes `-2`). `python3 sync_verdicts.py` rebuilds `verdict-ledger.json` and checks catalog.json, product `bazaar-manifest.json` files, this README's table, and the storefront bench lines against it (exit 1 on drift); `--apply` fixes the machine-safe fields. Dogfood logs annotate live state only — they never change a bench verdict. Run it after every bench run.
 
 ## Scope & roadmap
 

@@ -27,7 +27,7 @@ This MCP server is how agents query that catalog:
 
 Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
 
-## Catalog (v0.1.0 — 14 products, CETech only)
+## Catalog (v0.1.0 — 39 products, CETech only)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -57,9 +57,15 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Compass MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Stage MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Zenith MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
-| AgentReady MCP | in-development | not yet certified (bench pending) |
-| Florida Bid Intel MCP | in-development | not yet certified (bench pending) |
-| Eclipse Bazaar MCP (this server) | in-development | not yet certified (bench pending) |
+| Eclipse Muster MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Haven MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Orbit MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Voice Core MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Trunk MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Connect MCP | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood-facade) |
+| AgentReady MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Florida Bid Intel MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Bazaar MCP (this server) | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | BidMatrix · Section 508 Evidence · FedScope · MCP Health Check · Legacy Recon · Eclipse Mail | spec | not certified (not built) |
 
 ## Run it

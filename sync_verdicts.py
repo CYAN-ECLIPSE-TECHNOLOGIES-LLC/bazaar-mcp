@@ -211,14 +211,43 @@ def main():
             mf.write_text(dump_compact(man))
 
     # ---- README table ----------------------------------------------------
+    # Row assignment by LONGEST name-prefix match on the first cell:
+    # "Eclipse Connect" (relay) is a prefix of "Eclipse Connect MCP"
+    # (facade) — a first-substring match reads the relay's row for the
+    # facade and false-flags drift (checker defect, fixed 2026-10-25,
+    # publish pass 2; same treatment as prior bench-suite self-defects).
     readme = README.read_text()
+    rows = [ln for ln in readme.splitlines() if ln.strip().startswith("|")]
+    def first_cell(ln):
+        parts = ln.split("|")
+        return parts[1].strip() if len(parts) > 2 else ""
+    assigned = {}
+    for ln in rows:
+        cell = first_cell(ln)
+        segments = [seg.strip() for seg in cell.split("·")]
+        best = None
+        for pid, p in products.items():
+            nm = p["name"]
+            if cell == nm or cell.startswith(nm + " ") or cell.startswith(nm + " ("):
+                if best is None or len(nm) > len(products[best]["name"]):
+                    best = pid
+        if best is not None:
+            assigned.setdefault(best, ln)
+        # combined spec row names several products in one cell: assign the
+        # same row to each exactly-named segment product as well. Segment
+        # matching applies ONLY to multi-segment cells — a single-name cell
+        # ("Eclipse Connect") must never satisfy the facade via its short
+        # name, or the collision above returns.
+        if len(segments) > 1:
+            for pid, p in products.items():
+                nm = p["name"]
+                if nm in segments or nm.replace(" MCP", "") in segments:
+                    assigned.setdefault(pid, ln)
     for pid, p in products.items():
         if pid in exclude:
             continue
         led = tools.get(pid)
-        short = p["name"].replace(" MCP", "")
-        row = next((ln for ln in readme.splitlines()
-                    if short in ln and ln.strip().startswith("|")), None)
+        row = assigned.get(pid)
         if row is None:
             rep(pid, "readme", "no catalog-table row")
         elif led and led["verdict"] not in row:

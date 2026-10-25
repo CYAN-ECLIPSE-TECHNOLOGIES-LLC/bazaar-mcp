@@ -697,12 +697,6 @@
  "unmapped_tools": [
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
-  "commerce-fixture-store",
-  "eclipse-connect-mcp",
-  "eclipse-haven-mcp",
-  "eclipse-muster-mcp",
-  "eclipse-orbit-mcp",
-  "eclipse-trunk-mcp",
-  "eclipse-voice-core-mcp"
+  "commerce-fixture-store"
  ]
 }

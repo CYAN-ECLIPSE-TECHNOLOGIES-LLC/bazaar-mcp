@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Eclipse Bazaar MCP
+# Copyright © 2026 Cyan Eclipse Technologies LLC · cetech.ai
+# Smoke test for Eclipse Bazaar MCP v0.1.0.
+
 """Smoke test for Eclipse Bazaar MCP v0.1.0.
 
 Speaks real stdio JSON-RPC to server.py and asserts:
@@ -127,7 +131,7 @@ def misc():
     assert [r["id"] for r in cmp_] == ["hostbridge-mcp", "certbridge-mcp"]
     assert all(r["certification"].startswith("CERTIFIED") for r in cmp_), cmp_
     cats = payload(12)
-    assert cats["product_total"] == 54, cats["product_total"]  # 47 + wave-1 (Meter/Tripwire/Umbra) + 4 tool listings, publish pass 4 2026-10-25
+    assert cats["product_total"] == 56, cats["product_total"]  # 54 + wave-1 completions (Blackbox/Docket), publish pass 4 top-up 2026-10-25
     assert cats["data_freshness"]["catalog_built"] == "2026-10-25"
     wr = payload(13)
     assert wr["bench_verdict"] == "CERTIFIED(live)" and wr["certified"] is True, wr
@@ -143,3 +147,5 @@ for label, status in results:
         failed += 1
 print(f"\n{len(results) - failed}/{len(results)} passed")
 sys.exit(1 if failed else 0)
+
+# Eclipse Bazaar MCP · © 2026 Cyan Eclipse Technologies LLC · cetech.ai

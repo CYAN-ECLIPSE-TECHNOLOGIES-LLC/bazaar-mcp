@@ -384,22 +384,22 @@
   },
   "eclipse-docket-mcp": {
    "tool": "eclipse-docket-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-25",
    "bench_version": "0.1.0",
    "environment": "local",
    "qualifier": "local",
-   "seq": 4,
+   "seq": 7,
    "counts": {
-    "pass": 18,
-    "fail": 1,
+    "pass": 19,
+    "fail": 0,
     "na": 1,
     "untestable": 0,
     "total": 20
    },
-   "scorecard_ref": "test-bench/results/eclipse-docket-mcp-2026-10-25-4.json",
-   "cards_on_record": 4
+   "scorecard_ref": "test-bench/results/eclipse-docket-mcp-2026-10-25-7.json",
+   "cards_on_record": 7
   },
   "eclipse-environment-mcp": {
    "tool": "eclipse-environment-mcp",
@@ -944,8 +944,6 @@
  "unmapped_tools": [
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
-  "commerce-fixture-store",
-  "eclipse-blackbox-mcp",
-  "eclipse-docket-mcp"
+  "commerce-fixture-store"
  ]
 }

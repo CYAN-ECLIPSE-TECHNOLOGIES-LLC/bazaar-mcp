@@ -192,6 +192,25 @@
    "scorecard_ref": "test-bench/results/eclipse-beacon-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-book-mcp": {
+   "tool": "eclipse-book-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-book-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-cluster-mcp": {
    "tool": "eclipse-cluster-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -210,6 +229,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-cluster-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-codex-mcp": {
+   "tool": "eclipse-codex-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 18,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-codex-mcp-2026-10-25-3.json",
+   "cards_on_record": 3
   },
   "eclipse-compass-mcp": {
    "tool": "eclipse-compass-mcp",
@@ -344,6 +382,63 @@
    "scorecard_ref": "test-bench/results/eclipse-environment-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-envoy-mcp": {
+   "tool": "eclipse-envoy-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 17,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 18
+   },
+   "scorecard_ref": "test-bench/results/eclipse-envoy-mcp-2026-10-25-3.json",
+   "cards_on_record": 3
+  },
+  "eclipse-fathom-mcp": {
+   "tool": "eclipse-fathom-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 16,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 17
+   },
+   "scorecard_ref": "test-bench/results/eclipse-fathom-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-forecast-mcp": {
+   "tool": "eclipse-forecast-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/eclipse-forecast-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-gig-core-mcp": {
    "tool": "eclipse-gig-core-mcp",
    "verdict": "CERTIFIED(local)",
@@ -400,6 +495,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-herald-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-ledger-mcp": {
+   "tool": "eclipse-ledger-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 21,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-ledger-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
   },
   "eclipse-marquee-mcp": {
    "tool": "eclipse-marquee-mcp",
@@ -534,6 +648,25 @@
    "scorecard_ref": "test-bench/results/eclipse-stage-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-strike-mcp": {
+   "tool": "eclipse-strike-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 13,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 14
+   },
+   "scorecard_ref": "test-bench/results/eclipse-strike-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-thread-mcp": {
    "tool": "eclipse-thread-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -552,6 +685,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-thread-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-till-mcp": {
+   "tool": "eclipse-till-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 24
+   },
+   "scorecard_ref": "test-bench/results/eclipse-till-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
   },
   "eclipse-trunk-mcp": {
    "tool": "eclipse-trunk-mcp",

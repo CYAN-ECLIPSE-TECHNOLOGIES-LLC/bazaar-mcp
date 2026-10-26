@@ -35,6 +35,15 @@
      "isSecret": false
     }
    ]
+  },
+  {
+   "registryType": "pypi",
+   "identifier": "eclipse-bazaar",
+   "version": "0.1.0",
+   "runtimeHint": "uvx",
+   "transport": {
+    "type": "stdio"
+   }
   }
  ]
 }

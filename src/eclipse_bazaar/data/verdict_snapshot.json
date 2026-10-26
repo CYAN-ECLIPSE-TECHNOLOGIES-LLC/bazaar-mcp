@@ -1,0 +1,1765 @@
+{
+ "cards": {
+  "test-bench/results/agent-ready-mcp-2026-10-25.json": {
+   "sha256": "9be949012e3c1b4b53f99c21d9c2f4f51e0a8e1e951ac761018c418002e38549",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "agent-ready-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/certbridge-mcp-2026-10-24-2.json": {
+   "sha256": "57db4c0dad7213a8da81f0183c0e06833edad8f73e24c907423bea93bba09a00",
+   "summary": {
+    "bench_date": "2026-10-24",
+    "bench_version": "0.1.0",
+    "checks_total": 13,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 12
+    },
+    "environment": "staging",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "certbridge-mcp",
+    "verdict": "CERTIFIED(staging)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-agent-wallet-mcp-2026-10-24-2.json": {
+   "sha256": "6475dd09329930e0e30e2622eb88fa658d80f648d5af6a66e549ed1c317df619",
+   "summary": {
+    "bench_date": "2026-10-24",
+    "bench_version": "0.1.0",
+    "checks_total": 13,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 12
+    },
+    "environment": "sandbox",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-agent-wallet-mcp",
+    "verdict": "CERTIFIED(sandbox)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-airtime-mcp-2026-10-25-2.json": {
+   "sha256": "39fcb6d80043a12a472b7d195b1f11e503a546e91a1ba3d8d9435a49e8fc934a",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": null,
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "Eclipse Airtime MCP",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-aperture-mcp-2026-10-25.json": {
+   "sha256": "159769d9eee9332d3985a8ab88d3c51275543344a3d491c421bcb4ee9bc3d675",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 12,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 11
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-aperture-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-apply-mcp-2026-10-25.json": {
+   "sha256": "0b1cb513d92b3bcbff82ce3aecafa8d149a5cfe3b4327cc5dd226880193c0ea1",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 18,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 17
+    },
+    "environment": "sandbox",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-apply-mcp",
+    "verdict": "CERTIFIED(sandbox)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-attest-mcp-rebench2-c12-2026-10-25.json": {
+   "sha256": "2bb754bb2d1d41436d9c0635ece2fe604b96c3039718fd0f3e8c9cddf56e8c8c",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0-rebench2-c12",
+    "checks_total": 10,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 10
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-attest-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-bazaar-mcp-2026-10-26-2.json": {
+   "sha256": "f0d7e70577c3929f51d87b6b0cb48c4f06deb0be89bf53aee03a5f6336c5a8ff",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-bazaar-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-beacon-mcp-2026-10-25.json": {
+   "sha256": "34c97371340567731c169660d85a7630f8c655f12fca557906e2f6f98a8f5498",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-beacon-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-bidmatrix-mcp-2026-10-26-4.json": {
+   "sha256": "21bd34e4627769c49e8efa64eee4fa195c2ad4e5866fe051b8271b56af155bee",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 26,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 25
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-bidmatrix-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-blackbox-mcp-2026-10-25-3.json": {
+   "sha256": "a94820e021d6e3973e6ed72b016d3ffe018ddd896cbb3099caf97ae387ad407a",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 22
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-blackbox-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-book-mcp-2026-10-25.json": {
+   "sha256": "a5c9628d6e41a819723bd2da919efc8e7de6ba0da3ba180f4cb5e621f077a896",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-book-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-census-mcp-2026-10-26-2.json": {
+   "sha256": "67807b0c7fb98e912ed070472ebcadcded7dcd3ce502931d11965cba888ad68c",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 23
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-census-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-charter-mcp-2026-10-25-3.json": {
+   "sha256": "7003680b935cde0e84aca685c48f771b6e5ab7cf69161f6cc38e79f63a98afe6",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": null,
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 24
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-charter-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-cluster-mcp-2026-10-25.json": {
+   "sha256": "6a6305ec9d4de3dc4e81eca9618992cad954102b235c3a2d4ac9d4ccf3acbb68",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-cluster-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-codex-mcp-2026-10-25-3.json": {
+   "sha256": "e046fea812ff8daf7eaee58eb475525b7c9b3d5b87ba7705925ba651a759d618",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-codex-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-colophon-mcp-2026-10-25-2.json": {
+   "sha256": "8bbd879ca704edcf25c7adca909971e19fe4c517adad26d40c0bed4f647e0be8",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "independent-bench-1 (Verity phase, own fixtures)",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 19
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-colophon-mcp",
+    "verdict": "CERTIFIED(local/simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-compass-mcp-2026-10-25-2.json": {
+   "sha256": "f78fe5d8828ae9359b498030f8b8bce65c1157bee871bfef2eeed6a2859c94b7",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-compass-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-connect-2026-10-24-2.json": {
+   "sha256": "eca38d9c8eabd19a82d6874abde944ac1026760efb8aac8207ed4126ba6b937f",
+   "summary": {
+    "bench_date": "2026-10-24",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "dogfood",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "schema valid"
+    ],
+    "tool": "eclipse-connect",
+    "verdict": "CERTIFIED(dogfood)",
+    "version": "P1"
+   }
+  },
+  "test-bench/results/eclipse-connect-beyondcompare-mcp-2026-10-25-rebench-fixround1.json": {
+   "sha256": "e88d574542929ce2c53fb7e86b86cf55cae7976fff6691c2c8b0a1aa10b8753f",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 26,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 26
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-connect-beyondcompare-mcp",
+    "verdict": "CERTIFIED(simulated)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-connect-mcp-2026-10-25.json": {
+   "sha256": "51f9297583e5f75c406fce5ff436e9158002ef6c54ba8f15462a4b5fd5668c04",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "dogfood-facade",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-connect-mcp",
+    "verdict": "CERTIFIED(dogfood-facade)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-consent-mcp-2026-10-25.json": {
+   "sha256": "1d77571e0f27d8ebcb3f9ba10d193a5d64e196749fb2cca57756c006f9dbe3b4",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 23
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-consent-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-constellation-mcp-2026-10-25.json": {
+   "sha256": "e2cb70c4d76180fbf77c3bcbc53cc42b94741482537fc1972817ad6174ad6133",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-constellation-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-corona-mcp-2026-10-25.json": {
+   "sha256": "fc79e9295f59a286f48bbaf52d9c1b362f4d11ca650efd148f589aaa26204764",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "1.0.0-verity-corona-bench",
+    "checks_total": 27,
+    "counts": {
+     "fail": 1,
+     "na": 0,
+     "other": 1,
+     "pass": 25
+    },
+    "environment": "local",
+    "failed_checks": [
+     "\u00a77.3 blanking rule: when PAGE_UNREACHABLE FAILs, ALL other probes report NOT_APPLICABLE reason page_unreachable"
+    ],
+    "not_tested_checks": [],
+    "tool": "eclipse-corona-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-countermark-mcp-2026-10-26-2.json": {
+   "sha256": "d7e372c74777a12ec82a916dd67fe36eaccdfee644b4e7286aeafd134feb925d",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 23
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-countermark-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-covenant-mcp-2026-10-25-4.json": {
+   "sha256": "c854c3946accedcb30547818d8d3a286f30367033c34695092e02fa6ddd0fee9",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": null,
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "Eclipse Covenant MCP",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-crosslist-mcp-2026-10-26-4.json": {
+   "sha256": "aae0f0c1ff4cecb442408d84beaa3cccd9d5dcc6cc4aa1950fb548cfa128af95",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0-rebench-r7-pollonly (scoped Phase 2 re-bench of the R7 poll fix ONLY; carried LOWs not re-benched)",
+    "checks_total": 40,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 1,
+     "pass": 39
+    },
+    "environment": "local (stdio/in-process, isolated mkdtemp fixture state for ALL bench harnesses) + builder suite/smoke re-run unmodified; real dogfood ledger verified READ-ONLY only; NO live writes anywhere",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-crosslist-mcp",
+    "verdict": "CERTIFIED-at-scopes (split per facet) \u2014 R7 CLOSED under a 37-case fresh poll-only battery (official battery x live/claimed/failed, smithery + bazaar cross-registry spots, refusal aftermath/recovery, non-submitted leak checks, R1/R2 regression spots), builder suite 49/50 (sole failure = known external ENV-CATALOG 79-vs-80 assert), smoke PASS, real ledger read-only proof intact. Only LOWs stand (R3/R8/R9/D5/D7/D8, carried, not re-benched). LISTING-READY subject to the listing conditions in listing_readiness.required_wording",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-crosswalk-mcp-2026-10-26-3.json": {
+   "sha256": "b50b6ee0628c23c4e5938fc4167308002afd736bb3f96af8b3d1542edba9f835",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 21
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-crosswalk-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-deepfield-mcp-2026-10-25-2.json": {
+   "sha256": "b022a04cb21e075841442df194f586ecaa7e6bc559f6b3fb1baf0111da0c6cc4",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-deepfield-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-dispatch-mcp-2026-10-25.json": {
+   "sha256": "d4e4640eb66a224d800c700d8395b8d1a8ecc5abcf85c9fe51094862a0c8103b",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-dispatch-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-docket-mcp-2026-10-25-7.json": {
+   "sha256": "a99567c7d013938aed82fed18a096530a39cf0900df4392ae3eade96095276ab",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 20,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 19
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-docket-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-environment-mcp-2026-10-25.json": {
+   "sha256": "c4379f6b657e22af30349fd47a5d3787fe89ca898b549dad85457e155d4b0cc0",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-environment-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-envoy-mcp-2026-10-25-3.json": {
+   "sha256": "3def110c65666d985301e9784ae801f0222cb011c3040e934bd237656a430b90",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 18,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 17
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-envoy-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-fathom-mcp-2026-10-25-2.json": {
+   "sha256": "b5d16eb582512ea70f1d15d257d371723a2aaa0693d36a1e617b43c123361664",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-fathom-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-fedscope-mcp-2026-10-26-4.json": {
+   "sha256": "168613287e58bcec5840ab8ef11673affd36b628d42aa39b4ec8a1de187a5575",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 21
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-fedscope-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-flood-witness-mcp-2026-10-26-2.json": {
+   "sha256": "65560f32f49cab64f931209e9d7154abbd4beb80e24936fc54ad011ee556faac",
+   "summary": {
+    "bench_date": null,
+    "bench_version": null,
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-flood-witness-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": null
+   }
+  },
+  "test-bench/results/eclipse-forecast-mcp-2026-10-25.json": {
+   "sha256": "06476b30178dda5cd3c91669fe05e011350ebb32a8f21a1a3778264d66997715",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-forecast-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-friction-mcp-2026-10-25-2.json": {
+   "sha256": "068ec7555aa7b87ca83677ffda4e2e7fc0435fa1a6fb3a15fcdc187e10144e30",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0-rebench-2",
+    "checks_total": 41,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 41
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-friction-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-gig-core-mcp-2026-10-25.json": {
+   "sha256": "79147fd46dec8fb88ee653a9c832bc9d5330643e4a8564b13d359939dad531f2",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-gig-core-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-haven-mcp-2026-10-25-3.json": {
+   "sha256": "badacd1100822db2d5794782876cb60a2a3f526942febae167ab5434c59bfdc7",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-haven-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-health-check-mcp-2026-10-26-3.json": {
+   "sha256": "789b8a11e07002ea3d6f2af5c3174b0b3db8d72e4d5f7ce8016cc6e16019d375",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 21
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-health-check-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-herald-mcp-2026-10-25.json": {
+   "sha256": "8dc4cabbd58ea1cfd9aa923805c125ae84f195cda23541eda77f460889f7e706",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-herald-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-keyhold-mcp-2026-10-25-4.json": {
+   "sha256": "e9c414a98d20a61018e19aa12df3f4b6f7d12d676b020d340e8d8d842b99115b",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0-rebench-4",
+    "checks_total": 13,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-keyhold-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-ledger-mcp-2026-10-25-2.json": {
+   "sha256": "e4554366b5ff4d543a4fde30720439662425f009458f8682dcd9d9a29fbc41f5",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 21
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-ledger-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-11.json": {
+   "sha256": "759e2dd0fca83b21719293856b3741979547e9e25245fa3481e4d7ad526990ef",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": null,
+    "checks_total": 30,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 30
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-legacy-recon-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-lineage-mcp-2026-10-26-3.json": {
+   "sha256": "243d941e074fe3e76f4da25fa59c3b4ff07d93046203558cfddd7c41e4b7e6fd",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 10,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 10
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-lineage-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-mail-mcp-2026-10-25-2.json": {
+   "sha256": "5d635364d2ee6b6495cac07439634b788c9a41123a2c8b1c15fcdabfebb70395",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0 re-bench (P0 fix round)",
+    "checks_total": 49,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 1,
+     "pass": 48
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-mail-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-marquee-mcp-2026-10-25.json": {
+   "sha256": "02f3ac76f55b1688548b34478074250aab9894e96bcc4bb64a1e125a08719a46",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-marquee-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-meridian-mcp-2026-10-26-2.json": {
+   "sha256": "a4f481482e7879e4f3ed25dcbcbfc1c8d800f89597c1d867af0e88ab40e090a9",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0-rebench1",
+    "checks_total": 22,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 22
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-meridian-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-meter-mcp-2026-10-25-2.json": {
+   "sha256": "4067c71df47b788cd5cd42e34ad718f7773c67c533b62e2576ffa7f8710cdde0",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 20,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 19
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-meter-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-muster-mcp-2026-10-25-2.json": {
+   "sha256": "49ccfb1abb36231e8cfb555f5149f67ecc1d417e66ebe0ab65471994af0a4318",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-muster-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-orbit-mcp-2026-10-25.json": {
+   "sha256": "a7cc10dc5b9584f7f95c1fabdd17a385aef08d9cc405e0de2038194cce6b3c47",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-orbit-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-pantry-mcp-2026-10-25.json": {
+   "sha256": "ef1fa747e2a408f675d854bc7787aeb17c4efd1ead9d7da8cf4abce65d69d92c",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-pantry-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-procure-mcp-2026-10-25.json": {
+   "sha256": "65a652797fda9c5e9de5bd228e84c215c14005e00d6b3f531d2e282a1d6f7dab",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 15,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 14
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-procure-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-proof-mcp-2026-10-26-2.json": {
+   "sha256": "de82783b538b11c333588a250720b2a08bdebd62b7945daa6450707b26e99666",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 37,
+    "counts": {
+     "fail": 0,
+     "na": 2,
+     "other": 0,
+     "pass": 35
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "Frame.io connector mint mismatch (P2)",
+     "auth"
+    ],
+    "tool": "eclipse-proof-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-proving-mcp-2026-10-25-2.json": {
+   "sha256": "60abfff0c738ae252e06724673b10c76a61a53345defe8a962182f93a649684a",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 10,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 10
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-proving-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-recall-witness-mcp-2026-10-26-2.json": {
+   "sha256": "c27b7e245cdfdaa4142e8bd18692d408550a207c0c4e83d9c1c0a8a11a140a5b",
+   "summary": {
+    "bench_date": null,
+    "bench_version": null,
+    "checks_total": 4,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 4,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-recall-witness-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": null
+   }
+  },
+  "test-bench/results/eclipse-redteam-mcp-2026-10-26-3.json": {
+   "sha256": "06d64a1008009fcb754c62d57d5c57e789e69d3b572e6779c68a58c53a65d39a",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 27,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 26
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-redteam-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-revoke-mcp-2026-10-26-3.json": {
+   "sha256": "02c2e4df9bed3c20fc964c815f412e4131d80462c451ee46179755a7ba292a5d",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "scoped-rebench-2",
+    "checks_total": 13,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-revoke-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-roll-mcp-2026-10-26-rebench.json": {
+   "sha256": "b4e52d5d9afee179dbe870ba9946d5b95236e5355b743cba092aa49e985b43a0",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "1.1.0-verity-phase5-rebench",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 17
+    },
+    "environment": "local (isolated copy of the product tree)",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-roll-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-section508-mcp-2026-10-26-3.json": {
+   "sha256": "13692b8b5432356ce82105d01aec4a303c1612a48ed5e4fe1981cccb24c0b871",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 20,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 19
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-section508-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-social-core-mcp-2026-10-25.json": {
+   "sha256": "665f78be3976d34f4a24ced9c18028184a94dc8924a86d7f461371dbfe6337a2",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-social-core-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-span-mcp-2026-10-26-5.json": {
+   "sha256": "2439e75506ea070d8fb37b53db20d83e8e1cc5ed617b65c99ff208201b678a01",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 23
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-span-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-stage-mcp-2026-10-25.json": {
+   "sha256": "0a8811efb5a8f70691362757c4d706515274b234d97864b308097b7f2ea567e9",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-stage-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-steward-mcp-2026-10-26-4.json": {
+   "sha256": "d22ef7acca80b33cc4e38c95bdb4b06a3cc48ae44db76c784ebfe56a27ff96bc",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "0.1.0",
+    "checks_total": 28,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 27
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-steward-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-strata-mcp-2026-10-25-r3.json": {
+   "sha256": "fa94b2ae956876f4a92392a9773531f2ae93d0eb5331a1217567db94a1e1fb7c",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "verity-0.3.0-scoped-rebench-r3",
+    "checks_total": 12,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 12
+    },
+    "environment": "simulator (P0: OctoPrint virtual + virtual Klipper/Moonraker in-process sims; slicer: deterministic simulated PrusaSlicer behind production interface; class: fixture; pure-Python Ed25519)",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-strata-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-strike-mcp-2026-10-25-2.json": {
+   "sha256": "a48c58f8aa7ef8a67bd295650f2e9750a2c5be4381ae3007dd268b9840485804",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-strike-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-tether-mcp-2026-10-25-2.json": {
+   "sha256": "492fe7fe417abf619001c4168cf3d8ffa32d43e76657955c136f469cf1e47c2f",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "verity-0.1.0",
+    "checks_total": 31,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 31
+    },
+    "environment": "simulator (P0: ROS 2 + Gazebo + UR-class arm sim, in-process; planner: sim; class: fixture)",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-tether-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-thread-mcp-2026-10-25.json": {
+   "sha256": "a44db91bb296b3e5f66e600275fa575adc488b03fc59c13712c359649531bcdc",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-thread-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-till-mcp-2026-10-25-2.json": {
+   "sha256": "2513a6fcce13c6e5ea60dfbd635a74f949b836363568909fa9e4749d110087e1",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 24,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 23
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-till-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-tripwire-mcp-2026-10-25-3.json": {
+   "sha256": "73f888de950db040b718150ea1a468234467a591d5686b21e76c2679f03e87f6",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-tripwire-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-trunk-mcp-2026-10-25-2.json": {
+   "sha256": "42104e45d206cd06b492d464034616a9f929f7b5cdd4ec00ab066244c8d43c8b",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-trunk-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-umbra-mcp-2026-10-25-2.json": {
+   "sha256": "db4f8a797375462b31c4cad5f6019edc847fe554aa14ce89b5de60a5ea0a7698",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 19,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 18
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-umbra-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-verbatim-eo-mcp-2026-10-26-3.json": {
+   "sha256": "01a19f71cbdfc4c71c97a8a2420982a6da84cd51ae526f8075b48c76aacabdbd",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "Scoped re-bench #3 of EO fix round 2 (commit 56537e4): FULL-emission audit third pass (every graph-3 FULL edge re-derived from its sealed asserting text by the bench's own reading; exhaustive sentence-level FULL sweep over all 13,282 sealed segments), savings-idiom overreach battery, range-grammar fresh shapes + all-186-range re-derivation, EO-D8 accounting audit under three independent assertion-groupings + spot attribution, riders EO-D5-2/EO-D7 with fresh marking variants and every refusal class, regression floor (sentence byte-identity extracted from the governing spec, exclusion census, recompute convergence via suite canon tests, suite + smoke). Environment note: this VM intermittently EPERMs file writes (os.sendfile blocked outright; tempfile probe unreliable) \u2014 the 4 copy-dependent suite tests fail under plain runs in rotating subsets and PASS under a bench-side replication harness using only environment shims (pinned tempdir + retry-tolerant copyfile); product code exercised unmodified. Rigs: test-bench/refix-bench-eo3/ (rig.py, riders.py, riders2.py, riders3.py, run4.py).",
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": null,
+    "verdict": "CERTIFIED(local)",
+    "version": null
+   }
+  },
+  "test-bench/results/eclipse-verbatim-mcp-2026-10-26-2.json": {
+   "sha256": "9c3248c120cf58a8785cb5f25d83d021fd6c2b3295ca5bfa79d54b0b14816ab3",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "scoped re-bench (fix round Phase 2) \u2014 scopes: \u00a717.2 test 1 on amended \u00a75, D-2 fresh shapes, D-3 fresh shapes, cite-check hostile subset, seal/envelope + new-snapshot checks; D-5/D-6/D-7 observation re-confirmation",
+    "checks_total": 7,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 7,
+     "pass": 0
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-verbatim-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-voice-core-mcp-2026-10-25.json": {
+   "sha256": "fafa79836fac1490ef84d53aa47be063f89ec50edc87780c665ee35788990af3",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 20,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 19
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-voice-core-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-wageward-mcp-2026-10-25-5.json": {
+   "sha256": "b089807eb4d939f6a4cd2481ff531fd4983d09b5073c2edd6c947983a7db854b",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.5.0-scoped-rebench-4",
+    "checks_total": 20,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 20
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-wageward-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-zenith-mcp-2026-10-25.json": {
+   "sha256": "0a283bd07478201c4fc713b80d74faace1877b951bea6621c852fce1fad97833",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 17,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 16
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-zenith-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-zephyr-mcp-2026-10-25-2.json": {
+   "sha256": "ab863642ea5fba580bd196f4c6bce7868e9567e07e62d347e00218fc738a34da",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 13,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 12
+    },
+    "environment": "live-read",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "eclipse-zephyr-mcp",
+    "verdict": "CERTIFIED(live-read)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/florida-bid-intel-mcp-2026-10-25.json": {
+   "sha256": "c7c822bcc4dc18cb9ace4b926d39b1c53071f52498a7088f59191c3f4c1dda52",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 14,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 13
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "florida-bid-intel-mcp",
+    "verdict": "CERTIFIED(local)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/hostbridge-mcp-2026-10-24-3.json": {
+   "sha256": "59b2c90dfe7e07f7c83bd2a74f8460a0af0b9a840a6b0dac0e76ceaaba45ca8f",
+   "summary": {
+    "bench_date": "2026-10-24",
+    "bench_version": "0.1.0",
+    "checks_total": 16,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 15
+    },
+    "environment": "simulator",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "hostbridge-mcp",
+    "verdict": "CERTIFIED(simulator)",
+    "version": "0.1.0"
+   }
+  },
+  "test-bench/results/white-report-mcp-2026-10-25-11.json": {
+   "sha256": "302a1d5a39413d45b956818a2a1da583264f6145f9b1330b6d9c8ce29c05b3e2",
+   "summary": {
+    "bench_date": "2026-10-25",
+    "bench_version": "0.1.0",
+    "checks_total": 11,
+    "counts": {
+     "fail": 0,
+     "na": 1,
+     "other": 0,
+     "pass": 10
+    },
+    "environment": "live host",
+    "failed_checks": [],
+    "not_tested_checks": [
+     "auth enforced"
+    ],
+    "tool": "white-report-mcp",
+    "verdict": "CERTIFIED(live)",
+    "version": "0.1.0"
+   }
+  }
+ },
+ "catalog_built": "2026-10-26",
+ "generated_at": "2026-10-26T18:52:15Z",
+ "generator": "tools/make_verdict_snapshot.py",
+ "source": "test-bench/results (referenced by catalog.json scorecard_ref)"
+}

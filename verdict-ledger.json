@@ -192,6 +192,25 @@
    "scorecard_ref": "test-bench/results/eclipse-beacon-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-bidmatrix-mcp": {
+   "tool": "eclipse-bidmatrix-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 4,
+   "counts": {
+    "pass": 25,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 26
+   },
+   "scorecard_ref": "test-bench/results/eclipse-bidmatrix-mcp-2026-10-26-4.json",
+   "cards_on_record": 4
+  },
   "eclipse-blackbox-mcp": {
    "tool": "eclipse-blackbox-mcp",
    "verdict": "CERTIFIED(local)",
@@ -229,6 +248,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-book-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-census-mcp": {
+   "tool": "eclipse-census-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 24
+   },
+   "scorecard_ref": "test-bench/results/eclipse-census-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
   },
   "eclipse-cluster-mcp": {
    "tool": "eclipse-cluster-mcp",
@@ -344,6 +382,44 @@
    "scorecard_ref": "test-bench/results/eclipse-constellation-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-countermark-mcp": {
+   "tool": "eclipse-countermark-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 24
+   },
+   "scorecard_ref": "test-bench/results/eclipse-countermark-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-crosswalk-mcp": {
+   "tool": "eclipse-crosswalk-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 21,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-crosswalk-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-deepfield-mcp": {
    "tool": "eclipse-deepfield-mcp",
    "verdict": "CERTIFIED(local)",
@@ -458,6 +534,25 @@
    "scorecard_ref": "test-bench/results/eclipse-fathom-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
+  "eclipse-fedscope-mcp": {
+   "tool": "eclipse-fedscope-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 4,
+   "counts": {
+    "pass": 21,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-fedscope-mcp-2026-10-26-4.json",
+   "cards_on_record": 4
+  },
   "eclipse-forecast-mcp": {
    "tool": "eclipse-forecast-mcp",
    "verdict": "CERTIFIED(local)",
@@ -515,6 +610,25 @@
    "scorecard_ref": "test-bench/results/eclipse-haven-mcp-2026-10-25-3.json",
    "cards_on_record": 3
   },
+  "eclipse-health-check-mcp": {
+   "tool": "eclipse-health-check-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 21,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-health-check-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-herald-mcp": {
    "tool": "eclipse-herald-mcp",
    "verdict": "CERTIFIED(local)",
@@ -552,6 +666,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-ledger-mcp-2026-10-25-2.json",
    "cards_on_record": 2
+  },
+  "eclipse-legacy-recon-mcp": {
+   "tool": "eclipse-legacy-recon-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 6,
+   "counts": {
+    "pass": 22,
+    "fail": 2,
+    "na": 1,
+    "untestable": 0,
+    "total": 25
+   },
+   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-6.json",
+   "cards_on_record": 6
   },
   "eclipse-marquee-mcp": {
    "tool": "eclipse-marquee-mcp",
@@ -667,6 +800,44 @@
    "scorecard_ref": "test-bench/results/eclipse-procure-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-redteam-mcp": {
+   "tool": "eclipse-redteam-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 26,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 27
+   },
+   "scorecard_ref": "test-bench/results/eclipse-redteam-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
+  },
+  "eclipse-section508-mcp": {
+   "tool": "eclipse-section508-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 3,
+   "counts": {
+    "pass": 19,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 20
+   },
+   "scorecard_ref": "test-bench/results/eclipse-section508-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-social-core-mcp": {
    "tool": "eclipse-social-core-mcp",
    "verdict": "CERTIFIED(local)",
@@ -686,6 +857,25 @@
    "scorecard_ref": "test-bench/results/eclipse-social-core-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-span-mcp": {
+   "tool": "eclipse-span-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 5,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 24
+   },
+   "scorecard_ref": "test-bench/results/eclipse-span-mcp-2026-10-26-5.json",
+   "cards_on_record": 5
+  },
   "eclipse-stage-mcp": {
    "tool": "eclipse-stage-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -704,6 +894,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-stage-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-steward-mcp": {
+   "tool": "eclipse-steward-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 4,
+   "counts": {
+    "pass": 27,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 28
+   },
+   "scorecard_ref": "test-bench/results/eclipse-steward-mcp-2026-10-26-4.json",
+   "cards_on_record": 4
   },
   "eclipse-strike-mcp": {
    "tool": "eclipse-strike-mcp",
@@ -944,6 +1153,12 @@
  "unmapped_tools": [
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
-  "commerce-fixture-store"
+  "commerce-fixture-store",
+  "eclipse-bidmatrix-mcp",
+  "eclipse-fedscope-mcp",
+  "eclipse-health-check-mcp",
+  "eclipse-legacy-recon-mcp",
+  "eclipse-section508-mcp",
+  "eclipse-steward-mcp"
  ]
 }

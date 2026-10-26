@@ -27,7 +27,7 @@ This MCP server is how agents query that catalog:
 
 Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
 
-## Catalog (v0.1.0 — 39 products, CETech only)
+## Catalog (v0.1.0 — 63 products, CETech only)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -70,7 +70,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Fathom MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Codex MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Ledger MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
-| Eclipse Till MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Till MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) · Ads Rail P1 extension CERTIFIED(local/simulator), Stripe test mode only — NOT PROVEN IN STRIPE |
 | Eclipse Book MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Forecast MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Strike MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
@@ -79,6 +79,13 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Umbra MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Blackbox MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Docket MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Countermark MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Census MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Crosswalk MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Redteam MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Span MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Airtime MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local/simulator) |
+| Eclipse Friction MCP | in-development | not certified — spec complete (16 P0 tools), build dispatched; no Test Bench run yet |
 | Eclipse Test Bench | in-development | not certified — in-house artifact, productization in progress (slate T1) |
 | Eclipse Stocktake | in-development | not certified — in-house artifact, productization in progress (slate T4) |
 | Eclipse Press | in-development | not certified — in-house artifact, productization in progress (slate T3) |

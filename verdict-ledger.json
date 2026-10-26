@@ -1201,22 +1201,22 @@
   },
   "eclipse-roll-mcp": {
    "tool": "eclipse-roll-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-26",
-   "bench_version": "1.0.0-verity-phase4",
-   "environment": "local",
-   "qualifier": "local/fixture \u2014 everything fixture-scope; NO live registry read was exercised (all Gauge adapters are labeled FIXTURE adapters; LiveRegistryAdapter is unregistered and refuses); counsel gate (spec 10.3, pre-P1) stands regardless of verdict",
-   "seq": 1,
+   "bench_version": "1.1.0-verity-phase5-rebench",
+   "environment": "local (isolated copy of the product tree)",
+   "qualifier": "local/fixture \u2014 scoped re-bench of the Phase-5 fix round only (D1-D10 + GEN); everything fixture-scope; no live registry read exercised; counsel gate (spec 10.3, pre-P1) stands regardless of verdict",
+   "seq": 50,
    "counts": {
-    "pass": 23,
+    "pass": 17,
     "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 34
+    "total": 17
    },
-   "scorecard_ref": "test-bench/results/eclipse-roll-mcp-2026-10-26.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-roll-mcp-2026-10-26-rebench.json",
+   "cards_on_record": 2
   },
   "eclipse-section508-mcp": {
    "tool": "eclipse-section508-mcp",
@@ -1689,7 +1689,6 @@
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
   "eclipse-dossier-mcp",
-  "eclipse-roll-mcp",
   "eclipse-vector-mcp",
   "eclipse-witness-drift",
   "eclipse-witness-mcp"

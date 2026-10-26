@@ -47,7 +47,8 @@ README = BAZAAR / "README.md"
 STOREFRONT = CE / "eclipse-bazaar-site" / "index.html"
 LEDGER_OUT = BAZAAR / "verdict-ledger.json"
 CARD_RE = re.compile(r"^(.+)-(\d{4}-\d{2}-\d{2})(?:-(\d+))?"
-                     r"(?:-rebench-fixround(\d+))?(?:-r(\d+))?\.json$")
+                     r"(?:-rebench-fixround(\d+))?(?:-r(\d+))?"
+                     r"(-rebench)?\.json$")
 DOGFOOD_RE = re.compile(r"^(.+)-dogfood-(\d{4}-\d{2}-\d{2})\.md$")
 
 
@@ -107,6 +108,15 @@ def build_ledger():
         # Rook top-up 2026-10-26 — scorecards untouched, same treatment as
         # the friction qualifier and Charter format fixes.
         seq = int(m.group(3) or 1) + 100 * int(m.group(4) or 0)
+        # Card-format variant (Roll scoped re-bench, 2026-10-26): the
+        # fix-round card carries a bare "-rebench" suffix AFTER the date
+        # ("<tool>-<date>-rebench.json"); it supersedes the same-date
+        # base card, so it sorts as seq 50 (above the plain -N run band,
+        # below the -rebench-fixround 100+ band). Checker normalization,
+        # Rook Roll listing pass 2026-10-26 — scorecards untouched, same
+        # treatment as the BC/Attest fixes above and below.
+        if m.group(6):
+            seq = 50
         # Card-format variant (Strata scoped re-bench, 2026-10-25): the
         # fix-round cards carry a "-r<N>" run suffix instead of a run
         # sequence (…-2026-10-25.json = bench 1, -r2 = scoped re-bench,

@@ -1,3 +1,0 @@
-[console_scripts]
-bazaar = eclipse_bazaar.cli:main
-eclipse-bazaar = eclipse_bazaar.mcp_server:main

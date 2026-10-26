@@ -12,3 +12,8 @@ id_ed25519*
 id_ecdsa*
 *.zip
 .DS_Store
+
+# build residue
+*.egg-info/
+build/
+dist/

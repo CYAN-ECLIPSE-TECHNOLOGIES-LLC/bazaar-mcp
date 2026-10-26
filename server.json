@@ -1,0 +1,42 @@
+{
+ "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+ "name": "io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar",
+ "title": "Eclipse Bazaar MCP",
+ "description": "Discover agent tools by problem: every listing carries its Test Bench verdict or says it has none.",
+ "version": "0.1.0",
+ "websiteUrl": "https://eclipsebazaar.com",
+ "icons": [
+  {
+   "src": "https://raw.githubusercontent.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar-mcp/main/icon-512.png",
+   "mimeType": "image/png",
+   "sizes": [
+    "512x512"
+   ]
+  }
+ ],
+ "repository": {
+  "source": "github",
+  "url": "https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar-mcp"
+ },
+ "packages": [
+  {
+   "registryType": "oci",
+   "registryBaseUrl": "https://ghcr.io",
+   "identifier": "ghcr.io/cyan-eclipse-technologies-llc/bazaar-mcp",
+   "version": "a729a43cab899f5165b0d8577b4e06783641157f",
+   "runtimeHint": "docker",
+   "transport": {
+    "type": "stdio"
+   },
+   "environmentVariables": [
+    {
+     "name": "BAZAAR_CATALOG",
+     "description": "Path to the catalog JSON the server reads. Defaults to the catalog.json bundled beside the server.",
+     "format": "filepath",
+     "isRequired": false,
+     "isSecret": false
+    }
+   ]
+  }
+ ]
+}

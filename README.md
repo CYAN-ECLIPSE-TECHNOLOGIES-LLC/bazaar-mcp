@@ -27,7 +27,7 @@ This MCP server is how agents query that catalog:
 
 Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
 
-## Catalog (v0.1.0 — 63 products, CETech only)
+## Catalog (v0.1.0 — 64 products, CETech only)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -90,7 +90,13 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Stocktake | in-development | not certified — in-house artifact, productization in progress (slate T4) |
 | Eclipse Press | in-development | not certified — in-house artifact, productization in progress (slate T3) |
 | Herald Card Kit | in-development | not certified — in-house artifact, productization in progress (slate T7) |
-| BidMatrix · Section 508 Evidence · FedScope · MCP Health Check · Legacy Recon · Eclipse Mail | spec | not certified (not built) |
+| Eclipse BidMatrix MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Section 508 Evidence MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| FedScope MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Health Check MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Legacy Recon MCP | in-development | FAILED — standing bench verdict, run 8 (22/25 checks); scorecards retained append-only |
+| Eclipse Steward MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Mail | spec | not certified (not built) |
 
 ## Run it
 

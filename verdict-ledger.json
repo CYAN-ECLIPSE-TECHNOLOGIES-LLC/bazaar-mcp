@@ -572,6 +572,25 @@
    "scorecard_ref": "test-bench/results/eclipse-forecast-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-friction-mcp": {
+   "tool": "eclipse-friction-mcp",
+   "verdict": "PARTIAL",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 34,
+    "fail": 7,
+    "na": 0,
+    "untestable": 0,
+    "total": 41
+   },
+   "scorecard_ref": "test-bench/results/eclipse-friction-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-gig-core-mcp": {
    "tool": "eclipse-gig-core-mcp",
    "verdict": "CERTIFIED(local)",
@@ -675,7 +694,7 @@
    "bench_version": "0.1.0",
    "environment": "local",
    "qualifier": "local",
-   "seq": 6,
+   "seq": 8,
    "counts": {
     "pass": 22,
     "fail": 2,
@@ -683,8 +702,27 @@
     "untestable": 0,
     "total": 25
    },
-   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-6.json",
-   "cards_on_record": 6
+   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-8.json",
+   "cards_on_record": 8
+  },
+  "eclipse-mail-mcp": {
+   "tool": "eclipse-mail-mcp",
+   "verdict": "NOT CERTIFIED",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local / fixture-only",
+   "seq": 1,
+   "counts": {
+    "pass": 30,
+    "fail": 12,
+    "na": 0,
+    "untestable": 0,
+    "total": 49
+   },
+   "scorecard_ref": "test-bench/results/eclipse-mail-mcp-2026-10-25.json",
+   "cards_on_record": 1
   },
   "eclipse-marquee-mcp": {
    "tool": "eclipse-marquee-mcp",
@@ -1154,11 +1192,6 @@
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
   "commerce-fixture-store",
-  "eclipse-bidmatrix-mcp",
-  "eclipse-fedscope-mcp",
-  "eclipse-health-check-mcp",
-  "eclipse-legacy-recon-mcp",
-  "eclipse-section508-mcp",
-  "eclipse-steward-mcp"
+  "eclipse-mail-mcp"
  ]
 }

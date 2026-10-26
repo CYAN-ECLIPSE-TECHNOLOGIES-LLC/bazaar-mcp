@@ -1,8 +1,18 @@
+# LEGACY packaging workflow — MANUAL DISPATCH ONLY.
+#
+# TAG PUSHES ARE FORBIDDEN HERE (CT-D2, Verity card
+# container-train-2026-10-26): do NOT add a push/tags trigger to this
+# workflow. A v* tag push previously fired this workflow and published
+# UNSIGNED ghcr.io images tagged 'latest' + <sha> — no cosign, no
+# SBOM/provenance, smoke AFTER the push — bypassing the Container
+# Train's CONTAINER_TRAIN_PUBLISH switch and its smoke-before-push
+# gate (gate A3/A5: "no unsigned latest, ever"). The Container Train
+# release-images.yml is the ONLY sanctioned image publish path.
+# This file is retained for manual workflow_dispatch only because the
+# train workflow is not yet installed in this repo.
 name: Package
 on:
   workflow_dispatch:
-  push:
-    tags: ['v*']
 permissions:
   contents: read
   packages: write

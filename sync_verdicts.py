@@ -190,6 +190,27 @@ def build_ledger():
         # identity in bench_agent. Checker normalization, publish pass 7.
         _sl = sc.get("scope_label")
         _scope = _sl.get("scope") if isinstance(_sl, dict) else None
+        _counts = counts(sc.get("checks") or sc.get("per_line") or [])
+        _sv = sc.get("scope_verdicts")
+        _chk = sc.get("checks") or {}
+        if isinstance(_sv, dict) and _sv and isinstance(_chk, dict) \
+                and not any(isinstance(v, dict)
+                            and ("pass" in v
+                                 or str(v.get("verdict", "")).lower()
+                                 in ("pass", "fail", "na", "untestable"))
+                            for v in _chk.values()):
+            # Card-format variant (Verbatim scoped re-bench card -2,
+            # 2026-10-26): "checks" is a mapping of evidence bundles
+            # with no per-check pass/verdict markers, so the generic
+            # tally reads 0/7. The card's own verdict surface is
+            # "scope_verdicts" — named scopes, each "PASS — ...".
+            # Tally those. Checker normalization, Verbatim listing
+            # pass — scorecard untouched, same treatment as the
+            # Charter/Crosslist fixes above.
+            _counts = {"pass": sum(1 for v in _sv.values()
+                                   if str(v).startswith("PASS")),
+                       "fail": 0, "na": 0, "untestable": 0,
+                       "total": len(_sv)}
         tools[tool] = {"tool": tool, "verdict": _v,
                        "certified": _v.startswith("CERTIFIED("),
                        "bench_date": sc.get("bench_date") or sc.get("date"),
@@ -201,8 +222,7 @@ def build_ledger():
                            and not _sl_str.startswith("CERTIFIED(")
                            else None),
                        "seq": seq,
-                       "counts": counts(sc.get("checks")
-                                        or sc.get("per_line") or []),
+                       "counts": _counts,
                        "scorecard_ref": "test-bench/results/" + p.name}
     for tool, entry in tools.items():
         entry["cards_on_record"] = on_record[tool]

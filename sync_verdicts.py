@@ -60,6 +60,19 @@ def dump_compact(obj):
 def counts(checks):
     c = {"pass": 0, "fail": 0, "na": 0, "untestable": 0}
     if isinstance(checks, dict):
+        vals = list(checks.values())
+        if vals and isinstance(vals[0], dict) and "verdict" in vals[0]:
+            # Card-format variant (Covenant scoped re-bench, 2026-10-25):
+            # lines ride in a "per_line" mapping of name ->
+            # {"verdict": "PASS"/...} instead of a "checks" list. Tally
+            # like a list card. Checker normalization, publish pass 8 —
+            # scorecards untouched, same treatment as the Charter fix.
+            for v in vals:
+                vv = str(v.get("verdict", "")).lower()
+                if vv in c:
+                    c[vv] += 1
+            c["total"] = len(vals)
+            return c
         # Card-format variant (Charter suite): checks are a mapping of
         # name -> {"pass": bool, "detail": ...} instead of a list of
         # {"verdict": ...}. Checker normalization, publish pass 7 —
@@ -93,14 +106,28 @@ def build_ledger():
         # Card-format variant (Charter suite): the tool id rides in a
         # "product" field instead of "tool". Checker normalization,
         # publish pass 7; the scorecard itself is untouched.
-        if (sc.get("tool") or sc.get("product")) != tool:
+        # Card-format variant (Covenant suite): "product" carries the
+        # DISPLAY name ("Eclipse Covenant MCP") and the id rides in a
+        # "slug" field. Accept the slug as identity. Checker
+        # normalization, publish pass 8; scorecards untouched.
+        if tool not in (sc.get("tool"), sc.get("product"), sc.get("slug")):
             continue
         on_record[tool] = on_record.get(tool, 0) + 1
         prev = tools.get(tool)
         if prev and (date, seq) <= (prev["bench_date"], prev["seq"]):
             continue
         _v = sc["verdict"]
-        if _v == "CERTIFIED" and sc.get("qualifier"):
+        _sl_str = sc.get("scope_label") \
+            if isinstance(sc.get("scope_label"), str) else None
+        if _v == "CERTIFIED" and _sl_str and _sl_str.startswith("CERTIFIED("):
+            # Card-format variant (Meridian re-bench, 2026-10-26): the
+            # card's own string scope_label IS the full standing verdict
+            # ("CERTIFIED(local, synthetic scope)") while its qualifier
+            # field carries longer prose. The bench's printed label wins.
+            # Checker normalization, publish pass 8 — scorecards
+            # untouched, same treatment as the friction qualifier fix.
+            _v = _sl_str
+        elif _v == "CERTIFIED" and sc.get("qualifier"):
             # Card-format variant: verdict and qualifier emitted as
             # separate fields (friction re-bench card, 2026-10-25). Compose
             # the standing verdict so the ledger's certified test and every
@@ -108,6 +135,13 @@ def build_ledger():
             # certification text states. Checker normalization, publish
             # pass 6 top-up (friction), same treatment as the pass-2 fix.
             _v = f"CERTIFIED({sc['qualifier']})"
+        elif _v == "CERTIFIED" and _sl_str:
+            # Card-format variant (Covenant scoped re-bench -4,
+            # 2026-10-25): no qualifier field; the string scope_label
+            # carries the bare scope ("local/simulator") and the card's
+            # verdict_qualifier + manifest instruction both state the
+            # composed form. Checker normalization, publish pass 8.
+            _v = f"CERTIFIED({_sl_str})"
         # Card-format variant (Charter suite): bench_date rides in "date",
         # environment/qualifier in scope_label.scope, and the bench
         # identity in bench_agent. Checker normalization, publish pass 7.
@@ -119,9 +153,13 @@ def build_ledger():
                        "bench_version": sc.get("bench_version")
                        or sc.get("bench_agent", ""),
                        "environment": sc.get("environment") or _scope,
-                       "qualifier": sc.get("qualifier") or _scope,
+                       "qualifier": sc.get("qualifier") or _scope
+                       or (_sl_str if _sl_str
+                           and not _sl_str.startswith("CERTIFIED(")
+                           else None),
                        "seq": seq,
-                       "counts": counts(sc.get("checks", [])),
+                       "counts": counts(sc.get("checks")
+                                        or sc.get("per_line") or []),
                        "scorecard_ref": "test-bench/results/" + p.name}
     for tool, entry in tools.items():
         entry["cards_on_record"] = on_record[tool]

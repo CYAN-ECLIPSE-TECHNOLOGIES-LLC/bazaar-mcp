@@ -116,6 +116,25 @@
    "scorecard_ref": "test-bench/results/eclipse-agent-wallet-mcp-2026-10-24-2.json",
    "cards_on_record": 2
   },
+  "eclipse-airtime-mcp": {
+   "tool": "eclipse-airtime-mcp",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "W-003 Verity (scoped re-bench; independent cases, valid mandate context)",
+   "environment": null,
+   "qualifier": "local/simulator",
+   "seq": 2,
+   "counts": {
+    "pass": 4,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 4
+   },
+   "scorecard_ref": "test-bench/results/eclipse-airtime-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-aperture-mcp": {
    "tool": "eclipse-aperture-mcp",
    "verdict": "CERTIFIED(local)",
@@ -495,6 +514,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-countermark-mcp-2026-10-26-2.json",
    "cards_on_record": 2
+  },
+  "eclipse-covenant-mcp": {
+   "tool": "eclipse-covenant-mcp",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "W-003 Verity (independent SCOPED RE-BENCH -4; D8b + B5 prescription from card -3, re-derived independently; all probes run against isolated copy /tmp/cov_iso4; state-tamper probes inject directly into persisted state dicts, bypassing load+create)",
+   "environment": null,
+   "qualifier": "local/simulator",
+   "seq": 4,
+   "counts": {
+    "pass": 40,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 40
+   },
+   "scorecard_ref": "test-bench/results/eclipse-covenant-mcp-2026-10-25-4.json",
+   "cards_on_record": 4
   },
   "eclipse-crosswalk-mcp": {
    "tool": "eclipse-crosswalk-mcp",
@@ -878,7 +916,7 @@
   },
   "eclipse-meridian-mcp": {
    "tool": "eclipse-meridian-mcp",
-   "verdict": "CERTIFIED(local, synthetic scope (simulator))",
+   "verdict": "CERTIFIED(local, synthetic scope)",
    "certified": true,
    "bench_date": "2026-10-26",
    "bench_version": "0.1.0-rebench1",
@@ -1462,9 +1500,7 @@
   "eclipse-consent-mcp",
   "eclipse-keyhold-mcp",
   "eclipse-lineage-mcp",
-  "eclipse-meridian-mcp",
   "eclipse-revoke-mcp",
-  "eclipse-strata-mcp",
-  "eclipse-wageward-mcp"
+  "eclipse-strata-mcp"
  ]
 }

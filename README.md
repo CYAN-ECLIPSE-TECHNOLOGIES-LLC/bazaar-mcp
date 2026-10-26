@@ -111,7 +111,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Attest MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Revoke MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Keyhold MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
-| Eclipse Strata MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Loft MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 
 ## Run it
 

@@ -1351,6 +1351,25 @@
    "scorecard_ref": "test-bench/results/eclipse-umbra-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
+  "eclipse-vector-mcp": {
+   "tool": "eclipse-vector-mcp",
+   "verdict": "PARTIAL(simulator)",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "verity-0.1.0",
+   "environment": "simulator (P0: ArduPilot SITL + MAVSDK-shaped sim adapter, in-process; authorization/Remote ID/TFR inputs FIXTURE; class: fixture)",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 24,
+    "fail": 7,
+    "na": 0,
+    "untestable": 0,
+    "total": 31
+   },
+   "scorecard_ref": "test-bench/results/eclipse-vector-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-voice-core-mcp": {
    "tool": "eclipse-voice-core-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1501,6 +1520,7 @@
   "eclipse-keyhold-mcp",
   "eclipse-lineage-mcp",
   "eclipse-revoke-mcp",
-  "eclipse-strata-mcp"
+  "eclipse-strata-mcp",
+  "eclipse-vector-mcp"
  ]
 }

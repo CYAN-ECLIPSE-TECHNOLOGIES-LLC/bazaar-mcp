@@ -4906,6 +4906,70 @@
     "corpus_status"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Sealed corpus, recomputable by anyone: FEMA NFHL county extracts sealed per partition under flood-canon/1.0 — Leon (snapshot nfhl-fl-leon-20260611-bec93b592c31; 12,099 features) and Monroe (nfhl-fl-monroe-20261022-4776f79b6d7c; 9,664 features) are SEALED; the operative index fw-index-202610-abd4c392bd16 enumerates all 67 Florida county partitions and names the other 65 NOT_SEALED — Miami-Dade is NOT_SEALED (pending), never silently absent",
+    "Every determination is a signed evidence receipt bound to its sealed snapshot: subject geometry (FOOTPRINT / STRUCTURE_POINT / PARCEL — an address is refused as a subject), zone + panel + BFE outcome (exactly three outcomes; no datum-conversion code path exists), recomputable offline with the standalone verifier that ships in the tree (RECOMPUTE_MATCH / RECOMPUTE_DIVERGES naming the first divergent field)",
+    "Drift between vintages is classified by causal source record across a closed grammar (12 classes incl. FEATURE_CHANGE_UNATTRIBUTED); LOMR cases compare per-case record SETS (cardinality AND set). One LOW defect stands on the record as a printed condition (FW-D8: a case wholly removed in a later vintage did not raise drift; fixed in code after the bench — the fix must hold before any second-vintage drift output is published; drift remains latent until a second vintage of any partition seals)",
+    "Flag-1 qualifier (Verity bench, adjudicated 2026-10-26): the LOMC override branch (LOMC_OVERRIDE_APPLIES) is FIXTURE-PROVEN ONLY — the LOMA layer is absent from FEMA's county shapefile distribution (it exists only in the service distribution, which the spec bars as an ingest source), so the sealed corpus contains zero LOMA/LOMR-F records and the branch has never fired on real sealed data; the NO_COVERAGE_SOURCE / PAPER_FIRM_ONLY path is likewise synthetic-proven only (zero such partitions in the Florida census)",
+    "The claim fence, by construction (gate C1–C10): the receipt is evidence-grade only — never a determination of record, never an SFHDF, never lender-compliant, never an insurance-required/not-required answer, and never a statement that a property is “safe”; determination-shaped, insurance-shaped, risk-score, and live-query tool names are refused by name. Nothing in this listing states or implies endorsement by, affiliation with, or certification from FEMA or any government agency — FEMA/NFHL/FIRM name the public data source only. All seals are FIXTURE_SIGNED (Herald fixture key; owner open item O2) and labelled as such; the runtime has no live-query path"
+   ],
+   "categories": [
+    "Compliance & Regulation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "CERTIFIED(local)",
+    "certified": true,
+    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-flood-witness-mcp-2026-10-26-2.json (scoped re-bench of the FW-D1..D7 fix round; card -1 PARTIAL(local) retained append-only and superseded). Proven: flood-evidence witness at Florida scope for the two sealed partitions Leon (snapshot nfhl-fl-leon-20260611-bec93b592c31; 12,099 features) and Monroe (snapshot nfhl-fl-monroe-20261022-4776f79b6d7c; 9,664 features), operative index fw-index-202610-abd4c392bd16 enumerating all 67 Florida county partitions (65 NOT_SEALED, named). All seven card -1 defects FIXED and verified against the fix code with fresh shapes, not the builder's regressions: FW-D1 by independent ID-derivation recompute over every manifest and index present (6/6 reproduce; ~60 strip-set variants never collide); FW-D2 by byte-comparison of the manifest scope string against the operative index plus a full public-copy sweep; FW-D3 by 9 fresh multi-record LOMR fabrications (fires iff the per-case record set differs, names only truly differing cases); FW-D4 by 5 fresh drift shapes including a revised-date-only restudy; FW-D5 by minting a coverage receipt against a fresh synthetic partition/index and reading the claim; FW-D6 by direct read of both implementations (end-to-end run is an open environmental evidence debt); FW-D7 by a grammar-vs-body key diff over every stored receipt. P0 partition completeness remains OPEN (2 of 3): Miami-Dade is NOT_SEALED in the operative index, with no snapshot directory present. One NEW LOW (FW-D8) stands as a printed condition: the drift LOMR step iterated snapshot B only, so a case wholly removed in B never fired drift — fixed in code (sorted union of case ids) after the bench; it MUST hold before any second-vintage drift output is published, and is latent at the current single-vintage scope. FLAG-1 QUALIFIER: the LOMC override branch (LOMC_OVERRIDE_APPLIES) is FIXTURE-PROVEN ONLY — the sealed corpus contains zero LOMA/LOMR-F records and the branch has never fired on real sealed data. All seals are FIXTURE_SIGNED (Herald fixture key; owner open item O2) and labelled as such. Nothing in this verdict speaks to determination-of-record, SFHDF, lender, or insurance use: the product is an evidence-grade receipt witness only, per gate fence. NAME CONDITIONAL: working name, trademark screen owed (spec O1); certification covers the local product's function under its working name, not the name.",
+    "not_tested": [
+     "Miami-Dade partition — NOT_SEALED (pending) in the operative index; 65 of 67 Florida partitions are enumerated NOT_SEALED and no determination can be minted against them",
+     "Second-vintage drift on real data — drift classification is proven at the classifier level with fabricated shapes; it remains latent until a second vintage of any partition seals, and the FW-D8 fix must hold before any second-vintage drift output is published",
+     "The LOMC override branch on real sealed data — FIXTURE-PROVEN ONLY (zero LOMA/LOMR-F records in the sealed corpus; the LOMA layer is absent from FEMA's county shapefile distribution)",
+     "Production Herald custody — all seals are FIXTURE_SIGNED with a labelled fixture key (owner open item O2); no production key was exercised",
+     "Hosted or remote serving — v0.1 is local stdio only; the runtime has no live-query path by construction",
+     "Full builder suite re-run and the FW-D6 end-to-end run at re-bench — open environmental evidence debts (this VM's exec write latch), graded environmental on card -2, not product defects",
+     "Any determination-of-record, SFHDF, lender-compliance, or insurance use — refused by construction under the gate fence; the product is an evidence-grade receipt witness only",
+     "The trademark screen for the Flood Witness name (owner-side, spec O1) — still open; it gates public surfaces under the name, not this local certification"
+    ],
+    "scorecard_ref": "test-bench/results/eclipse-flood-witness-mcp-2026-10-26-2.json"
+   },
+   "id": "eclipse-flood-witness-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-flood-witness-mcp.png",
+   "name": "Eclipse Flood Witness",
+   "name_status": "CONDITIONAL — working name, trademark screen owed (spec O1, owner-side); it gates any public surface under the name. Certification covers the local product's function under its working name, not the name",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "Free local v0.1; witnessed reads priced in the approved price book (PC-5: $7.50 single-parcel · $12.00 footprint/parcel [PROPOSED · ESTIMATE]) — prices are SET, activation sequenced per product gates",
+   "problem_statements": [
+    "I need a flood-zone answer for a parcel or footprint that any third party can recompute — not a screenshot of a viewer I have to trust",
+    "FEMA's layer changes over time — I need the determination bound to the exact sealed snapshot it was computed from, with drift between vintages classified by its causal source record",
+    "I need evidence-grade flood receipts that never pretend to be a determination of record, an SFHDF, or a lender/insurance decision"
+   ],
+   "source_refs": [
+    "fema-flood-evidence-spec-20261026.md",
+    "fema-flood-gate-20261026.md",
+    "eclipse-flood-witness-mcp/bazaar-manifest.json",
+    "test-bench/results/eclipse-flood-witness-mcp-2026-10-26-2.json"
+   ],
+   "status": "in-development",
+   "tagline": "Flood evidence, sealed: NFHL determinations as signed, independently recomputable receipts over sealed snapshots — an evidence-grade witness, never a determination of record.",
+   "tools": [
+    "determine",
+    "verify_receipt",
+    "receipt_get",
+    "drift_report",
+    "watch_set",
+    "watch_list",
+    "coverage_status",
+    "manifest_get",
+    "manifest_verify",
+    "geocode_explore"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

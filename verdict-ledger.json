@@ -1218,6 +1218,25 @@
    "scorecard_ref": "test-bench/results/eclipse-proving-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
+  "eclipse-recall-witness-mcp": {
+   "tool": "eclipse-recall-witness-mcp",
+   "verdict": "PARTIAL(local)",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 1,
+   "counts": {
+    "pass": 0,
+    "fail": 4,
+    "na": 0,
+    "untestable": 0,
+    "total": 4
+   },
+   "scorecard_ref": "test-bench/results/eclipse-recall-witness-mcp-2026-10-26.json",
+   "cards_on_record": 1
+  },
   "eclipse-redteam-mcp": {
    "tool": "eclipse-redteam-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1786,6 +1805,7 @@
   "eclipse-dossier-mcp",
   "eclipse-patent-witness-mcp",
   "eclipse-permits-mcp",
+  "eclipse-recall-witness-mcp",
   "eclipse-vector-mcp",
   "eclipse-witness-drift",
   "eclipse-witness-mcp",

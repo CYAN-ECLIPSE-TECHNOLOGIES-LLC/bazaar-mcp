@@ -37,6 +37,7 @@ Excluded ids are reported as SKIPPED, never read for drift, never edited
 import json
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 BAZAAR = Path(__file__).resolve().parent
@@ -50,6 +51,22 @@ CARD_RE = re.compile(r"^(.+)-(\d{4}-\d{2}-\d{2})(?:-(\d+))?"
                      r"(?:-rebench-fixround(\d+))?(?:-r(\d+))?"
                      r"(-rebench)?\.json$")
 DOGFOOD_RE = re.compile(r"^(.+)-dogfood-(\d{4}-\d{2}-\d{2})\.md$")
+
+
+def is_real_filename_date(s):
+    """A filename date must be a REAL calendar date, not merely
+    shape-valid: CARD_RE accepts "2026-13-40", which stored verbatim
+    as bench_date beats a real 2026-10-26 card in the lexicographic
+    (date, seq) compare and displaces a standing verdict (Friction
+    fnd-0003 fix-verify, fresh shape F4). Strict strptime rejects
+    month 13, day 40, Feb 29 on a non-leap year, etc."""
+    if not isinstance(s, str):
+        return False
+    try:
+        datetime.strptime(s, "%Y-%m-%d")
+    except ValueError:
+        return False
+    return True
 
 
 def dump_compact(obj):
@@ -101,6 +118,15 @@ def build_ledger():
         if not m:
             continue
         tool, date = m.group(1), m.group(2)
+        if not is_real_filename_date(date):
+            # Shape-valid but impossible filename date (fnd-0003
+            # fix-verify, fresh shape F4): skip with a named warning —
+            # never stored, never compared. Same named-outcome pattern
+            # as the dateless non-string skip below.
+            print(f"WARN invalid filename date scorecard skipped: "
+                  f"{p.name} (filename date {date} is not a real "
+                  f"calendar date)")
+            continue
         # Card-format variant (BC scoped re-bench, 2026-10-25): a fix-round
         # re-bench card carries a "-rebench-fixround<N>" suffix after the
         # date instead of a run-sequence number; it supersedes the same-date
@@ -150,6 +176,15 @@ def build_ledger():
             am = re.match(r"^(.+)-rebench(\d*)-c12-"
                           r"(\d{4}-\d{2}-\d{2})\.json$", p.name)
             if am and am.group(1) == sc.get("tool"):
+                if not is_real_filename_date(am.group(3)):
+                    # Same filename-date validity law as the CARD_RE
+                    # path above (fnd-0003 F4): the remapped date feeds
+                    # the ledger identically, so an impossible date
+                    # skips here too, never stored or compared.
+                    print(f"WARN invalid filename date scorecard "
+                          f"skipped: {p.name} (filename date "
+                          f"{am.group(3)} is not a real calendar date)")
+                    continue
                 tool, date = am.group(1), am.group(3)
                 seq = 60 + 2 * int(am.group(2) or 0)
             elif sc.get("tool") is None and sc.get("product") is None \
@@ -318,6 +353,14 @@ def build_ledger():
     for p in sorted(RESULTS.glob("*-dogfood-*.md")):
         m = DOGFOOD_RE.match(p.name)
         if not m:
+            continue
+        if not is_real_filename_date(m.group(2)):
+            # Same filename-date validity law (fnd-0003 F4): the
+            # annotation date feeds the ledger, so an impossible date
+            # skips with a named warning instead of being stored.
+            print(f"WARN invalid filename date dogfood log skipped: "
+                  f"{p.name} (filename date {m.group(2)} is not a real "
+                  f"calendar date)")
             continue
         hit = re.search(r"After this run:\s*\*\*(.+?)\*\*", p.read_text())
         annotations[m.group(1)] = {

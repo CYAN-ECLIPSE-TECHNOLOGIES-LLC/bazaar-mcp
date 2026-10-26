@@ -164,9 +164,29 @@ def build_ledger():
                 pass
             else:
                 continue
+        # Card-format variant (Friction fnd-0003 fix-verify, 2026-10-26):
+        # a card carrying NEITHER "bench_date" NOR "date" NOR
+        # "benched_at" stored bench_date None, and the next same-tool
+        # card crashed the (date, seq) compare (TypeError: '<=' not
+        # supported between str and NoneType); a single such card was
+        # a silent bench_date: null landmine. Final fallback in the
+        # precedence chain is the FILENAME date (CARD_RE group 2 —
+        # every scorecard filename carries one). Checker
+        # normalization, Steward fnd-0003 fix — scorecards untouched,
+        # same treatment as the Charter/Flood fixes above and below.
+        _bench_date = sc.get("bench_date") or sc.get("date") \
+            or sc.get("benched_at") or date
+        if not isinstance(_bench_date, str) or not _bench_date:
+            # Still dateless (e.g. a non-string date field): skip the
+            # card with a named warning — never crash the compare,
+            # never store a null bench_date.
+            print(f"WARN dateless scorecard skipped: {p.name} "
+                  f"(no usable bench_date/date/benched_at/filename date)")
+            continue
         on_record[tool] = on_record.get(tool, 0) + 1
         prev = tools.get(tool)
-        if prev and (date, seq) <= (prev["bench_date"], prev["seq"]):
+        if prev and prev.get("bench_date") is not None \
+                and (_bench_date, seq) <= (prev["bench_date"], prev["seq"]):
             continue
         _v = sc["verdict"]
         if isinstance(_v, str) and _v.startswith("CERTIFIED-at-scopes"):
@@ -248,6 +268,26 @@ def build_ledger():
             _counts = {"pass": _p, "fail": len(sc["per_item"]) - _p,
                        "na": 0, "untestable": 0,
                        "total": len(sc["per_item"])}
+        if _counts["total"] == 0 and isinstance(
+                sc.get("defect_dispositions"), list) \
+                and sc["defect_dispositions"] and all(
+                    isinstance(it, dict) and "disposition" in it
+                    for it in sc["defect_dispositions"]):
+            # Card-format variant (Flood Witness scoped re-bench card
+            # -2, 2026-10-26): no "checks"/"per_item" tally — the
+            # re-bench's adjudicated evidence rides in
+            # "defect_dispositions" as {id, disposition, evidence}
+            # entries, each disposition opening with its resolution
+            # ("FIXED — ..."). Tally FIXED openings as pass over the
+            # disposition total. Checker normalization, Flood listing
+            # pass — scorecard untouched, same treatment as the EO
+            # per_item fix above.
+            _p = sum(1 for it in sc["defect_dispositions"]
+                     if str(it["disposition"]).upper().startswith("FIXED"))
+            _counts = {"pass": _p,
+                       "fail": len(sc["defect_dispositions"]) - _p,
+                       "na": 0, "untestable": 0,
+                       "total": len(sc["defect_dispositions"])}
         tools[tool] = {"tool": tool, "verdict": _v,
                        "certified": _v.startswith("CERTIFIED("),
                        # Card-format variant (Flood Witness suite,
@@ -258,8 +298,10 @@ def build_ledger():
                        # Checker normalization, EO listing pass —
                        # scorecards untouched, same treatment as the
                        # Charter/BC/Covenant format fixes above.
-                       "bench_date": sc.get("bench_date") or sc.get("date")
-                       or sc.get("benched_at"),
+                       # (Resolved above as _bench_date, whose final
+                       # fallback is the filename date — fnd-0003 — so
+                       # this field is never None here.)
+                       "bench_date": _bench_date,
                        "bench_version": sc.get("bench_version")
                        or sc.get("bench_agent", ""),
                        "environment": sc.get("environment") or _scope,

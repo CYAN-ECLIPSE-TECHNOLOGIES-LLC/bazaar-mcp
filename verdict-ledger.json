@@ -791,11 +791,11 @@
    "qualifier": null,
    "seq": 2,
    "counts": {
-    "pass": 0,
+    "pass": 7,
     "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 0
+    "total": 7
    },
    "scorecard_ref": "test-bench/results/eclipse-flood-witness-mcp-2026-10-26-2.json",
    "cards_on_record": 2
@@ -1784,7 +1784,6 @@
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
   "eclipse-dossier-mcp",
-  "eclipse-flood-witness-mcp",
   "eclipse-patent-witness-mcp",
   "eclipse-permits-mcp",
   "eclipse-vector-mcp",

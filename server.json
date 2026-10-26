@@ -21,7 +21,6 @@
  "packages": [
   {
    "registryType": "oci",
-   "registryBaseUrl": "https://ghcr.io",
    "identifier": "ghcr.io/cyan-eclipse-technologies-llc/bazaar-mcp",
    "version": "a729a43cab899f5165b0d8577b4e06783641157f",
    "runtimeHint": "docker",

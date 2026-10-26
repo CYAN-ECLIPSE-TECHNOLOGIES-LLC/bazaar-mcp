@@ -101,6 +101,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Charter MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Colophon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local/simulator) |
 | Eclipse Tether MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| Eclipse Proving MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 
 ## Run it
 

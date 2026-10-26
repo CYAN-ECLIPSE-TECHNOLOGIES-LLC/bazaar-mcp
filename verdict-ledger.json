@@ -650,22 +650,22 @@
   },
   "eclipse-dossier-mcp": {
    "tool": "eclipse-dossier-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-25",
-   "bench_version": "0.1.0",
+   "bench_version": "0.1.0-rebench-2",
    "environment": "local",
    "qualifier": "local",
-   "seq": 1,
+   "seq": 2,
    "counts": {
-    "pass": 30,
-    "fail": 2,
+    "pass": 36,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 32
+    "total": 36
    },
-   "scorecard_ref": "test-bench/results/eclipse-dossier-mcp-2026-10-25.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-dossier-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
   },
   "eclipse-environment-mcp": {
    "tool": "eclipse-environment-mcp",

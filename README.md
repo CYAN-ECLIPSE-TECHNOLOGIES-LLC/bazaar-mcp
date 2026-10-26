@@ -97,6 +97,10 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Legacy Recon MCP | in-development | FAILED — standing bench verdict, run 8 (22/25 checks); scorecards retained append-only |
 | Eclipse Steward MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Mail MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local / fixture-only) |
+| Eclipse Proof MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Charter MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Colophon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local/simulator) |
+| Eclipse Tether MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 
 ## Run it
 

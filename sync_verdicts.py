@@ -58,6 +58,15 @@ def dump_compact(obj):
 
 def counts(checks):
     c = {"pass": 0, "fail": 0, "na": 0, "untestable": 0}
+    if isinstance(checks, dict):
+        # Card-format variant (Charter suite): checks are a mapping of
+        # name -> {"pass": bool, "detail": ...} instead of a list of
+        # {"verdict": ...}. Checker normalization, publish pass 7 —
+        # same treatment as the friction qualifier fix; cards untouched.
+        c["pass"] = sum(1 for v in checks.values() if v.get("pass"))
+        c["total"] = len(checks)
+        c["fail"] = c["total"] - c["pass"]
+        return c
     for ch in checks:
         if ch.get("verdict") in c:
             c[ch["verdict"]] += 1
@@ -73,7 +82,10 @@ def build_ledger():
             continue
         tool, date, seq = m.group(1), m.group(2), int(m.group(3) or 1)
         sc = json.loads(p.read_text())
-        if sc.get("tool") != tool:
+        # Card-format variant (Charter suite): the tool id rides in a
+        # "product" field instead of "tool". Checker normalization,
+        # publish pass 7; the scorecard itself is untouched.
+        if (sc.get("tool") or sc.get("product")) != tool:
             continue
         on_record[tool] = on_record.get(tool, 0) + 1
         prev = tools.get(tool)
@@ -88,12 +100,19 @@ def build_ledger():
             # certification text states. Checker normalization, publish
             # pass 6 top-up (friction), same treatment as the pass-2 fix.
             _v = f"CERTIFIED({sc['qualifier']})"
+        # Card-format variant (Charter suite): bench_date rides in "date",
+        # environment/qualifier in scope_label.scope, and the bench
+        # identity in bench_agent. Checker normalization, publish pass 7.
+        _sl = sc.get("scope_label")
+        _scope = _sl.get("scope") if isinstance(_sl, dict) else None
         tools[tool] = {"tool": tool, "verdict": _v,
                        "certified": _v.startswith("CERTIFIED("),
-                       "bench_date": sc["bench_date"],
-                       "bench_version": sc["bench_version"],
-                       "environment": sc["environment"],
-                       "qualifier": sc["qualifier"], "seq": seq,
+                       "bench_date": sc.get("bench_date") or sc.get("date"),
+                       "bench_version": sc.get("bench_version")
+                       or sc.get("bench_agent", ""),
+                       "environment": sc.get("environment") or _scope,
+                       "qualifier": sc.get("qualifier") or _scope,
+                       "seq": seq,
                        "counts": counts(sc.get("checks", [])),
                        "scorecard_ref": "test-bench/results/" + p.name}
     for tool, entry in tools.items():

@@ -120,6 +120,19 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Flood Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Recall Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 
+## The `bazaar` CLI — including `bazaar check`
+
+```console
+$ bazaar search "certificate renewal"
+$ bazaar product certbridge-mcp
+$ bazaar categories
+$ bazaar check            # classify your configured MCP servers
+```
+
+`bazaar check` reads your MCP client configs, extracts each configured server's *identity* (package / image / URL / local path), and joins it locally against the published Bazaar corpus — downloaded whole and verified against its sha256 manifest first. Each entry is classified `CERTIFIED` (listed, Tier-2 verdict on record), `LISTED` (in the catalog, no verdict yet), `NOT LISTED` (no record — a neutral fact), or `UNRESOLVABLE` (no identity could be extracted, with the reason). Version pins that differ from the listed version are flagged as drift.
+
+Privacy, by construction: config `env` **values are never read, copied, hashed, logged, or transmitted** — the parser redacts them structurally before anything else runs. There is no telemetry. The check never executes a configured server and never contacts one. (The CLI ships in the `eclipse-bazaar` PyPI distribution alongside the MCP server above.)
+
 ## Run it
 
 ```bash

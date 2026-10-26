@@ -1,0 +1,1647 @@
+{
+ "feed": "Eclipse Bazaar \u2014 Test Bench verdict feed",
+ "version": 1,
+ "base_url": "https://eclipsebazaar.com",
+ "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
+ "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
+ "count": 82,
+ "records": [
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-agent-wallet-mcp",
+   "name": "Eclipse Agent Wallet MCP",
+   "verdict": "CERTIFIED(sandbox)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-24, sandbox environment: policy enforcement (no-policy/over-cap/off-allowlist denied), approval queue, kill switch, append-only audit, schema and error handling \u2014 12 pass, 1 na of 13 checks",
+   "not_tested": [
+    "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
+    "Production payment rails \u2014 bench ran against simulated test USDC only; x402/production rails not yet wired (x402_ready: false)"
+   ],
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-agent-wallet-mcp-2026-10-24-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-agent-wallet-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "agent-ready-mcp",
+   "name": "AgentReady MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13/14 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/agentready.py.",
+   "not_tested": [
+    "Authenticated checkout verification (out of scope by design: public-surface audit only)",
+    "Live storefront grades \u2014 bench audits ran against bench-owned localhost fixtures; the product's own live-target smoke results (3 targets, 2026-10-24) were reported, not re-graded"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/agent-ready-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/agent-ready-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "certbridge-mcp",
+   "name": "CertBridge MCP",
+   "verdict": "CERTIFIED(staging)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-24, Let's Encrypt STAGING environment: end-to-end staging order, byte-exact challenge placement, staging/production labelling, renewal-due detection, audit completeness \u2014 12 pass, 1 na of 13 checks",
+   "not_tested": [
+    "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
+    "cPanel UAPI install \u2014 declared in the server, returns explicit not-live errors; not scored by the bench. Live production issuance itself was proven separately by dogfood (see live_state_note)",
+    "Production CA account on the BENCH run (bench created a staging account only); the dogfood run created a production account outside the bench"
+   ],
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/certbridge-mcp-2026-10-24-2.json",
+   "product_url": "https://eclipsebazaar.com/products/certbridge-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "hostbridge-mcp",
+   "name": "HostBridge MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-24, local SIMULATOR docroot: scope binding, dry-run safety, deploy pipeline byte-exactness, exact rollback, HTTP smoke tests, corrupt-zip rejection, audit completeness \u2014 15 pass, 1 na of 16 checks",
+   "not_tested": [
+    "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
+    "Live SFTP and live cPanel UAPI transports \u2014 declared, return explicit not-yet errors; bench deploys ran against a local simulator docroot, not a live host"
+   ],
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/hostbridge-mcp-2026-10-24-3.json",
+   "product_url": "https://eclipsebazaar.com/products/hostbridge-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-connect",
+   "name": "Eclipse Connect",
+   "verdict": "CERTIFIED(dogfood)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-24, dogfood environment (simulator-verified, 14 tests): fail-closed auth, upload validation, public-approval gating, revoke, audit hygiene, authorize/callback grant flow \u2014 14 pass, 1 na of 15 checks",
+   "not_tested": [
+    "MCP schema surface (bench U2 = na: Eclipse Connect is an HTTP relay, not an MCP server)",
+    "Multi-user / production scale \u2014 P1 scope is a single user, single channel (@TheWhiteReport)"
+   ],
+   "bench_date": "2026-10-24",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-connect-2026-10-24-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-connect/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-apply-mcp",
+   "name": "Eclipse Apply MCP",
+   "verdict": "CERTIFIED(sandbox)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-25, SANDBOX environment: policy refusals (blocklist, salary floor, daily cap, expired policy), pause/kill switch, zero-fact tailoring diff, fabrication catch, hash-chained receipt ledger, dry-run transmits nothing, delete_my_data purge \u2014 17 pass, 1 na of 18 checks",
+   "not_tested": [
+    "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
+    "Live job boards \u2014 bench jobs are synthetic fixtures seeded into bench state in /tmp; no live boards fetched, no employer contacted",
+    "Live submission \u2014 v0.1 is DRY-RUN ONLY by design; A7 truthfulness check ran logic-level (verify_truthful() in-process), all other checks over MCP"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-apply-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-apply-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "florida-bid-intel-mcp",
+   "name": "Florida Bid Intel MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13/14 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/florida.py.",
+   "not_tested": [
+    "Live portal pull \u2014 no live-pull code path exists (F3 source assertion); v0.1.0 reads dated local snapshots from attended pulls only",
+    "Multi-snapshot run-over-run deltas beyond baseline (both stores hold a single snapshot; delta=baseline is the tested case)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/florida-bid-intel-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/florida-bid-intel-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "white-report-mcp",
+   "name": "The White Report MCP",
+   "verdict": "CERTIFIED(live)",
+   "certified": true,
+   "scope": "Test Bench v0.1.0, 2026-10-25, LIVE host environment: all 5 tools verified over real HTTP JSON-RPC against the production endpoint (article search + full text, ticker, scoreboard, contract surface, read-only behavior, no-secrets scan) \u2014 10 pass, 1 na of 11 checks",
+   "not_tested": [
+    "Auth enforcement (bench U1 = na: public read-only tier by design, no auth on the public tier)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/white-report-mcp-2026-10-25-11.json",
+   "product_url": "https://eclipsebazaar.com/products/white-report-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-bazaar-mcp",
+   "name": "Eclipse Bazaar MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/bazaar.py. Standing card is run 4 (-4.json); runs 1-3 FAILED retained (bench-suite defects, disclosed in card notes).",
+   "not_tested": [
+    "Third-party listings (P2) \u2014 v0.1.0 covers the CETech catalog only",
+    "Purchasing / x402 flows \u2014 no purchasing surface exists in v0.1.0 (B7)"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-bazaar-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-bazaar-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-bidmatrix-mcp",
+   "name": "Eclipse BidMatrix MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 25 pass, 1 na of 26 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/bidmatrix.py. Runs 1\u20132 FAILED and the run-3 harness flake are retained append-only; run 4 is the standing card \u2014 defects D1\u2013D6 fixed and verified on bench-built fixtures independent of the builder's tests. N-CHECK: NOVELTY_PROVEN \u2014 evidence-bound rows (every requirement a verbatim substring of the source with a section + line locator) plus the SILENT_EMPTY completeness pass; with D4 fixed, the completeness limb holds under repeated section ids.",
+   "not_tested": [
+    "Live SAM.gov fetch / URL ingestion \u2014 NOT built in v0.1; the caller supplies raw text or a local file path, and no fetch verb exists on the surface",
+    "PDF parsing \u2014 NOT built; text input only",
+    "Hosted / multi-tenant surface and payments \u2014 NOT built; local stdio only",
+    "Backlog D7 (minor, non-gating, from the standing card): NAICS lists separated only by ' / ' extract the first code only, and the unanchored phrasing 'Applicable NAICS codes are \u2026' extracts none \u2014 outside the engine's declared anchored scope, logged for the next fix wave"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-bidmatrix-mcp-2026-10-26-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-bidmatrix-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-section508-mcp",
+   "name": "Section 508 Evidence MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 19 pass, 1 na of 20 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/section508.py. Runs 1\u20132 FAILED on bench-suite defects (a locator regex, then a corpus threshold) \u2014 no product code was touched between runs; run 3 is the standing card. N-CHECK: NOVELTY_PROVEN \u2014 the evidence binding (criterion id + verbatim snippet + element locator, programmatically verified on every bound finding) plus NOT_STATICALLY_DECIDABLE honesty: partially-decidable 1.4.3 renders Partially Supports, never a clean Supports, and a zero-failure audit still claims conformance NONE.",
+   "not_tested": [
+    "Rendered-DOM / browser auditing \u2014 NOT built in v0.1 and not attempted: this environment has no headless browser. Only static analysis of caller-supplied HTML text is in scope.",
+    "External-CSS / cascade contrast beyond inline-declared colors \u2014 classified NOT_STATICALLY_DECIDABLE in-product, never approximated or passed.",
+    "Multi-page / site-level audits \u2014 v0.1 audits one supplied document per call.",
+    "Formal VPAT 2.x edition exports (INT / Section 508 edition) and completed/signed ACR generation \u2014 v0.1 emits ACR/VPAT-ready evidence in VPAT table shape only.",
+    "WCAG 2.2-only criteria \u2014 the Section 508-incorporated standard audited is WCAG 2.1 A/AA.",
+    "Backlog D1 (minor, non-gating, house-pattern, from the standing card): an unparseable raw line on stdio returns -32603 with raw exception text where JSON-RPC reserves -32700 for parse errors; recorded for a house-wide fix wave."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-section508-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-section508-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-fedscope-mcp",
+   "name": "FedScope MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 21 pass, 1 na of 22 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/fedscope.py. Runs 1\u20133 FAILED retained append-only (runs 1\u20132 carried bench-suite defects; run 3 was the pre-fix product card); run 4 is the post-fix re-bench \u2014 D1\u2013D3 verified fixed, scoring snapshot byte-identical. N-CHECK: NOVELTY_PROVEN, re-earned in run 4 \u2014 deterministic fit + newcomer scoring with every point hand-recomputed by the bench (~58 cases) and traced summaries that name their field basis and flag absent facts instead of inventing them; no fetch or live verb exists on the surface.",
+   "not_tested": [
+    "Live SAM.gov fetch \u2014 NOT built in v0.1 and no API key exists; search runs over caller-supplied / bundled LOCAL datasets in SAM.gov-opportunity shape only",
+    "Hosted / multi-tenant operation \u2014 NOT built; local stdio only"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-fedscope-mcp-2026-10-26-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-fedscope-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-health-check-mcp",
+   "name": "Eclipse Health Check MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 21 pass, 1 na of 22 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/healthcheck.py. Runs 1\u20132 FAILED retained append-only; run 3 is the standing card \u2014 B-HC-1 (credential masking not global, HIGH) and B-HC-2 (-32603 escapes on the tool surface, HIGH) fixed and verified pass at N2/H3. N-CHECK: NOVELTY_PROVEN \u2014 evidence-bound findings whose file+line citations the bench opened and verified verbatim, severity/fix byte-bound to the check catalog, NOT_STATICALLY_DECIDABLE as a first-class result, and a score never emitted without its decomposition.",
+   "not_tested": [
+    "Live probing / runtime posture \u2014 no live probing exists in this tier by design; runtime checks (HC-AUTH-03 / SSRF-02 / SSRF-03 / RUN-01 / RUN-02) are certified only as enumerated NOT_STATICALLY_DECIDABLE with reasons, never as passes",
+    "Hosted / multi-tenant operation \u2014 NOT built; local stdio only",
+    "Residual LOW backlog from the standing card: B-HC-3 (a target root that is itself a symlink is followed \u2014 caller's explicit target; disclose resolved-root behaviour in v0.2), B-HC-4 (absence/config evidence uses line=0 + json_path \u2014 the file+line claim should carve this out explicitly), B-HC-6 (malformed-JSON envelope handling at the transport layer)"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-health-check-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-health-check-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-legacy-recon-mcp",
+   "name": "Eclipse Legacy Recon MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) at the NARROWED OBSERVED SCOPE (CLAIM-SCOPE.md): Positive DECLARED, OBSERVED, and INFERRED reports only within CLAIM-SCOPE.md, with evidence or basis carried in the output; OBSERVED is not exhaustive. Withdrawn by name \u2014 W1 JS_TS_MULTILINE_BLOCK_COMMENT_CONTINUATION_AFTER_SPLIT_NO_CLOSE_SPAN \u00b7 W2 JS_TS_CHAINED_NO_CLOSING_SLASH_REGEX_SPANS_ON_ONE_LINE \u00b7 W3 B_LR_14_INVALID_LINE_NONINVENTORY_IDENTIFIER_FOLLOW \u00b7 W4 EXHAUSTIVE_OBSERVED_RECALL \u00b7 W5 DYNAMIC_IMPORT_OBSERVATION_OR_SPECIFIC_UNKNOWN \u00b7 W6 MTS_CTS_OBSERVED_EXTRACTION \u00b7 W7 PERMISSION_DENIED_SUBTREE_COMPLETENESS \u00b7 W8 SELF_REFERENTIAL_SYMLINK_REPORT_AND_SKIP \u00b7 W9 HOSTED_AUTHENTICATED_OR_MULTI_TENANT_OPERATION. Scoped re-bench card -11 (2026-10-26): 30 pass, 0 na of 30 checks.",
+   "not_tested": [
+    "Manifest ecosystems beyond the v0.1 parsers listed in README (no Gradle dependency extraction, no lockfile parsing)",
+    "Hosted / multi-tenant operation and auth beyond the stdio process boundary (withdrawn W9)",
+    "Withdrawn W1: JS/TS multiline block-comment continuation after a split no-closing-slash regex-like span (card -10 X1)",
+    "Withdrawn W2: JS/TS chained no-closing-slash regex-like spans on one physical line (card -10 X1)",
+    "Withdrawn W3: B-LR-14 non-inventory identifier follow on invalid JS/TS lines only",
+    "Withdrawn W4: exhaustive OBSERVED recall \u2014 B-LR-5 (JS), B-LR-6 (Python), and B-LR-15 / template-${} over-masking recall limits",
+    "Withdrawn W5: dynamic-import OBSERVED entries and a dedicated dynamic-import UNKNOWN (B-LR-3)",
+    "Withdrawn W6: .mts/.cts OBSERVED extraction (suffixes absent from EXT_LANG)",
+    "Withdrawn W7/W8: completeness over permission-denied subtrees and report-and-skip treatment of self-referential symlink loops (B-LR-7)",
+    "B-LR-12 remains a cosmetic bench-suite wording item, not a product claim"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-legacy-recon-mcp-2026-10-26-11.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-legacy-recon-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-mail-mcp",
+   "name": "Eclipse Mail MCP",
+   "verdict": "CERTIFIED(local / fixture-only)",
+   "certified": true,
+   "scope": "CERTIFIED(local / fixture-only) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 48 pass, 0 na of 49 checks (score 99/100: 48 pass / 1 partial / 0 fail). Run by W-003 (Verity), independent re-bench of the P0 fix round; the original NOT CERTIFIED card (68/100, test-bench/results/eclipse-mail-mcp-2026-10-25.json) is retained append-only, and this -2 card is the standing verdict basis. Scope is LOCAL / FIXTURE-ONLY: the \u00a78 anti-fraud corpus, the signed-envelope/tier engine, the review-first send gate, the \u00a75 fraud firewall, and the audit/kill-switch discipline, all over a synthetic fixture transport. NO live mailbox exists; NO live sending is possible in v0.1; parent-spec dogfood acceptance has NOT run and is NOT certified. The one PARTIAL (D-4): the \u00a75 detector's detection prong catches canonical paraphrases (4/4 on the bench's fresh primary set; benign controls clean) but remains pattern-bounded on an extended evasion set (7/12 detected) \u2014 bounded by the by-construction firewall: an evasion loses the flag/workflow only, never protected state, because no tool can adopt a \u00a75 instruction (forbidden surface refused 23/23 by name). A semantic detector pass is required before any live claim. N-CHECK: NOVELTY_PROVEN \u2014 fraud-firewall-by-construction plus detection-triggered out-of-band verification keyed to the registry number-of-record, Herald signed-envelope thread hash-chaining, and automatic auth\u2192tier consequences including the D1 envelope-tier law (no valid envelope \u2192 never agent-tier).",
+   "not_tested": [
+    "Live mailbox IMAP/SMTP \u2014 NOT built. v0.1 ships the fixture transport only; parent-spec dogfood acceptance (live mailbox, send/receive/reply, 7-day run) requires the owner-created cetech.ai mailbox and a separate go \u2014 NOT certified.",
+    "Live sending of any kind \u2014 no live mailbox exists in v0.1 and no real credential exists in the package; the certified send gate ran over the fixture transport only.",
+    "\u00a75 detector semantic depth \u2014 extended evasion set 7/12 (D-4 PARTIAL, disclosed in certified_scope); a semantic detector pass is required before any live deployment claim.",
+    "AES-256-GCM credential custody \u2014 live design only; v0.1 hashes and discards the synthetic fixture credential (fingerprint only).",
+    "cetech.ai DNS posture (\u00a77.1) \u2014 not audited, not changed (D2 audit-first, owner-approved).",
+    "Network Herald card lookup / Envoy registry \u2014 v0.1 uses local fixture JWKS + Envoy-shaped local registry; migration lands with Envoy E0.",
+    "Attachment content retrieval, delete tool, Gmail/Outlook OAuth, hosted relay \u2014 parent-spec P2.",
+    "Operator-channel authentication beyond the stdio process boundary (by_owner flags are the v0.1 owner-surface marker; standing U1 class)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0 re-bench (P0 fix round)",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-mail-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-mail-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-herald-mcp",
+   "name": "Eclipse Herald MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18/19 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/herald.py.",
+   "not_tested": [
+    "Live A2A task endpoints (H2 scope \u2014 v0.1 delegates to local stub agents only)",
+    "External counterparty cards / remote JWKS fetch (no network in v0.1)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-herald-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-herald-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-beacon-mcp",
+   "name": "Eclipse Beacon MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16/17 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/beacon.py.",
+   "not_tested": [
+    "Phases B1+ (gap expansion, lapse guard, renewal shopping prep, mandate-gated actions) \u2014 not built in v0.1, not benched",
+    "Agency edition \u2014 not built (counsel/licensing gate per spec); not benched"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-beacon-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-beacon-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-cluster-mcp",
+   "name": "Eclipse Cluster MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18/19 checks pass, 1 na (U1 auth: stdio process boundary). Simulator scope: local stub registry, openssl-signed fixtures. Run by W-003 (Verity), suites/cluster.py.",
+   "not_tested": [
+    "Runtime/orchestration phases K1-K3 not built \u2014 v0.1 is the K0 verification gate only",
+    "Keyless/Fulcio certificate signatures not accepted by design in v0.1 (key-based trust bundles only)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-cluster-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-cluster-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-thread-mcp",
+   "name": "Eclipse Thread MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13/14 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/thread.py.",
+   "not_tested": [
+    "Any real tool instance: no Jira Data Center, Coverity, Cameo, or VectorCAST instance was available or contacted. All targets are fixtures/mocks \u2014 the (simulator) qualifier applies to the whole v0.1 scope.",
+    "Live bridge behavior against a real Jira Data Center (auth, per-version REST surface, rate behavior) \u2014 bridge exercised only against the bundled stdlib stub over localhost HTTP."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-thread-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-thread-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-constellation-mcp",
+   "name": "Eclipse Constellation MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/constellation.py.",
+   "not_tested": [
+    "SSH channel live execution \u2014 untested by design: no sshd runs on this host, v0.1 declares no ssh target, and the Eclipse Connect droplet migration is owner-gated per spec. Probes were exercised over the declared 'local' channel only.",
+    "All execution adapters (lifecycle, exec, console) \u2014 v0.1 is observe-only by design; no mutation code paths exist. Tier-3 evaluations cannot ALLOW in v0.1 (human approval channel not wired) \u2014 verified as designed in check K5."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-constellation-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-constellation-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-deepfield-mcp",
+   "name": "Eclipse Deep Field MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 2: 16/17 checks pass, 1 na (U1 auth: stdio process boundary). Run 1 FAILED card retained in results/ \u2014 both failures were bench-suite assertion bugs (schema key name; hash assertion over schema_read receipts, which take no SQL), fixed in the suite, no product code touched. Run by W-003 (Verity), suites/deepfield.py.",
+   "not_tested": [
+    "Postgres LIVE path NOT tested \u2014 no Postgres server binary, psql, or Python driver exists on this host; the bench verified only the fail-closed posture (all tools return ERROR verdicts). The adapter is implemented behind a driver interface and was tested by its own suite against a recording-fake transport only. Live verification is spec phase P1 and is NOT claimed.",
+    "MySQL/MariaDB, SQL Server, MongoDB, Redis, warehouse (Snowflake/BigQuery), and vector adapters \u2014 roadmap phases P1\u2013P4, not built.",
+    "Automated rollback tool \u2014 v0.1 retains before-images under a rollback handle; restore is a documented operator procedure (P1)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-deepfield-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-deepfield-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-pantry-mcp",
+   "name": "Eclipse Pantry MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/pantry.py.",
+   "not_tested": [
+    "Live platform routes (Cantaloupe Seed / Nayax APIs or scheduled exports) \u2014 C0 ingests local DEX/UCS-style export files only; per-platform export formats are [verify] per the addendum and untested against real platform output.",
+    "Multi-read velocity on real fleets \u2014 forecast delta method is implemented and unit-tested with a synthetic second read; no real route history has been run."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-pantry-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-pantry-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-marquee-mcp",
+   "name": "Eclipse Marquee MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/marquee.py.",
+   "not_tested": [
+    "Live Ticketmaster Discovery or SeatGeek Platform calls \u2014 no API keys exist (owner Wave-2 item) and v0.1 contains no live marketplace code path; all discovery and prices come from shipped local stub fixtures.",
+    "F1 buy-under-mandate \u2014 not built in v0.1; no purchase, checkout, transfer, or resale tools exist.",
+    "F2 group logistics, chain-of-custody ticket receipts, and entry-day readiness \u2014 not built in v0.1.",
+    "Organizer/venue side \u2014 not built; partner-gated per spec."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-marquee-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-marquee-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-dispatch-mcp",
+   "name": "Eclipse Dispatch MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13/14 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/dispatch.py.",
+   "not_tested": [
+    "Live platform wiring: adapters run against fixtures and local stub HTTP servers shaped like the real APIs. beehiiv signup is an owner Wave-2 item; no Ghost instance runs here; Substack live reads (official MCP analytics) not exercised."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-dispatch-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-dispatch-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-social-core-mcp",
+   "name": "Eclipse Social Core MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/social_core.py.",
+   "not_tested": [
+    "Live adapter execution \u2014 the core performs no platform action by design; adapters (Aperture formalization, Zephyr reads) carry their own benches.",
+    "Unified analytics envelope (spec SS6) \u2014 specified, not built in S0 core v0.1."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-social-core-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-social-core-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-aperture-mcp",
+   "name": "Eclipse Aperture MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 11/12 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/aperture.py.",
+   "not_tested": [
+    "Live Graph API behavior \u2014 v0.1 makes NO live calls by design; the capability record is a static declaration and every row is [verify] against a dated Meta record before external reliance.",
+    "Publish/container/insights tooling (ig_media_stage, ig_container_verify, ig_insights_read, ig_own_comment_queue) \u2014 roadmap only, not built."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-aperture-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-aperture-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-zephyr-mcp",
+   "name": "Eclipse Zephyr MCP",
+   "verdict": "CERTIFIED(live-read)",
+   "certified": true,
+   "scope": "CERTIFIED(live-read) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 12/13 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/zephyr.py. Standing card is run 2 (-2.json); run 1 FAILED is retained in results/ \u2014 its Z5 failure was a defect in this bench probe (the tamper set a receipt field to its existing value, a no-op the verifier correctly accepted), fixed and disclosed here; no product defect.",
+   "not_tested": [
+    "Posting / record staging (bsky_record_stage, bsky_thread_verify, bsky_label_preflight) \u2014 not built; owner account is a Wave-2 gate.",
+    "COMMUNITY_API_PILOT \u2014 spec-eligible for Zephyr only after S2, a dated terms record, and separate owner enable; not built, not enabled."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-zephyr-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-zephyr-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-environment-mcp",
+   "name": "Eclipse Environment MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/environment.py.",
+   "not_tested": [
+    "A real Home Assistant instance \u2014 v0.1's hub is a local HA-shaped stub (stdlib http, fixtures). The wrapper's client speaks the /api/states + /api/services shape, but parity with real HA behavior (auth, service payloads, state semantics) is [verify] and untested; connecting the owner's instance is a Wave-2 owner-gated step.",
+    "Tier 2 / Tier 3 EXECUTION \u2014 by phase design v0.1 evaluates both and denies by phase; the Tier 2 receipt + owner-notification wiring and any Tier 3 execution path are unbuilt, so there is nothing to test yet.",
+    "Vehicle rails (Smartcar, Tesla Fleet API) \u2014 designed in the Procure concept doc's Environment module; no adapter exists in v0.1.",
+    "Real-home scale and latency \u2014 fixture hub carries 7 entities; nothing about a real home's entity count, hub latency, or state churn has been measured."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-environment-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-environment-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-procure-mcp",
+   "name": "Eclipse Procure MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/procure.py.",
+   "not_tested": [
+    "Any real merchant, real payment rail, or real money: none exists in this build. The merchant adapter reads shipped fixtures, the payment rail is a sandbox stub authorizing TEST value only, checkout confirmation is simulated, and the file contains no network calls. Policy evaluation re-implements the Eclipse Agent Wallet's documented policy semantics locally by reference; live interoperation with the wallet MCP is untested (and the wallet's files are untouched)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-procure-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-procure-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-gig-core-mcp",
+   "name": "Eclipse Gig Core MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18/19 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/gig_core.py.",
+   "not_tested": [
+    "Live platform calls of any kind \u2014 G0 contains no live marketplace code path; briefs, quotes, mandates, and verifications are local records evaluated against shipped test data.",
+    "Adapter variant approval binding against a live adapter \u2014 the Compass fixture adapter is the first consumer; cross-product bench is a later run.",
+    "Photo EXIF stripping tooling itself \u2014 the core records the strip status per photo as supplied; the stripping tool is adapter/build scope [verify] per spec 5.1."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-gig-core-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-gig-core-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-compass-mcp",
+   "name": "Eclipse Compass MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/compass.py. Run 1 (eclipse-compass-mcp-2026-10-25.json, FAILED, retained per append-only history) failed on a defect in the bench suite itself, not the product: its U3 network-surface pattern substring-matched the fixture filename 'thumbtack_requests.json'; the pattern was corrected and run 2 is the standing card.",
+   "not_tested": [
+    "Live Thumbtack Partner Platform calls of any kind \u2014 no partner credentials exist (owner G1 step) and v0.1 contains no live code path; categories, pros, requests, and quotes are shipped fixtures shaped like Partner Platform responses.",
+    "Live request submission (REQUEST_API) and hire execution (HIRE_API) \u2014 not built in v0.1; Compass previews and reads fixtures only, and holds no independent hire power (the gig core hire gate evaluates mandates).",
+    "Marketplace-side messaging scope and the pro-side surface (leads, messages, webhooks) \u2014 later phases, messaging scope [verify] per spec chapter 10.",
+    "Trademark screen for the 'Compass' name \u2014 owed before any external launch per spec chapter 10 (N5 caution)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-compass-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-compass-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-stage-mcp",
+   "name": "Eclipse Stage MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/stage.py.",
+   "not_tested": [
+    "A real Xbox in Developer Mode \u2014 v0.1's portal is a local Device Portal-shaped stub (stdlib http, fixtures) simulating one console. Parity with the real Xbox Device Portal (auth, exact payload shapes, the /api/app/packagemanager package pipeline, behavior when the console is off) is [verify] and untested; connecting the owner's console is an owner-gated step.",
+    "Real package deployment \u2014 v0.1 installs are fixture-metadata records by design; the real binary upload/register/install path is unbuilt, and binary-shaped payloads are refused by name at the bridge and the stub.",
+    "Live frame capture \u2014 v0.1's screenshot is the stub's fixture PNG; no real console frame has been captured.",
+    "Steam Deck / PC handhelds and Apple TV / Android TV tracks \u2014 designed in the Procure concept doc's Stage module (fully open to developer-account paths); no adapter exists in v0.1."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-stage-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-stage-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-zenith-mcp",
+   "name": "Eclipse Zenith MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16/17 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/zenith.py.",
+   "not_tested": [
+    "Real FTMS hardware of any model \u2014 none exists on this VM. The codec follows the published FTMS characteristic layouts, but per-model variance (optional-field population, flag discipline, control-point parameter acceptance, rower pace resolution) is [verify] against each machine's advertised characteristics at enrollment and is untested here; the registry's characteristics lists describe the SIMULATOR's advertised set.",
+    "Real Bluetooth transport (BLE pairing, notification cadence ~250 ms, link loss behavior) \u2014 the bridge-to-simulator link is a local Unix socket; the dead-man rule is proven on a simulated clock against the simulator's enforcement, not against a real belt, a real link, or real time.",
+    "Physiological ceiling behavior with a real athlete (HR-signal loss handling, injury/medical flags, Coach adaptation) \u2014 designed in the concept doc; the Coach engine and Health Fusion are unbuilt, so there is nothing to test yet.",
+    "Multi-user / commercial-gym identity \u2014 deferred by the concept doc; v0.1 is home-first, single-athlete fixtures."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-zenith-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-zenith-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-muster-mcp",
+   "name": "Eclipse Muster MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 15/16 checks pass, 1 na (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/muster.py. First run FAILED card retained in results/ (bench-suite self-defect: U7 subsequence order; fixed and re-run clean).",
+   "not_tested": [
+    "Live platform ingestion of any kind \u2014 C0 Muster is fed records by callers/fixtures; adapter-fed ingest is proven at C1 when Haven/Orbit connect live.",
+    "Cross-adapter identity proposals against real two-platform data \u2014 the propose/confirm/unmerge mechanics are proven on synthetic fixtures only.",
+    "Encrypted-at-rest graph store (house vault pattern) \u2014 C0 state is a local JSON file; the vault-backed store lands with the owner's production bucket (spec 5.6)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-muster-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-muster-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-haven-mcp",
+   "name": "Eclipse Haven MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 3 (re-bench after H1 fix): 13/14 checks pass, 1 na (U1), 0 fail. H1 passes: presenting an api_token credential is refused with TOKEN_AUTH_NOT_IMPLEMENTED + the 2027-04-30 sunset date on all 10 tools \u2014 auth_status and receipt_list now call check_auth first and both schemas declare the auth property; the builder regression test (enumerating S.TOOLS) was independently replicated against a pre-fix copy, failing on exactly those 2 tools. Regression spot-checks H3 (visibility non-flattening), H4 (T2 cross-ticket/changeset replay), H5 (re-draft token kill) all pass unchanged. Run by W-003 (Verity), suites/haven.py. FAILED run-2 card (eclipse-haven-mcp-2026-10-25-2.json) retained in results/ per append-only history.",
+   "not_tested": [
+    "Any live Zendesk instance \u2014 C0 runs on synthetic fixtures shaped like REST API v2 responses; live connection is C1 against an owner-controlled instance (spec 12.5).",
+    "Real OAuth grant flows (authorization code / client credentials) \u2014 the auth SHAPE is implemented and token auth is refused by construction; live grants need the owner's registered OAuth app at C1.",
+    "Webhooks, incremental export, satisfaction-rating writes \u2014 not in the C0 surface.",
+    "Feeding canonical records into Eclipse Muster live \u2014 the mapping shapes align with spec 5.1/12.3; cross-product ingest is a C1 bench item."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-haven-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-haven-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-orbit-mcp",
+   "name": "Eclipse Orbit MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16/17 checks pass, 1 na (U1 auth: local stub vendor, no live credential). Run by W-003 (Verity), suites/orbit.py.",
+   "not_tested": [
+    "The real HubSpot MCP server (mcp.hubspot.com) \u2014 C0's vendor is a local stub shaped like its tool surface; the live wrap is C1 against an owner account (spec 11.5).",
+    "Real OAuth 2.1 + PKCE connector flow and per-portal scope lists \u2014 recorded at live connection, not in C0.",
+    "Free-tier tool parity of the vendor server \u2014 flagged [verify] in the spec for C1.",
+    "Custom objects \u2014 declared OBJECT_GAP (absent from the vendor tool set); not reachable through Orbit by design (spec 11.4).",
+    "Vendor drift against the REAL vendor inventory cadence \u2014 the drift rules are proven against stub fixtures (tier rise, added tool)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-orbit-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-orbit-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-voice-core-mcp",
+   "name": "Eclipse Voice Core MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 19/20 checks pass, 1 na (U1 auth: stdio process boundary), 0 fail. Run by W-003 (Verity), suites/voice_core.py.",
+   "not_tested": [
+    "Live registry service form \u2014 V0 adapters share the core state file through core_engine (fixture seam, stated in README); production transport is V1 scope.",
+    "Real DNC datasets and jurisdiction window contents \u2014 shipped fixtures are small provenance-bearing subsets; production contents ship only after the V1 counsel gate (spec 5.4/16).",
+    "Any carrier account, live number, call, or text \u2014 none exists in V0."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-voice-core-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-voice-core-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-trunk-mcp",
+   "name": "Eclipse Trunk MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16/17 checks pass, 1 na (U1 auth: stdio process boundary), 0 fail. Run by W-003 (Verity), suites/trunk.py. Run 1 FAILED card retained in results/ \u2014 bench-suite self-defect (T4 absolute receipt count vs cumulative suite ledger), fixed and re-run clean as run 2; no product defect.",
+   "not_tested": [
+    "Live Twilio account actions \u2014 the vendor's official MCP surfaces (docs discovery + Labs execution server) are the V1 wrap targets; V0 ships against Twilio-shaped fixtures + a local stub only, and the build-time probe of which vendor surface executes is a V1 step (spec 12).",
+    "Number provisioning and release \u2014 search only in V0; provisioning is T2 and release is T3 at V1 behind the owner account.",
+    "WhatsApp / RCS channel consent inheritance \u2014 spec 12 flags per-channel verification at build; no channel beyond voice/SMS is modeled in V0."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-trunk-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-trunk-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-connect-mcp",
+   "name": "Eclipse Connect MCP",
+   "verdict": "CERTIFIED(dogfood-facade)",
+   "certified": true,
+   "scope": "CERTIFIED(dogfood-facade) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: vault surrogate stubbed). Run by W-003 (Verity), suites/connectfacade.py. Facade only \u2014 the relay holds its own CERTIFIED(dogfood) card (eclipse-connect).",
+   "not_tested": [
+    "Live relay / YouTube calls \u2014 transport stubbed at server.send (the product's single network seam); no live call made or claimed",
+    "Vault surrogate credential attachment inside the real send() \u2014 stubbed out in this bench, not exercised"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-connect-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-connect-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-envoy-mcp",
+   "name": "Eclipse Envoy MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 17 pass, 1 na of 18 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/envoy.py. Runs 1-2 PARTIAL cards retained append-only (bench-suite defects); run 3 is the standing card.",
+   "not_tested": [
+    "Any live counterparty or hosted endpoint \u2014 E0 is fully offline against local fixtures (.example domains, fixture keys); E1 is owner-gated (hosting go, trademark screen, Herald root-key backup, cetech.ai flip).",
+    "Card fetch from a counterparty's real well-known URL \u2014 E0's harness presents the card + the domain's JWKS as local files; the verification checks are the production checks, the fetch is the fixture seam.",
+    "Herald gateway execution against real desk agents \u2014 E0 records Herald delegation REFERENCES for the three-key rule; live gateway delegation is Herald's own certified scope.",
+    "Real Wallet mandate issuance \u2014 E0 records operator-entered Wallet-shaped mandate references; Envoy never mints mandates.",
+    "Operator-channel authentication beyond process ownership (the standing U1 note) \u2014 E1 build decision with attributable-principal receipts required by spec 11.2.",
+    "T-NDA fact contents are labeled E0 fixture placeholders; real T-NDA facts are human-authored into the identity source at E1."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-envoy-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-envoy-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-fathom-mcp",
+   "name": "Eclipse Fathom MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16 pass, 1 na of 17 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/fathom.py. Run 1 PARTIAL card retained append-only (bench-suite defect); run 2 is the standing card. Non-failing bench observation: spender resolution in allowance_audit is chain-agnostic; chain-aware resolution recommended before D1 (queued as a bench note).",
+   "not_tested": [
+    "Live RPC reads \u2014 D0 ships ONLY the fixture transport behind the chain_adapter seam; no live chain was queried, and no live transport exists in this package. The seam + transport contract is the deliverable; a live transport must be implemented and benched before any read is called live.",
+    "Seed Registry facts (contract addresses, audit firms/dates) are marked [verify] per entry for the first human release review; the release signature attests this seed file, not a completed re-audit.",
+    "Execution, drafts, simulation, and signing (spec D1+) \u2014 no such code path exists in D0.",
+    "Non-EVM chains and perps/bridge/vault chapters (D3) \u2014 out of D0 scope."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-fathom-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-fathom-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-codex-mcp",
+   "name": "Eclipse Codex MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18 pass, 1 na of 19 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/codex.py. Run 1 FAILED retained (genuine product defect U5: clock_status on an unknown instance id returned a raw -32603; fixed class-wide via require_str_id plus a transport schema refusal, then re-benched clean). Run 2 FAILED retained (bench-suite assertion bound to the pre-fix refusal shape). Non-failing observation: a whitespace-only redaction reason is currently accepted (queued as a bench note).",
+   "not_tested": [
+    "Real provision corpus \u2014 R0 library carries public-domain-shaped FIXTURE records with real CFR citations; the live eCFR / Federal Register corpus and change-feed mechanics are R1 scope",
+    "Real OFAC SDN / Consolidated list data \u2014 R0 screens against a SYNTHETIC fixture list shaped like the SDN list; no real list was downloaded",
+    "A real institution \u2014 R0 runs against the synthetic Meridian Fictional Bank fixture only; first real use is the owner-gated R1 design partner, inside that institution's boundary, after counsel review (spec 22)",
+    "Deadline values flagged [verify] in the spec (OFAC reporting clocks, per-charter SAR variants, CTR extension mechanics) \u2014 carried as fixture values with the flag visible in the rule record"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-codex-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-codex-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-ledger-mcp",
+   "name": "Eclipse Ledger MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 21 pass, 1 na of 22 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/ledger.py. Run 1 FAILED card retained (bench-suite probe-ordering defect; product behavior was correct); run 2 is the standing card. Verity adjudication A1 on the card: the settled-backfill exclusion boundary matches spec section 3.3 intent.",
+   "not_tested": [
+    "Any live odds feed \u2014 B0 odds are fixtures shaped like The Odds API v4 responses; no feed account exists and none was contacted (licensed signup is an owner step).",
+    "Live-user operation of any kind \u2014 the spec's counsel gate (D4) precedes any live-user launch; B0 runs on synthetic records only.",
+    "Real operator limit/exclusion sync \u2014 operator and state programs do not publish a consumer sync route; B0 honors user-declared + user-provided records identically (spec 3.3).",
+    "Jurisdiction matrix freshness against live sources \u2014 B0 rows are fixture data as of 2026-10-25 with a 30-day TTL that degrades verdicts to UNKNOWN; a sourced refresh pipeline is a live-phase item.",
+    "Placement (T2/T3) \u2014 no placement capability exists in v1 by design (spec 6); there is nothing to test because there is no such tool."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-ledger-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-ledger-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-till-mcp",
+   "name": "Eclipse Till MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 23 pass, 1 na of 24 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/till.py. Run 1 PARTIAL card retained append-only (bench-suite defects); run 2 is the standing card; zero product defects. Benched against a bench-owned catalog and bench-minted buyer cards/mandates (the builder's fixtures were never used). Ads Rail P1 extension: CERTIFIED(local/simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 100/100 on the scoped D1\u2013D4 re-bench (scorecard eclipse-till-mcp-2026-10-25-3.json; 31/31 re-bench checks pass; the original PARTIAL 76/100 frame is retained in the card's provenance note). The rail is Stripe TEST MODE ONLY, runs against the labeled local simulator in this environment, and is NOT PROVEN IN STRIPE: no Stripe test account was wired, W2 is not proven, and no card was attached to any ad platform.",
+   "not_tested": [
+    "Real payment rails \u2014 B0 settles on the sandbox test-credit ledger only; Stripe (card) and x402 rails are B1, owner-gated with a counsel note; no Stripe/x402 code exists in the B0 build (the Ads Rail P1 extension adds Stripe TEST MODE code only; see the extension note)",
+    "Live Bazaar catalog join \u2014 B0 ships a 7-SKU fixture subset modeled on bazaar-mcp/catalog.json; the discovery MCP is read as data only, never extended or written",
+    "Third-party sellers (B3) \u2014 certify-before-you-sell gates, seller vetting, 85/15 split computation, and seller payout/tax operator processes are spec'd, not built; B0-B2 are first-party only",
+    "Auth enforcement beyond the stdio process boundary (bench U1 class) \u2014 buyer identity is cryptographic (Herald-shaped cards + signed mandates), operator verbs require the fixture operator token; hosted transport auth is a B1 design item",
+    "Ads Rail in Stripe itself \u2014 NOT PROVEN IN STRIPE: no Stripe test account exists in this environment, so the rail's proof is against its labeled local simulator plus the code path that activates only with a Stripe test key; W2 (real Stripe sandbox behaviour) remains unproven and the live gate stays blocked.",
+    "Live Stripe Issuing, real-money funding, and ad-platform card attachment \u2014 not built or attempted; the test-mode fence refuses live-mode keys at startup."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-till-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-till-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-book-mcp",
+   "name": "Eclipse Book MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 16 pass, 1 na of 17 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/book.py. Non-failing bench observation: the probability-field guard runs post-commit (a poisoned instrument persists in state; every read of it fails closed) \u2014 pre-commit move queued for M1 hardening.",
+   "not_tested": [
+    "Live venue reads of any kind \u2014 M0 contains no network code path; adapters run against fixtures shaped like the real public API responses behind a transport seam. Live public-read verification is a later M0-exit step.",
+    "Order placement, account reads, and the Wallet mandate gate \u2014 M2/M1 scope, owner-gated (spec 18, decision D3). M0 order_draft records an unsubmitted DRAFT with mandate_pre_eval NOT_EVALUATED; no submission path exists.",
+    "Fee schedules as live data \u2014 shipped schedules are fixture-shaped records with provenance labels saying so; the live fetch + account-specific tier provenance lands with the adapters' live step.",
+    "Kalshi / Polymarket US / Kraken / Binance.US / Alpaca chapters \u2014 specced (suite spec 10-12), not built in M0."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-book-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-book-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-forecast-mcp",
+   "name": "Eclipse Forecast MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/forecast.py.",
+   "not_tested": [
+    "Live Gamma / CLOB public reads \u2014 M0 runs against fixtures shaped like the real public API responses behind a transport seam (load_fixtures); the live public-read transport is a later verification step.",
+    "Polymarket US (QCX) data or trading \u2014 a separate CFTC-designated venue with its own chapter (spec 12.1), M2+ phase; Global and US data never blend in one Quote.",
+    "UMA oracle state beyond the fixture set \u2014 dispute windows/finalization tracked as fixture-shaped Resolution records in M0.",
+    "Any trading surface \u2014 absent by design (Grade X for US persons, spec 4.2/8.2); nothing to test because the capability does not exist."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-forecast-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-forecast-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-strike-mcp",
+   "name": "Eclipse Strike MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/strike.py. Run 1 PARTIAL card retained append-only (bench-suite parity assertion defect); run 2 is the standing card.",
+   "not_tested": [
+    "Live Coinbase public reads \u2014 M0 runs against fixtures shaped like the real public product/book responses behind a transport seam (load_fixtures); live public-read verification is a later step.",
+    "Account anything \u2014 Coinbase's official account MCP exists and Strike's account posture is a governed WRAP of it (spec 10.1), M1+ scope. No account tool exists in this build; the vendor's Wallet/CDP MCP surfaces are other suites' chapters and are out of scope here.",
+    "Account-specific fee tiers \u2014 M0 uses the public schedule shape, labeled as such; the account's own reported rates supersede at M1."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-strike-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-strike-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-meter-mcp",
+   "name": "Eclipse Meter MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 19 pass, 1 na of 20 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/meter.py. Run 1 PARTIAL card retained append-only (bench-suite self-defect in the M11 hash assumption, disclosed on the card); run 2 is the standing card; zero product defects. N-CHECK passed: signed records verify offline with the exported pubkey only. Two non-failing observations on the card: the export verify_note omits signer_fingerprint from its signed-body description, and provenance raw_hash covers raw + an internal index (internally consistent, not recomputable from the stored raw alone).",
+   "not_tested": [
+    "Live provider ingest \u2014 NOT built. v0 ships the fixture transport only (named fixture batches + inline records through the same seam); each adapter's live form requires the operator's own credentials and a per-adapter go (spec \u00a75.5). A live transport must be implemented and benched before any ingest is called live.",
+    "Dogfood wiring \u2014 the dispatcher/worker spend ingest (cluster law L10: CETech's own agent spend as the first real source) is a LATER step and is not wired in v0; no own-spend claim is made from this build.",
+    "Hosted / multi-tenant analytics \u2014 later phase, separate spec delta (spec \u00a75.1).",
+    "Production signing-key custody \u2014 v0 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision, Fathom D0 precedent.",
+    "Hosted/multi-tenant operation and auth beyond the stdio process boundary (bench U1 class)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-meter-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-meter-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-tripwire-mcp",
+   "name": "Eclipse Tripwire MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18 pass, 1 na of 19 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/tripwire.py. Run 2 FAILED (T10: a within-batch duplicate event_id was stored twice and double-counted by the velocity detector) and run 1 PARTIAL cards retained append-only; the defect is fixed, the class closed (single validator call site, verified by source reading), and run 3 is the standing card. Novelty (NV) proven: verified actuation distinguishes Tripwire from logging/observability tools. Two detector evasions (signature-split loops, paced spawn fan-out) are documented SPEC NOTEs, unchanged by design.",
+   "not_tested": [
+    "Live-rail freeze \u2014 v0 acts on the sandbox Agent Wallet only; freezing a live mandate inherits the Wallet P3 gate wholesale (spec 6.5)",
+    "Live event streams \u2014 v0 consumes recorded fixture streams shaped as Meter cost records and Wallet events; no live Meter ingest exists (Meter itself is fixture-form at v0)",
+    "External paging channels (SMS/push) \u2014 owner pages are notification records + receipts in v0; channel integrations are a later phase (spec 6.1)",
+    "Cluster 1 Lineage feed for spawn counts \u2014 v0 spawn detection runs over declared spawn events in-stream; the Lineage join lands when Lineage is built",
+    "Hosted/multi-tenant operation and auth beyond the stdio process boundary (bench U1 class)"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-tripwire-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-tripwire-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-umbra-mcp",
+   "name": "Eclipse Umbra MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 18 pass, 1 na of 19 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/umbra.py. Run 1 PARTIAL card retained append-only (bench-suite assertion defect, disclosed on the card; no product code touched); run 2 is the standing card; zero product defects. N-CHECK: NOVELTY_PROVEN \u2014 a closed-vocabulary witness: signed findings with reproducible evidence packs and rebuttal linkage, not diffs. Non-failing observation on the card: punycode-shaped domains are not IDNA-decoded by the skeleton engine; IDNA-decode is recommended before G-LIVE.",
+   "not_tested": [
+    "Live registry observation \u2014 v0 imports snapshots only; live crawling is G-LIVE per registry (spec 5.6) and is NOT built",
+    "Distribution of findings (T2 watch bulletins) \u2014 operator-mediated until G-REG + G-COUNSEL per spec chapter 7",
+    "Real registry snapshots \u2014 v0 benches against fixture registries shaped like real exports; no real registry was contacted",
+    "Findings-key rotation/revocation distribution via Eclipse Revoke \u2014 Revoke is a later C1 chapter; rotation is rehearsed at the key-file level only"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-umbra-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-umbra-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-blackbox-mcp",
+   "name": "Eclipse Blackbox MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 22 pass / 0 fail / 0 na of 22 checks. Run by W-003 (Verity), suites/blackbox.py, against bench-provisioned credentials and bench agent streams. Run 2 FAILED (U5: bare int() coercion in record_read's seq/limit filters escaping as a raw -32603) and run 1 PARTIAL cards retained append-only; the fix (coerce_int_param guard) was verified on the wire at raw JSON-RPC level, including a 114-probe schema-enumerated type fuzz over every parameter of all five tools, and the guard is ruled APPROVED as the house reference implementation for the raw-coercion defect class; run 3 is the standing card. U1 is a genuine pass (a real credential layer exists). N-check stands: the recorded agent cannot read, grade, or rewrite its own record; the recorder receipts its own gaps. Tail-truncation claim verified exactly as stated (detectable only against a previously exported pack head \u2014 the product claims no more).",
+   "not_tested": [
+    "Hosted multi-tenant recorder and any CETech-hosted recording of customer data \u2014 owner gate G-C3-1 (spec \u00a715); v0.1 is a local single-store recorder only.",
+    "OS-level isolation on a shared host \u2014 v0.1 isolates by recorder-held key + credential scoping + an append-only engine with no mutation code path; it does not claim an OS boundary the build does not create.",
+    "External chain anchoring (spec \u00a76.3 v1 hardening) \u2014 not built; tail-truncation of the store file is therefore detectable only against a previously exported pack head, which the README states plainly.",
+    "Concurrent writers \u2014 the store is a single JSON file grown per call; one recorder process at a time.",
+    "Streaming ingestion adapters from third-party frameworks (spec \u00a76.1 gated) and legal-hold export formats beyond the evidence pack (counsel review) \u2014 not in v0.1.",
+    "Dogfood wiring (recording worker runs) \u2014 a later ops step per the build brief; this build ships the recorder plus its fixture stream only."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-blackbox-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-blackbox-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-docket-mcp",
+   "name": "Eclipse Docket MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 7 (standing): 19 pass / 1 na (U1 auth: stdio process boundary) / 0 fail of 20 checks. Run by W-003 (Verity), suites/docket.py, over a bench-owned Till-shaped export and bench parties. Runs 1\u20136 FAILED cards retained append-only: run 3 caught four tool descriptions missing the mandatory descriptor (spec section 12 \u2014 'Not a court, not a legal judgment' rides every surface); run 4 caught D12 \u2014 offset-naive at_time values escaping as a raw -32603 when compared against offset-aware stored times \u2014 fixed under the adjudicated refusal shape (parse_time refuses offset-naive timestamps by name, AT_TIME_OFFSET_REQUIRED: a guessed timestamp in a dispute record is a falsified timestamp), and parse_time is APPROVED as the second house reference guard; runs 5\u20136 failed on bench-suite setup defects, disclosed on their cards (no product code touched). Silence ruling (run 3, upheld): expiry records silence and makes the case determinable, never an outcome. Novelty: NOVELTY_PROVEN.",
+   "not_tested": [
+    "Arbitration / determination as a service to third parties \u2014 NOT built; owner + counsel gate (spec 12.1/12.6). v0 determinations run over our own products' receipts only",
+    "Evidence classes beyond Till receipts (Escrow jobs, Wallet payments, Toll metering counts, TrueVolume attestations) \u2014 spec'd in section 12.1, not built; v0 refuses other classes by name (EVIDENCE_CLASS_UNSUPPORTED)",
+    "Live hand-back transport \u2014 the outcome hand-back in v0 executes against till_stub.py, a labeled fixture stand-in for Till's refund machine applying Till policy-as-code to its own mirror ledger; no live Till process is called",
+    "Auth enforcement beyond the stdio process boundary (bench U1 class) \u2014 party scoping is by Herald card hash presented per call; hosted transport auth is a later design item"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-docket-mcp-2026-10-25-7.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-docket-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-countermark-mcp",
+   "name": "Eclipse Countermark MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 23 pass, 1 na of 24 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/countermark.py. Run 2 is the standing card; run 1 is retained append-only. N-CHECK: NOVELTY_PROVEN \u2014 one neutral verification call across card and mandate formats returns a signed finding envelope enumerating the checks actually performed, with presented-only artifacts capped at UNRESOLVED.",
+   "not_tested": [
+    "Live issuer-key discovery \u2014 NOT built (G-LIVE per format, spec ch.13). v0 verifies over fixture issuers only; an unknown domain caps at UNRESOLVED with the ceiling stated in provenance.",
+    "Hosted per-call merchant API \u2014 NOT built (T2 + G-OWNER); pricing is Till/x402 territory, consumed not built.",
+    "Production findings-key custody \u2014 v0 signs with a local seed key (keys/, gitignored, chmod 600), distinct from any identity key (\u00a75.7); custody is a gated decision."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-countermark-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-countermark-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-census-mcp",
+   "name": "Eclipse Census MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 23 pass, 1 na of 24 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/census.py. Run 2 is the standing card; run 1 FAILED card is retained append-only. N-CHECK: NOVELTY_PROVEN \u2014 the render path itself enforces discovery law: an item that cannot cite a receipted discovery event cannot render, and source claims stay attributed per source and are never promoted to Census fields.",
+   "not_tested": [
+    "Tenant connectors (Microsoft Entra Agent ID, Google, cloud agent services) \u2014 NOT built. Gate N1: each adapter requires the customer's admin authorization record per tenant plus owner approval. Those families render in every coverage section as available-but-unauthorized.",
+    "Endpoint / manifest collectors and any network discovery \u2014 held by spec \u00a77.7 (later phase, own spec). Discovery of systems the customer does not administer is T3-permanent: no probe/scan/enumerate capability exists in this package and there is no network code in v0.",
+    "CETech fleet live dogfood export (\u00a77.6/\u00a715) \u2014 a CETech-fleet SEED FIXTURE ships as dogfood-shaped data; the standing live fleet inventory export as the first real Census artifact follows the dogfood loop after bench, and is not claimed from this build.",
+    "Hosted / multi-tenant operation and auth beyond the stdio process boundary."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-census-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-census-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-crosswalk-mcp",
+   "name": "Eclipse Crosswalk MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 21 pass, 1 na of 22 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/crosswalk.py. Run 3 is the standing card; runs 1\u20132 FAILED cards are retained append-only. N-CHECK: NOVELTY_PROVEN \u2014 a versioned obligation library with as-of resolution and a role dimension produces fact-hash-bound candidates whose determination stays permanently empty and customer-owned, with mandatory evidence-pack gaps.",
+   "not_tested": [
+    "Live customer data (gate X1) \u2014 not built/run: counsel review of claims/output language + design-partner deployer required first (spec \u00a76.8).",
+    "Remaining regime chapters (California, New York, Illinois) \u2014 later data chapters per \u00a76.1."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-crosswalk-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-crosswalk-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-redteam-mcp",
+   "name": "Eclipse Redteam MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 26 pass, 1 na of 27 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/redteam.py. Run 3 is the standing card; runs 1\u20132 FAILED cards are retained append-only. N-CHECK: NOVELTY_PROVEN \u2014 probe construction is downstream of a signed, in-date authorization record plus arena or harness registration proof; with neither, no probe object is constructed at all.",
+   "not_tested": [
+    "External runs \u2014 none performed or built for. First external run requires counsel review of the authorization instrument (spec \u00a79.6) and a named owner decision on services posture.",
+    "Live twins / hosted arenas \u2014 NOT built. v0.1 loads in-repo fixture twin config artifacts into the local harness; fixture transports only; no network egress exists in the package.",
+    "Continuous/recurring simulation subscriptions \u2014 gated post-v0.1 (spec \u00a79.1).",
+    "Benchmark publication / cross-customer data use \u2014 absent by cluster law \u00a72.6; no cross-customer data flow of any kind in v0.1.",
+    "Production signing-key custody \u2014 v0.1 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision.",
+    "Hosted/multi-tenant operation and auth beyond the stdio process boundary."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-redteam-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-redteam-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-span-mcp",
+   "name": "Eclipse Span MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 23 pass, 1 na of 24 checks (U1 auth: stdio process boundary). Run by W-003 (Verity), suites/span.py. Run 5 is the standing card; runs 1\u20134 FAILED cards are retained append-only. N-CHECK: NOVELTY_PROVEN \u2014 a proposed spawn is checked against a total componentwise attenuation order walked to an owner-signed root, with subtree budgets enforced at every ancestor.",
+   "not_tested": [
+    "Blocking enforcement inside external frameworks \u2014 gated on framework hook availability per framework (spec \u00a75.5); v0 claims check-and-record only, NOT a blocking gate.",
+    "Cross-organization chains \u2014 gated on Envoy counterparty vetting tiers; v0 verifies foreign chains as evidence only (T1 verdict on presented artifacts), never registers foreign roots as trusted.",
+    "Production signing-key custody \u2014 v0 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision.",
+    "Hosted / multi-tenant operation and auth beyond the stdio process boundary."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-span-mcp-2026-10-26-5.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-span-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-airtime-mcp",
+   "name": "Eclipse Airtime MCP",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(local/simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 23/23 checks. Run by W-003 (Verity), suites/airtime.py. The original PARTIAL card (20/23; D1 MEDIUM + D2 HIGH) is retained append-only; the scoped re-bench card -2 closed both defects and is the standing verdict basis. N-CHECK: NOVELTY_PROVEN \u2014 spend enforcement happens pre-call, ad copy is bound to a signed claims record at the publish path, and every mutation or refusal seals into an advertiser-held evidence ledger. Simulator/test-double only; no live transport, campaign, or spend was tested.",
+   "not_tested": [
+    "Live Meta transport \u2014 NOT built and out of P0 scope: simulator/test-double only; no live spend exists.",
+    "Standalone Claims Checker as a separate Bazaar Tool \u2014 P1 per spec \u00a73.3; P0 ships the internal harness form (tools/claims_checker.py), exercised as part of the benched product surface.",
+    "Google/TikTok/X/LinkedIn/Reddit phases (P1/P3), hosted connector + CASA posture (P2), and Till billing composition (P2).",
+    "Production Herald custody for the signing key \u2014 P0 uses a local seed key (keys/, gitignored, chmod 600); production custody is a hard gate before any P2/live scope."
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-airtime-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-airtime-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-friction-mcp",
+   "name": "Eclipse Friction MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 41 pass, 0 na of 41 checks. Run by W-003 (Verity), scoped re-bench of the D1\u2013D7 fix round; the original PARTIAL card (34/41) is retained append-only and this -2 card is the standing verdict basis. N-CHECK: NOVELTY_PROVEN \u2014 a friction filing surfaces only after the board recomputes its Herald-signed, hash-chained trace pack, so faking a filing requires actually executing the calls and holding the identity key; fixes surface only the same way (clean recompute plus a CLEAN bench replay receipt).",
+   "not_tested": [
+    "Hosted/public board (P1) \u2014 NOT built; P0 is local stdio only, scope local.",
+    "Live Herald service integration \u2014 P0 consumes Herald-shaped signed cards/JWKS presented per call and a local Revoke record list; no network calls exist.",
+    "Test Bench REPLAY execution \u2014 Friction consumes Bench replay receipts registered out-of-band in local state; the Bench harness itself is a separate product and the board never executes vendor tools."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0-rebench-2",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-friction-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-friction-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-steward-mcp",
+   "name": "Eclipse Steward MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, 27 pass, 1 na of 28 checks (U1 auth: stdio process boundary; surface disjointness scored as product checks in S8). Run by W-003 (Verity), suites/steward.py. Runs 1\u20133 FAILED retained append-only; run 4 is the standing card \u2014 S11 (approval content-hash re-verification at dispatch), S12 (draft-TTL re-check at dispatch), S19 (expiry bookkeeping kept out of the signed canonical form), S7, and S10 fixed and verified. N-CHECK: NOVELTY_PROVEN \u2014 the only-dispatch-path governance core: the agent surface holds no dispatch verb and no credential, the gate re-checks mandate/kill/disclosure/caps/grant at dispatch, disclosure is verified data that drives posture, and every read is receipted; 0 of 20 chat-API-shaped verbs exist on either surface. Local/simulator scope only.",
+   "not_tested": [
+    "Live platform adapters (Slack / Teams / Discord) \u2014 NOT built in v0.1; simulator route fixtures only, no credentials, no real messages sent",
+    "Herald JWS mandate signatures \u2014 v0.1 signs with a local HMAC operator key, the spec's local stand-in; production key custody is a gated phase",
+    "Hosted venue service \u2014 a separate, unbuilt phase gated on Eclipse Connect P2 decisions",
+    "Name: 'Eclipse Steward' is CONDITIONAL under brand system \u00a73 \u2014 trademark/confusion screen pending before any public surface; fallback name Eclipse Usher"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-steward-mcp-2026-10-26-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-steward-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-proof-mcp",
+   "name": "Eclipse Proof MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25 (bench clock UTC 2026-10-26; run 2 standing), 35 pass, 2 na of 37 checks. Run by W-003 (Verity). Run 1 FAILED card retained append-only: its sole failure (NC-2) was a bench-suite self-defect, fixed in the suite \u2014 no product code touched. Scope of certification: the governance core, Proof Print and Proof Trace benched against a declared SIMULATED Resolve-shaped adapter \u2014 P0 makes NO live-Resolve claim (no Resolve Studio seat exists on the build VM; the Studio license, spec LG-1/D3, is an owner purchase). N-CHECK: NOVELTY_PROVEN \u2014 export executes only against a Herald-signed approval pinning the canonical edit-decision fingerprint; incumbent-shaped fixture exports a drifted cut, and the vendor-verb census is 6/15 = 40% renamed (<80%).",
+   "not_tested": [
+    "Live DaVinci Resolve Studio adapter \u2014 not built; P0 adapter is simulated (spec LG-1/D3 Studio license is an owner purchase).",
+    "Frame.io connector (spec \u00a710) \u2014 specced, built P2.",
+    "Proof Trace OTIO/AAF/EDL \u2014 P2; FCPXML only at P0.",
+    "Print OCR/ASR extraction \u2014 embedded text track at P0; low-confidence path fail-closed and benched via fixture.",
+    "Premiere UXP adapter \u2014 P1."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-proof-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-proof-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-charter-mcp",
+   "name": "Eclipse Charter MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 3 (standing): 24 pass, 0 fail of 24 checks. Independent Verity bench with own fixtures; runs 1\u20132 PARTIAL cards retained append-only \u2014 both failures were re-derived as bench-harness defects (2dp expectation; fuzz predicate), product code unchanged. Scope: local / P0 only \u2014 the adapter is a local Plaid-shaped fixture form and the dogfood run is fixture-form; NO live Plaid claim is made. Descriptor-bearing product: the descriptor was verified on 100% of envelopes including refusals over stdio (T15/T15b). N-CHECK: NOVELTY_PROVEN \u2014 27.3% renamed vendor verbs; policy-of-record + cross-account wash-sale watch + grant-keeper is a mechanism no incumbent ships.",
+   "not_tested": [
+    "Live Plaid pull \u2014 P0 adapter is local Plaid-shaped fixture form; live connector run is a separate gate.",
+    "P1 grant-keeper GA (real Schwab OAuth choreography) \u2014 P0 bench uses the simulated Schwab clock fixture per spec \u00a715.1.4.",
+    "P2 order submission \u2014 no live/paper broker rail at P0; mandate leg benched at engine level (prepare-check only, PREPARED never implies submittable).",
+    "Hosted/multi-tenant operation beyond the stdio boundary."
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-charter-mcp-2026-10-25-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-charter-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-colophon-mcp",
+   "name": "Eclipse Colophon MCP",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(local/simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, 19 pass of 19 checks, synthetic fixtures only (5 build-fixture titles + 1 bench-own title; all 8 divergence classes exercised). Independent Verity bench with own fixtures; run 1 card retained append-only. Scope: local/simulator \u2014 NO live retailer, KDP or connector data (KDP has no author API; connector fetch is P1/D3-gated and absent; Watch is D4-gated and absent). N-CHECK: NOVELTY_PROVEN \u2014 a signed catalog of record whose royalties are recomputed line-by-line and whose pirate-source refusal is structural; benched against BookReport/ScribeCount-shaped dashboards, which keep no record and recompute nothing.",
+   "not_tested": [
+    "Live retailer / KDP data \u2014 KDP has no author API; P0 is synthetic fixtures only.",
+    "Connector fetch \u2014 P1/D3-gated, absent at P0.",
+    "Watch \u2014 D4-gated, absent at P0.",
+    "commerce_verify_offer against live commerce \u2014 P2 surface; simulator-proven at P0 only.",
+    "The owner's real book as dogfood \u2014 deferred by the owner; P0 fixtures are synthetic."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "independent-bench-1 (Verity phase, own fixtures)",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-colophon-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-colophon-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-tether-mcp",
+   "name": "Eclipse Tether MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 2 (standing): 31 pass of 31 checks. Run 1 PARTIAL (30/31) retained append-only: its sole failure was a bench-assertion defect in H10 (compared full error dicts incl. the caller-echoed tool name), not a product defect. Scope: SIMULATOR ONLY \u2014 P0 is ROS 2 + Gazebo + UR-class arm sim, in-process; NO hardware claim of any class is made. Liability counsel gates P1 real motion only. N-CHECK: NOVELTY_PROVEN \u2014 rename census 6/22 = 27% (<80%); the mandate-and-bridge mechanism exists in no incumbent (Boston Dynamics ships dispatch in Orbit; nobody ships the signed authority layer).",
+   "not_tested": [
+    "Real hardware of any class.",
+    "Real vendor SDKs (Spot / Unitree / UR-RTDE).",
+    "Real e-stop / lease hardware.",
+    "Isaac Sim.",
+    "Multi-robot sessions.",
+    "Hosted / multi-site operation.",
+    "T2 direct motion (refused by design, \u00a73).",
+    "Closed platforms: Tesla Optimus, Figure, Apptronik, Atlas, NEO (no surface exists, \u00a74.1).",
+    "Orbit dispatch (vendor's, not ours, \u00a74.2)."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "verity-0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-tether-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-tether-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-proving-mcp",
+   "name": "Eclipse Proving MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, run 2 (standing): 10 pass, 0 na of 10 checks \u2014 scoped re-bench of run 1's failing lines (B9 class integrity, B10 time expiry, B11 envelope hostility) plus the B12 D-4 limb, all re-probed PASS with bench-own fresh shapes; D-1 (evidence-class laundering via registry config), D-2 (lease/mandate time expiry never enforced), D-3 (envelope crashes), D-4 (struck live-transport env claim) all CLOSED. The original PARTIAL card (run 1: 10 pass / 1 partial / 3 fail \u2014 test-bench/results/eclipse-proving-mcp-2026-10-25.json) is retained append-only and this -2 card is the standing verdict basis. CEILING \u2014 read exactly: CERTIFIED(simulator) and nothing broader. The adapters are simulated-PS: fixture packs are evidence class fixture, qemu/renode packs are evidence class EMULATOR (content is a deterministic simulated PS inside the adapter). NO live transport was exercised at any point in either bench run \u2014 no QEMU process, XSDB/GDB/TCF session, or Renode monitor ran \u2014 and spec \u00a712.4 exit checks X4/X5 are still owed before any transport-level interop claim. Non-gating observation carried on the standing card: a session whose lease time-expires seals no gap pack on expiry (contrast \u00a711.3, which lists lease_expiry among gap-record causes); whether an expired session's evidence should also seal is an open spec question, flagged by the bench, not silently passed over. N-CHECK: NOVELTY_PROVEN (run 1, carried) \u2014 bench authority only inside a Herald-signed mandate binding agent \u00d7 board \u00d7 op-class \u00d7 exact artifact hash, enforced at the bridge, every session incl. gaps/refusals sealed into an offline-verifiable pack; incumbents (fpga-mcp / VivadoMCP / probe-rs / labgrid) have no pin to mismatch and no pack.",
+   "not_tested": [
+    "Live transport of any kind \u2014 no QEMU process, XSDB/GDB/TCF session, or Renode monitor was exercised in either bench run; the qemu/renode adapters run deterministic simulated-PS session scripts in-adapter. Spec \u00a712.4 exit checks X4/X5 (live XSDB vs AMD QEMU, Renode monitor/GDB) are still owed before any transport-level interop claim.",
+    "Physical bench hardware \u2014 HwServerAdapter is an ADAPTER_NOT_IN_PHASE stub; zero bench-class packs exist or can be produced at P0, correctly.",
+    "PL (FPGA fabric) behavior \u2014 not modeled by plain QEMU and not claimed; bitstream loads on emulator/fixture targets are recorded with that semantics note.",
+    "Production Herald key custody \u2014 P0 verifies against labeled deterministic TEST keys (spec \u00a79) behind the production verify interface; production custody is a gated owner decision, not a P0 claim."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-proving-mcp-2026-10-25-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-proving-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-connect-beyondcompare-mcp",
+   "name": "Eclipse Connect \u00b7 Beyond Compare MCP",
+   "verdict": "CERTIFIED(simulated)",
+   "certified": true,
+   "scope": "CERTIFIED(simulated) \u2014 Eclipse Bazaar Test Bench 2026-10-25, scoped re-bench (fix round 1): 26 pass, 0 na of 26 checks \u2014 the first bench's two major defects (D-ENV: envelope type guard at both serving layers; D-REVOKE: pack_fetch re-checks grant state after revoke, byte-identical refusal, no oracle) fixed and re-probed PASS, regression spot-lines A1\u2013A6 / B0\u2013B8 / C1\u2013C8 / G1 unbroken; the full bench script also ran end-to-end out-of-scope at 42/42. The original PARTIAL card (40 pass / 2 fail of 42 \u2014 test-bench/results/eclipse-connect-beyondcompare-mcp-2026-10-25.json) is retained append-only and this re-bench card is the standing verdict basis. CEILING \u2014 read exactly: CERTIFIED(simulated) and nothing broader. The adapter is a scripted stand-in throughout (the documented-CLI adapter is a stubbed interface only); evidence class SIMULATED; NO live Beyond Compare run was exercised at any point in either bench run \u2014 live BC exercise is OWED at P1 on the owner's license (vendor trial fallback) before any live claim. MECHANISM: Herald-signed recomputable compare-evidence packs over mandate-granted paths; merge = T3 ECDSA approval-bound with base-drift refusal. N-CHECK: NOVELTY_PROVEN \u2014 0/6 renamed vendor verbs (fail line \u226580%), shim score 1/20 (ceiling \u226420%); the novelty is the mandate/custody + evidence layer, never the bridge. Not Scooter Software. Not endorsed by Scooter Software. The customer supplies their own Beyond Compare license.",
+   "not_tested": [
+    "Live Beyond Compare exercise \u2014 no licensed install was run in either bench; the adapter is a scripted stand-in throughout and the documented-CLI adapter is a stubbed interface only. The live bench is OWED at P1 on the owner's license (vendor trial fallback) before any live claim.",
+    "Hosted-relay / multi-seat form \u2014 P0 is a single-seat edge bridge on the license-holding machine; the hosted form is a P2 decision-gated shape, not built.",
+    "Production Herald key custody \u2014 P0 signs mandates and T3 approvals through the PinSigner port's local signer (identical grammar; artifacts record signer: local); production custody is a gated owner decision, not a P0 claim."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-connect-beyondcompare-mcp-2026-10-25-rebench-fixround1.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-connect-beyondcompare-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-wageward-mcp",
+   "name": "Eclipse Wageward MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, standing card eclipse-wageward-mcp-2026-10-25-5.json (scoped re-bench -5): 20 pass, 0 na of 20 checks. CEILING \u2014 read exactly: this certifies the approval-and-evidence rail at local scope over a SYNTHETIC workforce, and nothing broader. Wageward is an approval-and-evidence rail ONLY \u2014 it is not a system of record, has no payroll-calculation or tax engine, and the submit-class tools (payroll_run_submit / filing_submit) are ABSENT from the surface by design in P0/P1: the bench verified by live stdio that calling one returns unknown-tool. Every approval/filing packet carries the mandatory statement that approval does not transfer payroll-tax liability (the employer remains liable); a packet missing it is invalid by construction. The four prior FAILED cards are retained append-only and cited here: eclipse-wageward-mcp-2026-10-25.json (FAILED), -2.json (FAILED), -3.json (FAILED), -4.json (FAILED \u2014 D2-GEN2 HIGH, separator-run identifier evasion) \u2014 the -5 scoped re-bench closes D2-GEN2 on every channel (live-stdio echo 7/7 bench shapes, persistence 2/2, approval-signing 4/4, plus fresh no-cap probes 8/8) on top of everything closed in -2/-3/-4. OPEN SPEC ITEM (not a P0 claim): receipt-TTL is an open spec item to settle pre-P1. N-CHECK: NOVELTY_PROVEN (stands \u2014 the fused fingerprint + Herald-signed approval + drift-refusal mechanism is unchanged by the fix rounds; no CRUD verb added).",
+   "not_tested": [
+    "Live payroll/HR providers \u2014 P0 is an aggregator-shaped fixture adapter over synthetic data only; no live grant custody (P2), no real employer, employee, money, or filing",
+    "Any real payroll submission or filing \u2014 submit-class tools are ABSENT by design in P0/P1; the internal simulated rail is exercised by the builder suite only, never exposed",
+    "Production Herald/vault/KMS custody \u2014 P0 uses simulated per-tenant fixture keys",
+    "Receipt-TTL behavior \u2014 open spec item, to be settled pre-P1"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.5.0-scoped-rebench-4",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-wageward-mcp-2026-10-25-5.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-wageward-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-covenant-mcp",
+   "name": "Eclipse Covenant MCP",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(local/simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, standing card eclipse-covenant-mcp-2026-10-25-4.json (scoped re-bench -4): 40 pass, 0 na of 40 checks (40/40 scoped lines: 37 independent harness lines + builder-suite line + surface line + workspace-integrity line). CEILING \u2014 read exactly: P0 is SYNTHETIC ONLY. No live outreach of any kind is certified or claimed; a counsel HARD GATE stands before any P1 live outreach, and it has not been lifted. Defect history, all retained append-only: base card eclipse-covenant-mcp-2026-10-25.json FAILED (28/35 \u2014 D1 CRITICAL revocation-wipe, D2 HIGH provenance downgrade); -2.json PARTIAL (44/45 \u2014 D1\u2013D7 closed, D8 open); -3.json PARTIAL (27/29 \u2014 D8 closed on its shapes, D8b open at two entry points); -4.json closes D8b at all three entry points including the Gate state-tamper path (VENDOR_POSTURE_UNKNOWN, 0 sends, refusals sealed) with sweep-hardening verified fail-closed and no over-refusal; B5 posture exhaustion and rule-pack rigidity pass. BACKLOG: LOW notes from cards -2/-3 (B1 refusal sealing / stale pack at Gate only / clarification 5-minute window) remain open, LOW severity, recorded as not gating for P0 local/simulator certification. N-CHECK: NOVELTY_PROVEN (stands from bench 1; the D8b fix hardened the proven mechanism, changed no surface).",
+   "not_tested": [
+    "Live outreach of any kind \u2014 P0 is synthetic only; counsel HARD GATE stands before any P1 live outreach",
+    "Real DNC registry access, a real CRM (Follow Up Boss) connection, or real TrustedForm/Jornaya verification \u2014 all fixture-shaped at P0",
+    "The backlog LOW items from cards -2/-3 (B1 refusal sealing / stale pack at Gate only / clarification window) \u2014 not re-benched in the -4 scope; status stands as recorded there"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-covenant-mcp-2026-10-25-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-covenant-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-meridian-mcp",
+   "name": "Eclipse Meridian MCP",
+   "verdict": "CERTIFIED(local, synthetic scope)",
+   "certified": true,
+   "scope": "CERTIFIED(local, synthetic scope) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-meridian-mcp-2026-10-26-2.json (re-bench 1): 22 pass, 0 na of 22 checks. CEILING \u2014 read exactly: SYNTHETIC ONLY. No live PHI, no real EHR connection, and no live claim of any kind is certified. NO SIGNING CAPABILITY EXISTS IN THIS PRODUCT: the surface is exactly the 19 specced Core tools with zero finalize-class tools; the re-bench probed 14 finalize/sign aliases via tools/call (all unknown-tool), ran a byte-for-byte import probe on a live draft (no clinician_sign attribute; the draft stays UNSIGNED_DRAFT), and swept every shipped file \u2014 no sign-capable path exists under any name, and the clinician-sign simulator exists only as bench equipment under tests/. The prior card eclipse-meridian-mcp-2026-10-26.json (FAILED \u2014 23 pass / 6 fail) is retained unedited; defects B-MER-1..5 are all CLOSED in this re-bench (sign-path removal, refusal-naming ruling, per-practice hash-chain partition, refusal sealing, plus the observation item). P1 GATES \u2014 all still closed: HIPAA counsel review, an executed BAA, and a design partner are required before any live phase; the Bridge already refuses live PHI without a BAA (BAA_REQUIRED, no break-glass). No prescribing surface exists in any phase. N-CHECK: PASS, carried from the 2026-10-26 bench (not re-run; the fix round changed enforcement within the same fused mechanism \u2014 gate / pin / sealed reads \u2014 and removed the sign path outright).",
+   "not_tested": [
+    "Live PHI of any kind \u2014 P0 is synthetic-only by spec; no live claim exists until every P1 gate in spec \u00a712.2 clears (HIPAA counsel + executed BAA + design partner)",
+    "Any real EHR/platform adapter \u2014 the P0 Bridge is the HAPI FHIR sandbox stand-in only; no vendor adapter is built",
+    "Clinician signing itself \u2014 by design: no signing capability exists in the product; the sign simulator is bench equipment in tests/ only, never a product surface (spec C3)"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0-rebench1",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-meridian-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-meridian-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-consent-mcp",
+   "name": "Eclipse Consent MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25: 23 pass, 1 na of 24 checks (U1 na), 0 fail \u2014 23/23 scored checks, single bench, no fix round. CEILING \u2014 read exactly: CERTIFIED(local) over FIXTURE subjects only, and the fixture boundary is enforced by the product, not by convention: v0 refuses any non-fixture subject by name (SUBJECT_NOT_FIXTURE) and every subject in the package is synthetic. Real-subject personal-data processing is NOT built and is held at gate G-COUNSEL (spec \u00a717); jurisdiction packs (state privacy / AI-law vocabulary variants) are NOT built (G-COUNSEL per pack) \u2014 the versioned-vocabulary mechanism they would ride on ships in v0 as data. Consumer-facing grant UX is NOT built (G-OWNER); v0 has no consumer surface at all, and no hosted or network form exists. Consent records consent; it does not manufacture it, and no output certifies any party.",
+   "not_tested": [
+    "Real-subject personal data \u2014 NOT built, held (G-COUNSEL, spec \u00a717); v0 refuses any non-fixture subject by name (SUBJECT_NOT_FIXTURE)",
+    "Jurisdiction packs (state privacy / AI-law vocabulary variants) \u2014 NOT built (G-COUNSEL per pack)",
+    "Consumer-facing grant UX \u2014 NOT built (G-OWNER); v0 has no consumer surface at all",
+    "Hosted / live registry service form and any network transport \u2014 NOT built; v0 is a local stdio server over a local state file"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-consent-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-consent-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-lineage-mcp",
+   "name": "Eclipse Lineage MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card run 3 (scoped re-bench): 10 pass, 0 na of 10 checks \u2014 L10/L14/L4, minors m1\u2013m3 and spot regressions L1/L5/L8 re-probed PASS; all other lines stand as scored on run 2. Runs 1 and 2 FAILED and are retained append-only (test-bench/results/eclipse-lineage-mcp-2026-10-26.json, eclipse-lineage-mcp-2026-10-26-2.json); run 3 closed D1 (corroboration forgery), D2 (unvalidated hash values) and D3 (behavior_relevant laundering parameter) at the mechanism level, not the fixture level. CORROBORATION HONESTY \u2014 read exactly: in v0 there is no per-agent key registry, so presented corroboration strings are UNVERIFIABLE by construction; they are labeled corroboration_unverified in the signed, hash-chained record body (tamper-evident, proven at L10), and absence shapes stay claim_only. Self-emission is labeled a subject-provided claim forever; no surface upgrades a claim to a fact. CEILING: CERTIFIED(local), self/consented emission only \u2014 framework emission adapters are NOT built (G-LIVE per framework), external/hosted lineage is NOT built (G-OWNER); v0 signs with a local seed key (keys/, gitignored) and production findings-key custody is a gated decision.",
+   "not_tested": [
+    "Framework emission adapters \u2014 NOT built (G-LIVE per framework); v0 emission is self/consented only via the MCP tools",
+    "External emission / hosted lineage for enterprises \u2014 NOT built (G-OWNER); records stay on the operator's machine",
+    "Production findings-key custody \u2014 v0 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-lineage-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-lineage-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-attest-mcp",
+   "name": "Eclipse Attest MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25, standing card scoped re-bench #2 (C12 diversity battery): 10 pass, 0 na of 10 checks. Bench history retained append-only: the first bench FAILED on D1 (test-bench/results/eclipse-attest-mcp-2026-10-25.json) and scoped re-bench #1 FAILED on D2 (eclipse-attest-mcp-rebench-c12-2026-10-25.json); re-bench #2 closed D2 \u2014 the diversity computation now resolves its grouping key registry-only (accountable_id from the identity registry; asserted fields are never read), verified against a bench-owned Sybil registry (r2-syb-a/b/c under one accountable id weigh as one). All other first-bench passing lines stand un-re-run. CEILING: CERTIFIED(local) for the v0 surface \u2014 the ONLY admitted evidence class is Till settlement receipts; new evidence classes are NOT admitted (G-OWNER per class; the Herald receipt-on-delivery class is named admissible in spec but NOT admitted in v0.1); public attestation feeds / leaderboards are NOT built (T2 + G-COUNSEL) and their tool names refuse -32602; cross-marketplace integrations NOT built (G-LIVE per platform). Genesis identities are CETech's own service agents as fixtures; v0 signs with a local test key (keys/, gitignored) \u2014 production findings-key custody is a gated decision. No star ratings exist and none are implied.",
+   "not_tested": [
+    "New evidence classes \u2014 NOT admitted in v0.1 (G-OWNER per class); any class other than till_settlement refuses EVIDENCE_CLASS_NOT_ADMITTED by name",
+    "Public attestation feeds / leaderboards \u2014 NOT built (T2 + G-COUNSEL); feed/leaderboard tool names refuse -32602",
+    "Cross-marketplace integrations \u2014 NOT built (G-LIVE per platform); attestations are self-contained signed artifacts",
+    "Herald receipt-on-delivery evidence class \u2014 named admissible in spec but NOT admitted in v0.1",
+    "Production findings-key custody \u2014 v0 signs with a local test key (keys/, gitignored, chmod 600); custody is a gated decision"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0-rebench2-c12",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-attest-mcp-rebench2-c12-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-attest-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-revoke-mcp",
+   "name": "Eclipse Revoke MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card run 3 (scoped re-bench #2): 13 pass, 0 na of 13 checks \u2014 the C13/B1 provenance battery plus genuine-path controls, with run 2's closures standing. Bench history retained append-only: run 1 FAILED (D1\u2013D3, test-bench/results/eclipse-revoke-mcp-2026-10-26.json) and run 2 FAILED (D4 \u2014 list-verification laundering, eclipse-revoke-mcp-2026-10-26-2.json); run 3 proves all four D4 variants (fingerprint-laundered recomputed, stripped sig/fingerprint, foreign unsigned epoch-9, foreign validly-attacker-signed) now cap at LIST_VERIFICATION_FAILED for hits AND absent refs, while genuine paths (supplied + stored) answer REVOKED_BY_ISSUER / COUNTER_NOTICED / NOT_LISTED exactly as before. CEILING: CERTIFIED(local) for own-issuer feed + offline check over fixture issuers. External distribution of the feed to registries/merchants is NOT built (T2 + G-REG/G-LIVE per consumer) \u2014 list_publish writes the local store only and v0 contains no network code; emergency revocation classes are NOT built (G-COUNSEL) \u2014 the closed reason vocabulary has no emergency class; no live push to subscribers exists. v0 signs with a local seed key (keys/, gitignored); production findings-key custody is a gated decision.",
+   "not_tested": [
+    "External distribution of the feed to registries/merchants \u2014 NOT built (T2 + G-REG/G-LIVE per consumer); list_publish writes the local store only, no network code in v0",
+    "Emergency revocation classes \u2014 NOT built (G-COUNSEL); the closed reason vocabulary has no emergency class",
+    "Any live push to subscribers \u2014 NOT built; subscribers check offline against list copies and acknowledge epochs",
+    "Production findings-key custody \u2014 v0 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "scoped-rebench-2",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-revoke-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-revoke-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-keyhold-mcp",
+   "name": "Eclipse Keyhold MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 FIRST-PARTY SCOPE ONLY. Eclipse Bazaar Test Bench 2026-10-25, standing card scoped re-bench #3: 13 pass, 0 na of 13 checks on the card's check lines, comprising 59/59 individual bench probes across the D7/D8 boundary battery, the identity-exemption angle set (aliasing-by-copy, self-nesting, list-wrapped envelope, list owner_approval, signature-plus-extra-material, dotted keys on secret_enroll) and the K3/D6 spot batteries. Bench history retained append-only: runs 1\u20133 FAILED (test-bench/results/eclipse-keyhold-mcp-2026-10-25.json, -2.json, -3.json) and stand as the record for the lines they scored; every gating defect they raised is closed on the standing card or a retained predecessor card. CEILING \u2014 read exactly: certification covers first-party leases over ONE redemption class (https_static_key), exercised on a fixture transport \u2014 live redemption against a real third-party API was NOT exercised and no real credential exists in the package. Third-party custody is NOT built and is HELD (G-COUNSEL + G-OWNER + Verity security review of the redemption component; the gate may conclude never). The v0 envelope construction (ephemeral ECDH P-256 + HKDF-SHA256 + HMAC stream/EtM) is a local reference construction for the fixture/dogfood scope; the held security review may replace it before any wider custody claim. NAME: CONDITIONAL PASS \u2014 trademark/collision screen owed before any public surface (G-TM); the descriptor always reads 'credential leases, never raw keys'. v0 uses local seed keys (keys/, gitignored, chmod 600): the private master half is read ONLY by the redemption executor, never by the MCP server.",
+   "not_tested": [
+    "Live redemption against a real third-party API \u2014 NOT exercised; v0 acceptance runs on a fixture transport and no real credential exists in the package",
+    "Third-party custody \u2014 NOT built and HELD (G-COUNSEL + G-OWNER + Verity security review; may conclude never); custody_scope=third_party refuses THIRD_PARTY_CUSTODY_HELD by name",
+    "Additional redemption target classes \u2014 NOT built (per class, G-OWNER); v0 redeems exactly one class: https_static_key",
+    "Production key custody \u2014 v0 uses local seed keys (keys/, gitignored, chmod 600); password-manager custody and rotation rehearsal are later gate decisions",
+    "Envelope construction review \u2014 the v0 seal/open construction is a local reference construction for the fixture/dogfood scope; the held security review may replace it",
+    "Trademark/name screen \u2014 NOT done (G-TM owed before any public surface); name is a CONDITIONAL PASS and the descriptor always reads 'credential leases, never raw keys'"
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0-rebench-4",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-keyhold-mcp-2026-10-25-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-keyhold-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-strata-mcp",
+   "name": "Eclipse Loft MCP",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "scope": "CERTIFIED(simulator) \u2014 Eclipse Bazaar Test Bench 2026-10-25, scoped re-bench r3 (standing): 12 pass, 0 na of 12 checks \u2014 the D2-only scope (key-substitution attack D2X + V3/V4/V5 tamper set + genuine packs with and without anchor, library and CLI). D1/D3\u2013D10 were closed in scoped re-bench r2 and carried, not re-probed, per scope. History, all cards retained append-only: bench 1 FAILED (35 of 45 checks \u2014 test-bench/results/eclipse-strata-mcp-2026-10-25.json); scoped re-bench r2 FAILED (25 of 26 \u2014 eclipse-strata-mcp-2026-10-25-r2.json) on the sole remaining HIGH, D2. Scope \u2014 read exactly: SIMULATOR ONLY. P0 printers are host-shaped simulators (OctoPrint virtual + virtual Klipper/Moonraker, in-process) behind the production interface, with a deterministic simulated slicer; NO live printer was exercised at any point in any bench run, no heat exists in this bench, and no hardware claim of any class is made. TRUSTED SIGNER ANCHOR: Strata Proof verifies a pack only against a verifier-supplied registry / expected fingerprint; a pack's embedded key and self-consistent fingerprint never suffice \u2014 unanchored packs and unknown signers report PRINT_UNVERIFIED (UNVERIFIED_SIGNER) by design, never a silent verify. That anchor is what closed D2: in r2 an attacker who minted their own keypair, tampered the mandate (material swap, +365d expiry), re-signed and re-sealed produced PRINT_VERIFIED; in r3 the byte-for-byte same attack is refused solely on UNVERIFIED_SIGNER under a genuine anchor, under a genuine expected fingerprint, and with no anchor. GEOMETRY, narrowed in fix round D7 and consistent across spec, README, manifest and tool surface: declared_geometry_only \u2014 design_inspect returns the caller-declared bounding box plus arithmetic over it; manifold / triangle / wall-thickness facts are null, never echoed as verified; no geometry-kernel claim is made. BAMBU posture (spec): a Bambu adapter is P2+ and owner-Developer-Mode-only \u2014 the enablement act is documented as the owner's; there is no Bambu path, bypass, or claim at P0. NAME CONDITIONAL pending trademark screen (Stratasys shared root, same industry); fallbacks on record: Eclipse Sinter, then Eclipse Loft. N-CHECK: NOVELTY_PROVEN (bench 1, retained) \u2014 renamed-verb overlap 55% (<80%); a Kiln-shaped fixture printing a hand-edited +15 \u00b0C toolpath and an unbound job was refused on both counts \u2014 the mandate-and-bridge mechanism exists in no incumbent.",
+   "not_tested": [
+    "Real hardware of any class \u2014 no physical printer, no heat; every bench target is a host-shaped simulator.",
+    "Real slicer binaries (PrusaSlicer / Orca) \u2014 P0 slicing is a deterministic simulated slicer behind the production interface.",
+    "Real Moonraker / OctoPrint endpoints and vendor clouds.",
+    "Herald signer \u2014 P0 uses the local Ed25519 PinSigner fallback behind the production port; Herald custody is a later phase.",
+    "Blackbox custody of packs (packs are Blackbox-form; the Blackbox product is not in the P0 path).",
+    "P1/P2 adapters \u2014 including Bambu (owner-Developer-Mode-only posture per spec) and the Elegoo Neptune 4 dogfood purchase (owner decision D2).",
+    "Unattended real printing \u2014 mandates default ATTENDED-required; UNATTENDED_RATED is explicitly signed per site."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "verity-0.3.0-scoped-rebench-r3",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-strata-mcp-2026-10-25-r3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-strata-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-corona-mcp",
+   "name": "Eclipse Corona MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25: 25 pass, 0 na of 27 checks (1 partial, 1 fail \u2014 LOW defects D-COR-1/D-COR-2, no verdict impact, retained on the card). CEILING \u2014 read exactly: CERTIFIED(local) for the local verifier only, at the P0 ceiling, and nothing broader. Proven: the 5-tool MCP surface + Gate CLI + Sheet CLI as shipped; staged-class sealed packs over the \u00a714 fixture corpus (bench-built, bench-signed); served-class dogfood pack verification for cetech.ai (builder-sealed, bench-recomputed); the gate contract including WARN/ENFORCE claim asymmetry; the house profile on a bench house-shaped fixture. Render-proof packs are bound to deployed artifact hashes: a pack proves identity and mechanical soundness of the pinned bytes under named measured facts \u2014 it does NOT prove an asset is semantically the right asset; semantic approval is the separate human act of approving the pack's contact sheet once per version. Claim-gate wording (spec \u00a78.2): a deploy may be reported 'verified live' only while a PASS served pack exists whose input hashes equal the currently deployed manifest; any served-byte change invalidates the proof automatically; the gate blocks the word 'verified', never the publish. No hosted or live scope is certified: the hosted matrix is a P2 seam only (HOSTED_MATRIX_NOT_AVAILABLE). N-CHECK: NOVELTY_PROVEN \u2014 shipped surface 7/7 novel core (5 MCP tools + Gate CLI + Sheet CLI), substrate verbs 0/7 = 0% (R3 kill line 80% not triggered). NAME CONDITIONAL pending trademark screen (Chaos Corona / Corona beer screen outstanding, D1); fallbacks on record: Eclipse Transit, Eclipse Behold, Eclipse Lantern.",
+   "not_tested": [
+    "Real-device / hosted evidence class: P2 seam only (HOSTED_MATRIX_NOT_AVAILABLE verified); no hosted pack exists or was certified.",
+    "Semantic correctness of any asset \u2014 never claimed: a pack proves identity and mechanical soundness of the pinned bytes; semantic approval is the separate human act on the contact sheet.",
+    "Sentinel-mode UNSTYLED_RENDER on the live dogfood sites: sentinels not yet adopted on cetech.ai / thewhitereport.com / eclipsebazaar.com (owner site edits + publish outstanding); dogfood packs exercised heuristic mode only.",
+    "Served-class rendering of Chromium/Firefox cells on GoDaddy-hosted dogfood sites from the bench VM: transport-blocked by the host, sealed honestly as PAGE_UNREACHABLE; served certification rests on the rendered cells plus loopback shapes.",
+    "Full \u00a714 B9 determinism as written (each dogfood site + full corpus x5): bench ran 5x on one stable fixture plus builder-suite shapes.",
+    "ENFORCE posture as a flipped production state: mechanics benched in both modes; the flip is an owner config act (D2) and has not occurred.",
+    "Herald-signed packs: bench and dogfood packs are local-signer packs (signer_type=local) verified through the PinSigner port grammar; no Herald custody exercised.",
+    "Trademark screen for the name 'Eclipse Corona' (D1): still CONDITIONAL \u2014 Chaos Corona / Corona beer screen outstanding before any public surface; certification covers function, not the name.",
+    "Third-party subjects, Bazaar listing mechanics, scheduled re-verification, public proof pages, CI adapters: P1/P2, not built, not certified."
+   ],
+   "bench_date": "2026-10-25",
+   "bench_version": "1.0.0-verity-corona-bench",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-corona-mcp-2026-10-25.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-corona-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-crosslist-mcp",
+   "name": "Eclipse Crosslist MCP",
+   "verdict": "CERTIFIED(split per facet)",
+   "certified": true,
+   "scope": "CERTIFIED(split per facet) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-crosslist-mcp-2026-10-26-4.json: 39 pass, 0 na of 40 checks (1 partial \u2014 the builder-suite re-run line, whose sole failure was the stale fixed-count dogfood assert; fixed in this listing pass, suite now 50/50, smoke PASS). PER-FACET SCOPES \u2014 read exactly: root+ledger CERTIFIED(local): submit acceptance is identity-bound on every write facet (the observed registry record must match the submitted name + version + payload hash; Bazaar: product id/name + record hash), claimed-at-submit lands via the legal submitted\u2192live\u2192claimed two-step, stuck rows repair by receipted re-observation, and EVERY ledger_poll transition out of 'submitted' is identity-gated (live/failed via the shared identity gate, claimed via the repair gate) \u2014 a landed receipt proves the observed record matched the submitted artifact's identity at poll time, nothing about live registries. Bazaar facet CERTIFIED(local): the real catalog served through Crosslist (80 products at bench), publish/status writes under mandate. Official facet CERTIFIED(live-read) for list_servers/get_server/list_versions/get_version_detail; its writes are CERTIFIED(fixture) only and refuse REGISTRY_WRITE_UNAVAILABLE in live mode \u2014 NOT live-write certified. Smithery facet CERTIFIED(live-read) for search_servers/get_server ONLY; hosting/install-counts/releases/Connect sub-resources and publish/publish-release/deploy writes are CERTIFIED(fixture) only and refuse in live mode \u2014 NOT live-write certified. Glama facet CERTIFIED(fixture-read) only, all 8 verbs, ZERO write verbs \u2014 NOT live certified at any scope (live API returned 401; no key held). Herald dependency FIXTURE ONLY: mandates verified against a local ECDSA P-256 Herald-fixture key; production Herald RSA-JWS was not exercised. Receipts are Herald-SEALABLE with seal.status pending \u2014 never sealed. No live-write claim is made for any facet. KNOWN LIMITATIONS (standing LOWs on the card, in plain words): deeply nested error envelopes (wrapper depth 4 or more, and top-level list payloads) can escape detection, and error-shaped data keys can be refused by mistake (R3); on resubmission a stuck-row repair runs just before the mandate is verified, though nothing is written or accepted before that verification (R8); a track stuck at 'submitted' whose registry record is entirely absent has no automatic exit \u2014 it stays submitted rather than inventing a state (R9); submitting to Glama's absent native verb consumes the one-time mandate nonce, so a later legitimate submission can be refused as a replay (D8); the earlier claim that a production Herald key drops in unchanged was overbroad for RSA keys and is not repeated (D5); receipts are sealable and pending, not sealed (D7). N-CHECK (first bench, retained): the facet verbs deliberately mirror each registry's native verbs (renamed-verb share above the house line) \u2014 NO novelty claim rests on the facet verbs; the certified mechanism is the listing-state ledger plus the mandate constraint, which the bench exercised directly.",
+   "not_tested": [
+    "Live writes on any facet \u2014 none exist or were exercised; Official/Smithery writes are fixture-scope only and refuse REGISTRY_WRITE_UNAVAILABLE live.",
+    "Glama live API \u2014 401 without a key, none held; Glama is fixture-read only at every scope.",
+    "Production Eclipse Herald (RSA-JWS) signing/sealing \u2014 fixture ECDSA P-256 only; receipts sealable/pending, never sealed.",
+    "Hosted / multi-tenant transport \u2014 P1; v0.1 is local stdio only. Deferred registries (mcpso, pulsemcp, lobehub; claude-connectors manual tracks) are P1, absent by design."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0-rebench-r7-pollonly (scoped Phase 2 re-bench of the R7 poll fix ONLY; carried LOWs not re-benched)",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-crosslist-mcp-2026-10-26-4.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-crosslist-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-verbatim-mcp",
+   "name": "Eclipse Verbatim MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-verbatim-mcp-2026-10-26-2.json (scoped re-bench of the baseline PARTIAL; baseline card retained append-only): all 5 re-bench scopes PASS. Proven: the 10-tool local stdio surface as shipped (builder suite 64/64 + smoke PASS, re-run and confirmed by the bench); canonicalization verbatim-canon/1.1 \u2014 an independent bench implementation written from the amended spec \u00a75/\u00a76/\u00a77/\u00a78.1 alone, importing no product code, reproduces snapshot usc26-119-124-de68dcc8b3db exactly (census 8/8; statutory 2,277/2,277 hashes + byte lengths + word counts; editorial 2,277/2,277; corpus_root and editorial_root equal to served; manifest_sha256 recomputed equal; \u00a78.1 derivation reproduces the snapshot suffix de68dcc8b3db); run against the superseded 1.0 seal it diverges at exactly one section (\u00a77519), isolating the single published canon rule change. Cite-check: 0 false MATCH across the hostile subset on the new snapshot (digit alteration localized identically to baseline, punctuation/quote-mark/em-dash swaps DIVERGE, editorial-as-statute NOT_IN_CORPUS with EDITORIAL hint, instruction-shaped passages NOT_IN_CORPUS / DIVERGES, wrong-section claims NOT_IN_CORPUS with found-elsewhere). Tamper: every entry/bytes tamper shape is named by section and degrades the signature to SIGNATURE_UNVERIFIED; metadata-only tampers degrade loudly. Non-Title-26 citations return CORPUS_OUT_OF_SCOPE across tools (13 title/CFR forms); grammar failures stay CITATION_MALFORMED. KNOWN LIMITATIONS (standing observations on the card, in plain words): a cite-check MATCH for a repealed section carries no status field, so a repealed section's line can match without the response saying it is repealed (D-5); 115 sections that carry no identifier attribute in the source share a derived citation form and cannot be addressed by citation grammar \u2014 they are reachable only via manifest paging, search, or unclaimed cite-check (D-6); cite-check's candidate pre-filter samples 32-byte windows at a step of 8 \u2014 it can only ever produce non-MATCH outcomes, never a false MATCH (D-7). Two spec-clarification errata candidates are recorded for the next spec touch, not product fixes: a long-form prose title citation ('Title 18, United States Code, \u00a71341') returns CITATION_MALFORMED rather than CORPUS_OUT_OF_SCOPE (D-8), and the spec does not yet state in one line that a note nested inside a note contributes all its descendant text to the parent note's editorial bytes \u2014 the reading the seal uses (D-9). SIGNING: the P0 manifest is signed through the Herald port with labelled FIXTURE keys only (signer.kind 'fixture', FIXTURE_SIGNED) \u2014 never production Herald custody. NAME CONDITIONAL (spec D1, owner-side trademark screen still open): certification covers the local product under its working name; no public surface ships under any name before D1 closes.",
+   "not_tested": [
+    "Hosted or remote serving \u2014 v0.1 is local stdio only; no hosted serve path exists or was certified.",
+    "Production Herald custody \u2014 P0 signing uses labelled fixture keys only; no production key was exercised.",
+    "Title 26 Regulations (26 CFR) \u2014 out of P0 scope by gate decision; no CFR verb exists on the surface.",
+    "Anything past release point Public Law 119-124 \u2014 the corpus is a dated, sealed snapshot; later law is not in it and currency is never claimed.",
+    "The trademark + confusion screen for the name 'Eclipse Verbatim' (spec D1, owner-side) \u2014 still open; it gates any public surface, not this local certification.",
+    "A third-party recompute by anyone other than the bench's independent implementation \u2014 the procedure is published (spec \u00a75\u2013\u00a78.1) and the Verbatim Proof companion tool ships with the product, but no outside party has yet run it."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "scoped re-bench (fix round Phase 2) \u2014 scopes: \u00a717.2 test 1 on amended \u00a75, D-2 fresh shapes, D-3 fresh shapes, cite-check hostile subset, seal/envelope + new-snapshot checks; D-5/D-6/D-7 observation re-confirmation",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-verbatim-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-verbatim-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-roll-mcp",
+   "name": "Eclipse Roll MCP",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local, fixture scope) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-roll-mcp-2026-10-26-rebench.json (scoped re-bench; baseline card eclipse-roll-mcp-2026-10-26.json retained append-only). THE HONEST ARC, on the record: the first bench FAILED (23 pass / 11 FAIL of 34 grouped checks) on two HIGH defects \u2014 D1, revocation/expiry did not propagate past session_open (a pack sealed FILED_VERIFIED under an expired mandate), and D2, Proof's pack_verify certified a filing the read-back had refuted \u2014 plus a UPL fence that keyword-matched and a renamed-key secret-scan bypass. The fix round closed D1\u2013D10 (25 new regression tests, 22 proven failing pre-fix); the full suite runs 63/63 on three consecutive runs (a ~3.4% flake, root-caused to the scan screening system-issued session ids, was killed). Verity's scoped re-bench then attacked the FIX code with fresh shapes \u2014 forged-consistent evidence packs, coordinated base+read-back tamper at seal, valid-window ghost artifacts, revoke-after-approval, planted foreign radar entries \u2014 17/17 PASS, zero new defects; K1 delta-existence, the N-check (0/18 identical verb names vs the Wageward spine, inherited by reference), and grammar-drift all re-verified PASS; NOVELTY_PROVEN stands. SCOPE, read exactly: certification covers the 18-tool local stdio product at FIXTURE scope \u2014 every Gauge adapter is a labelled fixture, NO live registry read has ever been exercised, and NO submission verb exists on any surface (prep-and-seal only; the human submits via the registry's own channel). The counsel gate (spec \u00a710.3) stands before any P1 / live phase regardless of this verdict. Two standing items remain on the card for ruling: a seal attempted under a revoked mandate surfaces APPROVAL_SCOPE_MISMATCH (inherited Wageward spine shape) where sibling verbs surface MANDATE_REVOKED \u2014 harmonization is an owner/Verity call; and seeded Radar entries are born claiming REGISTRY_READ with observed_at empty (observation D10d). NAME CONDITIONAL (spec D2, owner-side trademark screen still open): certification covers the local product under its working name; no public surface ships under any name before the screen closes.",
+   "not_tested": [
+    "Any live registry read \u2014 no Gauge adapter has ever run against a live registry; all adapters exercised are labelled FIXTURE adapters, and the live adapter is unregistered and refuses",
+    "Any submission to any registry \u2014 no submission verb exists at P0 in any name; nothing was or could be filed by this product",
+    "Counsel review (spec \u00a710.3) \u2014 a hard gate before P1 / any live phase; not performed and not part of this certification",
+    "The trademark screen for the name 'Eclipse Roll' (spec D2, owner-side) \u2014 still open; it gates any public surface, not this local certification",
+    "Customer-facing / multi-entity operation (P3, not proposed) and the EDGAR Next submission adapter (P2, specced only)",
+    "Template-fill drafting \u2014 gated on a counsel-approved template set (spec \u00a710.1); the drafting class refuses until then"
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "1.1.0-verity-phase5-rebench",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-roll-mcp-2026-10-26-rebench.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-roll-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-verbatim-eo-mcp",
+   "name": "Eclipse Verbatim \u2014 Executive Orders",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-verbatim-eo-mcp-2026-10-26-3.json (scoped re-bench #3 of fix round 2, commit 56537e4; cards -1/-2 retained append-only \u2014 the mechanism was certified-grade on card -1 and certification was withheld on card -2 on EO-D1-2 alone). Proven: the 10-tool local stdio surface as shipped (builder suite 76/76 in substance \u2014 72 PASS on plain bench runs plus 4 copy-dependent tests PASS under the bench replication harness, their plain-run failures being this VM's environment only; smoke PASS re-run by the bench); snapshot eo-20261022-26818c895dee (graph-3): 1,315 sealed documents, 10,667 edges, 823 divergence records, all OPEN (OMISSION 719, TYPE_DISAGREEMENT 104). EO-D1-2 CLOSED \u2014 the one defect that ever falsified a served claim: whole-cue scope emission trusted the savings idiom (a continuation assertion) and partial strikes; the graph-3 FULL census is 9 \u2192 5, every surviving FULL re-derived by the bench's own reading of the sealed asserting text, the 4 unsupported FULLs corrected exactly (EO 11958\u219211501 twice and EO 13637\u219211958 to UNSPECIFIED; EO 13470\u219212333 to IN_PART 'Part 1'), and an exhaustive sentence-level sweep of all 13,282 sealed segments finds exactly 3 FULL candidates \u2014 precisely the genuine TEXT units; the idiom strip never eats a genuine cue (overreach battery: both orders, replacement form, single-clause continue+revoke). EO-D1-3 CLOSED: all 186 stated ranges re-derived verbatim in their pinned segments (186/186), binding sample 27/27. EO-D8 CLOSED in substance: graph-2 \u2192 graph-3 edge sets identical (10,613 unique keys), exactly 6 scope-only diffs, documents_root + divergences_root byte-identical, zero assertion groups gained or lost, net \u221266 exact (observation EO-O9: the spec A6 \u221294/+28 instance split differs by one each way from the bench's grouping, \u221293/+27 \u2014 a counting-convention artifact; a future accounting should state its grouping key). Riders CLOSED: EO-D5-2 (9/9 fresh Public Inspection marking variants refuse PUBLIC_INSPECTION_NOT_INGESTED by name against an empty PI index; bare 'PI' stays generic \u221232602, never stretched) and EO-D7 (\u00a78.3 snapshot + coverage blocks on all 10 tools' successes and on refusal envelopes, SNAPSHOT_NOT_FOUND and GRAPH_VERSION_MISMATCH standing without blocks by documented construction; disposition carries divergences[] and self_limiting_terms[] as serve-time-derived, hash-exact pointers, never evaluated). Extraction bar re-measured on a fresh 15-assertion labelled sample: precision 1.000, recall 1.000; corpus FULL precision exhaustive at 5/5. NEW LOW FINDINGS (synthetic-only, zero sealed instances, corpus-swept): EO-D1-4 \u2014 four whole-cue binding residuals outside the implemented grammar (truncated idiom without 'and effect'; roman-numeral parts; an appendix struck wholly; a comma-joined cue about another object), recorded with a PRE-RESEAL CONDITION \u2014 the next reseal's bench sweeps the new batch for these shapes before the snapshot serves as current; EO-D1-5 \u2014 hyphenated compound ordinals \u226513 misquote the range tail ('twenty-first section' \u2192 range 'first section'), a verbatim-accuracy gap, never FULL. Observation EO-O8: snapshot history holds two builder-iteration seals (d31caba, ede0001) and graph-3's manifest names ede0001 as its previous rather than c44a7ad80308 directly \u2014 append-only history is honestly kept and the certified lineage reconciles exactly. THE FENCE (gate C3, load-bearing): no output of this product characterizes legal effect; every disposition answer remains an edge set + as_of + coverage window + the \u00a72.2 completeness sentence, bench-verified byte-identical to the spec constant. Coverage re-derives from the manifest: sealed from 2000-02-10, 258 exclusions all NO_FR_FULL_TEXT_XML (257 documents 1994\u20131999 + EO 13548), unsealed layer from 1931-08-26; 1,315 + 258 = 1,573. SIGNING: the snapshot seal is a FIXTURE seal (FIXTURE_SIGNED) \u2014 never production Herald custody. NAME CONDITIONAL: the name inherits the pending Eclipse Verbatim trademark screen (owner-side); certification covers the local product's function under its working name, not the name.",
+   "not_tested": [
+    "Hosted or remote serving \u2014 v0.1 is local stdio only; no hosted serve path exists or was certified.",
+    "Production Herald custody \u2014 the snapshot seal is FIXTURE_SIGNED with a labelled fixture key; no production key was exercised.",
+    "Sealed texts before 2000 \u2014 the Federal Register full-text XML floor is 2000 (measured); 1994\u20131999 orders exist only in the unsealed metadata+edges layer, and no sealed text is claimed for them.",
+    "Any characterization of legal effect \u2014 refused by construction: no status field exists; disposition answers report what the named sources assert, as graph state as of a named snapshot, with the standing completeness sentence.",
+    "EO\u2192USC authority resolution against a live Code corpus \u2014 the port is empty by design at v0.1 and answers by name (CODE_CORPUS_UNAVAILABLE); resolution activates when the sealed Code corpus lands.",
+    "The trademark screen for the Verbatim family name (owner-side) \u2014 still open; it gates public surfaces under the name, not this local certification.",
+    "Any reseal after card -3 \u2014 EO-D1-4 / EO-D1-5 are recorded with a pre-reseal sweep condition; no reseal has occurred since certification."
+   ],
+   "bench_date": "2026-10-26",
+   "bench_version": "Scoped re-bench #3 of EO fix round 2 (commit 56537e4): FULL-emission audit third pass (every graph-3 FULL edge re-derived from its sealed asserting text by the bench's own reading; exhaustive sentence-level FULL sweep over all 13,282 sealed segments), savings-idiom overreach battery, range-grammar fresh shapes + all-186-range re-derivation, EO-D8 accounting audit under three independent assertion-groupings + spot attribution, riders EO-D5-2/EO-D7 with fresh marking variants and every refusal class, regression floor (sentence byte-identity extracted from the governing spec, exclusion census, recompute convergence via suite canon tests, suite + smoke). Environment note: this VM intermittently EPERMs file writes (os.sendfile blocked outright; tempfile probe unreliable) \u2014 the 4 copy-dependent suite tests fail under plain runs in rotating subsets and PASS under a bench-side replication harness using only environment shims (pinned tempdir + retry-tolerant copyfile); product code exercised unmodified. Rigs: test-bench/refix-bench-eo3/ (rig.py, riders.py, riders2.py, riders3.py, run4.py).",
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-verbatim-eo-mcp-2026-10-26-3.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-verbatim-eo-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-flood-witness-mcp",
+   "name": "Eclipse Flood Witness",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-flood-witness-mcp-2026-10-26-2.json (scoped re-bench of the FW-D1..D7 fix round; card -1 PARTIAL(local) retained append-only and superseded). Proven: flood-evidence witness at Florida scope for the two sealed partitions Leon (snapshot nfhl-fl-leon-20260611-bec93b592c31; 12,099 features) and Monroe (snapshot nfhl-fl-monroe-20261022-4776f79b6d7c; 9,664 features), operative index fw-index-202610-abd4c392bd16 enumerating all 67 Florida county partitions (65 NOT_SEALED, named). All seven card -1 defects FIXED and verified against the fix code with fresh shapes, not the builder's regressions: FW-D1 by independent ID-derivation recompute over every manifest and index present (6/6 reproduce; ~60 strip-set variants never collide); FW-D2 by byte-comparison of the manifest scope string against the operative index plus a full public-copy sweep; FW-D3 by 9 fresh multi-record LOMR fabrications (fires iff the per-case record set differs, names only truly differing cases); FW-D4 by 5 fresh drift shapes including a revised-date-only restudy; FW-D5 by minting a coverage receipt against a fresh synthetic partition/index and reading the claim; FW-D6 by direct read of both implementations (end-to-end run is an open environmental evidence debt); FW-D7 by a grammar-vs-body key diff over every stored receipt. P0 partition completeness remains OPEN (2 of 3): Miami-Dade is NOT_SEALED in the operative index, with no snapshot directory present. One NEW LOW (FW-D8) stands as a printed condition: the drift LOMR step iterated snapshot B only, so a case wholly removed in B never fired drift \u2014 fixed in code (sorted union of case ids) after the bench; it MUST hold before any second-vintage drift output is published, and is latent at the current single-vintage scope. FLAG-1 QUALIFIER: the LOMC override branch (LOMC_OVERRIDE_APPLIES) is FIXTURE-PROVEN ONLY \u2014 the sealed corpus contains zero LOMA/LOMR-F records and the branch has never fired on real sealed data. All seals are FIXTURE_SIGNED (Herald fixture key; owner open item O2) and labelled as such. Nothing in this verdict speaks to determination-of-record, SFHDF, lender, or insurance use: the product is an evidence-grade receipt witness only, per gate fence. NAME CONDITIONAL: working name, trademark screen owed (spec O1); certification covers the local product's function under its working name, not the name.",
+   "not_tested": [
+    "Miami-Dade partition \u2014 NOT_SEALED (pending) in the operative index; 65 of 67 Florida partitions are enumerated NOT_SEALED and no determination can be minted against them",
+    "Second-vintage drift on real data \u2014 drift classification is proven at the classifier level with fabricated shapes; it remains latent until a second vintage of any partition seals, and the FW-D8 fix must hold before any second-vintage drift output is published",
+    "The LOMC override branch on real sealed data \u2014 FIXTURE-PROVEN ONLY (zero LOMA/LOMR-F records in the sealed corpus; the LOMA layer is absent from FEMA's county shapefile distribution)",
+    "Production Herald custody \u2014 all seals are FIXTURE_SIGNED with a labelled fixture key (owner open item O2); no production key was exercised",
+    "Hosted or remote serving \u2014 v0.1 is local stdio only; the runtime has no live-query path by construction",
+    "Full builder suite re-run and the FW-D6 end-to-end run at re-bench \u2014 open environmental evidence debts (this VM's exec write latch), graded environmental on card -2, not product defects",
+    "Any determination-of-record, SFHDF, lender-compliance, or insurance use \u2014 refused by construction under the gate fence; the product is an evidence-grade receipt witness only",
+    "The trademark screen for the Flood Witness name (owner-side, spec O1) \u2014 still open; it gates public surfaces under the name, not this local certification"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-flood-witness-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-flood-witness-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-recall-witness-mcp",
+   "name": "Eclipse Recall Witness",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "scope": "CERTIFIED(local, FIXTURE scope) \u2014 Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-recall-witness-mcp-2026-10-26-2.json (scoped re-bench of the RW-D1..RW-D6 fix round + transport repoint; card -1 PARTIAL(local, FIXTURE scope), 50 checks 43P/7F, retained append-only and superseded). Proven: sealed campaign-vintage witness over fixture flat files \u2014 nightly anchor + hash-chained per-campaign vintages, closed recall-events/1.1 drift grammar (spec \u00a77 names; \u03941 ACCEPTED at card -1), sealed-vintage-only posture-at-date receipts and mandate-bound CAMPAIGN-LEVEL check receipts with byte-exact standing sentences, churn instrumentation with segment-derived series_state. Builder suites reproduced first-hand: 35/35 + 18/18 fix-round regressions, smoke PASS; bench battery 136 checks, 127 pass \u2014 the 9 fails group into three NEW LOW conditions (RW-D7/RW-D8/RW-D9); no prior defect survives. All six card -1 defects FIXED and verified against fresh shapes, not the builder's regressions: RW-D1 (HIGH) phrase battery \u2014 bench shape end-to-end (27V321000 733\u21921042, \u201cadvised not to drive\u201d) emits ESCALATION_DO_NOT_DRIVE + sealed advisory_classes [DO_NOT_DRIVE], 11/11 fresh positives, and an independent cross-signal: 15 live campaigns re-fetched from api.nhtsa.gov, phrase tags agreeing with the API's parkIt/parkOutSide flags on every row; RW-D2 series_state stays MEASURING under a methodology-only segment and flips only when a rates-bearing segment seals; RW-D3 ask-shape screen refuses BY NAME incl. 14 bench-fresh spellings while benign record questions still serve; RW-D4 layout_hash MEASURED \u2014 header and free-text column permutations refuse LAYOUT_DRIFT_REFUSED, unpermuted real-shape files seal; RW-D5 prev_vintage_hash and anchor-chain tampers name MISMATCH in verify_receipt and the recompute CLI; RW-D6 campaign-scoped NOT_SEALED prints the campaign's own first vintage with the corpus floor labelled beside it. LIVE PROOF VERIFIED FIRST-HAND (5/5): the live store seals 24V809 with cross_check OK and DO_NOT_DRIVE agreeing with parkIt: true; the diverged store seals nothing (FAILED + named); rcpt-00001 recomputes MATCH and carries exactly the 4 campaigns the live API returns for Porsche 911 MY2024 (24V155000, 24V809000, 25V896000, 26V682000), tags vs flags 4/4. All seals under FIXTURE ECDSA keys, labelled on every artifact. NO live nightly seal exists: the flat-file spine host (www-odi.nhtsa.dot.gov) remains unreachable from this egress (re-probed 2026-10-26, empty reply) and was NOT re-routed to the API \u2014 the file is the canon source. LIVE scope additionally requires (a) the first real nightly ingest and (b) live-key cutover (fixture keys at P0, owner's call) \u2014 scope items, not defects. Conditions RW-D7/RW-D8/RW-D9 (all LOW) are printed on card -2 and bind the next grammar/seal touch; no escalation-completeness claim beyond the live-stock-proven phrase families may appear in any copy. Nothing in this verdict speaks to any vehicle's safety, any specific VIN's repair state, or compliance with any law (gate C2/C5/C11). NAME CONDITIONAL: working name, trademark screen owed (spec O1); certification covers the local product's function under its working name, not the name.",
+   "not_tested": [
+    "Live nightly ingest \u2014 no live nightly seal exists: the flat-file spine host (www-odi.nhtsa.dot.gov) is unreachable from the build egress (re-probed 2026-10-26) and the spine was NOT re-routed to the API; LIVE scope requires the first real nightly ingest",
+    "Production Herald custody \u2014 all seals are under FIXTURE ECDSA keys, labelled on every artifact (spec O3); live-key cutover is the owner's call and has not been exercised",
+    "Escalation completeness beyond the live-stock-proven phrase families \u2014 RW-D9: operate/use paraphrase families (\u201cshould not be operated\u201d, \u201cnever operate\u201d, \u201cdo not use\u201d) tag nothing; no as-served instance found in the live stock sampled; bound to the recall-events/1.2 bump",
+    "Narrative park-outside text \u2014 RW-D7: a constructed rollaway-narrative shape (\u201cparked outside the owner's home\u201d) tags a false PARK_OUTSIDE; no live-stock instance; fix at recall-events/1.2 (owner-directed-voice requirement)",
+    "Genesis-link assertion \u2014 RW-D8: first-vintage prev_vintage_hash and first-anchor prev_anchor_hash tampers verify MATCH (content integrity unaffected); the assert lands at the next seal-store touch",
+    "Per-VIN unrepaired status \u2014 never determined by construction (gate C5): the consumer VIN lookup is not automated, no per-VIN code path exists, and receipts print scope_class CAMPAIGN-LEVEL only",
+    "Hosted or remote serving \u2014 v0.1 is local stdio only",
+    "The trademark screen for the Recall Witness name (owner-side, spec O1) \u2014 still open; it gates public surfaces under the name, not this local certification"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": "https://eclipsebazaar.com/cards/eclipse-recall-witness-mcp-2026-10-26-2.json",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-recall-witness-mcp/"
+  }
+ ]
+}

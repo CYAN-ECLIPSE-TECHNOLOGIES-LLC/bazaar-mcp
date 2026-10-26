@@ -107,6 +107,10 @@ def harvest(product: dict) -> dict:
         "bench_verdict": cert.get("bench_verdict"),
         "certified_scope": cert.get("certified_scope"),
         "scorecard_ref": cert.get("scorecard_ref"),
+        "scorecard_url": (
+            "https://eclipsebazaar.com/cards/"
+            + cert["scorecard_ref"].rsplit("/", 1)[-1]
+            if cert.get("scorecard_ref") else None),
         "listing_version": listing_version,
         "identities": sorted(identities),
         "listing_url": LISTING_URL,

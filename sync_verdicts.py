@@ -152,6 +152,16 @@ def build_ledger():
             if am and am.group(1) == sc.get("tool"):
                 tool, date = am.group(1), am.group(3)
                 seq = 60 + 2 * int(am.group(2) or 0)
+            elif sc.get("tool") is None and sc.get("product") is None \
+                    and sc.get("slug") is None and "verdict" in sc:
+                # Card-format variant (EO scoped re-bench card -3,
+                # 2026-10-26): the card carries NO identity field —
+                # identity rides in the filename alone (its -1/-2
+                # siblings carry "tool" and agree with the filename).
+                # Accept the filename id. Checker normalization, EO
+                # listing pass — scorecard untouched, same treatment
+                # as the Attest/Charter fixes above.
+                pass
             else:
                 continue
         on_record[tool] = on_record.get(tool, 0) + 1
@@ -221,9 +231,35 @@ def build_ledger():
                                    if str(v).startswith("PASS")),
                        "fail": 0, "na": 0, "untestable": 0,
                        "total": len(_sv)}
+        if _counts["total"] == 0 and isinstance(sc.get("per_item"), list) \
+                and sc["per_item"] and all(
+                    isinstance(it, dict) and "status" in it
+                    for it in sc["per_item"]):
+            # Card-format variant (EO scoped re-bench card -3,
+            # 2026-10-26): no "checks"/"per_line" at all — the bench's
+            # adjudicated items ride in "per_item" as {id, status}
+            # dispositions (CLOSED / PASS / MET are the favorable
+            # resolutions; anything else tallies as fail). Checker
+            # normalization, EO listing pass — scorecard untouched,
+            # same treatment as the Verbatim scope_verdicts fix above.
+            _fav = ("CLOSED", "PASS", "MET")
+            _p = sum(1 for it in sc["per_item"]
+                     if str(it["status"]).upper().startswith(_fav))
+            _counts = {"pass": _p, "fail": len(sc["per_item"]) - _p,
+                       "na": 0, "untestable": 0,
+                       "total": len(sc["per_item"])}
         tools[tool] = {"tool": tool, "verdict": _v,
                        "certified": _v.startswith("CERTIFIED("),
-                       "bench_date": sc.get("bench_date") or sc.get("date"),
+                       # Card-format variant (Flood Witness suite,
+                       # 2026-10-26): the bench date rides in
+                       # "benched_at" instead of "bench_date"/"date";
+                       # without it the entry stores None and the next
+                       # same-tool card crashes the (date, seq) compare.
+                       # Checker normalization, EO listing pass —
+                       # scorecards untouched, same treatment as the
+                       # Charter/BC/Covenant format fixes above.
+                       "bench_date": sc.get("bench_date") or sc.get("date")
+                       or sc.get("benched_at"),
                        "bench_version": sc.get("bench_version")
                        or sc.get("bench_agent", ""),
                        "environment": sc.get("environment") or _scope,

@@ -781,6 +781,25 @@
    "scorecard_ref": "test-bench/results/eclipse-fedscope-mcp-2026-10-26-4.json",
    "cards_on_record": 4
   },
+  "eclipse-flood-witness-mcp": {
+   "tool": "eclipse-flood-witness-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-flood-witness-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-forecast-mcp": {
    "tool": "eclipse-forecast-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1103,6 +1122,44 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-pantry-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-patent-witness-mcp": {
+   "tool": "eclipse-patent-witness-mcp",
+   "verdict": "PARTIAL",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "verity-full-bench-1",
+   "environment": "Bench executed on the house VM during an intermittent exec write-latch episode (EPERM/silent-zero on exec-spawned writes; file-tool writes healthy). All bench copies were validated RECOMPUTE_MATCH pristine before any tamper; the product tree was never written by the bench and verified intact after (manifest 7209 B, records 17832 B, index 2440 B).",
+   "qualifier": "PARTIAL(local, FIXTURE scope) \u2014 mechanism certified-grade; certification withheld on three MED defects (PW-D1, PW-D2, PW-D4). Scope language binding: CERTIFIED scope caps at local, FIXTURE scope \u2014 every seal is FIXTURE_SIGNED under fixture keys over fixture extracts; live ODP ingest is MEASURED BLOCKED (bench re-verified HTTP 401 without an operator ODP key) and no live seal exists.",
+   "seq": 1,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 3
+   },
+   "scorecard_ref": "test-bench/results/eclipse-patent-witness-mcp-2026-10-26.json",
+   "cards_on_record": 1
+  },
+  "eclipse-permits-mcp": {
+   "tool": "eclipse-permits-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "Scoped re-bench of the fix round ONLY (P-D1 + P-D2), fresh shapes per house law: Rig D (bench-owned, rig_d_rebench.py) \u2014 B7 full re-run (7 fence shapes x 14 agent verbs) + case/whitespace/unicode-lookalike key variants, string-value embedding, extreme nesting (in-args to depth 250, root-level raw depth 3000), arrays-of-arrays, duplicate raw-JSON keys, non-object arguments, operator-surface confusion incl. T3-signed operator call carrying fence keys, false-positive sweep on legitimate rich traffic (real NYC receipt + person-bearing payload via witness_verify on both stdio and handle() paths; citizen session_open with person-slot-bearing mandate scopes), P-D2 independent audit (own person-value scan, structural key scan, spec-only recompute, receipt byte-identity vs 37a228d), regression spot (B2 two on-disk shapes, B4 unchanged-read, B14 oracle both directions), suite + smoke re-run",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 4
+   },
+   "scorecard_ref": "test-bench/results/eclipse-permits-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
   },
   "eclipse-procure-mcp": {
    "tool": "eclipse-procure-mcp",
@@ -1484,6 +1541,25 @@
    "scorecard_ref": "test-bench/results/eclipse-vector-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-verbatim-eo-mcp": {
+   "tool": "eclipse-verbatim-eo-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "Scoped re-bench #3 of EO fix round 2 (commit 56537e4): FULL-emission audit third pass (every graph-3 FULL edge re-derived from its sealed asserting text by the bench's own reading; exhaustive sentence-level FULL sweep over all 13,282 sealed segments), savings-idiom overreach battery, range-grammar fresh shapes + all-186-range re-derivation, EO-D8 accounting audit under three independent assertion-groupings + spot attribution, riders EO-D5-2/EO-D7 with fresh marking variants and every refusal class, regression floor (sentence byte-identity extracted from the governing spec, exclusion census, recompute convergence via suite canon tests, suite + smoke). Environment note: this VM intermittently EPERMs file writes (os.sendfile blocked outright; tempfile probe unreliable) \u2014 the 4 copy-dependent suite tests fail under plain runs in rotating subsets and PASS under a bench-side replication harness using only environment shims (pinned tempdir + retry-tolerant copyfile); product code exercised unmodified. Rigs: test-bench/refix-bench-eo3/ (rig.py, riders.py, riders2.py, riders3.py, run4.py).",
+   "environment": null,
+   "qualifier": null,
+   "seq": 3,
+   "counts": {
+    "pass": 7,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 7
+   },
+   "scorecard_ref": "test-bench/results/eclipse-verbatim-eo-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
+  },
   "eclipse-verbatim-mcp": {
    "tool": "eclipse-verbatim-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1578,6 +1654,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-witness-mcp-2026-10-25.json",
    "cards_on_record": 1
+  },
+  "eclipse-x402-rail-adapter": {
+   "tool": "eclipse-x402-rail-adapter",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-x402-rail-adapter-2026-10-26-2.json",
+   "cards_on_record": 2
   },
   "eclipse-zenith-mcp": {
    "tool": "eclipse-zenith-mcp",
@@ -1689,8 +1784,12 @@
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
   "eclipse-dossier-mcp",
+  "eclipse-flood-witness-mcp",
+  "eclipse-patent-witness-mcp",
+  "eclipse-permits-mcp",
   "eclipse-vector-mcp",
   "eclipse-witness-drift",
-  "eclipse-witness-mcp"
+  "eclipse-witness-mcp",
+  "eclipse-x402-rail-adapter"
  ]
 }

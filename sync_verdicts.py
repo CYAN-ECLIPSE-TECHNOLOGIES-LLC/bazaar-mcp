@@ -79,8 +79,17 @@ def build_ledger():
         prev = tools.get(tool)
         if prev and (date, seq) <= (prev["bench_date"], prev["seq"]):
             continue
-        tools[tool] = {"tool": tool, "verdict": sc["verdict"],
-                       "certified": sc["verdict"].startswith("CERTIFIED("),
+        _v = sc["verdict"]
+        if _v == "CERTIFIED" and sc.get("qualifier"):
+            # Card-format variant: verdict and qualifier emitted as
+            # separate fields (friction re-bench card, 2026-10-25). Compose
+            # the standing verdict so the ledger's certified test and every
+            # surface compare against the same string the card's own
+            # certification text states. Checker normalization, publish
+            # pass 6 top-up (friction), same treatment as the pass-2 fix.
+            _v = f"CERTIFIED({sc['qualifier']})"
+        tools[tool] = {"tool": tool, "verdict": _v,
+                       "certified": _v.startswith("CERTIFIED("),
                        "bench_date": sc["bench_date"],
                        "bench_version": sc["bench_version"],
                        "environment": sc["environment"],

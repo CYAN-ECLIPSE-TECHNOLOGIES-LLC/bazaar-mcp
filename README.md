@@ -85,7 +85,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Redteam MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Span MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Airtime MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local/simulator) |
-| Eclipse Friction MCP | in-development | not certified — spec complete (16 P0 tools), build dispatched; no Test Bench run yet |
+| Eclipse Friction MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Test Bench | in-development | not certified — in-house artifact, productization in progress (slate T1) |
 | Eclipse Stocktake | in-development | not certified — in-house artifact, productization in progress (slate T4) |
 | Eclipse Press | in-development | not certified — in-house artifact, productization in progress (slate T3) |

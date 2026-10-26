@@ -574,22 +574,22 @@
   },
   "eclipse-friction-mcp": {
    "tool": "eclipse-friction-mcp",
-   "verdict": "PARTIAL",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-25",
-   "bench_version": "0.1.0",
+   "bench_version": "0.1.0-rebench-2",
    "environment": "local",
    "qualifier": "local",
-   "seq": 1,
+   "seq": 2,
    "counts": {
-    "pass": 34,
-    "fail": 7,
+    "pass": 41,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
     "total": 41
    },
-   "scorecard_ref": "test-bench/results/eclipse-friction-mcp-2026-10-25.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-friction-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
   },
   "eclipse-gig-core-mcp": {
    "tool": "eclipse-gig-core-mcp",

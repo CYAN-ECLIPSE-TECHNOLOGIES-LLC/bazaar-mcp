@@ -4842,6 +4842,70 @@
     "radar_refresh"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Sealed corpus, recomputable by anyone: 1,315 Executive Orders (Federal Register full-text XML) sealed per section under canon-eo/1.0 into snapshot eo-20261022-26818c895dee — per-section hashes, a signed manifest, append-only snapshot history; the bench re-derives the seal from the stored artifacts and a spec-only build-time recompute converged 1,315/1,315 document hashes identical",
+    "The novel mechanism — a disposition graph extracted from the orders' own sealed sections: 10,667 edges, every edge pinned to the hash of the asserting section and typed by provenance (TEXT / FR_NOTE / NARA_TABLE), so a graph claim can always be recomputed against the sealed text that asserts it; where the consulted sources disagree, the disagreement itself is sealed as a DIVERGENCE record (823, status OPEN forever, never resolved by the product)",
+    "Scope is clause-bound, never idiom-bound: a whole-order cue binds only in a clause naming the target; part-governed cues mint IN_PART with the stated range; the savings idiom is stripped before cue search and can never mint a whole-order scope — the bench's exhaustive sentence-level sweep of all 13,282 sealed segments finds exactly the 5 genuine whole-order edges and zero contamination",
+    "Honest coverage, measured not assumed: the Federal Register full-text XML floor is 2000 (the 1994 gate assumption was falsified by measurement) — 258 orders are EXCLUDED_NAMED (NO_FR_FULL_TEXT_XML), never silently absent; pre-2000 orders ride in an unsealed metadata+edges layer reaching back to 1931, labelled unsealed on every surface; Public Inspection versions are refused by name (PUBLIC_INSPECTION_NOT_INGESTED)",
+    "The fence, by construction (gate C3): no tool characterizes legal effect and no status field exists anywhere in the product — every disposition answer is an edge set + as_of + a coverage window + the standing completeness sentence, served byte-identically; cite_check verifies a claimed section against its sealed hash, and resolve_authority resolves an order's statutory citations against the consumed sealed Code corpus (an empty port answers by name until that corpus lands — never a fabricated resolution)"
+   ],
+   "categories": [
+    "Compliance & Regulation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "CERTIFIED(local)",
+    "certified": true,
+    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-verbatim-eo-mcp-2026-10-26-3.json (scoped re-bench #3 of fix round 2, commit 56537e4; cards -1/-2 retained append-only — the mechanism was certified-grade on card -1 and certification was withheld on card -2 on EO-D1-2 alone). Proven: the 10-tool local stdio surface as shipped (builder suite 76/76 in substance — 72 PASS on plain bench runs plus 4 copy-dependent tests PASS under the bench replication harness, their plain-run failures being this VM's environment only; smoke PASS re-run by the bench); snapshot eo-20261022-26818c895dee (graph-3): 1,315 sealed documents, 10,667 edges, 823 divergence records, all OPEN (OMISSION 719, TYPE_DISAGREEMENT 104). EO-D1-2 CLOSED — the one defect that ever falsified a served claim: whole-cue scope emission trusted the savings idiom (a continuation assertion) and partial strikes; the graph-3 FULL census is 9 → 5, every surviving FULL re-derived by the bench's own reading of the sealed asserting text, the 4 unsupported FULLs corrected exactly (EO 11958→11501 twice and EO 13637→11958 to UNSPECIFIED; EO 13470→12333 to IN_PART 'Part 1'), and an exhaustive sentence-level sweep of all 13,282 sealed segments finds exactly 3 FULL candidates — precisely the genuine TEXT units; the idiom strip never eats a genuine cue (overreach battery: both orders, replacement form, single-clause continue+revoke). EO-D1-3 CLOSED: all 186 stated ranges re-derived verbatim in their pinned segments (186/186), binding sample 27/27. EO-D8 CLOSED in substance: graph-2 → graph-3 edge sets identical (10,613 unique keys), exactly 6 scope-only diffs, documents_root + divergences_root byte-identical, zero assertion groups gained or lost, net −66 exact (observation EO-O9: the spec A6 −94/+28 instance split differs by one each way from the bench's grouping, −93/+27 — a counting-convention artifact; a future accounting should state its grouping key). Riders CLOSED: EO-D5-2 (9/9 fresh Public Inspection marking variants refuse PUBLIC_INSPECTION_NOT_INGESTED by name against an empty PI index; bare 'PI' stays generic −32602, never stretched) and EO-D7 (§8.3 snapshot + coverage blocks on all 10 tools' successes and on refusal envelopes, SNAPSHOT_NOT_FOUND and GRAPH_VERSION_MISMATCH standing without blocks by documented construction; disposition carries divergences[] and self_limiting_terms[] as serve-time-derived, hash-exact pointers, never evaluated). Extraction bar re-measured on a fresh 15-assertion labelled sample: precision 1.000, recall 1.000; corpus FULL precision exhaustive at 5/5. NEW LOW FINDINGS (synthetic-only, zero sealed instances, corpus-swept): EO-D1-4 — four whole-cue binding residuals outside the implemented grammar (truncated idiom without 'and effect'; roman-numeral parts; an appendix struck wholly; a comma-joined cue about another object), recorded with a PRE-RESEAL CONDITION — the next reseal's bench sweeps the new batch for these shapes before the snapshot serves as current; EO-D1-5 — hyphenated compound ordinals ≥13 misquote the range tail ('twenty-first section' → range 'first section'), a verbatim-accuracy gap, never FULL. Observation EO-O8: snapshot history holds two builder-iteration seals (d31caba, ede0001) and graph-3's manifest names ede0001 as its previous rather than c44a7ad80308 directly — append-only history is honestly kept and the certified lineage reconciles exactly. THE FENCE (gate C3, load-bearing): no output of this product characterizes legal effect; every disposition answer remains an edge set + as_of + coverage window + the §2.2 completeness sentence, bench-verified byte-identical to the spec constant. Coverage re-derives from the manifest: sealed from 2000-02-10, 258 exclusions all NO_FR_FULL_TEXT_XML (257 documents 1994–1999 + EO 13548), unsealed layer from 1931-08-26; 1,315 + 258 = 1,573. SIGNING: the snapshot seal is a FIXTURE seal (FIXTURE_SIGNED) — never production Herald custody. NAME CONDITIONAL: the name inherits the pending Eclipse Verbatim trademark screen (owner-side); certification covers the local product's function under its working name, not the name.",
+    "not_tested": [
+     "Hosted or remote serving — v0.1 is local stdio only; no hosted serve path exists or was certified.",
+     "Production Herald custody — the snapshot seal is FIXTURE_SIGNED with a labelled fixture key; no production key was exercised.",
+     "Sealed texts before 2000 — the Federal Register full-text XML floor is 2000 (measured); 1994–1999 orders exist only in the unsealed metadata+edges layer, and no sealed text is claimed for them.",
+     "Any characterization of legal effect — refused by construction: no status field exists; disposition answers report what the named sources assert, as graph state as of a named snapshot, with the standing completeness sentence.",
+     "EO→USC authority resolution against a live Code corpus — the port is empty by design at v0.1 and answers by name (CODE_CORPUS_UNAVAILABLE); resolution activates when the sealed Code corpus lands.",
+     "The trademark screen for the Verbatim family name (owner-side) — still open; it gates public surfaces under the name, not this local certification.",
+     "Any reseal after card -3 — EO-D1-4 / EO-D1-5 are recorded with a pre-reseal sweep condition; no reseal has occurred since certification."
+    ],
+    "scorecard_ref": "test-bench/results/eclipse-verbatim-eo-mcp-2026-10-26-3.json"
+   },
+   "icon": "eclipse-verbatim-eo-mcp/icon-512.png",
+   "id": "eclipse-verbatim-eo-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-verbatim-eo-mcp.png",
+   "name": "Eclipse Verbatim — Executive Orders",
+   "name_status": "CONDITIONAL — inherits the pending Eclipse Verbatim trademark + confusion screen (owner-side, still open); it gates any public surface under the name. Family fallbacks on record: Eclipse Quire, then Eclipse Schedule",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "Free local v0.1; pricing TBD per spec (owner-gated)",
+   "problem_statements": [
+    "I need the exact text of an Executive Order section with a hash I can verify — not a scrape I have to trust",
+    "The order's own text, the FR disposition notes, and the NARA tables tell different stories — I need the disagreement preserved as sealed data, not resolved away",
+    "I need what the named sources assert about an order, as graph state as of a named snapshot — without anyone dressing graph state up as legal effect"
+   ],
+   "source_refs": [
+    "verbatim-executive-orders-spec-20261026.md",
+    "verbatim-executive-orders-gate-20261026.md",
+    "eclipse-verbatim-eo-mcp/bazaar-manifest.json",
+    "test-bench/results/eclipse-verbatim-eo-mcp-2026-10-26-3.json"
+   ],
+   "status": "in-development",
+   "tagline": "Executive Orders as sealed objects: per-section hashes, a provenance-typed disposition graph, divergences kept as data.",
+   "tools": [
+    "search_orders",
+    "get_order",
+    "get_section",
+    "cite_check",
+    "verify_manifest",
+    "disposition",
+    "revocation_chain",
+    "resolve_authority",
+    "graph_divergences",
+    "corpus_status"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [
@@ -4855,7 +4919,8 @@
   "Publish pass 4 top-up (2026-10-25): Eclipse 100 wave-1 completions — Blackbox + Docket CERTIFIED(local) verbatim from manifests + standing Test Bench scorecards (Blackbox run 3 of 22/22; Docket run 7, 19 pass / 1 na of 20; FAILED/PARTIAL history retained in the bench repo)",
   "Publish pass 5 (2026-10-26): Eclipse 100 wave 2 (Countermark, Census, Crosswalk, Redteam, Span — CERTIFIED(local), NOVELTY_PROVEN) + Eclipse Airtime CERTIFIED(local/simulator) 23/23 (PARTIAL card retained) + Till Ads Rail P1 extension CERTIFIED(local/simulator) 100/100 (test mode only, NOT PROVEN IN STRIPE) + Eclipse Friction listed in-development (spec complete, 16 P0 tools, build dispatched; no bench run yet)",
   "Publish pass 10 (2026-10-26): Eclipse Crosslist MCP — CERTIFIED(split per facet) per standing card -4 (R1/R2/R7 identity gates closed; only LOWs standing: R3/R8/R9/D5/D7/D8); Rook listing pass with §5.5 logo + Family A local scope emblem (root+ledger scope); Crosslist suite dogfood assert made catalog-derived (50/50 at 80, re-verified at 81)",
-  "Publish pass 11 (2026-10-26): Eclipse Verbatim MCP — CERTIFIED(local) per standing card -2 (scoped re-bench 5/5 scopes PASS; full-spec-literal recompute 2277/2277 both layers under canon verbatim-canon/1.1, snapshot usc26-119-124-de68dcc8b3db; cite-check hostile battery 0 false MATCH); Rook listing pass with §5.5 logo (monogram VE) + Family A local scope emblem; name CONDITIONAL (spec D1 TM screen owner-side; fallbacks Quire → Schedule); registry manifest staged + validated, NOT published (packaging queue behind Friction)"
+  "Publish pass 11 (2026-10-26): Eclipse Verbatim MCP — CERTIFIED(local) per standing card -2 (scoped re-bench 5/5 scopes PASS; full-spec-literal recompute 2277/2277 both layers under canon verbatim-canon/1.1, snapshot usc26-119-124-de68dcc8b3db; cite-check hostile battery 0 false MATCH); Rook listing pass with §5.5 logo (monogram VE) + Family A local scope emblem; name CONDITIONAL (spec D1 TM screen owner-side; fallbacks Quire → Schedule); registry manifest staged + validated, NOT published (packaging queue behind Friction)",
+  "Publish pass 12 (2026-10-26): Eclipse Verbatim — Executive Orders MCP — CERTIFIED(local) per standing card -3 (scoped re-bench #3 of fix round 2, commit 56537e4; FULL census 9 → 5 all genuine; 186/186 ranges; extraction precision/recall 1.000; EO-D1-4/EO-D1-5 LOWs standing, synthetic-only, with pre-reseal sweep condition); Rook listing pass with §5.5 logo + Family A local scope emblem; name CONDITIONAL (inherits the pending Eclipse Verbatim TM screen, owner-side; family fallbacks Quire → Schedule); registry manifest staged, NOT published (packaging queue); snapshot eo-20261022-26818c895dee, FIXTURE seal"
  ],
  "vendor": "Cyan Eclipse Technologies",
  "verdicts_synced_from": "test-bench/results via sync_verdicts.py"

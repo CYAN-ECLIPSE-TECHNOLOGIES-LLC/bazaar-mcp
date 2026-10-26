@@ -96,7 +96,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Health Check MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Legacy Recon MCP | in-development | FAILED — standing bench verdict, run 8 (22/25 checks); scorecards retained append-only |
 | Eclipse Steward MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
-| Eclipse Mail | spec | not certified (not built) |
+| Eclipse Mail MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local / fixture-only) |
 
 ## Run it
 

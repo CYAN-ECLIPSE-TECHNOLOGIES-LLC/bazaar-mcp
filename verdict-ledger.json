@@ -306,6 +306,25 @@
    "scorecard_ref": "test-bench/results/eclipse-codex-mcp-2026-10-25-3.json",
    "cards_on_record": 3
   },
+  "eclipse-colophon-mcp": {
+   "tool": "eclipse-colophon-mcp",
+   "verdict": "CERTIFIED(local/simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "independent-bench-1 (Verity phase, own fixtures)",
+   "environment": "local",
+   "qualifier": "local/simulator \u2014 synthetic fixtures only",
+   "seq": 2,
+   "counts": {
+    "pass": 19,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 19
+   },
+   "scorecard_ref": "test-bench/results/eclipse-colophon-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-compass-mcp": {
    "tool": "eclipse-compass-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -361,6 +380,25 @@
     "total": 15
    },
    "scorecard_ref": "test-bench/results/eclipse-connect-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-consent-mcp": {
+   "tool": "eclipse-consent-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 1,
+    "untestable": 0,
+    "total": 24
+   },
+   "scorecard_ref": "test-bench/results/eclipse-consent-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
   "eclipse-constellation-mcp": {
@@ -705,24 +743,43 @@
    "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-8.json",
    "cards_on_record": 8
   },
-  "eclipse-mail-mcp": {
-   "tool": "eclipse-mail-mcp",
-   "verdict": "NOT CERTIFIED",
+  "eclipse-lineage-mcp": {
+   "tool": "eclipse-lineage-mcp",
+   "verdict": "FAILED",
    "certified": false,
-   "bench_date": "2026-10-25",
+   "bench_date": "2026-10-26",
    "bench_version": "0.1.0",
    "environment": "local",
-   "qualifier": "local / fixture-only",
-   "seq": 1,
+   "qualifier": "local",
+   "seq": 2,
    "counts": {
-    "pass": 30,
-    "fail": 12,
+    "pass": 26,
+    "fail": 3,
+    "na": 1,
+    "untestable": 0,
+    "total": 30
+   },
+   "scorecard_ref": "test-bench/results/eclipse-lineage-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-mail-mcp": {
+   "tool": "eclipse-mail-mcp",
+   "verdict": "CERTIFIED(local / fixture-only)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0 re-bench (P0 fix round)",
+   "environment": "local",
+   "qualifier": "local / fixture-only",
+   "seq": 2,
+   "counts": {
+    "pass": 48,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
     "total": 49
    },
-   "scorecard_ref": "test-bench/results/eclipse-mail-mcp-2026-10-25.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-mail-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
   },
   "eclipse-marquee-mcp": {
    "tool": "eclipse-marquee-mcp",
@@ -741,6 +798,25 @@
     "total": 16
    },
    "scorecard_ref": "test-bench/results/eclipse-marquee-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-meridian-mcp": {
+   "tool": "eclipse-meridian-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 23,
+    "fail": 6,
+    "na": 0,
+    "untestable": 0,
+    "total": 29
+   },
+   "scorecard_ref": "test-bench/results/eclipse-meridian-mcp-2026-10-26.json",
    "cards_on_record": 1
   },
   "eclipse-meter-mcp": {
@@ -838,6 +914,44 @@
    "scorecard_ref": "test-bench/results/eclipse-procure-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-proof-mcp": {
+   "tool": "eclipse-proof-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 2,
+   "counts": {
+    "pass": 35,
+    "fail": 0,
+    "na": 2,
+    "untestable": 0,
+    "total": 37
+   },
+   "scorecard_ref": "test-bench/results/eclipse-proof-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-proving-mcp": {
+   "tool": "eclipse-proving-mcp",
+   "verdict": "PARTIAL \u2014 NOT CERTIFIED(simulator)",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 9,
+    "fail": 3,
+    "na": 0,
+    "untestable": 0,
+    "total": 13
+   },
+   "scorecard_ref": "test-bench/results/eclipse-proving-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-redteam-mcp": {
    "tool": "eclipse-redteam-mcp",
    "verdict": "CERTIFIED(local)",
@@ -856,6 +970,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-redteam-mcp-2026-10-26-3.json",
    "cards_on_record": 3
+  },
+  "eclipse-revoke-mcp": {
+   "tool": "eclipse-revoke-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 17,
+    "fail": 3,
+    "na": 1,
+    "untestable": 0,
+    "total": 21
+   },
+   "scorecard_ref": "test-bench/results/eclipse-revoke-mcp-2026-10-26.json",
+   "cards_on_record": 1
   },
   "eclipse-section508-mcp": {
    "tool": "eclipse-section508-mcp",
@@ -969,6 +1102,25 @@
     "total": 14
    },
    "scorecard_ref": "test-bench/results/eclipse-strike-mcp-2026-10-25-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-tether-mcp": {
+   "tool": "eclipse-tether-mcp",
+   "verdict": "CERTIFIED(simulator)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "verity-0.1.0",
+   "environment": "simulator (P0: ROS 2 + Gazebo + UR-class arm sim, in-process; planner: sim; class: fixture)",
+   "qualifier": "simulator",
+   "seq": 2,
+   "counts": {
+    "pass": 31,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 31
+   },
+   "scorecard_ref": "test-bench/results/eclipse-tether-mcp-2026-10-25-2.json",
    "cards_on_record": 2
   },
   "eclipse-thread-mcp": {
@@ -1085,6 +1237,25 @@
    "scorecard_ref": "test-bench/results/eclipse-voice-core-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-wageward-mcp": {
+   "tool": "eclipse-wageward-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 13,
+    "fail": 3,
+    "na": 0,
+    "untestable": 0,
+    "total": 16
+   },
+   "scorecard_ref": "test-bench/results/eclipse-wageward-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-zenith-mcp": {
    "tool": "eclipse-zenith-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -1192,6 +1363,14 @@
   "allbirds-shopify-ucp",
   "commerce-fixture-adversarial",
   "commerce-fixture-store",
-  "eclipse-mail-mcp"
+  "eclipse-colophon-mcp",
+  "eclipse-consent-mcp",
+  "eclipse-lineage-mcp",
+  "eclipse-meridian-mcp",
+  "eclipse-proof-mcp",
+  "eclipse-proving-mcp",
+  "eclipse-revoke-mcp",
+  "eclipse-tether-mcp",
+  "eclipse-wageward-mcp"
  ]
 }

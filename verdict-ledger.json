@@ -401,6 +401,25 @@
    "scorecard_ref": "test-bench/results/eclipse-connect-2026-10-24-2.json",
    "cards_on_record": 2
   },
+  "eclipse-connect-beyondcompare-mcp": {
+   "tool": "eclipse-connect-beyondcompare-mcp",
+   "verdict": "CERTIFIED(simulated)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "0.1.0",
+   "environment": "local",
+   "qualifier": "simulated",
+   "seq": 101,
+   "counts": {
+    "pass": 26,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 26
+   },
+   "scorecard_ref": "test-bench/results/eclipse-connect-beyondcompare-mcp-2026-10-25-rebench-fixround1.json",
+   "cards_on_record": 2
+  },
   "eclipse-connect-mcp": {
    "tool": "eclipse-connect-mcp",
    "verdict": "CERTIFIED(dogfood-facade)",
@@ -745,22 +764,22 @@
   },
   "eclipse-keyhold-mcp": {
    "tool": "eclipse-keyhold-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-25",
-   "bench_version": "0.1.0-rebench-2",
+   "bench_version": "0.1.0-rebench-4",
    "environment": "local",
    "qualifier": "local",
-   "seq": 2,
+   "seq": 4,
    "counts": {
-    "pass": 10,
-    "fail": 1,
+    "pass": 13,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 11
+    "total": 13
    },
-   "scorecard_ref": "test-bench/results/eclipse-keyhold-mcp-2026-10-25-2.json",
-   "cards_on_record": 2
+   "scorecard_ref": "test-bench/results/eclipse-keyhold-mcp-2026-10-25-4.json",
+   "cards_on_record": 4
   },
   "eclipse-ledger-mcp": {
    "tool": "eclipse-ledger-mcp",
@@ -1315,22 +1334,22 @@
   },
   "eclipse-wageward-mcp": {
    "tool": "eclipse-wageward-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-25",
-   "bench_version": "0.3.0-scoped-rebench-2",
+   "bench_version": "0.5.0-scoped-rebench-4",
    "environment": "local",
    "qualifier": "local",
-   "seq": 3,
+   "seq": 5,
    "counts": {
-    "pass": 12,
-    "fail": 2,
+    "pass": 20,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 14
+    "total": 20
    },
-   "scorecard_ref": "test-bench/results/eclipse-wageward-mcp-2026-10-25-3.json",
-   "cards_on_record": 3
+   "scorecard_ref": "test-bench/results/eclipse-wageward-mcp-2026-10-25-5.json",
+   "cards_on_record": 5
   },
   "eclipse-zenith-mcp": {
    "tool": "eclipse-zenith-mcp",

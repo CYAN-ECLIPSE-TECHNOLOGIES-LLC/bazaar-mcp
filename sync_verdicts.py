@@ -46,7 +46,8 @@ CATALOG = BAZAAR / "catalog.json"
 README = BAZAAR / "README.md"
 STOREFRONT = CE / "eclipse-bazaar-site" / "index.html"
 LEDGER_OUT = BAZAAR / "verdict-ledger.json"
-CARD_RE = re.compile(r"^(.+)-(\d{4}-\d{2}-\d{2})(?:-(\d+))?\.json$")
+CARD_RE = re.compile(r"^(.+)-(\d{4}-\d{2}-\d{2})(?:-(\d+))?"
+                     r"(?:-rebench-fixround(\d+))?\.json$")
 DOGFOOD_RE = re.compile(r"^(.+)-dogfood-(\d{4}-\d{2}-\d{2})\.md$")
 
 
@@ -80,7 +81,14 @@ def build_ledger():
         m = CARD_RE.match(p.name)
         if not m:
             continue
-        tool, date, seq = m.group(1), m.group(2), int(m.group(3) or 1)
+        tool, date = m.group(1), m.group(2)
+        # Card-format variant (BC scoped re-bench, 2026-10-25): a fix-round
+        # re-bench card carries a "-rebench-fixround<N>" suffix after the
+        # date instead of a run-sequence number; it supersedes the same-date
+        # base card, so it sorts as seq 100+N. Checker normalization,
+        # Rook top-up 2026-10-26 — scorecards untouched, same treatment as
+        # the friction qualifier and Charter format fixes.
+        seq = int(m.group(3) or 1) + 100 * int(m.group(4) or 0)
         sc = json.loads(p.read_text())
         # Card-format variant (Charter suite): the tool id rides in a
         # "product" field instead of "tool". Checker normalization,

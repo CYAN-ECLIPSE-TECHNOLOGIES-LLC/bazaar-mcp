@@ -118,6 +118,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Roll MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Verbatim — Executive Orders | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Flood Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Recall Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 
 ## Run it
 

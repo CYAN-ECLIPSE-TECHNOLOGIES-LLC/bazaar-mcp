@@ -266,6 +266,21 @@ def build_ledger():
         _sl = sc.get("scope_label")
         _scope = _sl.get("scope") if isinstance(_sl, dict) else None
         _counts = counts(sc.get("checks") or sc.get("per_line") or [])
+        _chk0 = sc.get("checks")
+        if isinstance(_chk0, dict) and all(
+                isinstance(_chk0.get(k), int) for k in ("pass", "fail", "total")):
+            # Card-format variant (Recall Witness scoped re-bench card
+            # -2, 2026-10-26): "checks" is a dict carrying the bench's
+            # own explicit tallies {pass, fail, total} beside a prose
+            # "detail" — the generic tally iterates the dict's 4 keys
+            # and reads 0/4. The card's stated numbers are the bench's
+            # verdict surface (127 pass / 9 fail / 136 total, the 9
+            # fails grouped on the card into 3 LOW conditions). Tally
+            # those. Checker normalization, Recall listing pass —
+            # scorecard untouched, same treatment as the Flood/EO
+            # format fixes above.
+            _counts = {"pass": _chk0["pass"], "fail": _chk0["fail"],
+                       "na": 0, "untestable": 0, "total": _chk0["total"]}
         _sv = sc.get("scope_verdicts")
         _chk = sc.get("checks") or {}
         if isinstance(_sv, dict) and _sv and isinstance(_chk, dict) \

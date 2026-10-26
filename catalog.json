@@ -4970,6 +4970,73 @@
     "geocode_explore"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Sealed campaign vintages, recomputable by anyone: NHTSA serves current state only — amended filings replace records in place and the API has no vintage parameter — so this product seals the recalls flat file nightly into a hash-chained anchor (recall-anchor/1.0); every campaign's full payload seals as an immutable vintage under recall-canon/1.0, and a campaign that disappears seals as a tombstone vintage, never a silent drop. CERTIFIED SCOPE IS FIXTURE: at P0 the nightly spine is proven over fixture flat files — no live nightly seal exists yet (capability 4 states exactly what is and is not live).",
+    "Drift between consecutive vintages seals as events across the closed recall-events/1.1 grammar — POPULATION_EXPANSION, REMEDY_CHANGE, ESCALATION_DO_NOT_DRIVE, ESCALATION_PARK_OUTSIDE, CORRECTION, CLOSURE, each with closed subtypes; an escalation is never absorbed into an expansion. Advisory detection is normalized token-pattern matching harvested from the live escalation stock (BMW/Mazda/Ford/Ferrari 'advised not to drive', Porsche 24V809 'should not drive', GM/Kia park-outside) and cross-checked against the API's own parkIt/parkOutSide flags — 15/15 live campaigns agree at re-bench. Per printed condition RW-D9, NO escalation-completeness claim is made beyond the live-stock-proven phrase families: the drive/park families are proven; operate/use paraphrase families are a known coverage boundary.",
+    "Posture-at-date derives exclusively from sealed vintages — before the first vintage (or after the last sealed night) the answer is NOT_SEALED, printed with its reason and the campaign's own first-vintage date. Mandate-bound check receipts run one live CAMPAIGN-LEVEL check and seal what it returned: every receipt prints scope_class: CAMPAIGN-LEVEL and the three standing sentences byte-exact — “This record states what NHTSA served at the stated time. It is not a safety determination about any vehicle.” / “This receipt proves a check was made and what it returned. It is not a legal determination of compliance with any law.” / “Per-VIN unrepaired status is NOT determined by this check.” A specific VIN is never called “open”: per-VIN unrepaired status lives behind NHTSA's consumer VIN lookup, whose posture bars automated submission, so no such determination exists in this product and no consumer-VIN-lookup code path exists anywhere in the tree; no VIN-decode tool surface exists either (decode is an internal step of check issuance only). Safety-verdict, owner, repair-advice, and per-VIN ask shapes refuse by name.",
+    "LIVE-PROVEN at cross-check + check-issuance scope (proof/live-api-20261026.md in the tree, independently re-verified first-hand on card -2): the API transport points at the spec-named host api.nhtsa.gov; a live cross-check seals campaign 24V809 with cross_check OK and its DO_NOT_DRIVE tag agreeing with the API's parkIt: true; an altered-summary hold-out sealed NOTHING (FAILED + named); one live check receipt (rcpt-00001, Porsche 911 MY2024) carries exactly the 4 campaigns the live API returns today and recomputes MATCH, phrase tags vs API flags 4/4. What is NOT live: the nightly flat-file spine — www-odi.nhtsa.dot.gov remains unreachable from the build egress (re-probed 2026-10-26, empty reply) and the spine was NOT re-routed to the API, because the flat file is the canon source. LIVE scope is gated on (a) the first real nightly ingest and (b) live-key cutover: all P0 seals are under FIXTURE ECDSA keys, labelled seal_key_class: FIXTURE on every artifact (owner's call, spec O3).",
+    "Churn measurement (recall-churn/1.0): nightly counters seal inside every anchor from night one; get_churn_series returns the methodology and MEASURING — no rates — until a day-90 segment bearing rates seals, and series_state derives from the segments (a methodology-only segment never flips the series to PUBLISHED; no churn rate appears in any copy before day 90). Three NEW LOW conditions stand printed on card -2 (none blocks CERTIFIED(local, FIXTURE scope); all ride the next grammar/seal touch): RW-D7 — the park-outside matcher can tag narrative “parked outside” rollaway text as a false PARK_OUTSIDE (constructed shape; no live-stock instance found; fix at recall-events/1.2 with an owner-directed-voice requirement); RW-D8 — the chain walk does not yet assert the genesis links, so first-vintage/first-anchor prev-hash tampers verify MATCH (content integrity unaffected — record hashes and seals still verify; one-line assert at the next seal-store touch); RW-D9 — operate/use paraphrase families (“should not be operated”, “never operate”, “do not use”) tag nothing (the coverage boundary in capability 2; 1.2 candidates). Nothing in this product speaks to any vehicle's safety, any specific VIN's repair state, or compliance with any law."
+   ],
+   "categories": [
+    "Compliance & Regulation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "CERTIFIED(local)",
+    "certified": true,
+    "certified_scope": "CERTIFIED(local, FIXTURE scope) — Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-recall-witness-mcp-2026-10-26-2.json (scoped re-bench of the RW-D1..RW-D6 fix round + transport repoint; card -1 PARTIAL(local, FIXTURE scope), 50 checks 43P/7F, retained append-only and superseded). Proven: sealed campaign-vintage witness over fixture flat files — nightly anchor + hash-chained per-campaign vintages, closed recall-events/1.1 drift grammar (spec §7 names; Δ1 ACCEPTED at card -1), sealed-vintage-only posture-at-date receipts and mandate-bound CAMPAIGN-LEVEL check receipts with byte-exact standing sentences, churn instrumentation with segment-derived series_state. Builder suites reproduced first-hand: 35/35 + 18/18 fix-round regressions, smoke PASS; bench battery 136 checks, 127 pass — the 9 fails group into three NEW LOW conditions (RW-D7/RW-D8/RW-D9); no prior defect survives. All six card -1 defects FIXED and verified against fresh shapes, not the builder's regressions: RW-D1 (HIGH) phrase battery — bench shape end-to-end (27V321000 733→1042, “advised not to drive”) emits ESCALATION_DO_NOT_DRIVE + sealed advisory_classes [DO_NOT_DRIVE], 11/11 fresh positives, and an independent cross-signal: 15 live campaigns re-fetched from api.nhtsa.gov, phrase tags agreeing with the API's parkIt/parkOutSide flags on every row; RW-D2 series_state stays MEASURING under a methodology-only segment and flips only when a rates-bearing segment seals; RW-D3 ask-shape screen refuses BY NAME incl. 14 bench-fresh spellings while benign record questions still serve; RW-D4 layout_hash MEASURED — header and free-text column permutations refuse LAYOUT_DRIFT_REFUSED, unpermuted real-shape files seal; RW-D5 prev_vintage_hash and anchor-chain tampers name MISMATCH in verify_receipt and the recompute CLI; RW-D6 campaign-scoped NOT_SEALED prints the campaign's own first vintage with the corpus floor labelled beside it. LIVE PROOF VERIFIED FIRST-HAND (5/5): the live store seals 24V809 with cross_check OK and DO_NOT_DRIVE agreeing with parkIt: true; the diverged store seals nothing (FAILED + named); rcpt-00001 recomputes MATCH and carries exactly the 4 campaigns the live API returns for Porsche 911 MY2024 (24V155000, 24V809000, 25V896000, 26V682000), tags vs flags 4/4. All seals under FIXTURE ECDSA keys, labelled on every artifact. NO live nightly seal exists: the flat-file spine host (www-odi.nhtsa.dot.gov) remains unreachable from this egress (re-probed 2026-10-26, empty reply) and was NOT re-routed to the API — the file is the canon source. LIVE scope additionally requires (a) the first real nightly ingest and (b) live-key cutover (fixture keys at P0, owner's call) — scope items, not defects. Conditions RW-D7/RW-D8/RW-D9 (all LOW) are printed on card -2 and bind the next grammar/seal touch; no escalation-completeness claim beyond the live-stock-proven phrase families may appear in any copy. Nothing in this verdict speaks to any vehicle's safety, any specific VIN's repair state, or compliance with any law (gate C2/C5/C11). NAME CONDITIONAL: working name, trademark screen owed (spec O1); certification covers the local product's function under its working name, not the name.",
+    "not_tested": [
+     "Live nightly ingest — no live nightly seal exists: the flat-file spine host (www-odi.nhtsa.dot.gov) is unreachable from the build egress (re-probed 2026-10-26) and the spine was NOT re-routed to the API; LIVE scope requires the first real nightly ingest",
+     "Production Herald custody — all seals are under FIXTURE ECDSA keys, labelled on every artifact (spec O3); live-key cutover is the owner's call and has not been exercised",
+     "Escalation completeness beyond the live-stock-proven phrase families — RW-D9: operate/use paraphrase families (“should not be operated”, “never operate”, “do not use”) tag nothing; no as-served instance found in the live stock sampled; bound to the recall-events/1.2 bump",
+     "Narrative park-outside text — RW-D7: a constructed rollaway-narrative shape (“parked outside the owner's home”) tags a false PARK_OUTSIDE; no live-stock instance; fix at recall-events/1.2 (owner-directed-voice requirement)",
+     "Genesis-link assertion — RW-D8: first-vintage prev_vintage_hash and first-anchor prev_anchor_hash tampers verify MATCH (content integrity unaffected); the assert lands at the next seal-store touch",
+     "Per-VIN unrepaired status — never determined by construction (gate C5): the consumer VIN lookup is not automated, no per-VIN code path exists, and receipts print scope_class CAMPAIGN-LEVEL only",
+     "Hosted or remote serving — v0.1 is local stdio only",
+     "The trademark screen for the Recall Witness name (owner-side, spec O1) — still open; it gates public surfaces under the name, not this local certification"
+    ],
+    "scorecard_ref": "test-bench/results/eclipse-recall-witness-mcp-2026-10-26-2.json"
+   },
+   "id": "eclipse-recall-witness-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-recall-witness-mcp.png",
+   "name": "Eclipse Recall Witness",
+   "name_status": "CONDITIONAL — working name, trademark screen owed (spec O1, owner-side); it gates any public surface under the name. Certification covers the local product's function under its working name, not the name",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "Free local v0.1; no price points exist in the approved price book for this product yet — pricing not yet set; nothing is priced or activated",
+   "problem_statements": [
+    "NHTSA serves only what a recall campaign says now — amended filings replace records in place. I need what the campaign said on a past date, sealed, so a posture answer recomputes offline instead of trusting today's screenshot",
+    "When a recall population grows or a remedy escalates to do-not-drive, I need that change sealed as dated drift — an escalation never quietly absorbed into an expansion",
+    "At sale time I need a check receipt that prints exactly what was actually checked — campaign-level, as served — and never dresses itself up as a per-VIN “open/clear” verdict or a safety determination"
+   ],
+   "source_refs": [
+    "eclipse-recall-witness-spec-20261026.md",
+    "vehicle-recall-witness-gate-20261026.md",
+    "eclipse-recall-witness-mcp/bazaar-manifest.json",
+    "test-bench/results/eclipse-recall-witness-mcp-2026-10-26-2.json"
+   ],
+   "status": "in-development",
+   "tagline": "Recall campaigns, witnessed: NHTSA's as-served record sealed night by night — sealed vintages, dated drift, and campaign-level check receipts that print exactly what was checked. The receipt warrants what the record said; it never warrants that a vehicle is safe.",
+   "tools": [
+    "get_campaign",
+    "get_campaign_vintage",
+    "list_campaign_vintages",
+    "get_drift_events",
+    "list_campaigns_for_vehicle",
+    "get_posture_at_date",
+    "get_anchor",
+    "get_churn_series",
+    "verify_receipt",
+    "issue_check_receipt",
+    "ingest_run",
+    "archive_seal",
+    "churn_publish"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

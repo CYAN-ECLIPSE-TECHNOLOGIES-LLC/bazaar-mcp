@@ -140,23 +140,47 @@ def classify(config_name, entry, index):
         return {"config_name": config_name, "class": UNRESOLVABLE,
                 "identity": None,
                 "reason": unresolvable_reason(entry),
-                "listing": None, "drift": None}
+                "listing": None, "drift": None, "version_note": None}
     rec = index.get(identity["name"])
     if rec is None and "/" in identity["name"]:
-        rec = index.get(identity["name"].rsplit("/", 1)[-1])
+        # Qualified reference (registry/owner image path, npm scope,
+        # remote authority): standing binds to the FULL qualified
+        # identity. A bare-name match under a foreign qualifier is a
+        # different source — never an inheritance path (PY-D3). It is
+        # reported NOT LISTED with the collision named, so the reader
+        # can tell an impersonation shape from an unknown name.
+        base = identity["name"].rsplit("/", 1)[-1]
+        base_rec = index.get(base)
+        if base_rec is not None:
+            hint = next((i for i in base_rec.get("identities", [])
+                         if "/" in i), base_rec["id"])
+            return {"config_name": config_name, "class": NOT_LISTED,
+                    "identity": identity,
+                    "reason": "no Bazaar listing record for this "
+                              f"identity; a product named {base!r} is "
+                              f"listed under a different source ({hint}) "
+                              "— standing does not transfer across "
+                              "registries, owners, or scopes",
+                    "listing": None, "drift": None, "version_note": None}
     if rec is None:
         return {"config_name": config_name, "class": NOT_LISTED,
                 "identity": identity,
                 "reason": "no Bazaar listing record for this identity",
-                "listing": None, "drift": None}
+                "listing": None, "drift": None, "version_note": None}
     cls = CERTIFIED if (rec.get("certified") and rec.get("bench_verdict")) else LISTED
     drift = None
+    version_note = None
     pin, listed = identity.get("pin"), rec.get("listing_version")
     if pin and listed and pin != listed:
         drift = {"pinned": pin, "listed": listed,
                  "note": f"config pins version {pin}; the listing's current "
                          f"version is {listed} — the tested standing below "
                          f"belongs to the listed version"}
+    elif pin and not listed:
+        # The pin cannot be checked: the listing carries no version to
+        # check it against. Disclose, never imply verification (PY-D5).
+        version_note = ("version not checked: the listing carries no "
+                        "version, so the pin cannot be checked against it")
     listing = {"id": rec["id"], "name": rec["name"], "status": rec["status"],
                "bench_verdict": rec.get("bench_verdict"),
                "certified_scope": rec.get("certified_scope"),
@@ -164,7 +188,8 @@ def classify(config_name, entry, index):
                "scorecard_ref": rec.get("scorecard_ref"),
                "listing_url": rec.get("listing_url")}
     return {"config_name": config_name, "class": cls, "identity": identity,
-            "reason": None, "listing": listing, "drift": drift}
+            "reason": None, "listing": listing, "drift": drift,
+            "version_note": version_note}
 
 
 def run_check(config_paths=None, corpus_path=None, refresh_corpus=False):

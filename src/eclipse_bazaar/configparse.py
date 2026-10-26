@@ -9,6 +9,11 @@ Privacy law (gate S3) is structural here, not a promise:
   * extract_identity() only ever sees the redacted copy and returns a
     small identity dict (kind, name, pin) — raw args, env, and URLs'
     query strings never leave this module.
+  * URL userinfo (user[:password]@) is stripped at extraction, on both
+    the entry-URL path and the package-spec path: credentials are
+    ABSENT from every identity, never masked — a masked value still
+    proves a credential was present and reveals its shape (gate S3,
+    card PY-D2).
   * Nothing in this module executes a configured server, opens a
     socket, or reads a tool description (gate C2 fence).
 """
@@ -100,16 +105,35 @@ def server_entries(doc):
             for name, entry in block.items():
                 if isinstance(entry, dict):
                     yield str(name), entry
-            return
 
 
 # ------------------------------------------------------------- identity
+def _strip_url_userinfo(text):
+    """Drop userinfo (user[:password]@) from the authority of a
+    URL-shaped string. Credentials are removed outright, never masked
+    (gate S3 / PY-D2): a masked value still proves a credential was
+    present and leaks its shape. Non-URL strings pass through."""
+    if "://" not in text:
+        return text
+    scheme, rest = text.split("://", 1)
+    end = len(rest)
+    for ch in "/?#":
+        i = rest.find(ch)
+        if i != -1:
+            end = min(end, i)
+    authority, tail = rest[:end], rest[end:]
+    if "@" in authority:
+        authority = authority.rsplit("@", 1)[-1]
+    return scheme + "://" + authority + tail
+
+
 def _parse_spec(spec):
     """Package spec -> (name, pin). Handles name@1.2, name==1.2,
     @scope/name@1.2, github:owner/repo. pin 'latest'/'*' -> None."""
     spec = spec.strip().strip('"').strip("'")
     if not spec:
         return None, None
+    spec = _strip_url_userinfo(spec)
     if spec.startswith("github:"):
         return spec.split("/", 1)[-1].lower(), None
     name, pin = spec, None
@@ -201,8 +225,24 @@ def extract_identity(entry):
     url = entry.get("url") or entry.get("httpUrl") or entry.get("serverUrl")
     if isinstance(url, str) and url.strip():
         from urllib.parse import urlparse
-        u = urlparse(url.strip())
-        name = (u.netloc + u.path).rstrip("/").lower()
+        u = urlparse(_strip_url_userinfo(url.strip()))
+        if u.netloc:
+            host = u.hostname or ""
+            if ":" in host and not host.startswith("["):
+                host = f"[{host}]"
+            try:
+                port = u.port
+            except ValueError:
+                port = None
+            netloc = host + (f":{port}" if port else "")
+            name = (netloc + u.path).rstrip("/").lower()
+        else:
+            # Schemeless authority form (user:pass@host/path): the
+            # first segment is the authority — strip userinfo there too.
+            first, sep, rest = u.path.partition("/")
+            if "@" in first:
+                first = first.rsplit("@", 1)[-1]
+            name = (first + sep + rest).rstrip("/").lower()
         return {"kind": "remote", "name": name, "pin": None}
     command = entry.get("command")
     if not isinstance(command, str) or not command.strip():

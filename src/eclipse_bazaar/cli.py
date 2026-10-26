@@ -89,6 +89,8 @@ def _render_check(rep):
             lines.append(f"      -> {li['name']} [{li['status']}] — {verdict}")
         if e["drift"]:
             lines.append(f"      drift: {e['drift']['note']}")
+        if e.get("version_note"):
+            lines.append(f"      {e['version_note']}")
         if e["reason"] and e["class"] in ("UNRESOLVABLE",):
             lines.append(f"      reason: {e['reason']}")
     s = rep["summary"]

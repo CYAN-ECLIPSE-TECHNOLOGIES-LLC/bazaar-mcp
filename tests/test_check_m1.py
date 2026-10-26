@@ -19,6 +19,7 @@
     command must leave no marker) and the module imports no subprocess.
 """
 import json
+import os
 import re
 import sys
 import tempfile
@@ -29,7 +30,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from eclipse_bazaar import catalog as catalog_mod  # noqa: E402
 from eclipse_bazaar import check as check_mod  # noqa: E402
+from eclipse_bazaar import cli as cli_mod  # noqa: E402
 from eclipse_bazaar import configparse  # noqa: E402
 
 # Built dynamically so this test file itself stays free of the tokens.
@@ -213,6 +216,216 @@ class Vocabulary(unittest.TestCase):
         entries = list(configparse.server_entries(red))
         self.assertEqual(entries[0][1]["env"],
                          {"<redacted-env-key-count>": 1})
+
+
+UI_CANARY = "CANARY-UI-3f9c1e77"
+
+
+class UserinfoCanaries(unittest.TestCase):
+    """PY-D2 (gate S3; K4 strike 1): credentials in URL userinfo must
+    be ABSENT from the identity and from every output channel — report
+    object, CLI --json stdout, --out file content, text render. Not
+    masked: absent. (The report object is what --json prints and --out
+    writes verbatim, so it is asserted alongside the text render.)"""
+
+    def _run(self, servers):
+        with tempfile.TemporaryDirectory() as td:
+            cfg = Path(td) / "mcp.json"
+            cfg.write_text(json.dumps({"mcpServers": servers}))
+            return check_mod.run_check(config_paths=[str(cfg)])
+
+    def test_userinfo_absent_from_identity_and_all_outputs(self):
+        servers = {
+            "remote-ui": {"url":
+                          f"https://svc:{UI_CANARY}@mcp.example.net/sse"},
+            "remote-ui-port": {"url":
+                               f"https://svc:{UI_CANARY}@mcp.example.net:8443/sse"},
+            "user-only": {"url": f"https://{UI_CANARY}@mcp.example.net/sse"},
+            "from-https": {"command": "uvx", "args": [
+                "--from",
+                f"https://oauth2:{UI_CANARY}@gitlab.example.net/group/proj.git",
+                "proj"]},
+            "from-git": {"command": "uvx", "args": [
+                "--from",
+                f"git+https://oauth2:{UI_CANARY}@github.example.com/owner/repo.git",
+                "repo"]},
+            "registry-ui": {"command": "npx", "args": [
+                "-y", "--registry",
+                f"https://user:{UI_CANARY}@npm.example.net/", "some-pkg"]},
+            "query-token": {"url":
+                            f"https://mcp.example.net/sse?token={UI_CANARY}"},
+        }
+        rep = self._run(servers)
+        for text in (json.dumps(rep), cli_mod._render_check(rep)):
+            self.assertNotIn(UI_CANARY, text)
+            self.assertNotIn(UI_CANARY.lower(), text)
+        by_name = {r["config_name"]: r for r in rep["entries"]}
+        # The credential is gone; the identity itself survives intact.
+        self.assertEqual(by_name["remote-ui"]["identity"]["name"],
+                         "mcp.example.net/sse")
+        self.assertEqual(by_name["remote-ui-port"]["identity"]["name"],
+                         "mcp.example.net:8443/sse")
+        self.assertEqual(by_name["user-only"]["identity"]["name"],
+                         "mcp.example.net/sse")
+        self.assertEqual(by_name["from-https"]["identity"]["name"],
+                         "https://gitlab.example.net/group/proj.git")
+        self.assertEqual(by_name["from-git"]["identity"]["name"],
+                         "git+https://github.example.com/owner/repo.git")
+        for row in rep["entries"]:
+            self.assertIn(row["class"], check_mod.CLASSES)
+
+
+class QualifiedSourceMatching(unittest.TestCase):
+    """PY-D3: standing binds to the full qualified identity. A bare
+    name under a foreign registry / owner / scope is NOT LISTED —
+    never CERTIFIED or LISTED by inheritance."""
+
+    def _run1(self, entry):
+        with tempfile.TemporaryDirectory() as td:
+            cfg = Path(td) / "mcp.json"
+            cfg.write_text(json.dumps({"mcpServers": {"x": entry}}))
+            rep = check_mod.run_check(config_paths=[str(cfg)])
+        return rep["entries"][0]
+
+    def test_foreign_registry_image_is_not_listed(self):
+        row = self._run1({"command": "docker",
+                          "args": ["run", "-i", "--rm",
+                                   "evil.io/certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.NOT_LISTED)
+        self.assertIsNone(row["listing"])
+        self.assertIn("different source", row["reason"])
+
+    def test_foreign_ghcr_owner_is_not_listed(self):
+        row = self._run1({"command": "docker",
+                          "args": ["run", "-i", "--rm",
+                                   "ghcr.io/someone-else/certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.NOT_LISTED)
+        self.assertIsNone(row["listing"])
+
+    def test_foreign_npm_scope_is_not_listed(self):
+        row = self._run1({"command": "npx",
+                          "args": ["-y", "@evil-scope/certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.NOT_LISTED)
+        self.assertIsNone(row["listing"])
+
+    def test_own_qualified_identities_still_match(self):
+        row = self._run1({"command": "docker",
+                          "args": ["run", "-i", "--rm",
+                                   "ghcr.io/cyan-eclipse-technologies-llc/"
+                                   "certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.CERTIFIED)
+        row = self._run1({"command": "uvx", "args": ["certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.CERTIFIED)
+        row = self._run1({"command": "docker",
+                          "args": ["run", "-i", "--rm", "certbridge-mcp"]})
+        self.assertEqual(row["class"], check_mod.CERTIFIED)
+
+
+class DualBlockConfigs(unittest.TestCase):
+    """PY-D4: a config carrying BOTH top-level blocks loses nothing —
+    every entry of every block is examined and reported."""
+
+    def test_both_blocks_are_read_25_of_25(self):
+        doc = {"mcpServers": {f"a{i:02d}": {"command": "uvx",
+                                            "args": ["eclipse-bazaar"]}
+                              for i in range(13)},
+               "servers": {f"b{i:02d}": {"command": "uvx",
+                                         "args": ["eclipse-procure-mcp"]}
+                           for i in range(12)}}
+        self.assertEqual(len(list(configparse.server_entries(doc))), 25)
+        with tempfile.TemporaryDirectory() as td:
+            cfg = Path(td) / "mcp.json"
+            cfg.write_text(json.dumps(doc))
+            rep = check_mod.run_check(config_paths=[str(cfg)])
+        self.assertEqual(len(rep["entries"]), 25)
+        names = {r["config_name"] for r in rep["entries"]}
+        self.assertEqual(len(names), 25)
+
+
+class VersionNotChecked(unittest.TestCase):
+    """PY-D5: a pin against a versionless listing discloses that the
+    version was not — and cannot be — checked, in JSON and in text."""
+
+    def _run1(self, entry):
+        with tempfile.TemporaryDirectory() as td:
+            cfg = Path(td) / "mcp.json"
+            cfg.write_text(json.dumps({"mcpServers": {"x": entry}}))
+            return check_mod.run_check(config_paths=[str(cfg)])
+
+    def test_pin_against_versionless_listing_discloses(self):
+        rep = self._run1({"command": "uvx",
+                          "args": ["agent-ready-mcp@9.9.9"]})
+        row = rep["entries"][0]
+        self.assertIsNotNone(row["listing"])
+        self.assertIsNone(row["listing"]["listing_version"])
+        self.assertIsNone(row["drift"])
+        self.assertIn("version not checked", row["version_note"])
+        self.assertIn("version not checked", cli_mod._render_check(rep))
+
+    def test_pin_against_versioned_listing_has_no_note(self):
+        rep = self._run1({"command": "uvx",
+                          "args": ["eclipse-procure-mcp@0.2.1"]})
+        row = rep["entries"][0]
+        self.assertIsNone(row["version_note"])
+        self.assertNotIn("version not checked", cli_mod._render_check(rep))
+
+
+class RepoModeGate(unittest.TestCase):
+    """PY-D1: repo-mode fallbacks fire only behind a real repo-mode
+    signal (checkout markers or BAZAAR_REPO_MODE=1). Files planted at
+    an installed wheel's computed tree levels are never served."""
+
+    def test_installed_tree_plants_are_never_served(self):
+        with tempfile.TemporaryDirectory() as td:
+            lib = Path(td) / "lib"
+            site = lib / "site-packages"
+            site.mkdir(parents=True)
+            (site / "catalog.json").write_text(json.dumps(
+                {"products": [{"id": "poison-plant"}]}))
+            ref = "test-bench/results/poison-plant.json"
+            card_path = lib / ref
+            card_path.parent.mkdir(parents=True)
+            card_path.write_text(json.dumps(
+                {"tool": "poison-plant", "verdict": "CERTIFIED(poisoned)"}))
+            saved = (catalog_mod.REPO_ROOT, catalog_mod.CETECH_DIR,
+                     os.environ.pop("BAZAAR_REPO_MODE", None),
+                     os.environ.pop("BAZAAR_CATALOG", None))
+            catalog_mod.REPO_ROOT, catalog_mod.CETECH_DIR = site, lib
+            try:
+                self.assertFalse(catalog_mod._repo_mode())
+                self.assertEqual(catalog_mod.catalog_path(),
+                                 catalog_mod.DATA_DIR / "catalog.json")
+                self.assertIsNone(catalog_mod.scorecard_summary(ref))
+                # The checkout's own markers flip repo mode back on —
+                # the gate is a signal, not a removal of repo behavior.
+                (site / ".git").mkdir()
+                (site / "server.json").write_text("{}")
+                self.assertTrue(catalog_mod._repo_mode())
+                self.assertEqual(
+                    catalog_mod.scorecard_summary(ref)["verdict"],
+                    "CERTIFIED(poisoned)")
+            finally:
+                catalog_mod.REPO_ROOT, catalog_mod.CETECH_DIR = saved[:2]
+                if saved[2] is not None:
+                    os.environ["BAZAAR_REPO_MODE"] = saved[2]
+                if saved[3] is not None:
+                    os.environ["BAZAAR_CATALOG"] = saved[3]
+
+    def test_env_opt_in_enables_repo_mode(self):
+        with tempfile.TemporaryDirectory() as td:
+            empty = Path(td)
+            saved = (catalog_mod.REPO_ROOT,
+                     os.environ.pop("BAZAAR_REPO_MODE", None))
+            catalog_mod.REPO_ROOT = empty
+            try:
+                self.assertFalse(catalog_mod._repo_mode())
+                os.environ["BAZAAR_REPO_MODE"] = "1"
+                self.assertTrue(catalog_mod._repo_mode())
+            finally:
+                catalog_mod.REPO_ROOT = saved[0]
+                del os.environ["BAZAAR_REPO_MODE"]
+                if saved[1] is not None:
+                    os.environ["BAZAAR_REPO_MODE"] = saved[1]
 
 
 if __name__ == "__main__":

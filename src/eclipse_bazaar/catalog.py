@@ -2,8 +2,9 @@
 """Data access for the eclipse-bazaar distribution.
 
 Resolution order (first hit wins):
-  catalog   $BAZAAR_CATALOG -> repo-root catalog.json (repo mode, kept
-            canonical by sync_verdicts.py) -> bundled data/catalog.json
+  catalog   $BAZAAR_CATALOG -> repo-root catalog.json (repo mode only,
+            kept canonical by sync_verdicts.py) -> bundled
+            data/catalog.json
   corpus    see eclipse_bazaar.check (bulk file, sha256-verified)
   scorecard bundled verdict snapshot first (stamped + hash-pinned by
             tools/make_verdict_snapshot.py); repo mode falls back to the
@@ -11,6 +12,12 @@ Resolution order (first hit wins):
 
 Gate A1: packaged mode never reaches for ../test-bench/results/ — the
 snapshot is the only verdict source an installed wheel needs.
+
+Repo mode is a proven state, not a path-existence guess (PY-D1): it
+holds only inside the bazaar-mcp checkout itself (its own markers —
+.git and server.json at the repo root) or when BAZAAR_REPO_MODE=1 is
+set explicitly. An installed wheel is snapshot-only by construction:
+files planted at the computed install-tree levels are never served.
 """
 import json
 import os
@@ -30,12 +37,23 @@ _LAST_SOURCE = "bundled snapshot"
 _SNAPSHOT = None
 
 
+def _repo_mode() -> bool:
+    """True only in the bazaar-mcp checkout itself (proven by its own
+    markers) or under an explicit BAZAAR_REPO_MODE=1 opt-in. This gates
+    both repo-mode fallbacks below; an installed wheel never satisfies
+    it by accident of the install layout (PY-D1)."""
+    if os.environ.get("BAZAAR_REPO_MODE") == "1":
+        return True
+    return (REPO_ROOT / ".git").exists() and \
+        (REPO_ROOT / "server.json").exists()
+
+
 def catalog_path() -> Path:
     env = os.environ.get("BAZAAR_CATALOG")
     if env:
         return Path(env)
     repo_cat = REPO_ROOT / "catalog.json"
-    if repo_cat.exists():
+    if _repo_mode() and repo_cat.exists():
         return repo_cat
     return DATA_DIR / "catalog.json"
 
@@ -141,7 +159,8 @@ def scorecard_summary(ref: str):
     rec = (snap.get("cards") or {}).get(ref)
     if rec is not None:
         return rec["summary"]
-    path = CETECH_DIR / ref  # repo mode only; absent in an installed wheel
-    if path.exists():
-        return summarize_card(json.loads(path.read_text()))
+    if _repo_mode():
+        path = CETECH_DIR / ref  # the live Test Bench card, checkout only
+        if path.exists():
+            return summarize_card(json.loads(path.read_text()))
     return None

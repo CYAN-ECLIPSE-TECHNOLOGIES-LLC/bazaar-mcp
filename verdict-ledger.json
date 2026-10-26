@@ -534,6 +534,25 @@
    "scorecard_ref": "test-bench/results/eclipse-constellation-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-corona-mcp": {
+   "tool": "eclipse-corona-mcp",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-25",
+   "bench_version": "1.0.0-verity-corona-bench",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 25,
+    "fail": 1,
+    "na": 0,
+    "untestable": 0,
+    "total": 27
+   },
+   "scorecard_ref": "test-bench/results/eclipse-corona-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-countermark-mcp": {
    "tool": "eclipse-countermark-mcp",
    "verdict": "CERTIFIED(local)",
@@ -570,6 +589,25 @@
     "total": 40
    },
    "scorecard_ref": "test-bench/results/eclipse-covenant-mcp-2026-10-25-4.json",
+   "cards_on_record": 4
+  },
+  "eclipse-crosslist-mcp": {
+   "tool": "eclipse-crosslist-mcp",
+   "verdict": "CERTIFIED(split per facet)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.0-rebench-r7-pollonly (scoped Phase 2 re-bench of the R7 poll fix ONLY; carried LOWs not re-benched)",
+   "environment": "local (stdio/in-process, isolated mkdtemp fixture state for ALL bench harnesses) + builder suite/smoke re-run unmodified; real dogfood ledger verified READ-ONLY only; NO live writes anywhere",
+   "qualifier": "split per facet \u2014 see per_facet_scopes",
+   "seq": 4,
+   "counts": {
+    "pass": 39,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 40
+   },
+   "scorecard_ref": "test-bench/results/eclipse-crosslist-mcp-2026-10-26-4.json",
    "cards_on_record": 4
   },
   "eclipse-crosswalk-mcp": {
@@ -903,7 +941,7 @@
    "bench_version": "0.1.0",
    "environment": "local",
    "qualifier": "local",
-   "seq": 8,
+   "seq": 10,
    "counts": {
     "pass": 22,
     "fail": 2,
@@ -911,8 +949,8 @@
     "untestable": 0,
     "total": 25
    },
-   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-8.json",
-   "cards_on_record": 8
+   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-10.json",
+   "cards_on_record": 10
   },
   "eclipse-lineage-mcp": {
    "tool": "eclipse-lineage-mcp",
@@ -1160,6 +1198,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-revoke-mcp-2026-10-26-3.json",
    "cards_on_record": 3
+  },
+  "eclipse-roll-mcp": {
+   "tool": "eclipse-roll-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "1.0.0-verity-phase4",
+   "environment": "local",
+   "qualifier": "local/fixture \u2014 everything fixture-scope; NO live registry read was exercised (all Gauge adapters are labeled FIXTURE adapters; LiveRegistryAdapter is unregistered and refuses); counsel gate (spec 10.3, pre-P1) stands regardless of verdict",
+   "seq": 1,
+   "counts": {
+    "pass": 23,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 34
+   },
+   "scorecard_ref": "test-bench/results/eclipse-roll-mcp-2026-10-26.json",
+   "cards_on_record": 1
   },
   "eclipse-section508-mcp": {
    "tool": "eclipse-section508-mcp",
@@ -1427,6 +1484,25 @@
    "scorecard_ref": "test-bench/results/eclipse-vector-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-verbatim-mcp": {
+   "tool": "eclipse-verbatim-mcp",
+   "verdict": "PARTIAL",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "phase4-verity-bench (spec \u00a717, gate C2 centerpiece)",
+   "environment": "local",
+   "qualifier": "local",
+   "seq": 1,
+   "counts": {
+    "pass": 0,
+    "fail": 9,
+    "na": 0,
+    "untestable": 0,
+    "total": 9
+   },
+   "scorecard_ref": "test-bench/results/eclipse-verbatim-mcp-2026-10-26.json",
+   "cards_on_record": 1
+  },
   "eclipse-voice-core-mcp": {
    "tool": "eclipse-voice-core-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1613,7 +1689,9 @@
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
   "eclipse-dossier-mcp",
+  "eclipse-roll-mcp",
   "eclipse-vector-mcp",
+  "eclipse-verbatim-mcp",
   "eclipse-witness-drift",
   "eclipse-witness-mcp"
  ]

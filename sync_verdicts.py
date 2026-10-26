@@ -77,7 +77,12 @@ def counts(checks):
         # name -> {"pass": bool, "detail": ...} instead of a list of
         # {"verdict": ...}. Checker normalization, publish pass 7 —
         # same treatment as the friction qualifier fix; cards untouched.
-        c["pass"] = sum(1 for v in checks.values() if v.get("pass"))
+        # Card-format variant (Verbatim bench, 2026-10-26): checks mix
+        # {"pass": bool} entries with plain detail strings. Guard the
+        # Charter tally so string entries count toward total only.
+        # Checker normalization, Crosslist listing pass — cards untouched.
+        c["pass"] = sum(1 for v in checks.values()
+                        if isinstance(v, dict) and v.get("pass"))
         c["total"] = len(checks)
         c["fail"] = c["total"] - c["pass"]
         return c
@@ -144,6 +149,17 @@ def build_ledger():
         if prev and (date, seq) <= (prev["bench_date"], prev["seq"]):
             continue
         _v = sc["verdict"]
+        if isinstance(_v, str) and _v.startswith("CERTIFIED-at-scopes"):
+            # Card-format variant (Crosslist card -4, 2026-10-26): the
+            # verdict field carries full prose ("CERTIFIED-at-scopes
+            # (split per facet) — R7 CLOSED under ... LISTING-READY
+            # subject to ...") while the card's qualifier field states
+            # the split. Compose the standing verdict in the house
+            # CERTIFIED(<scope>) form; the exact per-facet scopes ride
+            # in the catalog certified_scope prose (human-owned).
+            # Checker normalization, Crosslist listing pass — card
+            # untouched, same treatment as the friction qualifier fix.
+            _v = "CERTIFIED(split per facet)"
         _sl_str = sc.get("scope_label") \
             if isinstance(sc.get("scope_label"), str) else None
         if _v == "CERTIFIED" and _sl_str and _sl_str.startswith("CERTIFIED("):

@@ -215,11 +215,11 @@
    "tool": "eclipse-bazaar-mcp",
    "verdict": "CERTIFIED(local)",
    "certified": true,
-   "bench_date": "2026-10-25",
+   "bench_date": "2026-10-26",
    "bench_version": "0.1.0",
    "environment": "local",
    "qualifier": "local",
-   "seq": 4,
+   "seq": 2,
    "counts": {
     "pass": 15,
     "fail": 0,
@@ -227,8 +227,8 @@
     "untestable": 0,
     "total": 16
    },
-   "scorecard_ref": "test-bench/results/eclipse-bazaar-mcp-2026-10-25-4.json",
-   "cards_on_record": 4
+   "scorecard_ref": "test-bench/results/eclipse-bazaar-mcp-2026-10-26-2.json",
+   "cards_on_record": 6
   },
   "eclipse-beacon-mcp": {
    "tool": "eclipse-beacon-mcp",
@@ -914,6 +914,25 @@
    "scorecard_ref": "test-bench/results/eclipse-herald-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-hosted-tier": {
+   "tool": "eclipse-hosted-tier",
+   "verdict": "PARTIAL(hosted) \u2014 narrowed. Per product: HostBridge hosted form CERTIFIED(hosted) (card 1, stands; re-confirmed this battery). AgentReady hosted form CERTIFIED(hosted) (HT-D4 + HT-D5 fixed and verified live, incl. the real cetech.ai grade). Gateway/tenancy substrate CERTIFIED(hosted) (HT-D1 + HT-D2 + HT-D3 fixed and verified against the running gateway; HT-D8 rides as a printed condition). CertBridge hosted form PARTIAL \u2014 its credential gate (HT-D2) is fixed, but the renewal watch still cannot see hosted-engine state (HT-D7, launch-gating for the CertBridge form).",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-hosted-tier-2026-10-26-2.json",
+   "cards_on_record": 1
+  },
   "eclipse-keyhold-mcp": {
    "tool": "eclipse-keyhold-mcp",
    "verdict": "CERTIFIED(local)",
@@ -954,22 +973,22 @@
   },
   "eclipse-legacy-recon-mcp": {
    "tool": "eclipse-legacy-recon-mcp",
-   "verdict": "FAILED",
-   "certified": false,
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
    "bench_date": "2026-10-26",
-   "bench_version": "0.1.0",
+   "bench_version": "",
    "environment": "local",
    "qualifier": "local",
-   "seq": 10,
+   "seq": 11,
    "counts": {
-    "pass": 22,
-    "fail": 2,
-    "na": 1,
+    "pass": 30,
+    "fail": 0,
+    "na": 0,
     "untestable": 0,
-    "total": 25
+    "total": 30
    },
-   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-10.json",
-   "cards_on_record": 10
+   "scorecard_ref": "test-bench/results/eclipse-legacy-recon-mcp-2026-10-26-11.json",
+   "cards_on_record": 11
   },
   "eclipse-lineage-mcp": {
    "tool": "eclipse-lineage-mcp",
@@ -1294,6 +1313,25 @@
    "scorecard_ref": "test-bench/results/eclipse-roll-mcp-2026-10-26-rebench.json",
    "cards_on_record": 2
   },
+  "eclipse-scholarly-witness-mcp": {
+   "tool": "eclipse-scholarly-witness-mcp",
+   "verdict": "CERTIFIED(local, fixture scope)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 52,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 52
+   },
+   "scorecard_ref": "test-bench/results/eclipse-scholarly-witness-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-section508-mcp": {
    "tool": "eclipse-section508-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1350,6 +1388,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-span-mcp-2026-10-26-5.json",
    "cards_on_record": 5
+  },
+  "eclipse-spectrum-witness-mcp": {
+   "tool": "eclipse-spectrum-witness-mcp",
+   "verdict": "PARTIAL(local)",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 3,
+   "counts": {
+    "pass": 36,
+    "fail": 28,
+    "na": 0,
+    "untestable": 0,
+    "total": 64
+   },
+   "scorecard_ref": "test-bench/results/eclipse-spectrum-witness-mcp-2026-10-26-3.json",
+   "cards_on_record": 3
   },
   "eclipse-stage-mcp": {
    "tool": "eclipse-stage-mcp",
@@ -1803,8 +1860,11 @@
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
   "eclipse-dossier-mcp",
+  "eclipse-hosted-tier",
   "eclipse-patent-witness-mcp",
   "eclipse-permits-mcp",
+  "eclipse-scholarly-witness-mcp",
+  "eclipse-spectrum-witness-mcp",
   "eclipse-vector-mcp",
   "eclipse-witness-drift",
   "eclipse-witness-mcp",

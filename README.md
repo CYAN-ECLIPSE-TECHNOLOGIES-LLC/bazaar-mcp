@@ -95,7 +95,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Section 508 Evidence MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | FedScope MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Health Check MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
-| Eclipse Legacy Recon MCP | in-development | FAILED — standing bench verdict, run 8 (22/25 checks); scorecards retained append-only |
+| Eclipse Legacy Recon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) — at the NARROWED OBSERVED SCOPE (CLAIM-SCOPE.md), scoped re-bench card -11 (30/30 checks); cards -1..-10 retained append-only (card -10 FAILED at the former universal claim) |
 | Eclipse Steward MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Mail MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local / fixture-only) |
 | Eclipse Proof MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |

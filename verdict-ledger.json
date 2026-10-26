@@ -1142,6 +1142,25 @@
    "scorecard_ref": "test-bench/results/eclipse-steward-mcp-2026-10-26-4.json",
    "cards_on_record": 4
   },
+  "eclipse-strata-mcp": {
+   "tool": "eclipse-strata-mcp",
+   "verdict": "FAILED",
+   "certified": false,
+   "bench_date": "2026-10-25",
+   "bench_version": "verity-0.1.0",
+   "environment": "simulator (P0: OctoPrint virtual + virtual Klipper/Moonraker in-process sims; slicer: deterministic simulated PrusaSlicer behind production interface; class: fixture; pure-Python Ed25519)",
+   "qualifier": "simulator",
+   "seq": 1,
+   "counts": {
+    "pass": 35,
+    "fail": 10,
+    "na": 0,
+    "untestable": 0,
+    "total": 45
+   },
+   "scorecard_ref": "test-bench/results/eclipse-strata-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
   "eclipse-strike-mcp": {
    "tool": "eclipse-strike-mcp",
    "verdict": "CERTIFIED(local)",
@@ -1427,6 +1446,7 @@
   "eclipse-meridian-mcp",
   "eclipse-proving-mcp",
   "eclipse-revoke-mcp",
+  "eclipse-strata-mcp",
   "eclipse-wageward-mcp"
  ]
 }

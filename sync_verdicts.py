@@ -47,7 +47,7 @@ README = BAZAAR / "README.md"
 STOREFRONT = CE / "eclipse-bazaar-site" / "index.html"
 LEDGER_OUT = BAZAAR / "verdict-ledger.json"
 CARD_RE = re.compile(r"^(.+)-(\d{4}-\d{2}-\d{2})(?:-(\d+))?"
-                     r"(?:-rebench-fixround(\d+))?\.json$")
+                     r"(?:-rebench-fixround(\d+))?(?:-r(\d+))?\.json$")
 DOGFOOD_RE = re.compile(r"^(.+)-dogfood-(\d{4}-\d{2}-\d{2})\.md$")
 
 
@@ -102,6 +102,16 @@ def build_ledger():
         # Rook top-up 2026-10-26 — scorecards untouched, same treatment as
         # the friction qualifier and Charter format fixes.
         seq = int(m.group(3) or 1) + 100 * int(m.group(4) or 0)
+        # Card-format variant (Strata scoped re-bench, 2026-10-25): the
+        # fix-round cards carry a "-r<N>" run suffix instead of a run
+        # sequence (…-2026-10-25.json = bench 1, -r2 = scoped re-bench,
+        # -r3 = second scoped re-bench). Each r-run supersedes the
+        # same-date cards before it, so it sorts as seq N (the base card
+        # is seq 1, consistent with the -N band). Checker normalization,
+        # Rook Strata listing 2026-10-26 — scorecards untouched, same
+        # treatment as the BC fixround fix above.
+        if m.group(5):
+            seq = int(m.group(5))
         sc = json.loads(p.read_text())
         # Card-format variant (Charter suite): the tool id rides in a
         # "product" field instead of "tool". Checker normalization,
@@ -111,7 +121,24 @@ def build_ledger():
         # "slug" field. Accept the slug as identity. Checker
         # normalization, publish pass 8; scorecards untouched.
         if tool not in (sc.get("tool"), sc.get("product"), sc.get("slug")):
-            continue
+            # Card-format variant (Attest suite): scoped re-bench cards
+            # are named "<tool>-rebench-c12-<date>" and
+            # "<tool>-rebench2-c12-<date>" — the marker rides BEFORE the
+            # date, so CARD_RE reads it as part of the tool id and the
+            # identity check would skip the card entirely, leaving the
+            # FAILED base card as the standing verdict. Re-map to the
+            # card's own tool id with a sequence above the same-date
+            # base card (rebench = 60, rebench2 = 62; below the
+            # -rebench-fixround 100+ band). Checker normalization,
+            # publish pass 9 — scorecards untouched, same treatment as
+            # the Charter/BC/Covenant format fixes.
+            am = re.match(r"^(.+)-rebench(\d*)-c12-"
+                          r"(\d{4}-\d{2}-\d{2})\.json$", p.name)
+            if am and am.group(1) == sc.get("tool"):
+                tool, date = am.group(1), am.group(3)
+                seq = 60 + 2 * int(am.group(2) or 0)
+            else:
+                continue
         on_record[tool] = on_record.get(tool, 0) + 1
         prev = tools.get(tool)
         if prev and (date, seq) <= (prev["bench_date"], prev["seq"]):

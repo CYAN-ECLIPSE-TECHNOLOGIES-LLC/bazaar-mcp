@@ -1136,6 +1136,46 @@
     "version": "0.1.0"
    }
   },
+  "test-bench/results/eclipse-patent-witness-mcp-2026-10-26.json": {
+   "sha256": "4a7bf09304e48f6169c976c74d7d0e5e92015b7c89a604879118fc0647fc8ef4",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "verity-full-bench-1",
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": "Bench executed on the house VM during an intermittent exec write-latch episode (EPERM/silent-zero on exec-spawned writes; file-tool writes healthy). All bench copies were validated RECOMPUTE_MATCH pristine before any tamper; the product tree was never written by the bench and verified intact after (manifest 7209 B, records 17832 B, index 2440 B).",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-patent-witness-mcp",
+    "verdict": "PARTIAL",
+    "version": "0.1.0 (P0, HEAD 4ab3edd)"
+   }
+  },
+  "test-bench/results/eclipse-permits-mcp-2026-10-26-2.json": {
+   "sha256": "14569262eee810ea648718f93ce016457237425ae21a01cf98cb7e19a1ac24e6",
+   "summary": {
+    "bench_date": "2026-10-26",
+    "bench_version": "Scoped re-bench of the fix round ONLY (P-D1 + P-D2), fresh shapes per house law: Rig D (bench-owned, rig_d_rebench.py) \u2014 B7 full re-run (7 fence shapes x 14 agent verbs) + case/whitespace/unicode-lookalike key variants, string-value embedding, extreme nesting (in-args to depth 250, root-level raw depth 3000), arrays-of-arrays, duplicate raw-JSON keys, non-object arguments, operator-surface confusion incl. T3-signed operator call carrying fence keys, false-positive sweep on legitimate rich traffic (real NYC receipt + person-bearing payload via witness_verify on both stdio and handle() paths; citizen session_open with person-slot-bearing mandate scopes), P-D2 independent audit (own person-value scan, structural key scan, spec-only recompute, receipt byte-identity vs 37a228d), regression spot (B2 two on-disk shapes, B4 unchanged-read, B14 oracle both directions), suite + smoke re-run",
+    "checks_total": 0,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 0,
+     "pass": 0
+    },
+    "environment": "local",
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-permits-mcp",
+    "verdict": "CERTIFIED",
+    "version": "0.1.0 (P0, commit c4e7e18 on 37a228d)"
+   }
+  },
   "test-bench/results/eclipse-procure-mcp-2026-10-25.json": {
    "sha256": "65a652797fda9c5e9de5bd228e84c215c14005e00d6b3f531d2e282a1d6f7dab",
    "summary": {
@@ -1281,6 +1321,26 @@
     "tool": "eclipse-roll-mcp",
     "verdict": "CERTIFIED(local)",
     "version": "0.1.0"
+   }
+  },
+  "test-bench/results/eclipse-scholarly-witness-mcp-2026-10-26-2.json": {
+   "sha256": "e7cc56a87c8de14fb206da47c4b14c20c4ce78f34aa5d972fdc3d426d62e2313",
+   "summary": {
+    "bench_date": null,
+    "bench_version": null,
+    "checks_total": 4,
+    "counts": {
+     "fail": 0,
+     "na": 0,
+     "other": 4,
+     "pass": 0
+    },
+    "environment": null,
+    "failed_checks": [],
+    "not_tested_checks": [],
+    "tool": "eclipse-scholarly-witness-mcp",
+    "verdict": "CERTIFIED(local, fixture scope)",
+    "version": null
    }
   },
   "test-bench/results/eclipse-section508-mcp-2026-10-26-3.json": {
@@ -1713,10 +1773,10 @@
     "version": "0.1.0"
    }
   },
-  "test-bench/results/hostbridge-mcp-2026-10-24-3.json": {
-   "sha256": "59b2c90dfe7e07f7c83bd2a74f8460a0af0b9a840a6b0dac0e76ceaaba45ca8f",
+  "test-bench/results/hostbridge-mcp-2026-10-27.json": {
+   "sha256": "55dad4c8f00b2a4c9a802f621ee4572cc7b2b73305293efd4d0a2d7194e48458",
    "summary": {
-    "bench_date": "2026-10-24",
+    "bench_date": "2026-10-27",
     "bench_version": "0.1.0",
     "checks_total": 16,
     "counts": {
@@ -1725,13 +1785,13 @@
      "other": 0,
      "pass": 15
     },
-    "environment": "simulator",
+    "environment": "local-real (real filesystem docroot served by a real HTTP server process; live-host TCP probe)",
     "failed_checks": [],
     "not_tested_checks": [
      "auth enforced"
     ],
     "tool": "hostbridge-mcp",
-    "verdict": "CERTIFIED(simulator)",
+    "verdict": "CERTIFIED(local-real)",
     "version": "0.1.0"
    }
   },
@@ -1758,8 +1818,8 @@
    }
   }
  },
- "catalog_built": "2026-10-26",
- "generated_at": "2026-10-27T05:10:43Z",
+ "catalog_built": "2026-10-27",
+ "generated_at": "2026-10-27T05:12:47Z",
  "generator": "tools/make_verdict_snapshot.py",
  "source": "test-bench/results (referenced by catalog.json scorecard_ref)"
 }

@@ -1,8 +1,8 @@
 {
- "catalog_built": "2026-10-26",
+ "catalog_built": "2026-10-27",
  "file": "corpus.jsonl",
- "generated_at": "2026-10-27T05:10:43Z",
+ "generated_at": "2026-10-27T05:12:47Z",
  "generator": "tools/make_corpus.py",
- "records": 96,
- "sha256": "b649cf9ac19eac3b61adbac7439d442d4d78d6e64bbf30cd86d95e5bfb3828ca"
+ "records": 101,
+ "sha256": "8598a15223a3717e06f966ded241817577229b40286bc93f2998934807ca62a9"
 }

@@ -8660,6 +8660,71 @@
         "crosspay_anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — every charge is matched to a mandate record within seconds; unmatched charges generate an auto-assembled dispute pack and an issuer-freeze request before the statement closes.",
+        "As-of mandate matching with a fixed evaluation order — existence → verifiability → fee/unit statability (build pin) → expiry/revocation → scope → cap; the first failing rule names the one non-match reason (9 reasons, incl. NO_MANDATE, SCOPE_MISS, CAP_EXCEEDED_AT_CHARGE, RECORD_UNVERIFIABLE). Every classification carries measured fixture-time latency on its face against the period's SLA bound; a miss is flagged sla_missed and counted, never edited away. Verification is fail-closed and recompute-only against keys pinned out-of-band; a pack proves a negative by recomputation in a fresh process from the period export + pinned keys alone.",
+        "Decisive fixture F-P13 — bench re-derived from the bencher's own corpus (bencher keys throughout): 24 charges, 21 matched, 3 phantoms of 3 different classes (NO_MANDATE / SCOPE_MISS / CAP_EXCEEDED_AT_CHARGE), period SLA 45 (non-default); all 24 verdicts/reasons/mandate_refs reproduce the bencher's independent §4.3 recomputation exactly, latency 5s and sla_missed: false on every record. The SCOPE_MISS pack's hash recomputes, its freeze artifact cites the pack hash and carries the §6.3 label verbatim, and the freeze was assembled before period close (assembled_at 2027-03-02T22:00:15Z vs the fixture close). Fresh-process §6.4 verify (empty data dir, export + pinned keys alone): verified: true, non_match_reason: SCOPE_MISS, assembled_before_close: true.",
+        "Honest scope — simulator only, local stdio, fixture charge stream + fixture mandate ledger ONLY, value_class \"test\": Phantom reconciles after a charge exists; it does not prevent, decline, or reverse charges, no verb transmits anything to any party, and no state implying FILED/SUBMITTED/FROZEN/DISPUTED_WITH_ISSUER exists. Closed surface of exactly 10 tools (7 operator + 3 reviewer, disjoint); 20 forbidden filing/transmission verbs bench-probed NO_SUCH_TOOL on both surfaces. Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on any issuer/bank/network endpoint or key, real identifier source, non-fixture source, or value_class other than 'test'. Signing is an HMAC fixture stand-in for Herald RS256 (disclosed). Sole condition: full coordinated rollback = fenced condition — external anchor required before live/multi-party use."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(simulator)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-phantom.md) + delta re-bench (argus101-program-20261027/wave3/rebench-phantom.md, D1 CLOSED): builder suite 35/35 re-run clean by bencher; decisive fixture F-P13 re-derived from the bencher's own corpus (24 charges, 21 matched, 3 phantom classes, freeze assembled before period close). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture charge stream + fixture mandate ledger, value_class 'test'; no real charge is reconciled and nothing is filed with or requested of any issuer. Sole condition (verbatim): full coordinated rollback = fenced condition — external anchor required before live/multi-party use. Advisories F-1/F-2 (non-blocking, spec-conformant): existence precedes verifiability in the fixed §4.3 order, and no MCP verb exists for MATCHED-receipt verify (spec §5 as written). Signing is an HMAC fixture stand-in for Herald RS256 (disclosed).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-phantom.md (Verity bench of v0.1.0, 2026-10-27; initial FAIL(simulator) on sole defect D1 — a mandate with a non-native field set was refused at ingest instead of downgrading) + argus101-program-20261027/wave3/rebench-phantom.md (delta re-bench, probe 73/73: D1 CLOSED on both variants — extra field and missing cap_minor each downgrade to UNMATCHED/RECORD_UNVERIFIABLE with a pack evidencing unverifiability; no-weakening controls hold incl. fully re-signed fabricated MATCHED still failing at step4_match; the §6.5 downgrade-pack caveat — verify_pack naming step3_ledger on such packs — ruled spec-conformant, not a defect and not a condition; builder suite re-run clean 35/35; F-P13 spot check unchanged; metering sequence unchanged). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live charge feeds — SPEC §10 counsel gate (named, unbuilt): live charge feeds from payment networks/banks are genuinely unbuilt. Ingesting any real charge stream or mandate ledger, transmitting a dispute pack or freeze request artifact to any issuer, network, bank, or processor, acting as dispute agent or authorised representative for a program, and any claim about dispute rights, chargeback windows, or freeze entitlements under card-network rules or Regulation E/Z are counsel-gated and unbuilt; there is no dormant live path, no issuer/network/bank code, stub, or endpoint in the tree (production imports are stdlib-only, bench-checked), and the startup config fence refuses issuer/bank/network configuration (CONFIG_FENCE_REFUSED:<class>)",
+          "Sole condition (verbatim from the bench record): full coordinated rollback = fenced condition — external anchor required before live/multi-party use. No live or multi-party use until an external anchor exists",
+          "A §6.5 downgrade pack evidences unverifiability (verify_pack names step3_ledger on such packs by design — spec-conformant, per re-bench ruling): a charge whose mandate field set is non-native downgrades to UNMATCHED/RECORD_UNVERIFIABLE with a pack evidencing unverifiability (excerpt carries the offending mandate exactly as presented, pack_hash recomputes, transcript states ledger_verified: false); fresh-process §6.4 verify of that pack's export returns PHANTOM_VERIFY_FAIL:step3_ledger — the correct named failure, not a verified verdict — while ordinary phantom packs over a native, recomputing ledger still verify verified: true",
+          "Advisories F-1/F-2 (non-blocking, spec-conformant, from the bench record): F-1 — existence precedes verifiability in the fixed §4.3 order, so an unverifiable charge with no mandate candidate classifies NO_MANDATE, not RECORD_UNVERIFIABLE (a known reading of the spec's stated order, recorded so the behaviour is a known reading, not an accident); F-2 — no MCP verb exists for MATCHED-receipt verify: §6.4 receipt verification for a MATCHED charge is not reachable from either MCP surface (the reviewer surface exposes only pack_verify, per spec §5 as written); matched classifications were recomputed independently by the bencher instead",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1x program_period_active per program per fixture period opened + 1x pack_assembled per dispute pack; 0 for ingestion, matching, receipts, verifications, request artifacts, reads, refusals, idempotent re-ingests, and the CHARGE_CONFLICT path; no charge path built, no payment taken, no live Meter ingest claimed)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-phantom-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-phantom-mcp.png",
+      "name": "Eclipse Phantom",
+      "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $49/mo/program, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 (metering points only in v0.1.0, no charge path built): exactly 1x program_period_active per program per fixture period opened + 1x pack_assembled per dispute pack, units 1; 0 for ingestion, matching, receipts, verifications, request artifacts, reads, refusals, idempotent re-ingests, and the CHARGE_CONFLICT path. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
+      "problem_statements": [
+        "Agent payment programs accumulate charges — per-call fees, rail charges, tool subscriptions — each of which should trace to a mandate someone authorised; anything that traces to nothing is a phantom, and it is usually found weeks later, by a human, after the statement has closed",
+        "Statement review and issuer fraud alerts cannot prove a negative: neither re-runs the mandate ledger as of the charge's timestamp to show that no mandate ever covered this charge, in a form a third party can recompute",
+        "I need every charge matched to a mandate record within seconds — and for the unmatched ones, an auto-assembled dispute pack plus an issuer-freeze request artifact, assembled before the statement closes, that a fresh-process verifier can prove from the records alone"
+      ],
+      "source_refs": [
+        "eclipse-phantom-mcp/README.md",
+        "eclipse-phantom-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-phantom.md",
+        "argus101-program-20261027/wave3/rebench-phantom.md",
+        "argus101-specs-20261027/phantom-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Phantom-charge sentinel for agent payment programs (simulator) — every charge is matched to a mandate record within seconds; unmatched charges generate an auto-assembled dispute pack and an issuer-freeze request before the statement closes. PASS-CONDITIONAL(simulator) — fixture charge stream + fixture mandate ledger only, value_class \"test\"; nothing is filed with or requested of any issuer. Sole condition: full coordinated rollback = fenced condition — external anchor required before live/multi-party use.",
+      "tools": [
+        "charge_ingest",
+        "charge_status",
+        "program_summary",
+        "pack_get",
+        "freeze_request_get",
+        "operator_counter_sign",
+        "period_close",
+        "queue_read",
+        "pack_verify",
+        "review_mark"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

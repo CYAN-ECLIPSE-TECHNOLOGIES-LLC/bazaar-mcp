@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 131,
+ "count": 132,
  "records": [
   {
    "record_type": "verdict",
@@ -2682,6 +2682,29 @@
  "scope": "PASS-CONDITIONAL(local/simulator, fixture FX records) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-crosspay.md) + delta re-bench (argus101-program-20261027/wave3/rebench-crosspay.md, D1/D2/D3 CLOSED, C2/C3/C4 discharged): builder suite 39/39 re-run clean by bencher (34 baseline + 5 fix regressions); decisive fixture F-X9 independently re-derived from the bencher's own corpus (GBP/USD pair the builder never used) — under-cap CLEAR at spread 40 bps vs cap 100 with fx_seal == bencher-recomputed seal, over-cap twin REFUSED / SPREAD_CAP_EXCEEDED at 101 bps, both exports fresh-verify in a fresh process from export + pinned keys alone. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond this scope is claimed. Scope is exactly: local stdio, fixture FX records only, pre-flight verdicts only, value_class 'test'; Crosspay never converts, settles, or moves currency and fetches no live rates. Sole remaining condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Novel mechanism (SPEC §2.1, verbatim): rate source, rate, and spread are sealed at execution, and settlement is refused pre-flight when the spread exceeds the mandate's cap — enforcement before money moves, not evidence after.",
  "status": "current",
  "verdict": "PASS-CONDITIONAL(local/simulator, fixture FX records)"
-}
+},
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.0",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Phantom",
+  "not_tested": [
+   "Live charge feeds — SPEC §10 counsel gate (named, unbuilt): live charge feeds from payment networks/banks are genuinely unbuilt. Ingesting any real charge stream or mandate ledger, transmitting a dispute pack or freeze request artifact to any issuer, network, bank, or processor, acting as dispute agent or authorised representative for a program, and any claim about dispute rights, chargeback windows, or freeze entitlements under card-network rules or Regulation E/Z are counsel-gated and unbuilt; there is no dormant live path, no issuer/network/bank code, stub, or endpoint in the tree (production imports are stdlib-only, bench-checked), and the startup config fence refuses issuer/bank/network configuration (CONFIG_FENCE_REFUSED:<class>)",
+   "Sole condition (verbatim from the bench record): full coordinated rollback = fenced condition — external anchor required before live/multi-party use. No live or multi-party use until an external anchor exists",
+   "A §6.5 downgrade pack evidences unverifiability (verify_pack names step3_ledger on such packs by design — spec-conformant, per re-bench ruling): a charge whose mandate field set is non-native downgrades to UNMATCHED/RECORD_UNVERIFIABLE with a pack evidencing unverifiability (excerpt carries the offending mandate exactly as presented, pack_hash recomputes, transcript states ledger_verified: false); fresh-process §6.4 verify of that pack's export returns PHANTOM_VERIFY_FAIL:step3_ledger — the correct named failure, not a verified verdict — while ordinary phantom packs over a native, recomputing ledger still verify verified: true",
+   "Advisories F-1/F-2 (non-blocking, spec-conformant, from the bench record): F-1 — existence precedes verifiability in the fixed §4.3 order, so an unverifiable charge with no mandate candidate classifies NO_MANDATE, not RECORD_UNVERIFIABLE (a known reading of the spec's stated order, recorded so the behaviour is a known reading, not an accident); F-2 — no MCP verb exists for MATCHED-receipt verify: §6.4 receipt verification for a MATCHED charge is not reachable from either MCP surface (the reviewer surface exposes only pack_verify, per spec §5 as written); matched classifications were recomputed independently by the bencher instead",
+   "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+   "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+   "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1x program_period_active per program per fixture period opened + 1x pack_assembled per dispute pack; 0 for ingestion, matching, receipts, verifications, request artifacts, reads, refusals, idempotent re-ingests, and the CHARGE_CONFLICT path; no charge path built, no payment taken, no live Meter ingest claimed)"
+  ],
+  "product": "eclipse-phantom-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-phantom-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL(simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-phantom.md) + delta re-bench (argus101-program-20261027/wave3/rebench-phantom.md, D1 CLOSED): builder suite 35/35 re-run clean by bencher; decisive fixture F-P13 re-derived from the bencher's own corpus (24 charges, 21 matched, 3 phantom classes, freeze assembled before period close). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture charge stream + fixture mandate ledger, value_class 'test'; no real charge is reconciled and nothing is filed with or requested of any issuer. Sole condition (verbatim): full coordinated rollback = fenced condition — external anchor required before live/multi-party use. Advisories F-1/F-2 (non-blocking, spec-conformant): existence precedes verifiability in the fixed §4.3 order, and no MCP verb exists for MATCHED-receipt verify (spec §5 as written). Signing is an HMAC fixture stand-in for Herald RS256 (disclosed).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL(simulator)"
+ }
  ]
 }

@@ -6274,6 +6274,70 @@
         "live_state_note": "Bench evidence: argus101-program-20261027/rebench-settleseal.md (Verity re-bench, independent, bench-written dataset + spec matcher, fresh-process stdio, cross-process determinism, scratch-tree pin/fence probes, full chain-correct attacker reseals). Prior FAIL bench: bench-settleseal.md; fix claim: fix-settleseal-011.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
         "scorecard_ref": null
       }
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — a synthetic-counterparty mint whose every artifact carries a provable synthetic watermark (SPEC §4.4): overt markers (synthetic: true, value_class: \"test\", mint_id, watermark_id wm_…, and the mockmint_ ref namespace), a Herald-signed attestation (RS256 JWS) bound to artifact_hash ‖ mint_id ‖ watermark_id ‖ artifact_type, and a per-mint artifact hash chain in the ledger export — so watermarked test artifacts are detectable as synthetic wherever they surface, within the stated detection boundary below.",
+        "Out-of-band trust anchor only (SPEC §5.1) — verification never trusts keys supplied by the presenter: public keys come only from an explicit trusted_public_keys argument, the MOCKMINT_TRUSTED_KEYS_FILE config file, or the local key store's pinned public keys (keys/public-keys.json). Keys embedded in an artifact, mint record, or ledger export are ignored for trust — a fully self-consistent forged ecosystem fails VERIFY_FAIL, a removed anchor refuses rather than trusting presenter material, and genuine outsider verification (export + pinned public keys alone) passes 12/12 (re-bench F-K10). No private key material exists anywhere in the shipped tree outside the gitignored keys/ store (keys/ dir 700, keys.json 600); clean checkouts regenerate fixture keys locally by design.",
+        "Detection boundary, stated exactly as measured (SPEC §11.2 / F-K11 as amended by Amendment A1 — the listing must state the bare-payload limit, not oversell detection): mockmint_detect flags SYNTHETIC_MOCKMINT when (a) the full watermark verifies against the out-of-band pinned trust anchor, or (b) the watermark object is stripped but at least one identifying structural field survives — mint_id, artifact_id, or a mockmint_-namespace counterparty_ref — and that field resolves against the ledger export. An identifying field that does not resolve is UNVERIFIABLE. Records retaining only non-identifying fields (parent_ref, artifact_hash, overt flags) or bare payload values are NO_WATERMARK_FOUND — the honest limit (SPEC §14 Q-K1): values hand-copied as bare payload, with every structural field removed, carry nothing of the artifact, and no artifact-carried mechanism can detect that. Re-bench strip battery: 12/12 SYNTHETIC at every identifying-field level including single-field L5/L6/L7; 12/12 NO_WATERMARK_FOUND at the non-identifying and bare-payload levels; claim == measurement at every level.",
+        "Closed, hardened surface — exactly 9 tools (mockmint_mint, mockmint_activate, mockmint_emit, mockmint_api_call, mockmint_list, mockmint_retire, mockmint_verify_watermark, mockmint_detect, mockmint_export); no de-watermarking, re-namespacing, promotion, or live-connection verb exists. Minting is deterministic under a seed; mint records are minter + Herald counter-signed in a hash-chained ledger. A real-name imitation linter refuses lookalike display names including spaced/leet variants, and a payload linter refuses real-credential/identifier shapes. Malformed input to any tool returns a named refusal and the server process survives (re-bench: 58 hostile calls across all 9 tools, 0 raises). The §12 production-ingest refusal shape (MOCKMINT_ARTIFACT_REFUSED_PRODUCTION, all five any-of triggers) is pinned as an internal helper — a stated contract on Till/Meter production ingest paths, stated not verified in this product; verification belongs to the Till/Meter benches (SPEC §14 Q-K4).",
+        "Honest scope — LOCAL / sandbox only: synthetic counterparties are minted and exercised locally only. No hosted mint, no network egress, no real merchant/agent/API is impersonated, copied, or connected to, and no Mockmint artifact is presented to a live system. Amounts, behaviours, and responses in artifacts are invented fixtures with no real-world referent."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Certification & Testing"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (LOCAL/sandbox)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (LOCAL/sandbox) — Verity re-bench of v0.1.1, 2026-10-26 (argus101-program-20261027/rebench-mockmint.md): all three v0.1.0 blockers (D1 shipped private keys, D2 presenter-trusted verification, D3 detection claim exceeding measurement), majors D4–D6, and minors D7–D10 fixed and independently re-proven; builder suite 49/49 fresh process, additionally re-run 49/49 by the shipper. The verifier has a real out-of-band trust anchor (fully forged ecosystems and the shipped-key exploit shape both fail; a removed anchor refuses rather than trusting presenter material); no private key material exists in the tree outside the gitignored keys/ store; and the F-K11 detection claim matches measurement level-for-level, including the Amendment A1 boundary: single-identifying-field detection (mint_id / artifact_id / mockmint_ ref resolving against the ledger export) is SYNTHETIC_MOCKMINT, while records retaining only non-identifying fields or bare payload values are NO_WATERMARK_FOUND — detection is NOT claimed for bare payload values with every structural field removed. Scope never exceeds LOCAL/sandbox: watermarked synthetic counterparties for commerce testing; every artifact carries the §4.4 watermark; no hosted mint, no live system, no real counterparty. Four new minors (N1–N4) recorded in the re-bench, none blocking at this scope (see not_tested).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-mockmint.md (Verity independent re-bench, fresh-process, bench-written probes: strip battery 12 artifacts per level, 58 hostile calls, forged-ecosystem and wrong/removed-anchor probes, F-K10 outsider flow 12/12). Prior FAIL bench: bench-mockmint.md; fix claim: fix-mockmint-011.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null). Repository PRIVATE (priced-product policy): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-mockmint-mcp @ v0.1.1. Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-mockmint-mcp v0.1.1, status active / isLatest (confirmed by registry API fetch at ship, publishedAt 2026-10-27T06:28:16Z).",
+        "not_tested": [
+          "Hosted or any non-local scope — none claimed: no hosted mint, no network egress, no live merchant/agent/API connection exists in the tree",
+          "Bare-payload detection — NOT claimed and measured as the honest limit: values hand-copied as bare payload with every structural field removed return NO_WATERMARK_FOUND (SPEC §11.2 / §14 Q-K1, Amendment A1); the listing states this limit rather than overselling detection",
+          "§12 enforcement inside Till/Meter production ingest — Mockmint's contract remains stated, not verified in this product; verification is owned by the Till/Meter benches per SPEC §14 Q-K4",
+          "N1 (minor, open) — malformed explicit trust-anchor entries are silently discarded and the anchor falls through to env/store instead of failing that role closed; not exploitable (presenter material can never enter through this path) — hardening queued",
+          "N2 (minor, open) — detect attribution with conflicting identifying fields attributes to the chain-lookup mint without flagging the conflict; detection itself (synthetic) is correct; SPEC §11.2 is silent on conflicts — queued",
+          "N3 (minor, open) — idempotent re-activation of an already-ACTIVE_SANDBOX mint returns success before the window check when carrying a ts at/after expires_at; no state change and no extra metering, and emission remains window-gated — queued",
+          "N4 (minor, open) — three variant shapes do not trigger the §12 refusal helper (a herald_attestation top-level key name, a mockmint_ ref nested as a dict-of-dict inside refs, and a mockmint_ ref nested in an arbitrary sub-object outside refs); all five canonical §12 triggers and four attestation shapes pass — helper shape list to be enumerated exactly, queued"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-mockmint-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-mockmint-mcp.png",
+      "name": "Eclipse Mockmint",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9.1 (subscription shape; metering points are per mint activated and per priced mockmint_emit / mockmint_api_call call inside the tier — verifier calls assert no metering point; re-activation is idempotent and not a second metering point). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "I test agent-commerce flows and need fake merchants, agents and APIs locally — but test artifacts that leak into production-shaped records are indistinguishable from real evidence, and I need every artifact provably synthetic",
+        "A test receipt surfaced in my production ingest — I need a contamination check that flags it SYNTHETIC_MOCKMINT from the artifact plus a ledger export, with the detection boundary stated honestly (including the bare-payload level where detection is not claimed)",
+        "My verifier cannot trust keys embedded in the artifact itself — I need watermark verification anchored out-of-band, so a fully forged, self-consistent ecosystem still fails"
+      ],
+      "source_refs": [
+        "eclipse-mockmint-mcp/README.md",
+        "eclipse-mockmint-mcp/server.json",
+        "eclipse-mockmint-mcp/SPEC.md",
+        "argus101-program-20261027/rebench-mockmint.md"
+      ],
+      "status": "in-development",
+      "tagline": "Watermarked synthetic-counterparty mint for commerce testing: fake merchants, agents and APIs whose every artifact carries the §4.4 synthetic watermark. CERTIFIED (LOCAL/sandbox) — local/sandbox only, no real counterparty is impersonated or connected to. Detection boundary stated on its face (Amendment A1): bare payload values with every structural field removed are NO_WATERMARK_FOUND — detection is not claimed at that level.",
+      "tools": [
+        "mockmint_mint",
+        "mockmint_activate",
+        "mockmint_emit",
+        "mockmint_api_call",
+        "mockmint_list",
+        "mockmint_retire",
+        "mockmint_verify_watermark",
+        "mockmint_detect",
+        "mockmint_export"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

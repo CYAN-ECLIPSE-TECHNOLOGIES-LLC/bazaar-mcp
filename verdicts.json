@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 96,
+ "count": 97,
  "records": [
   {
    "record_type": "verdict",
@@ -1922,6 +1922,26 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-settleseal-mcp/"
+  },
+  {
+   "bench_date": "2026-10-26",
+   "bench_version": "0.1.1",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Mockmint",
+   "not_tested": [
+    "Hosted or any non-local scope \u2014 none claimed; no hosted mint, network egress, or live counterparty connection exists in the tree",
+    "Bare-payload detection \u2014 measured honest limit, not claimed: bare payload values with every structural field removed return NO_WATERMARK_FOUND (SPEC \u00a714 Q-K1)",
+    "\u00a712 enforcement inside Till/Meter production ingest \u2014 stated contract only in this product; verification owned by the Till/Meter benches (SPEC \u00a714 Q-K4)",
+    "Production signing custody \u2014 signing keys are locally generated fixture keys in the gitignored keys/ store (dir 700, keys.json 600); clean checkouts regenerate fixture keys by design; the v0.1.0 shipped fixture keys were burned and artifacts under them fail verification"
+   ],
+   "product": "eclipse-mockmint-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-mockmint-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (LOCAL/sandbox) \u2014 Verity re-bench of v0.1.1, 2026-10-26 (argus101-program-20261027/rebench-mockmint.md): D1\u2013D10 all fixed and independently re-proven (out-of-band trust anchor, no shipped private keys, detection claim == measurement at every strip level incl. single-identifying-field detection); builder suite 49/49. Watermarked synthetic counterparties for commerce testing, LOCAL/sandbox only; every artifact carries the \u00a74.4 watermark. Stated detection boundary (Amendment A1): bare payload values with every structural field removed are NO_WATERMARK_FOUND \u2014 detection is not claimed at that level.",
+   "status": "current",
+   "verdict": "CERTIFIED (LOCAL/sandbox)"
   }
  ]
 }

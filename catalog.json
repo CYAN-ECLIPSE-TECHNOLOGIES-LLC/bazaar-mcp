@@ -7434,6 +7434,72 @@
                 "pack_get"
           ],
           "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — paid placements carry a sealed sponsorship receipt that buying agents are required to surface, so paid ranking can't masquerade as merit ranking.",
+        "Sealed at placement time — the sponsorship receipt is issued when the placement is created, over the placement record's hash, counter-signed by advertiser + Herald (fixture HMAC stand-in); a receipt attempted after the first render is refused (RECEIPT_AFTER_SURFACING), and every render cites the receipt hash.",
+        "UNMARKED-PAID defect derivation (SPEC §3.3) — a paid placement with no valid receipt, a mismatched/expired/revoked receipt, or a render citing no receipt derives the named defect UNMARKED-PAID on every status, export, and pack; absence of a receipt is never rendered as, upgraded to, or omitted into a merit presentation.",
+        "Surfacing proofs + offline verification (SPEC §4.5 / §6.4) — a proof binds receipt hash ↔ render hash ↔ disclosure-render hash ↔ buying-agent ref; receipt_verify recomputes placement hashes, both receipt signatures, the hash chain, mechanical status derivation, and every proof from the exported pack + pinned fixture keys alone, in a fresh process; any failure returns SHELFSPACE_VERIFY_FAIL:<step> with no partial verdict, and imported sponsorship claims receive at most UNVERIFIED_IMPORT.",
+        "Stored-chain integrity (v0.1.1, hardened v0.1.2) — every append refreshes a signed head anchor kept in two copies (store mirror + head-anchor.json) and extends an append-only anchor journal; both anchor copies must be present and agree, the journal and metering side records are cross-checked against the chain head/count, an emptied or tampered store derives SEAL_DEFECT, duplicate revocation is refused (RECEIPT_ALREADY_REVOKED, earliest-wins), a missing signing key suspends all minting (SIGNING_KEY_UNAVAILABLE, zero writes, no null signature ever persisted), verify_pack binds the full pack face, and a malformed store yields a structured SEAL_DEFECT refusal from every core tool.",
+        "Rollback-residual honesty fence (on the product face) — Honesty fence — rollback residual: within this local file model, a rollback that restores every local artifact (store, both anchors, journal, metering) to one consistent earlier snapshot is undetectable; the journal/metering cross-checks detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. No stronger claim is made.",
+        "Compulsion fence (SPEC §11.2, verbatim) — Shelfspace issues sponsorship receipts and a surfacing-proof format and verifies proofs presented to it. It does not compel any router, marketplace, or agent to surface a disclosure. A 'required to surface' duty exists only where a router/marketplace adopts it (§12); Shelfspace evidences surfacing, it does not enforce it."
+      ],
+      "categories": [
+        "Marketplace Infrastructure",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local, fixture placement records)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local, fixture placement records) — Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-shelfspace.md): all six re-bench conditions F1'–F6' CLOSED; F2' snapshot-rollback residual adjudicated acceptable-at-scope under condition 1; closed round-1 items (cond.2/3/4, F-H14) spot-checked, none reopened; builder suite 52/52 re-run by the bencher plus ~200 independent serialized probes. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local, fixture placement records, under the local single-operator file model; local stdio MCP, fixture placements only, value_class \"test\" on all artifacts, fixture HMAC stand-in for the Herald pattern, no counsel-gate (§10) surface built or claimed. CONDITION 1 (the sole condition, carried verbatim): Scope/fence condition (from F2' residual): certification holds only at scope local, fixture placement records under the local single-operator file model. The README rollback-residual honesty fence and scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside the data-dir trust model + fresh bench (the existing counsel gate for live use stands separately). Decisive fixture F-H14 stands from the bench record: plc-paid-1 SURFACED with proof buying_agent_ref/disclosure_marker bound, plc-paid-2 derives UNMARKED-PAID / UNMARKED_PAID_NO_RECEIPT, fresh verify PASS with eval bound to the signed statement.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench2-shelfspace.md (Verity delta re-bench 2, builder suite re-run twice 52/52, ~200 independent serialized probes incl. partial-rollback matrix, journal tampering, anchor/journal disagreement, duplicate-revocation and null-sig batteries; subject tree unmodified by the bench). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live, multi-party, shared-filesystem, or adversarial-operator use — CONDITION 1 (bench, verbatim): Scope/fence condition (from F2' residual): certification holds only at scope local, fixture placement records under the local single-operator file model. The README rollback-residual honesty fence and scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside the data-dir trust model + fresh bench (the existing counsel gate for live use stands separately).",
+          "Complete coordinated snapshot rollback — Honesty fence — rollback residual: within this local file model, a rollback that restores every local artifact (store, both anchors, journal, metering) to one consistent earlier snapshot is undetectable; the journal/metering cross-checks detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. No stronger claim is made.",
+          "Live marketplaces, ranking systems, advertisers, routers, ad networks, or buying agents — fixture placement records only; no live system is contacted, integrated, or compelled, and Shelfspace does not rank, sell, render, or endorse any placement",
+          "Legal effect / disclosure-duty compliance (SPEC §10 counsel gate, named, unbuilt) — any claim that a Shelfspace receipt/proof satisfies a legal sponsorship-disclosure duty, advertising law, or anti-deception / unfair-practice rule, or that surfacing is legally required of any party, is out of v0.1.2, hard; the gate packet (disclosure law for agent-facing surfaces; defamation/false-statement review of a public UNMARKED-PAID derivation about a real party; contract terms by which a marketplace/router could require surfacing; real advertiser-terms retention) is unbuilt by design and no dormant live path exists to flip",
+          "Live Herald RS256 signing — v0.1.2 signing is a fixture HMAC stand-in for the Herald pattern, disclosed on every record's face; verification uses pinned fixture keys only, never keys presented inside a record or pack",
+          "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9.1 (sponsorship_receipt_issued, surfacing_proof_verified, shelfspace_pack_exported, active_placement_month), no charge path, subscription, or invoice is built and no live Meter ingest is claimed ($99/mo is a book reference)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-shelfspace-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-shelfspace-mcp.png",
+      "name": "Eclipse Shelfspace",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC §9.2 (book reference, not a charge path), attaching to the §9.1 active_placement_month count; metering points only in v0.1.2 (sponsorship_receipt_issued, surfacing_proof_verified, shelfspace_pack_exported, active_placement_month) — counts recomputable from the record stream; UNMARKED-PAID derivations emit no metering record (a defect is never a chargeable event). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Paid ranking routinely masquerades as merit ranking on agent-facing marketplaces: a listing is first because it paid, while the surface presents the order as earned — the payment, the placement, and the disclosure (if any) live in three different parties' logs, none binding the others",
+        "I need the paid placement, the payment-as-stated, and the disclosure actually rendered bound in one recomputable chain — a sponsorship receipt sealed at placement time that travels with the placement, plus a surfacing proof a third party can verify offline from the pack alone",
+        "I need a paid placement with no valid receipt to be a named defect (UNMARKED-PAID) on every surface — never silently presented as unmarked or merit — and I need the witness itself kept honest: it evidences surfacing, it does not compel or enforce it"
+      ],
+      "source_refs": [
+        "eclipse-shelfspace-mcp/README.md",
+        "eclipse-shelfspace-mcp/server.json",
+        "eclipse-shelfspace-mcp/SPEC.md",
+        "argus101-program-20261027/wave2/rebench2-shelfspace.md"
+      ],
+      "status": "in-development",
+      "tagline": "Sponsorship-disclosure witness for agent-facing marketplaces — paid placements carry a sealed sponsorship receipt, and a paid placement with no valid receipt derives UNMARKED-PAID. PASS-CONDITIONAL (local, fixture placement records) — local single-operator file model, fixture placements only. Shelfspace issues sponsorship receipts and a surfacing-proof format and verifies proofs presented to it. It does not compel any router, marketplace, or agent to surface a disclosure. A 'required to surface' duty exists only where a router/marketplace adopts it (§12); Shelfspace evidences surfacing, it does not enforce it. Honesty fence — rollback residual: within this local file model, a rollback that restores every local artifact (store, both anchors, journal, metering) to one consistent earlier snapshot is undetectable; the journal/metering cross-checks detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. No stronger claim is made.",
+      "tools": [
+        "placement_record",
+        "sponsorship_receipt_issue",
+        "sponsorship_receipt_revoke",
+        "placement_status",
+        "shelfspace_pack_get",
+        "render_record",
+        "surfacing_proof_issue",
+        "surfacing_proof_get",
+        "receipt_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

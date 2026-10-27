@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 98,
+ "count": 99,
  "records": [
   {
    "record_type": "verdict",
@@ -1962,6 +1962,26 @@
    "scope": "CERTIFIED (LOCAL/simulator, fixture corpus) \u2014 Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-reviewseal.md): all 8 re-bench conditions pass on independent probes; pack-alone verification (chain, both signatures per record, snapshot counter-signatures) from pack keys only; F-R12 exact rational 7/10 recomputed from the pack alone; builder suite 36/36. Fixture corpus only \u2014 binding and corpus integrity, not any live marketplace's review integrity and not the truth of any review's content. Limitation on its face (n1): an evidence pack is recomputable but not tamper-evident against its own holder.",
    "status": "current",
    "verdict": "CERTIFIED (LOCAL/simulator, fixture corpus)"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.2",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Continuity",
+   "not_tested": [
+    "Live identity scope \u2014 none claimed; fixture principals/models/keys only, local stdio; any scope beyond local/fixture requires asymmetric keys + re-bench (SPEC SS11)",
+    "Trustworthiness of a chained agent \u2014 same-principal lineage only; no capability, safety, or fitness attestation",
+    "Production signing custody \u2014 fixture Herald stub (HMAC fixture keys, local gitignored keys/ store mode 600); no signing scheme of its own",
+    "Hosted/networked operation \u2014 none in v0.1.2; no charge path (metering records only)"
+   ],
+   "product": "eclipse-continuity-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-continuity-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (local/fixture) \u2014 Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-continuity-012.md): condition C1 closed \u2014 pin parser fails closed on all probes (4 N1 shapes 28/28 refuse, no verdict/receipt; 102/102 unconsumable variants refuse; every supported shape binds), N2 fixed, no-regression spots pass (A5/A6/A7, F-C14 independently recomputed, builder suite 49/49). Fixture principals/models/keys, local stdio only \u2014 signed identity-continuity chains across model/config changes, fork freeze, principal-only resolution; no live registry or identity claim.",
+   "status": "current",
+   "verdict": "CERTIFIED (local/fixture)"
   }
  ]
 }

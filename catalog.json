@@ -6401,6 +6401,63 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — agent identity-continuity chains across model/config changes: every change in an agent's life appends a signed link to a single hash-chained identity chain rooted at a genesis link, so a counterparty verifies offline, recomputably, that the agent in front of them descends link by link from the principal they originally trusted — 'same principal, new model' instead of re-trusting from zero. Continuity proves continuity, not trustworthiness: a verifying chain asserts same-principal lineage only, nothing about the new model's capability, safety, or fitness.",
+        "Fork freeze + principal-only resolution — key rotation and model change are distinct link types, never conflated (a combined change is two links, rotation first). Two valid children of one head freeze the chain FORKED; only a signed resolution link naming the surviving and repudiated branch heads resumes it, and the repudiated branch stays in exports, labelled. Revocation is terminal: the full chain verifies REVOKED, a prefix verifies CONTINUOUS_AS_OF:<seq> labelled historical, never current standing. A missing link is BROKEN:missing-link:<seq> — there is no partial-continuity verdict — and unwitnessed link sets receive no receipt at all, only a DOWNGRADED_CHAIN_EXPORT.",
+        "Consume-or-refuse caller pins (v0.1.2, condition C1) — continuity_verify / continuity_verify_prefix take the presented chain plus public keys: a caller pinning a principal to a key ref, or an expected head hash, is honored (a chain anchored under a different key does not verify against that caller's anchor). Every part of a supplied public_keys argument must resolve to a pin (supported shapes enumerated in README: key-ref lists; principal -> key ref / ref list / secret / descriptor; key ref -> secret or descriptor; sole keys/key_refs/public_keys wrappers) or the call refuses PIN_SHAPE_UNRECOGNISED with no verdict and no receipt — pin material is never silently ignored (spot re-bench: 28/28 named-shape + 102/102 variant probes refuse; every supported shape provably binds).",
+        "Honest scope — LOCAL / fixture ONLY: v0.1.2 builds and verifies chains over fixture identity events with fixture principals/models/keys (HMAC fixture keys via a fixture Herald interface stub; signing material lives only in the local gitignored keys/ store, mode 600, never in source). No live registry, no network fetch, no production identity store, no live identity claim. Startup fails closed with CONFIG_FENCE_REFUSED:<class> on any live-registry URL, non-fixture Herald endpoint, non-test value class, or key material outside keys/. Verification never writes the chain store (metering is an in-memory record only)."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Agent Identity"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local/fixture)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local/fixture) — Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-continuity-012.md), closing condition C1 from the v0.1.1 re-bench (rebench-continuity.md; original bench bench-continuity.md): the pin parser fails closed on every probe constructed (the 4 N1 shapes refuse on both tools x both anchor chains + empty chain + stdio surface, 28/28, no verdict/receipt; 51 unconsumable variants x both tools, 102/102 refuse; nested wrappers, descriptor abuse, double secret aliases, scalar/bool/None values all refuse), every supported pin shape provably binds, and N2 (stdio non-JSON line -> named JSON-RPC parse error -32700 / MALFORMED_INPUT) is fixed. No-regression spots pass (A5/A6/A7, F-C14 recomputed by independent bench code from SPEC text alone, builder suite 49/49). Scope binds exactly: signed identity-continuity chains (genesis, typed append, fork freeze, principal-only resolution, revocation, offline + prefix verification) over fixture principals/models/keys, local stdio only — no live registry or production identity claim (SPEC SS11). Refusal-vs-support ruling on its face: the spec names no pin shape, C1 allowed either branch, and refusal is the fail-closed direction.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/spot-continuity-012.md (Verity spot re-bench; history bench-continuity.md + rebench-continuity.md). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null). Repository PRIVATE (priced-product policy): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-continuity-mcp @ v0.1.2 (commit bcd599231b774cba4704b3aa951ddfb0b1e34baa). Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-continuity-mcp v0.1.2, status active / isLatest (confirmed by registry API fetch at ship, publishedAt 2026-10-27T06:44:27Z).",
+        "not_tested": [
+          "Live identity scope — none claimed and none exists in the tree: no live registry, no production identity store, no real principals; any scope beyond local/fixture requires asymmetric keys + re-bench (SPEC SS11)",
+          "Trustworthiness of a chained agent — Continuity proves same-principal lineage only; nothing about a new model's capability, safety, or fitness is attested or implied",
+          "Production signing custody — signing is consumed through a fixture Herald interface stub (HMAC fixture keys, local gitignored keys/ store mode 600); Continuity stores key refs in links, never private key material, and defines no signing scheme of its own",
+          "Hosted/networked operation — local stdio only in v0.1.2; no charge path exists (metering records only, SS9.2)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-continuity-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-continuity-mcp.png",
+      "name": "Eclipse Continuity",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.05/verification, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC SS9 (one metering point per continuity_verify / continuity_verify_prefix issuance; genesis and appends unmetered in v0.1; v0.1.2 implements no charge path — in-memory metering records only, and per-verification charging waits a hosted endpoint). Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My agent changed models last week and every counterparty wants to re-onboard it from zero — I need a signed identity chain so they can verify 'same principal, new model' offline instead",
+        "An agent's key rotated and its config changed in the same week and nobody can tell which happened, or in what order — I need rotation and model change as distinct, ordered link types in one recomputable chain",
+        "Two branches of the same agent identity are both presenting as current — I need the chain to freeze on a fork and resume only on a principal-signed resolution, with the repudiated branch kept on the record, labelled"
+      ],
+      "source_refs": [
+        "eclipse-continuity-mcp/README.md",
+        "eclipse-continuity-mcp/server.json",
+        "eclipse-continuity-mcp/SPEC.md",
+        "argus101-program-20261027/spot-continuity-012.md"
+      ],
+      "status": "in-development",
+      "tagline": "Agent identity-continuity chains: signed links across model/config changes — same principal, new model, verified offline. CERTIFIED (local/fixture) — fixture principals/models/keys only, local stdio, no live registry or identity claim.",
+      "tools": [
+        "chain_genesis",
+        "chain_append",
+        "chain_head",
+        "chain_export",
+        "continuity_verify",
+        "continuity_verify_prefix"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 141,
+ "count": 142,
  "records": [
   {
    "record_type": "verdict",
@@ -2897,6 +2897,27 @@
   "product_url": "https://eclipsebazaar.com/products/eclipse-insurepack-mcp/",
   "record_type": "verdict",
   "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-insurepack.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-insurepack.md: DEFECT-1..3 all CLOSED, Condition 1 amended to Condition 1′ by the bench, builder suite 28/28 reproduced). Scope exactly: local stdio, evidence assembly over fixture verdict/incident/control records only, value_class \"test\"; no live API, no underwriter served, no insurer system touched. Load-bearing disclosure (SPEC §11.1): the evidence pack is insured-side disclosure tooling; underwriting reliance is the insurer's process, not Insurepack's claim. Amended Condition 1′ binds verbatim (see certification scope). No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local/simulator)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Ballotbox",
+  "not_tested": [
+   "Any real binding election — corporate (shareholder / board / member votes), union (certification, contract ratification, officer elections), or public (any government-administered or government-recognised vote) use, and any result relied on to bind, seat, pay, or exclude any real person or organisation, is SPEC §10 counsel-gated (condition C4) and UNBUILT; ballot-secrecy or coercion-resistance representations for real elections are also gated",
+   "Electorate legitimacy — recompute proves tally-vs-sealed-ballots only; who chose the electorate, whether the mandate issuer was itself authorised, whether voters were coerced, or whether the question was fair are outside what this evidence shows, and Ballotbox claims none of them",
+   "Public/third-party recompute under production signatures — v0.1.1 signing is an HMAC fixture stand-in (condition C1: no public/RS256/JWS claim until real Herald signing + re-bench; fixture keys in keys/, gitignored, mode 600)",
+   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator) (condition C6); an external anchor is required before live or multi-party reliance",
+   "Live agent-fleet governance — fixture electorate + fixture governance mandates only; no live fleet votes in v0.1.1 and no result binds anyone"
+  ],
+  "product": "eclipse-ballotbox-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-ballotbox-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ballotbox.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ballotbox.md: D1–D6 all CLOSED on independent evidence, C2 + C3 SATISFIED, builder suite 34/34 reproduced). Scope exactly: local stdio, fixture electorate + fixture governance mandates only, value_class \"test\"; no result binds anyone. Legitimacy limit binds verbatim: recompute proves tally-vs-sealed-ballots; it does not prove electorate legitimacy. Standing conditions C1 (HMAC cap), C4 (§10 counsel gate), C5 (metering-only pricing), C6 (rollback fence) remain in force. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/simulator)"
  }

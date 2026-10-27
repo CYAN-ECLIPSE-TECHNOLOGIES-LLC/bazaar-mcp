@@ -184,6 +184,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Fairlend | in-development | PASS-CONDITIONAL (local/fixture) — not certified; D-11 named |
 | Eclipse Awardline | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 | Eclipse Insurepack | in-development | PASS-CONDITIONAL (local/simulator) — not certified; Condition 1′ amended |
+| Eclipse Ballotbox | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

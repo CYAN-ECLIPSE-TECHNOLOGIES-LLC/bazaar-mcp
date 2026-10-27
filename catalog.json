@@ -9353,6 +9353,71 @@
     "insurepack_export"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Novel mechanism (the bench verifies exactly this) \u2014 ballots are sealed to mandate-eligibility proofs: only agents holding a valid governance mandate at vote time are counted, and the tally recomputes publicly. Eligibility is a vote-time fact: a mandate valid at cast and revoked afterwards does not retroactively void the ballot; a mandate revoked or expired before cast voids the cast.",
+    "The legitimacy limit (verbatim, on every listing and receipt face): recompute proves tally-vs-sealed-ballots \u2014 that the published totals are exactly the function of the sealed ballots and their vote-time eligibility proofs. It does not prove electorate legitimacy: who chose the electorate, whether the mandate issuer was itself authorised, whether voters were coerced, or whether the question was fair are outside what this evidence shows, and Ballotbox claims none of them.",
+    "Bench path: v0.1.0 bench (wave4/bench-ballotbox.md, defects D1\u2013D6, conditions C1\u2013C6) + v0.1.1 delta re-bench (wave4/rebench-ballotbox.md: D1\u2013D6 all CLOSED on independent evidence, conditions C2 and C3 SATISFIED, builder suite 34/34 reproduced).",
+    "Standing conditions (from the re-bench): C1 \u2014 HMAC cap (no public/third-party recompute, RS256, or JWS claim until real Herald signing replaces the HMAC stand-in). C4 \u2014 \u00a710 counsel gate (named, unbuilt): any use for a real binding election \u2014 corporate (shareholder / board / member votes), union (certification, contract ratification, officer elections), or public (any government-administered or government-recognised vote) \u2014 and any use whose result any party will rely on to bind, seat, pay, or exclude any real person or organisation, is out of v0.1, hard; ballot-secrecy or coercion-resistance representations for real elections are also gated. C5 \u2014 metering-only pricing (one metering point per tallied election at the $50/election shape; no checkout, no buy-now, no payment verb). C6 \u2014 rollback fence (pure local file store caps the verdict at PASS-CONDITIONAL; external anchor required before live/multi-party reliance).",
+    "Ballotbox is an evidence system, not an election authority: it does not choose the electorate, issue mandates (Herald's grammar, consumed by reference), decide the question, or bind anyone to a result. Herald (mandate grammar), Meter (metering grammar), and Docket (pack grammar) are consumed by reference only."
+   ],
+   "categories": [
+    "Identity & Attestation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "PASS-CONDITIONAL (local/simulator)",
+    "certified": false,
+    "certified_scope": "Eclipse Ballotbox \u2014 PASS-CONDITIONAL (local/simulator) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ballotbox.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ballotbox.md: D1\u2013D6 all CLOSED on independent evidence, conditions C2 and C3 SATISFIED, builder suite 34/34 reproduced). PASS-CONDITIONAL (local/simulator) is not CERTIFIED \u2014 certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture electorate + fixture governance mandates only, value_class \"test\"; no real person, company, union, public body, or live agent fleet votes in v0.1.1, no result binds anyone, and no real decision is taken here. The legitimacy limit binds verbatim: recompute proves tally-vs-sealed-ballots \u2014 that the published totals are exactly the function of the sealed ballots and their vote-time eligibility proofs; it does not prove electorate legitimacy (who chose the electorate, whether the mandate issuer was itself authorised, whether voters were coerced, or whether the question was fair), and Ballotbox claims none of them. Standing conditions: C1 (HMAC cap \u2014 no public/RS256/JWS claim until real Herald signing), C4 (\u00a710 counsel gate, named and unbuilt \u2014 any real binding election), C5 (metering-only pricing), C6 (rollback fence) still bind.",
+    "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-ballotbox.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/simulator), defects D1\u2013D6, conditions C1\u2013C6) + argus101-program-20261027/wave4/rebench-ballotbox.md (Verity delta re-bench of v0.1.1 fix commit 3475d7f: D1\u2013D6 all CLOSED, C2 + C3 SATISFIED, builder suite 34/34 reproduced). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+    "not_tested": [
+     "Any real binding election \u2014 corporate (shareholder / board / member votes), union (certification, contract ratification, officer elections), or public (any government-administered or government-recognised vote) use, and any result relied on to bind, seat, pay, or exclude any real person or organisation, is SPEC \u00a710 counsel-gated (condition C4) and UNBUILT; ballot-secrecy or coercion-resistance representations for real elections are also gated",
+     "Electorate legitimacy \u2014 recompute proves tally-vs-sealed-ballots only; who chose the electorate, whether the mandate issuer was itself authorised, whether voters were coerced, or whether the question was fair are outside what this evidence shows, and Ballotbox claims none of them",
+     "Public/third-party recompute under production signatures \u2014 v0.1.1 signing is an HMAC fixture stand-in (condition C1: no public/RS256/JWS claim until real Herald signing + re-bench; fixture keys in keys/, gitignored, mode 600)",
+     "External anchoring / multi-party reliance \u2014 the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator) (condition C6); an external anchor is required before live or multi-party reliance",
+     "Live agent-fleet governance \u2014 fixture electorate + fixture governance mandates only; no live fleet votes in v0.1.1 and no result binds anyone"
+    ],
+    "scorecard_ref": null,
+    "scorecard_url": null
+   },
+   "id": "eclipse-ballotbox-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-ballotbox-mcp.png",
+   "name": "Eclipse Ballotbox",
+   "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen.",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "PRICED \u2014 $50/election, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 and standing condition C5 (metering-only pricing in v0.1.1, no charge path built): one Meter-grammar metering point per tallied election keyed to election_id + receipt hash at the $50/election price shape; refusals emit no metering event. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "problem_statements": [
+    "Agent-electorate votes are counted from mutable tallies \u2014 after the fact there is no way to prove a counted ballot came from an agent that actually held a governance mandate at the instant it voted",
+    "I need ballots sealed at cast time to vote-time mandate-eligibility proofs, with the tally computed from the sealed ballots alone so any third party can recompute it from the exported pack",
+    "I need the legitimacy limit stated on the face: recompute proves tally-vs-sealed-ballots \u2014 it does not prove who chose the electorate, whether the issuer was authorised, whether voters were coerced, or whether the question was fair"
+   ],
+   "source_refs": [
+    "eclipse-ballotbox-mcp/README.md",
+    "eclipse-ballotbox-mcp/server.json",
+    "argus101-specs-20261027/ballotbox-spec.md",
+    "argus101-program-20261027/wave4/rebench-ballotbox.md"
+   ],
+   "status": "in-development",
+   "tagline": "Ballot evidence system for agent electorates over fixture electorates; local/simulator only. PASS-CONDITIONAL (local/simulator) \u2014 ballots sealed to mandate-eligibility proofs: only agents holding a valid governance mandate at vote time are counted, and the tally recomputes publicly. Recompute proves tally-vs-sealed-ballots, not electorate legitimacy. Counsel gate (C4, SPEC \u00a710) named and unbuilt: any real binding election.",
+   "tools": [
+    "election_create",
+    "electorate_seal",
+    "election_open",
+    "ballot_cast",
+    "ballot_status",
+    "election_close",
+    "election_void",
+    "election_pack_get",
+    "tally_compute",
+    "tally_verify",
+    "tally_receipt_get",
+    "tally_receipt_counter_sign"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

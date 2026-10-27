@@ -8532,6 +8532,71 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — two independent agents must counter-sign, and the pair must prove model diversity (different model families) — correlated-failure collusion is excluded by construction.",
+        "That §2.1 clause names only the same-family pairing exclusion the mechanism enforces — it is not a general non-collusion or correlated-failure guarantee. Duet's diversity/independence proofs establish attested model families/providers and bound signatures — NOT actual running models, NOT non-collusion.",
+        "Diversity proof, fixed order (§2.4) — (1) identity binding, (2) attestation currency + continuity binding, (3) declaration consistency (refs are derived from the presented identity records, never from the presented proof), (4) family distinctness, (5) agent distinctness; first failure names the refusal (SAME_FAMILY · SAME_AGENT · FAMILY_DECLARATION_MISMATCH · IDENTITY_UNVERIFIED · ATTESTATION_STALE · SIGNATURE_TRANSPLANT · PROPOSAL_MUTATED · PROPOSAL_EXPIRED · PAIR_INCOMPLETE). The second signer signs proposal_hash ‖ first_signature_hash ‖ proof_hash — the signature covers the pairing itself and cannot be transplanted in either position. Two-or-nothing and diversity-or-nothing: no code path seals over a failed, stale, or incomplete proof, and a held second signature on a failed proof is discarded with no signed output and no metering point.",
+        "Offline verification (§6.3) — a pure function of the export + pinned keys alone: chain, signed store anchor (absence is a defect: DUET_VERIFY_FAIL:step1_anchor_missing), the five §2.4 checks re-derived from the presented identity records, both signatures, and the Herald seal are all recomputed. Any failing step names itself (DUET_VERIFY_FAIL:<step>); unverifiable material exports only as UNVERIFIED_EXPORT with attestation_claim: null — downgrade law: a downgraded export is never upgraded post-hoc and the only path back is a fresh run.",
+        "Decisive fixture F-D9 — bench-reproduced (bencher corpus, bencher keys, black-box stdio): seal → SEALED (face families [orion, vega], taxonomy bencher-taxonomy-v9); fresh process, empty data dir, export + pinned keys alone → verified: true, claim SEALED; control with signer B's family edited to orion (hash recomputed, record re-sealed, refs re-derived) → DUET_VERIFY_FAIL:step2_check4_distinctness, UNVERIFIED_EXPORT, no attestation claim. The diversity leg is load-bearing, not decorative.",
+        "Honest scope — LOCAL stdio, fixture proposals + fixture agents + fixture identity records ONLY, value_class \"test\": attestations only — Duet executes, authorizes, and approves nothing. Closed surface of exactly 7 tools (5 signer + 2 operator, disjoint); no sign-on-behalf, single-attest, waive/override-diversity, execute, authorize, approve, issue/alter-identity, reclassify/merge-families, or seal verb exists on either surface (14 enumerated forbidden names + 6 extra variants bench-probed, all NO_SUCH_TOOL). Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live-key string, a non-local endpoint, value_class other than 'test', or any model-probing/inference or action-execution module in the tree. Signing is an HMAC fixture stand-in for Herald RS256 (disclosed). Sole condition: cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use."
+      ],
+      "categories": [
+        "Identity & Attestation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(local, attested model-family declarations)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(local, attested model-family declarations) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-duet.md) + D1 spot re-bench (wave3/rebench-duet.md, D1 CLOSED): builder suite 31/31 re-run clean by bencher at bench, 32/32 after the D1 fix (the +1 is the D1 regression test); decisive fixture F-D9 independently re-derived (bencher corpus, bencher keys, black-box stdio) — seal via stdio → SEALED with face families [orion, vega], fresh process with empty data dir from export + pinned keys alone → verified: true / SEALED, and the same-family control (signer B's identity record family edited to orion, attestation hash recomputed, record re-sealed under the bencher issuer key, refs re-derived) fails at DUET_VERIFY_FAIL:step2_check4_distinctness, UNVERIFIED_EXPORT, attestation_claim: null — the diversity leg is load-bearing; bencher battery 72 checks, 71 PASS at bench (sole failure = D1, closed on re-bench). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture proposals, fixture agents and fixture identity records only, value_class 'test'; attestations only — Duet executes, authorizes, and approves nothing. Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Duet's diversity/independence proofs establish attested model families/providers and bound signatures — NOT actual running models, NOT non-collusion. Advisory O1/O2 (non-blocking): pairs carrying different family taxonomies seal (face surfaces each ref's own taxonomy; §2.4 includes no taxonomy-equality check — recorded for the live-identity phase), and signing is an HMAC fixture stand-in for Herald RS256 (disclosed).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-duet.md + wave3/rebench-duet.md (Verity bench + D1 spot re-bench of v0.1.0, 2026-10-27; builder suite re-run clean 31/31 at bench and 32/32 after the D1 fix, decisive F-D9 reproduced independently incl. fresh-process empty-data-dir verify and the same-family control, bencher battery 72 checks with sole failure D1 — closed on re-bench with the verbatim §11.3 sentence byte-exact on the attestation face and the verify-success result; sole condition C1 as stated, O1/O2 advisory only). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Actual running models / non-collusion — proofs cover attested declarations + bound signatures only: Duet's diversity/independence proofs establish attested model families/providers and bound signatures — NOT actual running models, NOT non-collusion. Duet never probes, fingerprints, or infers a signer's actual model; it does not establish that either agent actually runs the attested model, that the two agents share no operator, owner, prompt, tooling, training data, or incentive, that a diverse pair cannot collude through channels outside the signing act, or that the attested action is correct, safe, or compliant (SPEC §11.3). Never claimed for v0.1.0 are 'collusion-proof', 'fraud-proof', 'guaranteed independence', 'dual control compliant' (unqualified), or 'verified different models' (SPEC §11.4 strings named here only as never claimed)",
+          "Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. The export's anchor is the self-contained signed chain head; a superseded export still verifies offline after the store has advanced, so freshness / coordinated full rollback is undetectable without an external anchor — no live or multi-party use is licensed until that anchor exists and the build is re-benched",
+          "Q-D3 ruling (bench, adopted, gates scope): a sealed attestation does NOT lapse when a signer's family attestation later lapses — currency (§2.4 check 2) is judged at signing time, so a sealed attestation proves the pair/diversity as at signing, within the proposal's face expiry, not continuing family attestation; later compromise is handled by revocation marking (F-D3), the only post-seal marking path — a sealed attestation's face changes to REVOCATION_MARKED while its sealed record_hash is unchanged, and a forged revocation is refused (REVOCATION_UNVERIFIED) and fails verify at step5_revocation",
+          "Live reliance — SPEC §10 reliance gate (named, unbuilt): any use of a Duet attestation as a reliance/authorization control for regulated payments, fund movement, or other high-value/regulated actions sits behind the existing gates of the system that would rely on it (for payments, Till's existing FinTech Law counsel gate); no execution, authorization, approval, or reliance code exists, no dormant live path exists, and any live-identity or regulated-reliance phase is a separate, counsel-cleared, re-benched build — not a configuration change to v0.1",
+          "Live identity — real Genesis/Continuity records, real agents, and real model families are not tested or claimed: fixture agents and fixture identity records only; Genesis/Continuity-style records are consumed by reference only, Duet issues, alters, and classifies nothing about them and defines no family taxonomy or equivalence mapping; startup fence refuses live keys, non-local endpoints, value_class other than 'test', and any model-probing or action-execution module (CONFIG_FENCE_REFUSED:<class>)",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in disclosure), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never key material from the record under verification; a live phase requires real Herald signing and a re-bench",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone generates its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1 point per distinct signer pair per fixture month window with at least one sealed attestation, event duet_active_pair_month at the $99/mo price shape; 0 for all refusals and for verifies; idempotent second-signature re-presentation meters no second point); no charge, checkout, invoice, subscription, or payment-collection path is built and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-duet-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-duet-mcp.png",
+      "name": "Eclipse Duet",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 (metering point only in v0.1.0, no charge path built): exactly 1 Meter record per distinct signer pair per fixture month window with at least one sealed attestation (event duet_active_pair_month, $99/mo price shape); a second proposal from the same pair in the same month meters no second point, a distinct pair or a new month window meters one more; 0 for all refusals and for verifies. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Four-eyes controls for agents today mean two API keys held by the same operator running the same model — a control that fails as one: a systematic model error, a prompt-injection susceptibility, or a miscalibration is present in both 'independent' reviewers identically",
+        "Requiring a second signature without requiring a different kind of signer is decoration — multi-sig counts signatures/keys, identity registries attest who an agent is but issue no pairing artifact, and ensemble tools produce no counter-signed artifact a third party can verify offline",
+        "I need diversity as a load-bearing, recomputable part of the pair proof: one Herald-sealed attestation binding two distinct agents, one proposal, and a distinctness proof over their attested families — recomputable offline from the export + pinned keys alone, and failing closed at the distinctness check when the second signer's attested family is edited to match the first"
+      ],
+      "source_refs": [
+        "eclipse-duet-mcp/README.md",
+        "eclipse-duet-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-duet.md",
+        "argus101-program-20261027/wave3/rebench-duet.md",
+        "argus101-specs-20261027/duet-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Dual-control attestation for fixture agent actions — two independent agents must counter-sign, and the pair must prove model diversity (different model families). PASS-CONDITIONAL(local, attested model-family declarations) — fixture proposals, fixture agents and fixture identity records only; Duet executes, authorizes, and approves nothing. Duet's diversity/independence proofs establish attested model families/providers and bound signatures — NOT actual running models, NOT non-collusion. Sole condition: cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use.",
+      "tools": [
+        "duet_propose",
+        "duet_sign",
+        "duet_status",
+        "duet_attestation_get",
+        "duet_verify",
+        "duet_proposal_list",
+        "duet_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

@@ -165,6 +165,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Archivist | in-development | PASS-CONDITIONAL (local, fixture captures) — not certified |
 | Eclipse Allowance | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 | Eclipse Receiptvault | in-development | CERTIFIED (local, fixture sealed merchant terms + fixture purchase records) |
+| Eclipse Scamshield | in-development | PASS-CONDITIONAL (local/simulator, fixture risk sources + fixture payee history) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

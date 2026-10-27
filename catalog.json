@@ -8082,6 +8082,72 @@
         "llm_receipt_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — a first payment to any new payee triggers a witnessed risk briefing (fraud reports, payee-continuity, lookalike domains) the user must acknowledge — the acknowledgment is receipted.",
+        "Decisive fixture F-SS9 stands from the bench record — for a first payment to a fixture payee Scamshield did not originate, in a fresh process from the export + public keys alone, scamshield_verify recomputes the trigger fact from the presented history, re-verifies every source seal/hash, and confirms the ack covers exactly that briefing_hash with ack-before-expiry ordering; the control (one fraud-report excerpt removed from the briefing, hashes recomputed) fails verification at step sources — the ack is bound to the content shown, not to the payee or the act of clicking (regression spot, delta re-bench 2).",
+        "Integrity (v0.1.2, RB-F1–RB-F8 closed at delta re-bench 2) — verify requires the signed export anchor + record count; every mint path preflights its pinned keys before any write (KEY_MISSING refusal, byte-identical disk, no null seal persisted); the stdio envelope and every entry shape fail structured with zero raw exceptions; nested field sets are exact; check/ack timestamps must not precede their causal predecessors (TEMPORAL_ORDER); duplicate source records are refused (DUPLICATE_SOURCE); the store carries a retained cross-artifact head commitment (store_head.json) so subset restores, tail truncation, fabricated anomaly/metering entries, and raw disk edits surface as SEAL_DEFECT.",
+        "Condition 1 — RB-F7 coordinated-restore residual stays fenced verbatim on README + all named faces — full coordinated restore of all artifacts (incl. store_head.json) is undetectable in the pure local model; an external anchor is required for detection.",
+        "Condition 2 — scope-only certification — the live phase remains behind the §10 counsel gate + separate re-bench.",
+        "Rollback fence (README, verbatim): ROLLBACK FENCE: a full coordinated restore of every local artifact (store.json, store_head.json, and any backups) to an earlier snapshot is undetectable in the pure local model and is NOT claimed to be detected; detecting it requires an external anchor outside this local store. Restoring or deleting only some artifacts contradicts the retained cross-artifact head commitment and surfaces as SEAL_DEFECT.",
+        "Key-fact label (SPEC §11.2, verbatim in substance): Scamshield assembles a briefing from witnessed sources and receipts the user's acknowledgment of that briefing; it does not certify a payee safe, trustworthy, legitimate, or fraudulent, and it issues no risk score or verdict on any payee. A briefing with no adverse excerpts renders NO_ADVERSE_RECORDS_FOUND — a statement about the fixture records presented, meaning only that none of the three source classes presented an adverse record — and never SAFE, VERIFIED PAYEE, LOW RISK, or any equivalent. An acknowledgment receipt proves the user acknowledged this briefing; it does not prove the payment was wise, safe, or fraud-free, and it transfers no risk.",
+        "Downgrade law (SPEC §6.4) — any export that cannot be recompute-verified is labelled UNVERIFIED_EXPORT on its face (verified: false) and rendered ACKNOWLEDGMENT NOT VERIFIED, never as an acknowledgment claim; there is no path from a downgraded export, or from a UI click log, back to an ack receipt except a fresh run.",
+        "Format attribution is exact and minimal: payee-continuity is Morphguard's (consumed by reference as witnessed excerpts, never redefined), signing is Herald's pattern (fixture HMAC stand-in), payments and mandates are Till's (Scamshield never calls Till and neither outcome executes, blocks, or releases anything), and metering points are emitted in Meter grammar — consumed, never redefined. Eclipse Assay and Eclipse Cupel are internal tools, not products: this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere."
+      ],
+      "categories": [
+        "Consumer-Agent Protection",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local/simulator, fixture risk sources + fixture payee history)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local/simulator, fixture risk sources + fixture payee history) — Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-scamshield.md): RB-F1–RB-F8 all CLOSED on fresh repros (genuine-export anchor/count binding; key preflight with byte-identical disk on KEY_MISSING; structured stdio envelope; exact nested field sets with no raw exceptions; source-intent-history injection downgrades at the exact named verify step; temporal-order gates; subset restores detected via the retained store_head.json cross-artifact commitment; duplicate sources refused), RB-F7 coordinated-restore residual adjudicated as a fenced CONDITION (not a fail), regression spot PASS (F-SS9 decisive fresh-process recompute; ack same-briefing binding; closed originals not reopened); builder suite 53/53 PASS x3 by the bencher, ~120 independent probe checks. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local/simulator, fixture risk sources + fixture payee history — local stdio MCP (SPEC §0.1), fixture payment intents, payees, histories, fraud reports, continuity chains, lookalike findings, users and keys only, every artifact value_class \"test\"; no live payment, payee, fraud database, domain registry, or user is touched in v0.1.2, and Scamshield scores, blocks, releases, or executes no payment and certifies no payee. Condition 1 (verbatim): RB-F7 residual (fenced): a full coordinated restore of every local artifact (store.json, store_head.json, and any backups) is undetectable in the pure local model and is NOT claimed detected; detection requires an external anchor outside this local store. The fence must remain verbatim on README + status/list/anomaly/verify/briefing_get/check faces in any future version claiming this certification. Condition 2 (verbatim): Certification extends only to the scope above; any live phase remains behind the §10 counsel gate and requires a separate re-benched build.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench2-scamshield.md (Verity delta re-bench 2, suite 53/53 re-run by the bencher x3, ~120 independent probe checks; F-SS9 decisive fresh-process recompute verified in the regression spot). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Full coordinated restore of every local artifact — CONDITION 1 (bench, verbatim): RB-F7 residual (fenced): a full coordinated restore of every local artifact (store.json, store_head.json, and any backups) is undetectable in the pure local model and is NOT claimed detected; detection requires an external anchor outside this local store. The fence must remain verbatim on README + status/list/anomaly/verify/briefing_get/check faces in any future version claiming this certification. The fence stands verbatim in the README and on the status/list/anomaly/verify/briefing_get/check faces in v0.1.2: ROLLBACK FENCE: a full coordinated restore of every local artifact (store.json, store_head.json, and any backups) to an earlier snapshot is undetectable in the pure local model and is NOT claimed to be detected; detecting it requires an external anchor outside this local store. Restoring or deleting only some artifacts contradicts the retained cross-artifact head commitment and surfaces as SEAL_DEFECT.",
+          "Live phase — CONDITION 2 (bench, verbatim): Certification extends only to the scope above; any live phase remains behind the §10 counsel gate and requires a separate re-benched build.",
+          "Counsel-gated phase (SPEC §10, named, unbuilt/unclaimed): (a) presenting briefings to real consumers as fraud-risk information, incl. the NO_ADVERSE_RECORDS_FOUND rendering's consumer meaning; (b) relying on live fraud-report sources, live Morphguard chains, or live lookalike-domain data (accuracy/defamation exposure for named payees is counsel's question); (c) any composition in which a Till flow requires an ack receipt before proceeding (the acknowledgment becoming a payment condition) — all out of v0.1, hard. A live phase is a separate, re-benched build after §10 clearance; v0.1.2 builds nothing around, against, or in anticipation of this gate and there is no dormant live path to activate — the startup fence refuses live-key strings, non-local endpoints, value_class other than \"test\", payment-execution/blocking modules, scoring/rating modules, and live-source clients.",
+          "Live payments and live payees — fixtures only: fixture payment intents against a fixture payee history and fixture risk sources under a deterministic seed; payee refs name no real payee, and every artifact carries value_class \"test\"",
+          "Live Herald signing — v0.1.2 signing is a fixture HMAC stand-in for the Herald pattern, disclosed on the product's face; verification keys are pinned out-of-band per role/class in code — a record under verification can never select its own verification key, and key material inside a presented record is refused/downgraded",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9.1 (one metered check event per check that completes the trigger evaluation with a sealed briefing, at the $0.05/check shape; NOT_FIRST_PAYMENT verdicts, refusals, verifications, duplicate re-presentations, and ack/decline acts emit no additional metering point), no charge path is built, no payment is taken, and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-scamshield-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-scamshield-mcp.png",
+      "name": "Eclipse Scamshield",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering point only in v0.1.2, no charge path built): one metered check event per check that completes the trigger evaluation with a sealed briefing; NOT_FIRST_PAYMENT verdicts, refusals, verifications, duplicate re-presentations (§3.4), and ack/decline acts themselves emit no additional metering point. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "First payments to new payees are the classic consumer-fraud surface (invoice redirection, impersonation, lookalike domains) — and the moment today's flows handle worst: a generic \"are you sure?\" dialog the user clicks through, leaving no evidence of what risk information was shown or whether the specific warnings about this payee were ever seen",
+        "I need the first payment to a new payee to trigger a witnessed briefing — fraud reports, payee-continuity, lookalike domains, each excerpt hash-bound with its pointer and witness seal, every source class recorded including its gaps — not a risk score or a safe/unsafe verdict",
+        "I need the user's acknowledgment bound to that exact sealed briefing hash and receipted counter-signed, so \"the user was told\" becomes a fact a third party can recompute offline from the export + public keys alone — and any export that cannot be recomputed labelled UNVERIFIED_EXPORT with no acknowledgment claim"
+      ],
+      "source_refs": [
+        "eclipse-scamshield-mcp/README.md",
+        "eclipse-scamshield-mcp/server.json",
+        "argus101-specs-20261027/scamshield-spec.md",
+        "argus101-program-20261027/wave2/rebench2-scamshield.md"
+      ],
+      "status": "in-development",
+      "tagline": "First-payment friction layer for agent-assisted payments — a first payment to any new payee triggers a witnessed risk briefing (fraud reports, payee-continuity, lookalike domains) the user must acknowledge; the acknowledgment is receipted. PASS-CONDITIONAL (local/simulator, fixture risk sources + fixture payee history) — local stdio, fixture risk sources + fixture payee history only, value_class \"test\"; Scamshield assembles a briefing from witnessed sources and receipts the user's acknowledgment of that briefing; it does not certify a payee safe, trustworthy, legitimate, or fraudulent, and it issues no risk score or verdict on any payee. Condition 1: RB-F7 coordinated-restore residual stays fenced verbatim on README + all named faces — full coordinated restore of all artifacts (incl. store_head.json) is undetectable in the pure local model; an external anchor is required for detection. Condition 2: scope-only certification — the live phase remains behind the §10 counsel gate + separate re-bench.",
+      "tools": [
+        "scamshield_check",
+        "scamshield_briefing_get",
+        "scamshield_acknowledge",
+        "scamshield_status",
+        "scamshield_verify",
+        "scamshield_list",
+        "scamshield_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

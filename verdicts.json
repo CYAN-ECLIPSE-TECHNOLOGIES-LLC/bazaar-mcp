@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 101,
+ "count": 102,
  "records": [
   {
    "record_type": "verdict",
@@ -2023,6 +2023,28 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-scapegoat-mcp/"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": null,
+   "certified": false,
+   "name": "Eclipse Sponsorline",
+   "not_tested": [
+    "Real sponsors, real sponsored parties, or real actions \u2014 fixture sponsors/parties only; no real acceptance is solicited or recorded",
+    "Legal effect of an acceptance \u2014 the SPEC \u00a710 counsel gate (e-signature enforceability, permissible terms language, org signatory authority, consumer-protection limits, insurance/platform-terms interaction, revocation's legal effect) is unbuilt by design; no dormant live path exists",
+    "Live Herald RS256 signing \u2014 fixture HMAC stand-in only; no live Herald key held",
+    "Production key custody \u2014 fixture keys local-only in keys/ (gitignored, mode 600, never committed)",
+    "Hosted or live operation \u2014 local stdio only; metering points only, no charge path, no live Meter ingest",
+    "Standalone use of the internal action-check library helper (bench condition C1) \u2014 library helper only, not a tool surface; exposure would be a scope change requiring re-bench"
+   ],
+   "product": "eclipse-sponsorline-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-sponsorline-mcp/",
+   "record_type": "verdict",
+   "scope": "PASS-CONDITIONAL (local) \u2014 Verity bench of v0.1.0, 2026-10-27 (argus101-program-20261027/wave2/bench-sponsorline.md): builder suite 25/25 from clean state; F-S14 independently reproduced from pack + pinned keys alone (payments ACTIVE, publishing + contracting UNACCEPTED by derivation over the complete chain, same descriptor COVERED-BY-RECEIPT as payments / CLASS_MISMATCH as the other classes); 44/44 adversarial probes. Local stdio, fixture sponsors/parties only, value_class \"test\" on all artifacts, fixture HMAC Herald stand-in. PASS-CONDITIONAL is not CERTIFIED. Conditions at ship: C1 internal library helper never exposed as a tool or cited standalone; C2 \u00a711.2 liability fence verbatim in README, full manifest of record (server.legacy.json), and the Bazaar listing. A Sponsorline receipt evidences a signed acceptance \u2014 it does not itself create, transfer, or enforce legal liability; enforceability is a counsel question (\u00a710), gate unbuilt.",
+   "status": "current",
+   "verdict": "PASS-CONDITIONAL (local)"
   }
  ]
 }

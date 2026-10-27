@@ -6566,6 +6566,69 @@
         "live_state_note": "Bench evidence: argus101-program-20261027/spot-scapegoat-012.md (Verity spot re-bench, fresh processes, nonexistent state dir, bench-side tamper code only, subject tree unmodified). Prior history: bench-scapegoat.md (v0.1.0 bench) + rebench-scapegoat.md (v0.1.1 re-bench, CONDITIONAL (local) with condition C1/N1). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
         "scorecard_ref": null
       }
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — per-class Herald-counter-signed acceptance receipts (SPEC §2.1): a sponsor signs a separate acceptance receipt for each action class they sponsor (payments / publishing / contracting), each with its own scope terms, limits, and validity window, instead of one blanket terms acceptance at onboarding. Signing payments signs nothing else; the other classes remain UNACCEPTED until separately signed. There is no verb, field, or default that accepts all classes or an unnamed class.",
+        "Scoped like a mandate — each presented action is checked in a fixed order (class/scope match → limits → validity/revocation) and the first failure names the refusal (CLASS_MISMATCH, SCOPE_MISMATCH, LIMIT_EXCEEDED, ACCEPTANCE_EXPIRED, ACCEPTANCE_REVOKED, ACCEPTANCE_SUPERSEDED, …). Aggregate limits are recomputed from prior check records in the chain, never stored.",
+        "Chained, revocable, time-bounded, offline-recomputable — receipts append to the sponsored party's hash-chained record stream; revocation and supersession are new chained records, prospective only. Any third party recomputes the whole pack offline from the exported pack plus pinned keys alone: enrolment hashes, sponsor + Herald signatures, terms-hash binding, chain hashes, per-class status derivation (an UNACCEPTED class is proven by derivation over the complete chain, not by absence from a summary), and every check record's outcome. Bench-decisive fixture F-S14: payments ACTIVE while publishing and contracting derive UNACCEPTED from the same pack, and the same action descriptor returns COVERED-BY-RECEIPT as payments and CLASS_MISMATCH as publishing/contracting.",
+        "The liability fence (SPEC §11.2, verbatim): A Sponsorline receipt evidences that a sponsor signed stated acceptance terms for a stated action class at a stated time. It does not itself create, transfer, or enforce legal liability. Enforceability is a counsel question (§10) and is not claimed.",
+        "Honest scope — LOCAL stdio, fixture sponsors and parties ONLY: every artifact carries value_class \"test\"; no real sponsor is solicited, signed, or recorded; no live signing ceremony, production agent, counterparty, or external registry is contacted. Signing is a fixture HMAC stand-in for the Herald pattern (no live Herald key held); fixture keys are pinned out-of-band in the local gitignored keys/ store (mode 600, never committed) — a key presented inside a record or pack is never trusted. Closed surface: exactly 9 tools across 3 disjoint surfaces (sponsor / operator / verifier); no verb accepts on a sponsor's behalf, accepts multiple classes, edits, extends, deletes, backdates, or marks accepted."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Identity & Attestation"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local) — Verity bench of v0.1.0, 2026-10-27 (argus101-program-20261027/wave2/bench-sponsorline.md): builder suite 25/25 re-run from clean state; decisive fixture F-S14 independently reproduced in a fresh process from pack + pinned keys alone (payments ACTIVE with per-action 5000 / aggregate 20000 limits and window on the receipt face; publishing and contracting UNACCEPTED by derivation over the complete chain; same descriptor COVERED-BY-RECEIPT as payments, CLASS_MISMATCH as publishing and contracting); 44/44 adversarial probes (pack-smuggled keys ignored, forged signatures fail at receipt_signatures, revocation replay, presented-status substitution, receipt-face tampering, malformed-args battery with store byte-identical, cross-surface byte-identical NO_SUCH_TOOL refusals, all 6 ordered class pairs CLASS_MISMATCH, 300-op seeded fuzz). PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local stdio MCP, fixture sponsors/parties only, value_class \"test\" on all artifacts, fixture HMAC stand-in for the Herald pattern (no live Herald key), no counsel-gate (§10) surface built or claimed. Conditions applied at ship: C1 — the bench's library-helper condition: the internal helper behind F-S14 branch (c) is not exposed on any tool surface and is not cited standalone in this listing or the README (verifier surface is receipt_verify only); C2 — the §11.2 liability fence is carried verbatim in the README, in the full manifest of record (server.legacy.json), and in this listing (the registry server.json description is the ≤100-char short form per the registry limit). All 3 builder deviations (D1 enrolment record_type, D2 unchained PRESENTATION_NOT_FOUND refusal, D3 SPEC.md §11.4 enumeration) were ACCEPTED at bench.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-sponsorline.md (Verity bench, builder suite re-run from clean state, F-S14 re-run independently with bench-side harness in a fresh process with an empty state dir, 44 bench-devised adversarial probes, scope/claims audit by grep + code read; subject tree unmodified by the bench). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Real sponsors, real sponsored parties, or real actions — fixture sponsors/parties only; no real acceptance is solicited or recorded",
+          "Legal effect of an acceptance — whether a Sponsorline acceptance creates, transfers, limits, or enforces legal liability is a counsel question; the SPEC §10 counsel gate (e-signature enforceability, permissible terms language, org signatory authority, consumer-protection limits, insurance and platform-terms interaction, revocation's legal effect) is unbuilt by design and no live phase exists in this code to flip",
+          "Live Herald RS256 signing — v0.1.0 signing is a fixture HMAC stand-in for the Herald pattern; Sponsorline holds no live Herald key",
+          "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation — local stdio only; no charge path and no live Meter ingest (metering points only, $0.10/attestation is a book reference)",
+          "Standalone use of the internal action-check library helper (bench condition C1) — it is not a tool and must never be exposed or cited standalone unless it first gates on a successful verify_pack of the same pack; any such exposure is a scope change requiring re-bench"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-sponsorline-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-sponsorline-mcp.png",
+      "name": "Eclipse Sponsorline",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.10/attestation, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9.1 (metering points only in v0.1.0, no charge path built): acceptance_receipt_issued (the $0.10/attestation book shape attaches here), action_check, sponsor_pack_exported — counts recomputable from the record stream and the metering log; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My agent platform captured one clickwrap acceptance covering everything an agent might ever do — when a payment is disputed I cannot show what the sponsor actually accepted, for which class, on what terms, or whether it was still live",
+        "A sponsor agreed to back an agent's payments but never its publishing or contracting — I need acceptance that is per-class by construction, with the unsigned classes provably UNACCEPTED by derivation over the complete record chain",
+        "A sponsor revoked their acceptance after an action was checked — I need prospective-only revocation where the earlier check record keeps the result and the chain head it was computed against, recomputable by any third party from the export alone"
+      ],
+      "source_refs": [
+        "eclipse-sponsorline-mcp/README.md",
+        "eclipse-sponsorline-mcp/server.json",
+        "eclipse-sponsorline-mcp/SPEC.md",
+        "argus101-program-20261027/wave2/bench-sponsorline.md"
+      ],
+      "status": "in-development",
+      "tagline": "Per-action-class sponsor acceptance receipts — a sponsor signs payments, publishing, or contracting separately, never one blanket acceptance. PASS-CONDITIONAL (local) — fixture sponsors/parties only. A Sponsorline receipt evidences that a sponsor signed stated acceptance terms for a stated action class at a stated time. It does not itself create, transfer, or enforce legal liability. Enforceability is a counsel question (§10) and is not claimed.",
+      "tools": [
+        "party_enrol",
+        "acceptance_present",
+        "acceptance_sign",
+        "acceptance_decline",
+        "acceptance_revoke",
+        "acceptance_status",
+        "action_check",
+        "sponsor_pack_get",
+        "receipt_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

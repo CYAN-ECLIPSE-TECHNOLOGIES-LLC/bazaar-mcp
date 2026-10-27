@@ -9218,7 +9218,7 @@
     "argus101-program-20261027/wave4/rebench-fairlend.md"
    ],
    "status": "in-development",
-   "tagline": "Decision-evidence sealer + audit recompute engine over fixture decisions; local/fixture only. PASS-CONDITIONAL (local/fixture) \u2014 each decision seals its feature set, model version, and adverse-action reason codes at decision time, making later disparate-impact audits a recompute. Fairlend never decides. D-11 NAMED: \u00a77.3 identifier fence evadable by token-split spellings \u2014 must close before any non-fixture scope.",
+   "tagline": "Decision-evidence sealer + audit recompute engine over fixture decisions; local/fixture only. PASS-CONDITIONAL (local/fixture) \u2014 each decision seals its feature set, model version, and adverse-action reason codes at decision time, making later disparate-impact audits a recompute. Fairlend never decides. D-11 NAMED: \u00a77.3 identifier fence evadable by token-split spellings \u2014 must close before any non-fixture scope. Counsel gate (SPEC \u00a710) named and unbuilt: any use beyond fixture decisions requires fair-lending counsel clearance in writing first.",
    "tools": [
     "decision_seal",
     "model_register_fixture",

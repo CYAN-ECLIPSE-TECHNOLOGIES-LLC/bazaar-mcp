@@ -1638,7 +1638,7 @@
         "eclipse-gig-core-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-gig-core-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "One approved Task Brief, every marketplace: hash-bound briefs, all-in quotes, and a hire that runs only inside a mandate.",
       "tools": [
         "brief_create",

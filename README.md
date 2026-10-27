@@ -154,6 +154,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Skillseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture claims + fixture verdict receipts) |
 | Eclipse Namesake | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture registry snapshot) |
 | Eclipse Sourceseal | in-development | PASS(local) — not certified |
+| Eclipse Promptseal | in-development | PASS (local/fixture) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

@@ -7169,6 +7169,69 @@
         "sourceseal_source_reverify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 production system prompts are sealed and versioned; every runtime incident can be traced to the exact prompt version and its approver.",
+        "Sealed versions, hash-chained \u2014 prompt_seal seals a fixture prompt body: prompt_hash=sha256(body bytes) is the version identity; version records are hash-chained per lineage (gapless seq, prev_hash) and author-signed; re-sealing identical bytes returns the existing record (idempotent, no second metering event); a version without a valid Herald approval is labelled UNAPPROVED on every surface and can never be bound to a deployment",
+        "Approval bound to the exact hash \u2014 approval_attach verifies a Herald-signed approval record against the pinned fixture Herald key (record-supplied keys never used) and requires approved_version_hash to equal the version record hash; approving a label approves exactly one byte-sequence \u2014 a one-character edit is a new hash with no approval (APPROVAL_SIGNATURE_INVALID / APPROVAL_HASH_MISMATCH are named, non-mutating refusals)",
+        "Fixture deployment binding + incident links \u2014 deployment_bind binds an approved version to a fixture deployment descriptor, optionally citing a Kitseal-style config seal by ref+hash (cited, never backfilled; absence stated on receipt face); incident_link reads the binding in force \u2014 a caller-asserted version is refused as an input and stored nowhere; trace receipts name incident, deployment, version record hash, prompt hash, Herald approval hash, and the approver read from the Herald record itself, signed and counter-signed against the chain head; broken/invalid/absent approval yields only an unsigned DOWNGRADED_EXPORT (receipt_grade:false), never upgraded",
+        "Offline verification (SPEC \u00a76.4) \u2014 trace_verify walks a presented pack alone (chain + body hash recompute, Herald signature + binding, binding citation, link citation, receipt signatures) as a pure function of pack + pinned fixture keys; decisive fixture F-PS13 passes in a fresh process with no Promptseal state; any step failing returns PROMPTSEAL_VERIFY_FAIL:<step>, no partial trace",
+        "Stored-serve hardening (bench conditions C1\u2013C6, all CLOSED at v0.1.3) \u2014 incident_link idempotent path runs lineage defect check before echo (C1); lineage identity bound end-to-end to store key and pack (C2); idempotent re-link checks paired deployment_ref (DEPLOYMENT_REF_MISMATCH, C3); chain records carry exact per-type field sets \u2014 injected counter_signature/unknown fields are defects (C4); serialized pack aux binding/incident_link copies, top-level config_seal, approval_records set and every prompt_bodies entry are bound exactly to chain copies (C5); whole store (structure, every lineage chain, metering) validated at load on every path \u2014 garbage siblings yield named CHAIN_BROKEN refusal/downgrade with zero writes (C6)",
+        "Runtime limit (SPEC \u00a711.2, on every receipt face) \u2014 the chain proves which prompt version was sealed and who approved it, and that a fixture deployment's binding named it; it does not prove the sealed prompt is what actually ran in any live process"
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Developer Tools"
+      ],
+      "certification": {
+        "bench_verdict": "PASS (local/fixture)",
+        "certified": false,
+        "certified_scope": "PASS (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-promptseal.md) PASS-CONDITIONAL (local/fixture) with condition C1 (minor, stored-read: incident_link idempotent path echoed stored link before chain check); delta re-bench of v0.1.1 (rebench-promptseal.md): C1 CLOSED, new C2 (lineage binding) + C3 (incident_link idempotent pairing); delta re-bench round 2 of v0.1.2 (rebench2-promptseal.md): C2+C3 CLOSED, new C4 (serve canonicalization) + C5 (pack duplicates unbound) + C6 (whole-store validation); delta re-bench round 3 of v0.1.3 (rebench3-promptseal.md): C4+C5+C6 CLOSED, C1\u2013C6 all CLOSED, no new conditions \u2014 CONDITIONS CLOSED, Promptseal \u2014 PASS (local/fixture). Builder suite re-run by bencher at every bench: 27/27 at v0.1.0, 30/30 at v0.1.1, 36/36 at v0.1.2, 49/49 at v0.1.3; R3 independent probes: 102/102 checks + 31/31 C6 probes PASS. Decisive fixture F-PS13 independently reproduced: pack written to file, trace_verify in fresh subprocess with empty data dir verified:true, prompt_hash + approver_ref + version_record_hash equal receipt face values, prompt_hash=sha256(body) recomputed. PASS (local/fixture) is not CERTIFIED \u2014 certified is false, and nothing beyond the PASS verdict at its exact scope is claimed. Scope is exactly: seal chain + Herald approval binding + incident traceability over fixture prompts/deployments/incidents ONLY; NOT production prompts, real deployments, or runtime attestation (SPEC \u00a711.2 \u2014 the chain proves which prompt version was sealed and who approved it, and that a fixture deployment's binding named it; it does not prove the sealed prompt is what actually ran in any live process); dispute use is SPEC \u00a710.1 counsel-gated and UNBUILT \u2014 no production ingest, deployment connector, or runtime hook exists. Novel mechanism (SPEC \u00a72.1, verbatim): production system prompts are sealed and versioned; every runtime incident can be traced to the exact prompt version and its approver. Stored serves in v0.1.3 are canonical (exact per-type field sets, injected counter_signature/unknown fields are chain defects), pack duplicates are bound exactly to chain copies, and the whole store is validated at load on every path. Non-blocking observations O1 (lineage_status lists state:APPROVED under chain_ok:false, disclosed in-band, not an export/receipt) and O2/R3 observations remain observations, no conditions. Fixture Herald key is a test double (pinned herald-fixture, keys/ gitignored mode 600); Promptseal consumes Herald-signed approval records, issues none, redefines none; value_class:\"test\" throughout.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-promptseal.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/fixture), condition C1, builder suite 27/27 re-run twice, F-PS13 decisive fixture independent, stored-read + adversarial + malformed batteries) + rebench-promptseal.md (v0.1.1: C1 CLOSED, suite 30/30, new C2+C3) + rebench2-promptseal.md (v0.1.2: C2+C3 CLOSED, suite 36/36, new C4+C5+C6) + rebench3-promptseal.md (v0.1.3: C4+C5+C6 CLOSED, C1\u2013C6 all CLOSED, suite 49/49, 102/102 checks + 31/31 probes PASS, F-PS13 re-confirmed, no new conditions). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Production prompts, real deployments, or runtime attestation \u2014 SPEC \u00a711.2 fence: the chain proves which prompt version was sealed and who approved it, and that a fixture deployment's binding named it; it does not prove the sealed prompt is what actually ran in any live process. Runtime attestation is an integration claim, never a v0.1 claim, and no runtime integration exists in v0.1.3",
+          "Sealing real production prompts (prompt bodies may carry trade-secret/confidential material), binding to real deployments, any runtime-attestation integration, or use of a trace receipt in an employment, contractual, or regulatory dispute \u2014 the SPEC \u00a710.1 counsel gate is UNBUILT by design, named, with no dormant live mode: each live phase is a separate, counsel-cleared, re-benched build. v0.1.3 has no production-prompt ingest path, no deployment connector, and no runtime hook",
+          "Production signing / Herald authority \u2014 fixture Herald key is a test double (pinned herald-fixture, local fixture key in keys/, gitignored, mode 600, never committed) and confers no Herald authority; Promptseal verifies and cites Herald-signed approval records, issues none, and holds no real Herald key. A fresh clone generates its own fixture keys to run the full suite",
+          "Hosted or live operation \u2014 local stdio only; metering points only per SPEC \u00a79 (exactly 1 promptseal_lineage_month_active event per lineage; seals, approvals, binds, links, traces and refusals add none; no charge path built, no live Meter ingest), the $49/mo shape is a book reference with no charge path built"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-promptseal-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-promptseal-mcp.png",
+      "name": "Eclipse Promptseal",
+      "name_status": "Working name \u2014 placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED \u2014 $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 (metering points only in v0.1.3, no charge path built): exactly one promptseal_lineage_month_active Meter event per active lineage \u2014 individual seals, approvals, binds, links, traces, refusals and trace_verify runs never meter. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "System prompts are edited in a console, config file, or chat with no version, no approver, and no way after an incident to answer which prompt was live and who approved it",
+        "An approval for one prompt text must not drift onto edited text \u2014 approval has to bind the exact byte-sequence hash, so a one-character edit is a new, unapproved version",
+        "After a runtime incident I need a recomputable trace \u2014 incident \u2192 link \u2192 binding \u2192 sealed version hash \u2192 Herald approver \u2014 from records alone, not a reconstruction from memory or deploy logs"
+      ],
+      "source_refs": [
+        "eclipse-promptseal-mcp/README.md",
+        "eclipse-promptseal-mcp/server.json",
+        "argus101-program-20261027/wave2/bench-promptseal.md",
+        "argus101-program-20261027/wave2/rebench3-promptseal.md",
+        "argus101-specs-20261027/promptseal-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Prompt change-control with approver receipts over fixture prompts/deployments/incidents \u2014 production system prompts are sealed and versioned; every runtime incident can be traced to the exact prompt version and its approver. PASS (local/fixture) \u2014 local stdio MCP, fixture prompts/deployments/incidents only, value_class \"test\"; the chain proves which version was sealed and who approved it \u2014 it does not prove the sealed prompt is what actually ran in any live process.",
+      "tools": [
+        "prompt_seal",
+        "approval_attach",
+        "deployment_bind",
+        "incident_link",
+        "lineage_status",
+        "trace_get",
+        "trace_verify",
+        "pack_get"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

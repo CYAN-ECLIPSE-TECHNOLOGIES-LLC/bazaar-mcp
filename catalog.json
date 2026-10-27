@@ -9282,7 +9282,7 @@
     "argus101-program-20261027/wave4/rebench-awardline.md"
    ],
    "status": "in-development",
-   "tagline": "Grant-term spending evidence over fixture awards; local/simulator only. PASS-CONDITIONAL (local/simulator) \u2014 award terms sealed once; each spend sealed against a term as it happens, hash-chained per award; reports recompute from those receipts. An Awardline report is a recomputation from sealed receipts, not an audit, not an allowability determination, and not agency acceptance. Counsel/govcon gate (C1, SPEC \u00a710) named and unbuilt: any real-award reliance.",
+   "tagline": "Grant-term spending evidence over fixture awards; local/simulator only. PASS-CONDITIONAL (local/simulator) \u2014 award terms sealed once; each spend sealed against a term as it happens, hash-chained per award; reports recompute from those receipts. An Awardline report is a recomputation from sealed receipts, not an audit, not an allowability determination, and not agency acceptance. Counsel gate (C1, SPEC \u00a710 counsel/govcon gate) named and unbuilt: any real-award reliance.",
    "tools": [
     "awardline_terms_register",
     "awardline_spend_seal",

@@ -7755,6 +7755,75 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 category caps, merchant lists, and amounts are sealed by the account holder; every spend lands in a family ledger as a receipt the agent cannot edit.",
+        "Decisive fixture F-A13 stands from the bench record \u2014 in a fresh process from the export alone, empty data dir, Verity-generated pinned keys: ALLOWANCE_VERIFY_PASS, spends_checked: 5 (regression spot, delta re-bench 2); the 99999 cap-breaching attempt is present only in the refusal log, never in the ledger; tampered entries fail verification by hash/chain/Herald counter-signature while the untampered chain verifies.",
+        "Integrity (v0.1.2, R1\u2013R7 closed at delta re-bench 2) \u2014 each mandate's ledger entries form their own hash chain under a per-mandate signed head anchor; metering is sealed per-mandate and store-wide, so wiping, fabricating, or subset-rolling metering is detected; offline verification fails closed on absent/invalid/unverifiable holder signatures (step 1, by name); seal inputs carry exact field sets (unknown keys refused by name, never echoed); serves are constructed from verified components; amendments must be timestamped after every existing record; malformed store shapes are named store defects on every entry path with zero raw exceptions and zero writes on mutation paths.",
+        "Condition 1 \u2014 R8 \u2014 cross-mandate transplant id\u2194hash pairing is detected only indirectly (transplanted record never served/counted/exported); Tier-G structural check or README fence stands as the condition.",
+        "Condition 2 \u2014 O1 \u2014 ledger_get VERIFIED slice-export vs downgraded faces on a Tier-G-defected store (documented slice semantics; no false data).",
+        "Rollback fence (README Integrity model (v0.1.2), verbatim): Honesty fence \u2014 rollback residual: within this local file model, a rollback that restores *every* local artifact (mandates, ledger, refusals, revocations, all anchors, and metering) to one consistent earlier snapshot is undetectable; the per-mandate anchors and the sealed-metering cross-checks detect partial rollbacks, subset restores, and single-artifact tampering, not a complete coordinated snapshot restore. Detecting a full coordinated restore requires an external anchor outside the local store; an external anchor is required for any live or multi-party use and is not built in this local/simulator scope. No stronger claim is made.",
+        "Key-fact label (SPEC \u00a711.2, verbatim): ledger receipts are Herald-counter-signed; the household agent holds no ledger signing key. It is never shortened to \"tamper-proof\" or \"immutable\": the claim is specifically about the agent, and detection (\u00a76.4 offline recomputation), not metaphysical impossibility. A refused spend is a check result \u2014 \"refused at mandate check (simulator)\" \u2014 not a protection outcome: enforcement of a refusal at an actual purchase step is the consuming platform's act, and a spend a platform never presents produces no refusal and no record.",
+        "Downgrade law (SPEC \u00a76.5) \u2014 an export that cannot be recomputed (chain, Herald counter-signatures, mandate seal) receives only a labelled UNVERIFIED_LEDGER_EXPORT (agent_editable: unknown, recomputable: false) on its face; no tool path removes a refusal, repairs a broken chain, re-signs an entry, or converts a refusal into a spend.",
+        "Format attribution is exact and minimal: mandates are Till mandate objects carrying the Allowance profile (Till consumed, never redefined), counter-signing is Herald's pattern (fixture HMAC stand-in), and metering points are emitted in Meter grammar \u2014 consumed, never redefined. Eclipse Assay and Eclipse Cupel are internal tools, not products: this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere."
+      ],
+      "categories": [
+        "Agent Spend Governance",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local/simulator)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local/simulator) \u2014 Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-allowance.md): R1\u2013R7 all CLOSED on fresh repros (per-mandate chains + Tier-M/Tier-G isolation; sealed metering; fail-closed holder-signature verify; exact seal field sets; monotonic amendments; structured store-defect faces with zero raw exceptions; subset restores detected), R7 full-restore residual adjudicated as fenced (condition, not fail), regression spot PASS (F-A13 decisive fresh-process recompute; F8 \u00a77.4 split key custody re-verified); builder suite 44/44 PASS x2 clean runs, independent probes ~110 checks. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local/simulator only, fixture family mandates only (fixture holders, members, agents, merchants, categories and spends, value_class \"test\"), local stdio MCP (SPEC \u00a70.1); no real money, no payment rail, no merchant, bank, or household account is connected in v0.1.2, and Allowance moves no money even in simulation \u2014 it checks and records fixture spends. Condition 1 (verbatim): R8 \u2014 cross-mandate transplant id\u2194hash pairing is detected only indirectly (transplanted record never served/counted/exported); Tier-G structural check or README fence stands as the condition. Bench condition text (verbatim): R8: add the id\u2194hash pairing to the structural/Tier-G check (an entry whose `mandate_id` and `mandate_hash` name different mandates defects the store on every path, incl. target-mandate spend), or fence the pairing class in the README integrity section. Condition 2 (verbatim): O1 \u2014 ledger_get VERIFIED slice-export vs downgraded faces on a Tier-G-defected store (documented slice semantics; no false data). Bench condition text (verbatim): O1: make `ledger_get` downgrade when Tier-G defect exists outside the served slice, or document the slice-only semantics on the export face.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench2-allowance.md (Verity delta re-bench 2, suite 44/44 re-run by the bencher x2 clean runs, ~110 independent probe checks; F-A13 decisive fresh-process recompute verified in the regression spot). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Cross-mandate record transplant, id\u2194hash pairing \u2014 CONDITION 1 (bench, verbatim): R8 \u2014 cross-mandate transplant id\u2194hash pairing is detected only indirectly (transplanted record never served/counted/exported); Tier-G structural check or README fence stands as the condition. Bench condition text (verbatim): R8: add the id\u2194hash pairing to the structural/Tier-G check (an entry whose `mandate_id` and `mandate_hash` name different mandates defects the store on every path, incl. target-mandate spend), or fence the pairing class in the README integrity section. The README fence stands in v0.1.2: the transplanted record is never served, counted, or exported as the target mandate's; the source mandate goes SEAL_DEFECT and the target mandate's history downgrades; the hash-also-switched variant is fully detected (SEAL_DEFECT, verify FAIL step 2).",
+          "ledger_get slice semantics on a Tier-G-defected store \u2014 CONDITION 2 (bench, verbatim): O1 \u2014 ledger_get VERIFIED slice-export vs downgraded faces on a Tier-G-defected store (documented slice semantics; no false data). Bench condition text (verbatim): O1: make `ledger_get` downgrade when Tier-G defect exists outside the served slice, or document the slice-only semantics on the export face. The slice-only semantics are documented on the export face and in the README: the export attests only the clean per-mandate slice it serves, no false data is served, and status/history/refusal faces downgrade on the same store.",
+          "Full coordinated restore of all local artifacts to a consistent earlier snapshot \u2014 Honesty fence \u2014 rollback residual: within this local file model, a rollback that restores *every* local artifact (mandates, ledger, refusals, revocations, all anchors, and metering) to one consistent earlier snapshot is undetectable; the per-mandate anchors and the sealed-metering cross-checks detect partial rollbacks, subset restores, and single-artifact tampering, not a complete coordinated snapshot restore. Detecting a full coordinated restore requires an external anchor outside the local store; an external anchor is required for any live or multi-party use and is not built in this local/simulator scope. No stronger claim is made.",
+          "Counsel-gated phase (SPEC \u00a710, named, unbuilt/unclaimed): any live household spend \u2014 real payment rails, real merchant presentment, mandates governing minors' actual purchases, custodial or stored-value anything, platform contracts making refusals financially effective \u2014 is out of v0.1, hard. The live phase is a separate post-gate, re-benched build: counsel review of consumer-finance / payments exposure, minors'-finance and consent questions (who may seal for whom), and the \u00a711 label set first. No dormant rail path and no real-money shape exists in v0.1.2 \u2014 the startup fence refuses payment-rail / bank / card configuration, non-local endpoints, and agent-side ledger signer keys.",
+          "Real money and real households \u2014 fixture mandates only: fixture holders, members, agents, merchants, categories, and spends under a deterministic seed + fixture clock; merchant/category refs name no real merchant or family, and every artifact carries value_class \"test\"",
+          "Live Herald signing \u2014 v0.1.2 signing is a fixture HMAC stand-in for the Herald RS256 pattern, disclosed on the product's face; verification keys are pinned out-of-band in code \u2014 a presented record can never select its own verification key",
+          "Production key custody \u2014 fixture keys live split per role in keys/ (keys/holder-key.json, keys/recorder-key.json, keys/herald-key.json, keys/holder-token.json; chmod 600, gitignored, never committed); an agent-surface process loads only the recorder and Herald role files and never loads holder key material or the holder token; a fresh clone must create its own per-role fixture key files to run the full suite",
+          "Hosted or live operation / charge path \u2014 local stdio only; metering points only per SPEC \u00a79.1 (mandate_active \u2014 one per ACTIVE mandate per fixture period; premium_mandate_active; spend_recorded / spend_refused counts, informational), no charge path is built, no payment is taken, and no live Meter ingest is claimed; downgraded exports and refused spends are not premium metering points"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-allowance-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-allowance-mcp.png",
+      "name": "Eclipse Allowance",
+      "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE + $5/mo premium, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC \u00a79.2 (FREE + $5/mo premium per the Argus-101 price shape; the price book governs): what premium includes beyond the free tier is a price-book / listing decision, not defined by the spec and never implied by a metering point. Metering points only \u2014 mandate_active (one per ACTIVE mandate per fixture period, the free-tier unit), premium_mandate_active (the $5/mo shape's unit), spend_recorded / spend_refused (counts, informational); downgraded exports and refused spends are not premium metering points. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "Household agents are being handed purchasing power under rules that live in a settings screen the agent's operator can change, a prompt the agent can be talked out of, or a log the agent itself writes \u2014 parents get a dashboard summary authored by the very system it summarises",
+        "I need the three roles separated: the holder seals the rules (category caps, merchant lists, amounts), the mandate check enforces them at spend time before any ledger entry exists, and the ledger is counter-signed by a key the agent does not hold",
+        "I need a cap-breaching spend refused whole \u2014 logged as a named refusal beside, never inside, the signed spend chain, moving no totals and appearing nowhere as a compliant spend \u2014 and a ledger any family member can recompute offline from the export alone"
+      ],
+      "source_refs": [
+        "eclipse-allowance-mcp/README.md",
+        "eclipse-allowance-mcp/server.json",
+        "argus101-specs-20261027/allowance-spec.md",
+        "argus101-program-20261027/wave2/rebench2-allowance.md"
+      ],
+      "status": "in-development",
+      "tagline": "Sealed family budget mandates for household agents \u2014 category caps, merchant lists, and amounts are sealed by the account holder; every spend lands in a family ledger as a receipt the agent cannot edit. PASS-CONDITIONAL (local/simulator) \u2014 local stdio, fixture family mandates + fixture spends only, value_class \"test\"; no real money, no payment rail, counsel gate (\u00a710) unbuilt. Ledger receipts are Herald-counter-signed; the household agent holds no ledger signing key.",
+      "tools": [
+        "mandate_seal",
+        "mandate_amend",
+        "mandate_revoke",
+        "ledger_get",
+        "ledger_verify",
+        "refusal_log_get",
+        "spend_present",
+        "mandate_status",
+        "spend_history_get"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

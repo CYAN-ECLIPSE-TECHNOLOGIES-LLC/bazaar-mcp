@@ -163,6 +163,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Muzzle | in-development | PASS-CONDITIONAL (local/fixture) — not certified |
 | Eclipse Sandclock | in-development | PASS-CONDITIONAL (local) — not certified |
 | Eclipse Archivist | in-development | PASS-CONDITIONAL (local, fixture captures) — not certified |
+| Eclipse Allowance | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

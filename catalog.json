@@ -1864,7 +1864,7 @@
         "eclipse-muster-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-muster-mcp-2026-10-25-2.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "The Customer Graph core: one register of the people an account serves, with provenance on every field and a receipt for every decision.",
       "tools": [
         "record_ingest",

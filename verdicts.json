@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 119,
+ "count": 120,
  "records": [
   {
    "record_type": "verdict",
@@ -2408,7 +2408,30 @@
  "scope": "PASS-CONDITIONAL (local) — Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-sandclock.md): F1–F4 closed (store set-anchor / key-binding / mint-signing / envelope findings), F1 whole-file residual adjudicated acceptable-at-scope under condition 1; builder suite 50/50, independent probes 55/55; closed F1–F6 first-pass items spot-checked — none reopened. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local (fixture scorecards + fixture drift evidence only, value_class \"test\") under the local single-file / single-operator store model — local stdio MCP (SPEC §0.1); no live model/tool observation, no eval run, no score issued; the counsel-gated live phase (SPEC §10.2) remains unbuilt and separately gated. Condition 1 (verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec §10.2) remains unbuilt and separately gated.",
  "status": "current",
  "verdict": "PASS-CONDITIONAL (local)"
-}
+},
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.2",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Archivist",
+  "not_tested": [
+   "Live or multi-party use — CONDITION 1 (bench, verbatim): Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model — fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim.",
+   "Full coordinated restore of all artifacts to a consistent earlier snapshot — Honesty fence — rollback residual: within this local file model, a rollback that restores every local artifact (bundle records, verification chains and their anchors, the signed bundle-set anchor, the anomaly queue and its anchor, sealed metering and its anchor, and the signed store head) to one consistent earlier snapshot is undetectable; the cross-artifact anchors detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. An external anchor — a head hash held outside this store — is required for live or multi-party use. No stronger claim is made.",
+   "Counsel-gated phases (SPEC §10, named, unbuilt/unclaimed) — CONDITION 2 (bench, verbatim): §10 counsel-gated phases remain unbuilt and unclaimed; any claim at those scopes requires counsel clearance + scope edit + re-bench (§10.2). The gated phases are: (a) live web capture; (b) evidentiary use in proceedings (no admissibility or notarization-equivalence claim is made anywhere); (c) retention/handling of real captured content; (d) capture of authenticated or paywalled content. No dormant live path exists in v0.1.2 — the startup fence refuses fetch/endpoint configuration.",
+   "Live captures and real servers — fixture captures only: fixture page content, fixture headers, and locally generated fixture TLS material; no real page, certificate, or server is touched, and the bundle identity on the face is the presented certificate's identity, not a verified identity of any operator (SPEC §11.3)",
+   "Live Herald signing — v0.1.2 signing is a fixture HMAC stand-in for the Herald RS256 pattern, disclosed on the product's face; verification uses pinned fixture keys only, never keys presented inside a record or pack",
+   "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+   "Hosted or live operation / charge path — local stdio only; metering point only per SPEC §9.1 (one Meter record per completed bundle_seal at the $0.10/capture price shape; verifications, gets, status, and exports emit no metering record), no charge path, payment call, or entitlement check is built and no live Meter ingest is claimed"
+  ],
+  "product": "eclipse-archivist-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-archivist-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local, fixture captures) — Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-archivist.md): R1–R8 all closed (cross-artifact store head / signed bundle-set anchor / sealed metering / record_id binding / exact pack face / structured whole-store garbage / missing-key zero-write / sealed-snapshot defect findings), no closed F1–F6 item reopened; builder suite 36/36 plain + socket-denied, independent probes 135 serialized assertions; the one residual (full coordinated snapshot restore) adjudicated a documented condition, fence present and accurate on README + every pack + server.json. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local, fixture captures only (fixture page content, fixture headers, fixture TLS material, value_class \"test\") under the local single-file / single-operator store model — local stdio MCP (SPEC §0.1); no live web capture exists in v0.1: no fetcher, no network client, no real page, certificate, or server is touched. Condition 1 (verbatim): Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model — fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim. Condition 2 (verbatim): §10 counsel-gated phases remain unbuilt and unclaimed; any claim at those scopes requires counsel clearance + scope edit + re-bench (§10.2).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local, fixture captures)"
+ }
   ]
  }
 

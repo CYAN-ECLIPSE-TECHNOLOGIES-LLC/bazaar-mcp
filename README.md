@@ -162,6 +162,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Safelist | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture feed entries) |
 | Eclipse Muzzle | in-development | PASS-CONDITIONAL (local/fixture) — not certified |
 | Eclipse Sandclock | in-development | PASS-CONDITIONAL (local) — not certified |
+| Eclipse Archivist | in-development | PASS-CONDITIONAL (local, fixture captures) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

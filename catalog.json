@@ -7689,6 +7689,72 @@
         "expiry_export"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 page captures seal content, headers, and the TLS certificate together \u2014 the bundle proves what was served, by whom, and when, as one artifact.",
+        "Decisive fixture F-A8 stands from the bench record \u2014 a fixture capture sealed, exported, and verified in a fresh process from the pack + pinned public keys alone: genuine pack BUNDLE_VALID with independent recompute (sha256(body)=content_hash, sha256(DER)=cert_hash); each single-part substitution from a second sealed capture fails by name (body \u2192 step1:content_hash, headers \u2192 step1:headers_hash, cert DER \u2192 step2:cert_identity).",
+        "Cross-artifact integrity (v0.1.2, R1\u2013R8 closed at re-bench 2) \u2014 a signed store head cross-commits the bundle-set head, every per-bundle chain head, the anomaly head, and the sealed metering head; a signed bundle-set anchor binds the full set, so subset deletion, delete-all, metering deletion/fabrication, record alias transplants, and pair-reverts are BUNDLE_DEFECT on every serve/mint surface, never clean serves or plain BUNDLE_NOT_FOUND; the pack face is exact (unknown top-level or capture keys fail by name) and whole-store garbage raises structured BUNDLE_DEFECT on every entry path.",
+        "Condition 1 \u2014 Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model \u2014 fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim.",
+        "Condition 2 \u2014 \u00a710 counsel-gated phases remain unbuilt and unclaimed; any claim at those scopes requires counsel clearance + scope edit + re-bench (\u00a710.2).",
+        "Rollback fence (README, verbatim): Honesty fence \u2014 rollback residual: within this local file model, a rollback that restores every local artifact (bundle records, verification chains and their anchors, the signed bundle-set anchor, the anomaly queue and its anchor, sealed metering and its anchor, and the signed store head) to one consistent earlier snapshot is undetectable; the cross-artifact anchors detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. An external anchor \u2014 a head hash held outside this store \u2014 is required for live or multi-party use. No stronger claim is made.",
+        "Residual limit (SPEC \u00a711.2, on every bundle and export, verbatim in substance): This bundle proves what the capturing fetcher was served, at the witness time, under the certificate presented to it. A server may serve different content to other fetchers, at other times, or under other certificates \u2014 the bundle says nothing about what anyone else was served. The content-targeting case (a server detecting the fetcher and serving it special content) is the named example of this limit wherever it is explained at length.",
+        "Downgrade law (SPEC \u00a76.6) \u2014 a capture assembled after the fact receives no bundle, only a clearly labelled UNSEALED_SUMMARY (unsigned, sealed: false) which the \u00a76.4 verifier rejects as an Archivist artifact; a pack with any part-hash failing downgrades whole to UNWITNESSED_EXPORT; an export without the content payload is a labelled HASH_ONLY_EXPORT, never an upgrade path.",
+        "Format attribution is exact and minimal: metering records are emitted in Meter grammar, signing is Herald's pattern (fixture HMAC stand-in), and evidence packs are assembled to Docket's pattern \u2014 consumed, never redefined. Eclipse Assay and Eclipse Cupel are internal tools, not products: this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Identity & Attestation"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local, fixture captures)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local, fixture captures) \u2014 Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-archivist.md): R1\u2013R8 all closed (cross-artifact store head / signed bundle-set anchor / sealed metering / record_id binding / exact pack face / structured whole-store garbage / missing-key zero-write / sealed-snapshot defect findings), no closed F1\u2013F6 item reopened; builder suite 36/36 plain + socket-denied, independent probes 135 serialized assertions; the one residual (full coordinated snapshot restore) adjudicated a documented condition, fence present and accurate on README + every pack + server.json. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local, fixture captures only (fixture page content, fixture headers, fixture TLS material, value_class \"test\") under the local single-file / single-operator store model \u2014 local stdio MCP (SPEC \u00a70.1); no live web capture exists in v0.1: no fetcher, no network client, no real page, certificate, or server is touched. Condition 1 (verbatim): Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model \u2014 fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim. Condition 2 (verbatim): \u00a710 counsel-gated phases remain unbuilt and unclaimed; any claim at those scopes requires counsel clearance + scope edit + re-bench (\u00a710.2).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench2-archivist.md (Verity delta re-bench 2, suite 36/36 re-run by the bencher plain + socket-denied, 135 independent serialized assertions; F-A8 decisive fresh-process recompute verified). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live or multi-party use \u2014 CONDITION 1 (bench, verbatim): Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model \u2014 fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim.",
+          "Full coordinated restore of all artifacts to a consistent earlier snapshot \u2014 Honesty fence \u2014 rollback residual: within this local file model, a rollback that restores every local artifact (bundle records, verification chains and their anchors, the signed bundle-set anchor, the anomaly queue and its anchor, sealed metering and its anchor, and the signed store head) to one consistent earlier snapshot is undetectable; the cross-artifact anchors detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. An external anchor \u2014 a head hash held outside this store \u2014 is required for live or multi-party use. No stronger claim is made.",
+          "Counsel-gated phases (SPEC \u00a710, named, unbuilt/unclaimed) \u2014 CONDITION 2 (bench, verbatim): \u00a710 counsel-gated phases remain unbuilt and unclaimed; any claim at those scopes requires counsel clearance + scope edit + re-bench (\u00a710.2). The gated phases are: (a) live web capture; (b) evidentiary use in proceedings (no admissibility or notarization-equivalence claim is made anywhere); (c) retention/handling of real captured content; (d) capture of authenticated or paywalled content. No dormant live path exists in v0.1.2 \u2014 the startup fence refuses fetch/endpoint configuration.",
+          "Live captures and real servers \u2014 fixture captures only: fixture page content, fixture headers, and locally generated fixture TLS material; no real page, certificate, or server is touched, and the bundle identity on the face is the presented certificate's identity, not a verified identity of any operator (SPEC \u00a711.3)",
+          "Live Herald signing \u2014 v0.1.2 signing is a fixture HMAC stand-in for the Herald RS256 pattern, disclosed on the product's face; verification uses pinned fixture keys only, never keys presented inside a record or pack",
+          "Production key custody \u2014 fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path \u2014 local stdio only; metering point only per SPEC \u00a79.1 (one Meter record per completed bundle_seal at the $0.10/capture price shape; verifications, gets, status, and exports emit no metering record), no charge path, payment call, or entitlement check is built and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-archivist-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-archivist-mcp.png",
+      "name": "Eclipse Archivist",
+      "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED \u2014 $0.10/capture, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC \u00a79 ($0.10/capture; the price book governs): the capture is the priced unit \u2014 one metered event per completed bundle_seal, idempotency-keyed so re-sealing an identical capture returns the recorded bundle with no double metering; verifications, gets, status, and exports emit no metering record in v0.1.2. Metering records only \u2014 no charge path, payment call, or entitlement check is built, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Web evidence today is a screenshot, a saved HTML file, or a log line \u2014 each separable, alterable, and silent on who served it: a page capture without its certificate cannot prove which server (or which impersonator) supplied the content",
+        "I need content, serving context, and server identity bound indivisibly at capture time \u2014 one hash-chained, signed bundle artifact \u2014 so recombining parts from different captures after the fact breaks verification by name",
+        "I need the bundle's limit printed on its face: it proves what the capturing fetcher was served at the witness time under the presented certificate \u2014 never what anyone else was served, and never admissibility, notarization equivalence, or that the content was true"
+      ],
+      "source_refs": [
+        "eclipse-archivist-mcp/README.md",
+        "eclipse-archivist-mcp/server.json",
+        "argus101-specs-20261027/archivist-spec.md",
+        "argus101-program-20261027/wave2/rebench2-archivist.md"
+      ],
+      "status": "in-development",
+      "tagline": "Web-evidence capture witness over fixture captures \u2014 page captures seal content, headers, and the TLS certificate together as one hash-chained, Herald-signed bundle proving what was served, by whom, and when. PASS-CONDITIONAL (local, fixture captures) \u2014 local stdio, fixture captures only, value_class \"test\"; no live web capture exists in v0.1. This bundle proves what the capturing fetcher was served, at the witness time, under the certificate presented to it. A server may serve different content to other fetchers, at other times, or under other certificates \u2014 the bundle says nothing about what anyone else was served.",
+      "tools": [
+        "capture_present",
+        "bundle_seal",
+        "bundle_status",
+        "bundle_get",
+        "bundle_verify",
+        "bundle_pack_export",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

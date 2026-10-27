@@ -6875,6 +6875,66 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — an agent's full tool/permission configuration is sealed and streamed; every change emits a delta receipt to subscribers (employers, insurers, auditors). Mandatory gloss (SPEC §11.3): sealed = an operator declared this configuration, in this order, at these times — recompute it yourself.",
+        "Genesis seal + hash-chained delta stream — the full configuration is canonicalised, hashed, and sealed at config_seq 0, signed by the operator and counter-signed by Kitseal; every change is a delta record citing the exact head config_hash it applies to and the resulting config_hash, chained on dual spines (prev_hash record spine + base→result config spine). A delta citing anything but the current head is refused (DELTA_BASE_MISMATCH); the chain is append-only and fork-refusing, retirement is itself a delta, and sealed records are never edited or deleted. Every delta receipt carries the attestation verbatim: 'operator-declared configuration change; Kitseal attests presentation, sequence, and hashes — not runtime state.'",
+        "Offline recompute (SPEC §6.4) — a subscriber holding only the exported pack + pinned fixture keys recomputes the current configuration in a fresh process without asking Kitseal anything: config hashes, record hashes, both spines, the op digest, and both signatures (operator + Kitseal counter-signature) are recomputed against keys pinned out-of-band, never keys presented inside a record. A withheld receipt is detectable by sequence gap: the recompute stops at KITSEAL_VERIFY_FAIL:gap@<seq>, asserts no current configuration, and the export is labelled STALE_OR_PARTIAL. Verify-before-serve (v0.1.1, delta-bench C1/C2 closures): loadout_status, feed_read, and the pack face run the full chain verification over the records they serve before asserting any head hash, state, receipt, or chain_complete_through, and receipt_verify walks the presented chain from genesis to the receipt's record — an isolated record without chain context does not verify.",
+        "Decisive fixture F-K11 — bench-reproduced at v0.1.0 and as a delta regression at v0.1.1, both branches PASS in fresh subprocesses (pack + pinned key file only): genesis + 6 deltas recompute verified:true with config_hash == the reported head hash @ seq 6 (final tools [tool-alpha, tool-beta, tool-delta], the unset setting gone); with seq-3 withheld the recompute fails KITSEAL_VERIFY_FAIL:gap@3, current_config:null, verified_through:2, export labelled STALE_OR_PARTIAL — no current config asserted.",
+        "Honest scope — LOCAL stdio, fixture loadouts ONLY: configurations are operator-supplied fixture data, no real agent is sealed or streamed, Kitseal connects to no runtime, captures no configuration from any system, grants/revokes no permission, and is not a config-management tool, runtime monitor, or policy engine. Closed surface of exactly 9 dispatch entries (5 operator + 4 subscriber, disjoint; loadout_pack_export appears on both surfaces); no verb edits or deletes a sealed record, re-bases a delta onto a non-head hash, asserts a current configuration without recompute, captures a config from a runtime, or suppresses a delta from a subscriber feed. Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live-key string, a non-local endpoint, a config source other than operator presentation, a runtime credential, or value_class other than 'test'. Signing is an HMAC-SHA256 fixture stand-in for the Herald pattern (bench observation F4); symmetric fixture keys mean the operator/Kitseal key holder set is a local trust domain, consistent with (local) scope."
+      ],
+      "categories": [
+        "Agent Governance",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED(local, fixture loadouts)",
+        "certified": true,
+        "certified_scope": "CERTIFIED(local, fixture loadouts) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-kitseal.md) PASS-CONDITIONAL(local) with conditions C1–C2, plus delta re-bench of v0.1.1 in the same record: C1 CLOSED, C2 CLOSED at scope (local) — the v0.1.0 carve-out is LIFTED and no new findings were raised. Builder suite 34/34 at v0.1.0 and 40/40 at v0.1.1 (34 prior + 6 new TestReadPathVerifyC1C2) re-run clean-state by the bencher both times; decisive fixture F-K11 independently re-run in a fresh subprocess (pack + pinned key file only) at both benches, both branches PASS — verified:true, recomputed config_hash == loadout_status head hash 6ff16dd3…b7c6c @ seq 6, final tools [tool-alpha, tool-beta, tool-delta]; seq-3 withheld → KITSEAL_VERIFY_FAIL:gap@3, current_config:null, verified_through:2, export labelled STALE_OR_PARTIAL. Delta probes: tampered store (head result_config_hash set to deadbeef… + delta-1 Kitseal signature zeroed) → loadout_status, feed_read and the pack face all fail closed KITSEAL_VERIFY_FAIL:signature@1, state UNVERIFIED, no head hash asserted, no feed items served; deleted seq-3 record → gap@3 explicit (gaps:[3], gap_at:3), chain_complete_through=2 (verified prefix only); receipt_verify: isolated genuine seq-4 receipt → verified:false at genesis@0, gapped prefix → gap@2, tampered predecessor → signature@2, full chain → verified:true. Scope is exactly: local stdio MCP, fixture loadouts only, operator-declared fixture configurations, value_class 'test' throughout — now including loadout_status, feed_read, and pack-face head/state fields, which verify-before-serve; no real agent is sealed or streamed, Kitseal connects to no runtime, and no configuration is captured from any system; no counsel-gate (SPEC §10) live phase built or claimed. Novel mechanism (SPEC §2.1, verbatim): an agent's full tool/permission configuration is sealed and streamed; every change emits a delta receipt to subscribers (employers, insurers, auditors). Mandatory gloss (SPEC §11.3): sealed = an operator declared this configuration, in this order, at these times — recompute it yourself. Observation F4 (standing): signing is an HMAC-SHA256 fixture stand-in for the Herald pattern; symmetric fixture keys mean the operator/Kitseal key holder set is a local trust domain — consistent with (local) scope, to be revisited at any post-counsel gate.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-kitseal.md (Verity bench of v0.1.0, 2026-10-27, PASS-CONDITIONAL(local) C1–C2; builder suite re-run clean 34/34, F-K11 reproduced independently both branches, adversarial pass incl. attacker-key-in-record, stored-digest lies caught at named steps, dual-spine fork attempts, signature-strip, malformed-args battery, refusal-must-not-mutate (10/10), 60-call fuzz, key custody, read-path probe F1 + receipt chain-context probe F2) + delta re-bench of v0.1.1 in the same record (suite 40/40 clean-state, independent tampered-store/gap/receipt probes, F-K11 regression both branches PASS; C1/C2 CLOSED, carve-out lifted). Fix record: argus101-program-20261027/wave2/fix-kitseal.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Real agents, real subscribers, or any live use — fixture loadouts only; the SPEC §10 counsel gate is unbuilt by design, named, with no dormant live mode: seals presented as compliance/insurance evidence for real agents (reliance language, misrepresentation exposure when an operator seals a configuration the agent does not run, employee-monitoring / workplace-surveillance rules, trade-secret handling of sealed configs, and the runtime-attested capture integration as a separate later clearance) — each requires counsel clearance, a scope edit in code, and a Verity re-bench at the new scope",
+          "Any runtime state — Kitseal seals what it is given: a seal binds the operator's declaration (presentation, sequence, hashes) and is never evidence that an agent runs the sealed configuration; never claimed for v0.1.1 are 'verified configuration', 'attested loadout', 'the agent's actual tools', 'compliance-ready', or any implication that a seal describes running state (SPEC §11.3 strings are named here only as never claimed); every displayed configuration carries its config_seq + config_hash per SPEC §11.4",
+          "Production signing — v0.1.1 signing is an HMAC-SHA256 fixture stand-in for the Herald pattern (local fixture keys, keys/ gitignored, mode 600, never committed); symmetric fixture keys mean the operator/Kitseal key holder set is a local trust domain (bench observation F4), to be revisited at any post-counsel gate; a fresh clone generates its own fixture keys to run the full suite",
+          "Hosted or live operation — local stdio only; metering records only per SPEC §9.1 (genesis_sealed, delta_receipted, subscription_period, pack_exported), the $49/mo shape is a book reference with no charge path built and no live Meter ingest"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-kitseal-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-kitseal-mcp.png",
+      "name": "Eclipse Kitseal",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; public use is hard-gated on the house name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering points only in v0.1.1, no charge path built): metering records at exactly genesis_sealed (per loadout), delta_receipted (per chained delta), subscription_period (per loadout-subscriber-period — the unit the $49/mo shape names), and pack_exported (per pack); no subscription billing and no per-delta billing is built; charging waits a separately gated pricing stage. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Agent configurations drift silently and matter enormously: a permission widened on Tuesday is the difference between the agent an insurer priced and the agent that ran on Friday — and today the evidence is an editable config file in a repo, a screenshot in a compliance folder, or the operator's assertion at renewal time",
+        "I need a sealed starting point plus an unbroken signed chain of every change, with one signed delta receipt per change streamed to subscribers, so the current configuration is an arithmetic consequence of the chain — recomputable offline from the pack + pinned keys alone — rather than a claim about it",
+        "I need the stream kept honest on its face: silence is never rendered as 'no changes' (a withheld receipt surfaces as a named sequence gap and no current config is asserted), stored values are never served as assertions without chain verification, and a seal is never presented as evidence of running state"
+      ],
+      "source_refs": [
+        "eclipse-kitseal-mcp/README.md",
+        "eclipse-kitseal-mcp/server.json",
+        "argus101-program-20261027/wave2/bench-kitseal.md",
+        "argus101-specs-20261027/kitseal-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Continuous loadout sealing for agents over fixture loadouts — an operator-declared fixture configuration is genesis-sealed and every change streams as a hash-chained signed delta receipt; the current config is a recompute, never a stored claim. CERTIFIED(local, fixture loadouts) — fixture loadouts only; no real agent is sealed or streamed, and a seal attests presentation, sequence, and hashes — not runtime state.",
+      "tools": [
+        "loadout_seal_genesis",
+        "loadout_apply_delta",
+        "loadout_status",
+        "subscription_add",
+        "loadout_pack_export",
+        "feed_read",
+        "current_config_recompute",
+        "receipt_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

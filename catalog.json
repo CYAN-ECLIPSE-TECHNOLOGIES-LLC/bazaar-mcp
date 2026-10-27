@@ -9046,6 +9046,67 @@
     "scorecard_ref": null,
     "card_url": null
    }
+  },
+  {
+   "capabilities": [
+    "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 every sustainability claim an agent emits is bound to its source-data pointer at emission time; unbound claims are flagged in the message itself.",
+    "The pointer limit (SPEC \u00a711.2, verbatim, on every surface): A binding proves a source-data pointer existed and resolved at emission time \u2014 NOT that the claim is true, not that the source data supports the claim, and not that the source data is accurate, current, or complete. A flag states the absence of a pointer at emission \u2014 never that a flagged claim is false. Greenwash flags; it does not censor: flagged claims are emitted with their text unaltered.",
+    "Decisive fixture F-G14 stands from the bench record \u2014 a harness-authored stream with harness-authored source entries verifies in a fresh subprocess from the pack + keys alone: bound claims resolve in the emission-time snapshot, both unbound claims carry in-message flags. A pointer attached after emission is a downgraded annotation (binding: false on its face), never a binding; annotations never convert a flag, never edit an emitted message, and are rejected by the \u00a76.4 verifier as bindings. Sub-range packs are labelled verifiable: false / downgraded: true on their face (genesis-anchor reason) \u2014 exports that cannot be recomputed are labelled downgraded, never upgraded.",
+    "Delta re-bench of v0.1.1 (wave4/rebench-greenwash.md): defects D-GW-1..4 all CLOSED on independent fixtures; conditions C1\u2013C4 satisfied (C1/C3/C4 as implemented \u2014 claim_id uniqueness enforced at emission via the accepted coined code DUPLICATE_CLAIM_ID, LEDGER_APPEND_FAILED as a literal typed refusal, both binding signatures over record_hash; C2 via the labelling branch). No new defect found; builder suite 34/34 re-run by the bencher.",
+    "Rollback fence: the v0.1 store is pure local file state anchored by its signed store head and SET anchors \u2014 any verdict caps at PASS-CONDITIONAL (local/fixture); an external anchor is required before any live or multi-party use.",
+    "Counsel gate (SPEC \u00a710) \u2014 named, unbuilt: binding, flagging, or certifying claims in real published content \u2014 marketing, product pages, regulatory filings, ESG reports \u2014 is out of v0.1, hard, until counsel clears that use (packet covers FTC Green Guides, SEC climate/ESG disclosure rules, EU green-claims regime; disclosure-duty and defamation/disparagement exposure of in-message flags; the legal meaning that may attach to the word \"bound\"). There is no dormant live path in v0.1.1 to flip: the startup fence refuses non-local endpoints, channel/publication integration strings, live source-data keys, and non-fixture modes by name.",
+    "Signing is an HMAC fixture stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref. Herald (signing pattern), Meter (metering grammar), Till (mandates \u2014 v0.1 fixtures run mandate-free), and Docket (pack shape) are consumed by grammar/reference only. Source-data stores are consumed as pointer targets, never assessed: resolution means only that the named entry exists in the cited snapshot."
+   ],
+   "categories": [
+    "Compliance & Regulation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "PASS-CONDITIONAL (local/fixture)",
+    "certified": false,
+    "certified_scope": "Eclipse Greenwash \u2014 PASS-CONDITIONAL (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-greenwash.md) PASS-CONDITIONAL with conditions C1\u2013C4, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-greenwash.md): defects D-GW-1..4 all CLOSED, conditions C1\u2013C4 satisfied (C2 via the labelling branch), builder suite 34/34 re-run by the bencher at commit ba07801, no new defect found. PASS-CONDITIONAL (local/fixture) is not CERTIFIED \u2014 certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture emission stream with structured claim objects only, value_class \"test\"; no real agent, channel, publication, or marketing surface is touched, and no free-text claim detection in arbitrary prose is claimed or implied. Pointer limit: a binding proves a source-data pointer existed and resolved at emission time \u2014 NOT that the claim is true, not that the source data supports the claim, and not that the source data is accurate, current, or complete. Rollback fence: pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture) \u2014 external anchor required before live/multi-party use. Counsel gate (SPEC \u00a710) named and unbuilt for any real-world claim publication. Trademark screen on the working name pending.",
+    "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-greenwash.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/fixture), conditions C1\u2013C4, decisive F-G14 fresh-subprocess verification) + argus101-program-20261027/wave4/rebench-greenwash.md (Verity delta re-bench of v0.1.1: D-GW-1..4 all CLOSED, C1\u2013C4 satisfied, builder suite 34/34 re-run by the bencher). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+    "not_tested": [
+     "Real published content \u2014 binding, flagging, or certifying claims in real marketing, product pages, regulatory filings, or ESG reports is SPEC \u00a710 counsel-gated and UNBUILT (FTC Green Guides, SEC climate/ESG rules, EU green-claims regime; flag defamation/disparagement exposure); no real publication is touched in v0.1.1",
+     "Claim truth \u2014 a binding proves a pointer existed and resolved at emission time, NOT that the claim is true, supported, accurate, current, or complete; source-data stores are consumed as pointer targets, never assessed",
+     "Free-text claim detection in arbitrary prose \u2014 v0.1.1 handles structured claim objects in a fixture emission stream only; no prose detection is claimed or implied",
+     "External anchoring / multi-party reliance \u2014 the pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture); an external anchor is required before live or multi-party use",
+     "Production key custody \u2014 signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+    ],
+    "scorecard_ref": null,
+    "scorecard_url": null
+   },
+   "id": "eclipse-greenwash-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-greenwash-mcp.png",
+   "name": "Eclipse Greenwash",
+   "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim; trademark screen on the working name pending per the re-bench standing conditions).",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "PRICED \u2014 $0.10/claim, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 (metering points only in v0.1.1, no charge path built): Meter-grammar records at exactly three points \u2014 claim_bound, claim_flagged, pack_exported \u2014 at the $0.10/claim price shape (book reference only). No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "problem_statements": [
+    "Agent-generated sustainability claims go out with no evidence discipline at all: the claim text is emitted, and whether any source data ever stood behind it is unknowable afterwards \u2014 the exact shape of greenwashing risk",
+    "I need every sustainability claim bound to its source-data pointer at emission time \u2014 claim hash \u2194 pointer \u2194 emission time, hash-chained and counter-signed \u2014 and every unbound claim flagged in the message itself, adjacent to the claim, so no reader can miss that it carries no binding",
+    "I need the honesty limits on the face of the product: a binding proves a pointer existed and resolved at emission \u2014 not that the claim is true; a flag states the absence of a pointer \u2014 never that the claim is false; and a pointer attached later is a downgraded annotation, never a backdated binding"
+   ],
+   "source_refs": [
+    "eclipse-greenwash-mcp/README.md",
+    "eclipse-greenwash-mcp/server.json",
+    "argus101-specs-20261027/greenwash-spec.md",
+    "argus101-program-20261027/wave4/rebench-greenwash.md"
+   ],
+   "status": "in-development",
+   "tagline": "Emission-time claim binder for agent output over a fixture emission stream; local/fixture only. PASS-CONDITIONAL (local/fixture) \u2014 every sustainability claim an agent emits is bound to its source-data pointer at emission time; unbound claims are flagged in the message itself. A binding proves a pointer existed and resolved at emission time \u2014 NOT that the claim is true. Rollback fence: an external anchor is required before live/multi-party use. Counsel gate (SPEC \u00a710) named and unbuilt.",
+   "tools": [
+    "emission_submit",
+    "claim_status",
+    "ledger_get",
+    "binding_verify",
+    "pack_get",
+    "annotation_add"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

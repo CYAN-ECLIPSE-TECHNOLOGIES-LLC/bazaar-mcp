@@ -6162,6 +6162,64 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — one token binds three hashes (purchase order, spending mandate, delivery receipt): payseal_token = sha256(po_hash|mandate_hash|delivery_hash), each component hash recomputed over the canonical form of the presented record on every evaluation; a presented hash is a claim, never trusted verbatim. The verdict is issued only when all three legs agree under the six §2.3 agreement checks in fixed order (authenticity, payee identity, amount, scope, currency/unit, freshness); the first failure names the verdict's reason_code. Verdicts: MATCH · MISMATCH · PARTIAL_DELIVERY (short lines named).",
+        "Derived-valuation amount check (R-P1, re-bench verified) — delivered value is DERIVED as Σ accepted_lines at PO line prices on every path; the face value is never trusted. Accepted quantities are bounded per PO line aggregated per resource, resources must be PO lines, po_total must equal Σ PO lines, and missing/empty accepted_lines fails closed — re-signed forgeries (empty lines, qty-999 over-delivery, unrelated-resource lines, po_total contradicting its own lines) all seal MISMATCH / AMOUNT_EXCEEDS_MANDATE with the sub-failure named in detail.amount_detail.",
+        "Three-or-nothing refusals + offline verify — a missing or unhashable leg is a named refusal (TRIPLE_INCOMPLETE, INPUT_HASH_INVALID, DELIVERY_ORPHAN, MANDATE_SIGNATURE_INVALID, MANDATE_EXPIRED, MANDATE_REVOKED), never a weaker verdict. payseal_verify recomputes token, checks, record hash (§4.6 chain: binding record → check records → verdict record) and signature from the export alone; a tampered export recomputes as UNVERIFIED_EXPORT with verdict_claim null and no upgrade path. Disputes hand off to Eclipse Docket as an evidence pack (adjudication is Docket's, not Payseal's).",
+        "Fail-closed configuration fence (§7.3) — a live-key string, a non-local endpoint (parsed-host locality: localhost.evil.invalid and userinfo masquerades refuse), a non-test value_class, a payment-execution module anywhere in the tree (recursive scan), or a real-funds amount source refuses startup and fences every tool in-process with CONFIG_FENCE_REFUSED:<class>, printed exactly once. Disjoint surfaces: caller = exactly 4 tools, operator = exactly 2; cross-surface names and every payment verb (pay/settle/transfer/escrow/release) return the identical NO_SUCH_TOOL refusal — no payment-execution code exists in the tree.",
+        "Honest scope — LOCAL/simulator, fixture triples ONLY: v0.1.2 evaluates fixture PO / mandate / delivery-receipt triples only. No live invoice, mandate service, delivery system, or payment rail is touched. Signing is a fixture HMAC stand-in for the Herald pattern (fixture keys are local-only, chmod 600, gitignored, never committed; no key in this product can move money — none exists that could). Payseal issues verdicts only: it never executes, authorizes, or guarantees a payment, and a MATCH verdict means only that the three presented fixture documents agree under the spec's checks. Payment execution (the Till rail) is a separate, counsel-gated surface that this listing does not offer or imply."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (LOCAL/simulator, fixture triples)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (LOCAL/simulator, fixture triples) — Verity narrow re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/rebench-payseal-012.md): R-P1 (gating MAJOR from the v0.1.1 CONDITIONAL) closes clean — all four verbatim re-signed forgeries and every Verity variant that should fail now fail at check 3, and the no-over-blocking controls still pass (honest full → MATCH, honest partial → PARTIAL_DELIVERY, exact-aggregate duplicate splits, fully-delivered zero-priced line). R-P2 (a)–(e) spot-verified fixed (parsed-host locality, env scan beyond PAYSEAL_*, recursive tree scan, non-evaluate tools fenced in-process, refusal printed exactly once). Both fixer pins adjudicated spec-faithful. Builder suite 38/38 fresh process; F-P9 decisive recomputed on an independent code path (leg hashes, all 3 leg signatures, token unchanged from v0.1.1, record_hash per §4.6, Herald-fixture signature, offline verify from the §6.2 export alone → MATCH). Idempotency/metering unchanged (exactly 1 metering point per sealed evaluation; refusals meter 0). Surfaces disjoint in fresh stdio subprocesses; tool version on the wire 0.1.2. Three boundary observations recorded, none gating. Scope is exactly LOCAL/simulator, fixture triples — no live input, execution, or payment claim is licensed by this verdict.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-payseal-012.md (Verity narrow re-bench, independent fresh-process, re-signed forgeries and own-variant probes; prior benches bench-payseal.md (v0.1.0 FAIL) and rebench-payseal.md (v0.1.1 CONDITIONAL), fix claims fix-payseal-011.md + fix-payseal-012.md). This bench issued no test-bench/results scorecard; scorecard_ref is null and no scorecard is claimed or hosted for this product. Repository PRIVATE (priced-product policy): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-payseal-mcp @ 158369b (v0.1.2). Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-payseal-mcp v0.1.2 (see ship report ship-payseal.md for live status).",
+        "not_tested": [
+          "Live invoices, mandate services, delivery systems, or payment rails — not tested and not claimed: v0.1.2 evaluates fixture triples only; no network or payment code exists in the tree",
+          "Payment execution of any kind — Payseal is verdict-only by construction (no pay/settle/transfer/escrow/release verb exists on either surface); the Till payment rail is a separate counsel-gated surface, not part of this product or listing",
+          "Production signing custody — signing is a fixture HMAC stand-in for the Herald RS256 pattern; fixture keys are local-only and fixture-key verification is fixture-sense only; real Herald signing is the live-phase form, not built",
+          "Hosted deployment — no hosted endpoint exists or is claimed in v0.1.2; the local stdio package is the reference implementation; per-call charging waits a hosted endpoint (metering shape recorded, never charged in v0.1.2)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-payseal-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-payseal-mcp.png",
+      "name": "Eclipse Payseal",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (spec: name screen pending at build; the working name is not a public claim). The name and descriptor never imply payment execution, authorization, or a guarantee that a payment is safe in the real world — the verdict is evidence over presented fixture documents only.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.10/call, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. v0.1.2 records exactly one metering point per sealed evaluation (metering only — no charge path exists in the build); per-call charging waits a hosted endpoint. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My agent is about to pay an invoice and I need a pre-payment verdict that the purchase order, the spending mandate, and the delivery receipt actually agree — bound into one token over all three hashes, not three separate checks I have to reconcile myself",
+        "A supplier's delivery receipt claims the full face value — I need the delivered value derived from the accepted lines at PO prices, so empty lines, over-delivered quantities, or lines that were never ordered cannot seal a MATCH",
+        "I need verdict evidence a third party can recompute offline — token, agreement checks, hash-chained check records, and signature — and a tampered export to downgrade to UNVERIFIED_EXPORT with no verdict claim, never an upgrade path"
+      ],
+      "source_refs": [
+        "eclipse-payseal-mcp/README.md",
+        "eclipse-payseal-mcp/server.json",
+        "eclipse-payseal-mcp/SPEC.md",
+        "argus101-program-20261027/rebench-payseal-012.md"
+      ],
+      "status": "in-development",
+      "tagline": "Pre-payment verdict binding a purchase order, a spending mandate, and a delivery receipt into one token — MATCH, MISMATCH, or PARTIAL_DELIVERY only when all three agree. CERTIFIED (LOCAL/simulator, fixture triples) — verdict only: Payseal never executes, authorizes, or guarantees a payment.",
+      "tools": [
+        "payseal_evaluate",
+        "payseal_verdict_get",
+        "payseal_verify",
+        "payseal_dispute_handoff",
+        "payseal_evaluation_list",
+        "payseal_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

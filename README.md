@@ -135,6 +135,9 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse SEC Figure Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
 | Eclipse Trademark Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
 | Eclipse Split | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
+| Eclipse Brake | in-development | CONDITIONAL (LOCAL/simulator) |
+| Eclipse Benchkit | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/fixture) |
+| Eclipse Payseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/simulator, fixture triples) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

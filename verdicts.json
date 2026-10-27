@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 94,
+ "count": 95,
  "records": [
   {
    "record_type": "verdict",
@@ -1884,6 +1884,25 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-benchkit-mcp/"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.2",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Payseal",
+   "not_tested": [
+    "Live invoices, mandate services, delivery systems, or payment rails \u2014 fixture triples only; no network or payment code exists in the tree",
+    "Payment execution \u2014 verdict-only by construction; the Till rail is a separate counsel-gated surface",
+    "Production signing custody \u2014 fixture HMAC stand-in for the Herald pattern; fixture keys local-only"
+   ],
+   "product": "eclipse-payseal-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-payseal-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (LOCAL/simulator, fixture triples) \u2014 Verity narrow re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/rebench-payseal-012.md): R-P1 amount-path fix verified against re-signed forgeries and own variants (derived valuation at PO prices on all paths; no over-blocking on honest full/partial controls); R-P2 (a)\u2013(e) spot-verified; builder suite 38/38; F-P9 independently recomputed. Fixture triples only \u2014 verdict-only, no payment execution.",
+   "status": "current",
+   "verdict": "CERTIFIED (LOCAL/simulator, fixture triples)"
   }
  ]
 }

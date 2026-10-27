@@ -1431,7 +1431,7 @@
         "eclipse-aperture-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-aperture-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "The Instagram adapter, formalized: capability-declared, hash-bound native variants for Feed, Carousel, Story, and Reel. The descriptor travels with the mode.",
       "tools": [
         "capability_probe",

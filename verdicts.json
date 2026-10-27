@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 90,
+ "count": 91,
  "records": [
   {
    "record_type": "verdict",
@@ -1803,6 +1803,27 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-outwatch-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-feedforge-mcp",
+   "name": "Eclipse Feedforge",
+   "verdict": "CERTIFIED (local, fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture) \u2014 Verity independent re-bench 2026-10-26, REBENCH-1 of the v0.1.1 Bench Fix D1 round (repo @ 1e41e3f): full prior suite 98/98 PASS, 0 FAIL (P1 11/11 \u00b7 P2 14/14 \u00b7 P3 6/6 \u00b7 P4 3/3 \u00b7 P5 55/55 \u00b7 P6 6/6 \u00b7 P7 3/3), defects list empty, plus expanded wrong-type fuzz 156/156 PASS on one persistent server process with a liveness ping (list_rules \u2192 12 rules) after every vector. D1 (HIGH \u2014 the verify_feed supplied-feed path performed no type validation; five malformed feed objects raised unhandled TypeError/AttributeError and killed the server process) CLOSED: the 5 original crash vectors (list/dict catalog_id; entries:[123]; entries:\"abc\"; attributes-as-string) all return clean ToolErrors with no process death, verified in the prior suite AND verbatim in the expanded fuzz (supplied-feed deep shapes 23 vectors; 8 wrong value types \u00d7 every argument of all 5 tools = 80 vectors; raw protocol attacks \u2014 non-string tool names, non-dict arguments, malformed/truncated JSON lines \u2014 server keeps answering after each). Behavior preservation PASS: fixture transform seals to feed_18337452aa65cc76 (full hash 18337452aa65cc76eb57c986e0d8f3ff58f2d6b389a09cf16df9d33cee9e94a5) over catalog cat_5820376e0fc71b86 \u2014 exactly SPEC \u00a74.1 \u2014 and deep-equals the bench's independent recompute (85 attributes, 9 entries; CSV fixture also deep-equals + VERIFIED); spot recompute of SHOE-001/price_cents, MUG-002/availability, BAG-009/category, LAP-003/weight_grams, TEE-004/category matches feed values + explain_attribute provenance; tamper semantics preserved 9/9 (missing entries/attributes/unmapped_fields/feed_hash and partial provenance records are MISMATCH, never validation errors; untampered copies by-object and by-feed_id VERIFIED). Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local, fixture), 93/98 \u2014 the novel mechanism itself passed without exception (byte-for-byte independent recompute of all 85 fixture attributes, provenance always resolving to the real raw source value, absent-never-invented, tamper naming on value AND provenance, determinism, complete 99-call explain sweep); the sole condition was the D1 fix + P5 re-bench, now closed. Informational carry-overs, non-blocking (unchanged from v0.1): currency tokenization is a substring match (\"100 EURO\" yields EUR; SPEC does not define tokenization \u2014 recommend SPEC v0.2 state the token rule explicitly); duplicate product ids are both kept and explain_attribute resolves a duplicated product_key to the first entry; ragged-CSV extra cells beyond the header are discarded by the csv.DictReader restkey path (no field name, nothing to report). Scope = LOCAL/fixture only: local engine over caller-supplied rows/CSV/JSON + bundled fixtures; deterministic transforms only \u2014 no LLM calls, no network calls; no live catalogs benched or implied; $49/mo is a pricing term for the future hosted form only \u2014 no payment/checkout/hosting code.",
+   "not_tested": [
+    "Live merchant catalogs or marketplace/catalog API sync (Shopify etc.) \u2014 not in v0.1.1 by design (SPEC \u00a77): local engine over caller-supplied rows/CSV/JSON + bundled fixtures only",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only; the $49/mo hosted bundle form is a future commercial shape, not a v0.1 feature, and no hosted service is live or sold in v0.1",
+    "LLM or network calls of any kind \u2014 none exist in v0.1.1 by design: deterministic documented rules (R01\u2013R12, rules.json) only; Python 3 standard library only",
+    "Payment, checkout, hosting, accounts, or billing \u2014 none exists in v0.1.1 by design: the $49/mo figure is commercial metadata / a stated pricing term for the future hosted form only",
+    "Feed publishing or submission to any platform (Google/UCP endpoints etc.) \u2014 none exists in v0.1.1; feeds are sealed locally and verified by recompute only"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-feedforge-mcp/"
   }
  ]
 }

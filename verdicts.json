@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 100,
+ "count": 101,
  "records": [
   {
    "record_type": "verdict",
@@ -2003,6 +2003,26 @@
    "scope": "CERTIFIED (LOCAL/simulator) \u2014 Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-regulens-012.md): conditions N1\u2013N3 closed (single trust anchor fail-closed, \u00a76.2 face text on 14/14 envelope classes, unhashable refs yield named refusals), no-regression spots pass (T7 FAIL:5, T8 FAIL:1, F-R13 independently recomputed exact, builder suite 47/47). Fixture regulator publications mapped deterministically to the subscriber's sealed declared control set, local stdio only \u2014 no live ingestion, and not legal advice / not a compliance determination on every receipt's face (\u00a76.2).",
    "status": "current",
    "verdict": "CERTIFIED (LOCAL/simulator)"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-scapegoat-mcp",
+   "name": "Eclipse Scapegoat",
+   "verdict": "CERTIFIED (local)",
+   "certified": true,
+   "scope": "CERTIFIED (local) \u2014 Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-scapegoat-012.md): condition C1/N1 closed \u2014 the presented proof path is bound to the signed verdict at step 2 (signed proof_path_head_hash recomputed over the presented path) and step 4 (presented path must equal the recomputed walk incl. conformance_checks); 6/6 N1 rows + 11/11 devised attacks FAIL at named steps; F-S13 both branches, B1 gating, and byte-identical determinism re-proven; builder suite 53/53 (also socket-denied). Local stdio, fixture record sets only, recompute verdicts only \u2014 causal evidence, NOT a legal liability determination.",
+   "not_tested": [
+    "Real disputes, real record sets, or real parties \u2014 fixture record sets only; evidentiary use in a real dispute is counsel-gated (SPEC \u00a710) and not built",
+    "Legal liability or fault determination \u2014 a verdict names a causal action record as evidenced in the records; it is never a liability determination, a legal fault finding, or stated to bind any party",
+    "Production signing custody \u2014 fixture RS256 keys (herald/producer/counterparty) are local-only in keys/ (gitignored, private keys mode 600, never committed); the v0.1.0 shipped key was burned and rotated at v0.1.1 and packs signed under it fail verification at step 1 (its public modulus survives only as a regression constant in tests/test_fix_011.py)",
+    "Hosted or live operation \u2014 local stdio only; no live record producer, marketplace, insurer, or payment system is connected"
+   ],
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.2",
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-scapegoat-mcp/"
   }
  ]
 }

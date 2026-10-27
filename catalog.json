@@ -6517,6 +6517,55 @@
         "impact_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "id": "eclipse-scapegoat-mcp",
+      "name": "Eclipse Scapegoat",
+      "vendor": "Cyan Eclipse Technologies",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-scapegoat-mcp.png",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "status": "in-development",
+      "categories": [
+        "Trust & Receipts",
+        "Oversight & Forensics"
+      ],
+      "tagline": "Failure attribution is a recompute over the hash-chained record set — the verdict names the causal action and ships the proof path. CERTIFIED (local) — fixture record sets only; causal evidence, NOT a legal liability determination.",
+      "capabilities": [
+        "Novel mechanism — causal attribution as a RECOMPUTE over hash-chained multi-agent records (SPEC §2.1): Scapegoat verifies every chain in the presented set, recomputes each action's conformance against the governing mandate/policy it cites, and names the causal action — the earliest record whose deviation first made the failure inevitable on the recorded path — in a Herald-signed verdict (methodology scapegoat-attribution/1.0) that ships the proof path: governing authority → causal action → failure record, each entry with its hash and recomputed conformance checks, so any third party re-runs §6.4 from the export alone and reaches the same verdict or names the step where the pack fails.",
+        "Presented proof path bound to the signed verdict (v0.1.2, condition C1 / defect N1 closed, Verity spot re-bench spot-scapegoat-012.md) — proof_verify step 2 recomputes the signed proof_path_head_hash over the PRESENTED path (a dropped, stripped, reordered, duplicated, or substituted entry fails at :2), step 4 requires the presented path to equal the recomputed walk — ids, order, roles, stream, seq — with every entry's conformance_checks matching the recomputation (a check-edited trail fails at :4), and re-pointing the head hash dies at step 1 on the Herald signature, because the head field sits inside the signed verdict core. Spot re-bench: 6/6 N1 table rows and 11/11 bench-devised path attacks FAIL at exactly the named steps; the honest pack PASSes.",
+        "Record-bounded honesty — where the records do not determine a unique causal action, the verdict is UNATTRIBUTED at full standing with the reason named (NO_DEVIATION / MULTIPLE_FIRST_DEVIATIONS / CAUSAL_GAP / SET_DEFECT / NO_GOVERNING_AUTHORITY), never a plausible party picked to fill the gap. The verdict path contains no model call, no free-text reasoning, and no operator override; no tool accepts a party's narrative (NARRATIVE_FIELD_REJECTED); Scapegoat creates no records, repairs no chain, and fills no gap — defects (HASH_MISMATCH, SIGNATURE_INVALID, SEQ_GAP, …) are stated on the verdict's face, and a record that failed integrity never carries an attribution through the causal window (tampered causal window degrades to UNATTRIBUTED: CAUSAL_GAP; tampered downstream record is stated as a defect on an ATTRIBUTED verdict).",
+        "Honest scope — LOCAL, fixture record sets ONLY: v0.1.2 recomputes over fixture hash-chained record sets with fixture RS256 keys held only in the local gitignored keys/ store (private keys mode 600, never committed; proof_verify pins public keys from keys/public-keys.json only — a key carried in a pack is checked against the pin, never trusted). No real dispute, no real record set, and no real party is adjudicated. A verdict is causal evidence from a recompute — NOT a legal liability determination, not a legal fault finding, and never stated to bind any party; evidentiary use in real disputes is a counsel-gated later phase (SPEC §10), not built. Closed surface: exactly 5 tools; no record-creation, chain-repair, re-run, override, party-naming, or remedy verb exists."
+      ],
+      "problem_statements": [
+        "A multi-agent run failed with money on the table and every party is blaming another from its own logs — I need the blame question collapsed to a recompute over the hash-chained records, naming the causal action with a proof path a third party can re-verify",
+        "The records between the last good state and the failure are missing or tampered — I need a signed verdict that says UNATTRIBUTED: CAUSAL_GAP at full standing instead of an engine that guesses a culprit",
+        "Someone trimmed the evidence trail before presenting it — I need verification that fails by named step when the presented proof path drops, reorders, substitutes, or check-edits any entry"
+      ],
+      "tools": [
+        "attribution_submit",
+        "attribution_run",
+        "verdict_get",
+        "proof_verify",
+        "methodology_get"
+      ],
+      "pricing_model": "PRICED — $10/verdict, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9.1 (metering points only in v0.1.2, no charge path built): attribution_job_intake per accepted job, verdict_issued per issued verdict (ATTRIBUTED and UNATTRIBUTED meter identically — the price is for the recompute, never the outcome), proof_pack_exported per pack, proof_verify_run per served verify. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "source_refs": [
+        "eclipse-scapegoat-mcp/README.md",
+        "eclipse-scapegoat-mcp/server.json",
+        "eclipse-scapegoat-mcp/SPEC.md",
+        "argus101-program-20261027/spot-scapegoat-012.md"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local) — Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-scapegoat-012.md), closing the sole condition C1 (defect N1) from the v0.1.1 re-bench: proof_verify step 2 recomputes the signed proof_path_head_hash over the presented path and step 4 binds the presented path to the recomputed walk including every entry's conformance_checks — 6/6 N1 rows and 11/11 bench-devised path attacks FAIL at the named steps, honest pack PASSes, and re-pointing the head hash fails at step 1 (Herald signature over the verdict core). No-regression spots re-proven: F-S13 both branches PASS from the pack alone in a fresh process with a nonexistent state dir (no store created), B1 gating pair, byte-identical determinism (verdict_hash 9f2ee71e… across fresh processes), builder suite 53/53 fresh process and 53/53 with sockets denied. Combined with the v0.1.1 re-bench (B1–B3, M1–M4, m1–m6 verified), the product is CERTIFIED (local): local stdio, fixture record sets only, recompute verdicts only — causal evidence, NOT a legal liability determination; the SPEC §10 counsel gate (evidentiary use in real disputes) is untouched and still binding.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/spot-scapegoat-012.md (Verity spot re-bench, fresh processes, nonexistent state dir, bench-side tamper code only, subject tree unmodified). Prior history: bench-scapegoat.md (v0.1.0 bench) + rebench-scapegoat.md (v0.1.1 re-bench, CONDITIONAL (local) with condition C1/N1). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "scorecard_ref": null
+      }
     }
   ],
   "sources": [

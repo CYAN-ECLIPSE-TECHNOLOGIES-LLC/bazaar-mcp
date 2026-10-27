@@ -9107,6 +9107,67 @@
     "annotation_add"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 band-only attestation (18+ / 21+) that reveals nothing else \u2014 no birthdate, no document \u2014 sealed to the requesting service's mandate.",
+    "A proof states that an issuer attested a band for a pseudonymous subject ref, sealed to one mandate. It is not an identity claim: it does not prove who the subject is, that the presenter of a proof is the subject, or that the issuer's underlying band determination was correct. Agesure does not verify age: how a band was established is the issuer's attestation, consumed as an input. Two proofs for the same subject ref are linkable by a verifier holding both (inherent to the proof schema, spec Q-A4) \u2014 no unlinkability is claimed.",
+    "Bench path: v0.1.0 bench (wave4/bench-agesure.md, defects D1\u2013D8, conditions C1\u2013C7; 150 bencher checks) + v0.1.1 delta re-bench (wave4/rebench-agesure.md: D1\u2013D8 all CLOSED, new defect D9 + condition C8) + v0.1.2 spot re-bench (wave4/spot-agesure-012.md: D9 substring-embedding subject_ref screen CLOSED at all three enforcement sites, C8 DISCHARGED \u2014 reliance on the enforced band-only subject_ref hygiene is permitted within the local/fixture scope only; builder suite 35/35 reproduced).",
+    "Standing condition C1 \u2014 rollback fence (verbatim): pure local file store caps verdict at PASS-CONDITIONAL \u2014 external anchor required before live/multi-party use. (The store replays an earlier signed snapshot undetected locally; the cap is structural, not discretionary.)",
+    "Standing condition C2 \u2014 \u00a710 counsel gate (named, unbuilt): any use involving real people \u2014 issuing proofs a real service relies on to gate access, processing real subjects' attestations, or any handling of data relating to minors (including the below-band verdict path) \u2014 is out of v0.1, hard, until counsel clears that use. No real issuer onboarding, no real service integration, no marketing addressed to live age-gating; there is no dormant live path in v0.1.2 to flip.",
+    "Standing condition C5 \u2014 issuer key separation: the v0.1 issuer counter-signature is applied by the service process from a co-located fixture key file and is not evidence of an independent issuer act; before any scope beyond local/fixture the issuer key must be held by the issuer, separate from service custody. Standing condition C7 \u2014 name screen: \"Agesure\" remains a working name pending the house trademark/brand screen; no public claim attaches to the name.",
+    "Signing is a fixture HMAC stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref and never accepted from the record under verification. Till (mandates), Herald (signing pattern), Meter (metering grammar), and Docket (pack shape) are consumed by grammar/reference only."
+   ],
+   "categories": [
+    "Identity & Attestation",
+    "Trust & Receipts"
+   ],
+   "certification": {
+    "bench_verdict": "PASS-CONDITIONAL (local/fixture)",
+    "certified": false,
+    "certified_scope": "Eclipse Agesure \u2014 PASS-CONDITIONAL (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-agesure.md) PASS-CONDITIONAL with conditions C1\u2013C7, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-agesure.md: D1\u2013D8 all CLOSED, new defect D9 + condition C8), + spot re-bench of v0.1.2 (argus101-program-20261027/wave4/spot-agesure-012.md: D9 CLOSED, C8 DISCHARGED, builder suite 35/35 reproduced). PASS-CONDITIONAL (local/fixture) is not CERTIFIED \u2014 certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture attestations only, value_class \"test\"; no real person is checked and no real age-verification capability is claimed. A proof states that an issuer attested a band for a pseudonymous subject ref, sealed to one mandate; it is not an identity claim and does not prove the issuer's underlying band determination was correct. Standing conditions: C1 rollback fence (pure local file store caps the verdict at PASS-CONDITIONAL \u2014 external anchor required before live/multi-party use), C2 \u00a710 counsel gate (named, unbuilt \u2014 any use involving real people), C5 issuer key separation, C7 name screen still bind.",
+    "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-agesure.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/fixture), 150 bencher checks, defects D1\u2013D8, conditions C1\u2013C7) + argus101-program-20261027/wave4/rebench-agesure.md (Verity delta re-bench of v0.1.1: D1\u2013D8 all CLOSED, new D9 + C8) + argus101-program-20261027/wave4/spot-agesure-012.md (Verity spot re-bench of v0.1.2: D9 CLOSED, C8 DISCHARGED, builder suite 35/35 reproduced). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+    "not_tested": [
+     "Any use involving real people \u2014 issuing proofs a real service relies on to gate access, processing real subjects' attestations, or any handling of data relating to minors (including the below-band verdict path) is SPEC \u00a710 counsel-gated and UNBUILT; there is no dormant live path in v0.1.2",
+     "Age verification itself \u2014 Agesure never determines age; the band is the issuer's attestation, consumed as an input, and a proof does not prove the issuer's underlying band determination was correct, who the subject is, or that the presenter is the subject",
+     "Issuer independence at this scope \u2014 the issuer counter-signature is applied by the service process from a co-located fixture key file (condition C5); it is not evidence of an independent issuer act in v0.1.2",
+     "External anchoring / multi-party reliance \u2014 the pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture) (condition C1); an external anchor is required before live or multi-party reliance",
+     "Production key custody \u2014 signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+    ],
+    "scorecard_ref": null,
+    "scorecard_url": null
+   },
+   "id": "eclipse-agesure-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-agesure-mcp.png",
+   "name": "Eclipse Agesure",
+   "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen (condition C7: \"Agesure\" remains a working name pending the house trademark/brand screen; no public claim attaches to the name).",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "PRICED \u2014 $0.05/proof, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 (metering points only in v0.1.2, no charge path built): proof_issued / proof_verified / pack_exported at the $0.05/proof price shape. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "problem_statements": [
+    "Age gating today demands the whole identity: a birthdate, a document scan, a name \u2014 far more than the one bit a service actually needs (is this person in the 18+ / 21+ band?), and every excess attribute collected is breach and liability surface",
+    "I need a band-only attestation \u2014 18+ / 21+, nothing else, no birthdate, no document \u2014 sealed to my service's mandate, so the proof cannot be re-presented to a different service or stretched past its expiry",
+    "I need the proof recomputable offline from the token + mandate + public keys alone, with the honesty labels on its face: it states an issuer attested a band for a pseudonymous subject ref \u2014 it is not an identity claim and does not prove the issuer's determination was correct"
+   ],
+   "source_refs": [
+    "eclipse-agesure-mcp/README.md",
+    "eclipse-agesure-mcp/server.json",
+    "argus101-specs-20261027/agesure-spec.md",
+    "argus101-program-20261027/wave4/spot-agesure-012.md"
+   ],
+   "status": "in-development",
+   "tagline": "Band-only age attestation sealer/verifier over fixture attestations; local/fixture only. PASS-CONDITIONAL (local/fixture) \u2014 band-only attestation (18+ / 21+) that reveals nothing else \u2014 no birthdate, no document \u2014 sealed to the requesting service's mandate. It is not an identity claim. Rollback fence (C1): external anchor required before live/multi-party use. Counsel gate (C2, SPEC \u00a710) named and unbuilt: any use involving real people.",
+   "tools": [
+    "proof_request",
+    "proof_verify",
+    "proof_status",
+    "revocation_present",
+    "issuance_pack_get",
+    "attestation_register"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

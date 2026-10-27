@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 93,
+ "count": 94,
  "records": [
   {
    "record_type": "verdict",
@@ -1864,6 +1864,26 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-brake-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-benchkit-mcp",
+   "name": "Eclipse Benchkit",
+   "verdict": "CERTIFIED (local/fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local/fixture) \u2014 Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-benchkit.md): CERTIFIED (local/fixture). All prior v0.1.0 FAIL defects closed and independently verified \u2014 D1 (sample predictable to vendor) and D2 (F-B14 startup/config fence absent) blockers, M1\u2013M4 majors (seal counts unsigned, recompute unauthenticated, keys hardcoded, verifier token missing), m1\u2013m5 minors. Builder suite 27/27 fresh process. The decisive property holds adversarially: the spot-check sample is unknowable pre-reveal from every public input probed (6,005 candidate nonces from public state matched none; caller-supplied verifier/vendor nonces refused by name, 0 manifests). Two NEW minors recorded, neither gating this scope: N1 fence-scan encoding edges (sk_live_ form, uppercase scheme, scheme-less endpoints) and N2 seed-commitment provenance (commitment first appears in the manifest at draw time; unpredictability rests on per-draw CSPRNG regardless). Scope binds exactly: vendor self-bench SDK in the Assay scorecard format with verifier spot-check sampling, against fixture vendor servers only \u2014 local/fixture scope. A spot-check receipt is a statement about a sample of one sealed scorecard, powered as stated on its face \u2014 not a house bench verdict and not a certification of any vendor server.",
+   "not_tested": [
+    "Live vendor servers \u2014 not tested and not claimed: v0.1.1 is exercised only against fixture vendor servers; no network client exists in the tree (no socket/urllib/requests/http.client) and artefacts carry value_class: test",
+    "N1 (minor, open) \u2014 fence-scan encoding gaps: sk_live_ free-text form, uppercase HTTPS scheme, and non-http(s)/scheme-less endpoints can pass check_config; bounded at this scope because fixture execution never dials a descriptor \u2014 queued for the next fix loop",
+    "N2 (minor, open) \u2014 the verifier seed commitment is not anchored pre-submission (it first appears inside the manifest at draw time); unpredictability is carried by per-draw CSPRNG entropy, not by the commitment \u2014 wording/mechanism alignment queued for the next fix loop",
+    "Eclipse Assay / Eclipse Cupel as products \u2014 NOT a Benchkit surface by the HARD RULE: Benchkit consumes the Assay scorecard format as a specification only; Assay and Cupel are internal tools with no product surface, price, licence, or buy path anywhere in Benchkit or this listing"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-benchkit-mcp/"
   }
  ]
 }

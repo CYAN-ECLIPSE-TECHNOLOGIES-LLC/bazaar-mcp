@@ -6100,6 +6100,68 @@
         "runtime_reenrol"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — vendor-run scorecards embed a spot-check hook in every check entry as it runs; a separate verifier harness draws a random sample from the SEALED scorecard and re-runs those checks, so a fabricated self-bench is statistically detectable. Commit-then-sample: the scorecard is sealed (hash-chained, vendor-signed) before any sample exists, and the verifier nonce is generated verifier-side (secret seed in keys/ + fresh per-draw CSPRNG), revealed only in the sample manifest after the seal is verified — the vendor cannot precompute or influence the sample (re-bench D1: 6,005 candidate nonces from public state matched none; supplied nonces refused VERIFIER_NONCE_REFUSED / VENDOR_NONCE_REFUSED).",
+        "Honest receipt arithmetic — the receipt states its power on its face: at sample size k and fabricated fraction f, detection probability is 1 − (1−f)^k (default k = 30, powered at f ≥ 0.10 → detection ≥ 95%). Verdicts: VERIFIED_SAMPLE · DIVERGENT (mismatched check ids named) · UNVERIFIABLE (non-deterministic or secret-requiring checks resolve here, never to a silent pass). A check without a hook is labelled HOOKLESS on the scorecard's face and sits outside every sample and every verified claim; unverifiable scorecards export only as DOWNGRADED_EXPORT.",
+        "Authenticated artefacts — the seal signature binds the head hash, all counts, and the format version (tampered counts/format → SEAL_INVALID); recompute verifies receipt signatures, the outcome record chain, and the rerun chain head, and rejects extra, missing, or forged outcomes (BENCHKIT_VERIFY_FAIL). Verifier verbs require the verifier token (VERIFIER_TOKEN_REQUIRED otherwise). Idempotent replay: resubmitting an issued (scorecard_hash, verifier_nonce) pair returns the recorded manifest + receipt with no new draw and no double metering.",
+        "Configuration fence (F-B14) — startup hard-exits code 2 with CONFIG_FENCE_REFUSED:<class> on a non-local endpoint, a live-key string, a vendor/verifier-nonce config, a non-test value_class, or an Assay-price / Cupel-checkout / buy-Assay-licence config; live-URL server descriptors are refused at run_begin with the same named codes. Disjoint surfaces: vendor = exactly 5 tools, verifier = exactly 5; cross-surface calls return the identical NO_SUCH_TOOL refusal as a nonsense name.",
+        "Format, not the bench (HARD RULE) — Benchkit is the FORMAT + SDK: scorecards are emitted in the Assay scorecard format (format attribution only). Eclipse Assay and Eclipse Cupel are internal tools — Benchkit contains no product surface, price, licence, or buy path for them, and neither does this listing. Every vendor scorecard is labelled vendor-run / self-bench on its face; a spot-check receipt never upgrades a self-bench into a house bench verdict. The full bench is a paid service engagement reachable via the existing Eclipse Bazaar intake only."
+      ],
+      "categories": [
+        "Certification & Testing",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local/fixture)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local/fixture) — Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-benchkit.md): CERTIFIED (local/fixture). All prior v0.1.0 FAIL defects closed and independently verified — D1 (sample predictable to vendor) and D2 (F-B14 startup/config fence absent) blockers, M1–M4 majors (seal counts unsigned, recompute unauthenticated, keys hardcoded, verifier token missing), m1–m5 minors. Builder suite 27/27 fresh process. The decisive property holds adversarially: the spot-check sample is unknowable pre-reveal from every public input probed (6,005 candidate nonces from public state matched none; caller-supplied verifier/vendor nonces refused by name, 0 manifests). Two NEW minors recorded, neither gating this scope: N1 fence-scan encoding edges (sk_live_ form, uppercase scheme, scheme-less endpoints) and N2 seed-commitment provenance (commitment first appears in the manifest at draw time; unpredictability rests on per-draw CSPRNG regardless). Scope binds exactly: vendor self-bench SDK in the Assay scorecard format with verifier spot-check sampling, against fixture vendor servers only — local/fixture scope. A spot-check receipt is a statement about a sample of one sealed scorecard, powered as stated on its face — not a house bench verdict and not a certification of any vendor server.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-benchkit.md (Verity re-bench, independent fresh-process, own probes in /tmp — fresh keys/data dirs per scenario, own fabrications and forgeries; prior FAIL bench bench-benchkit.md, fix claim fix-benchkit-011.md). This bench issued no test-bench/results scorecard; scorecard_ref is null and no scorecard is claimed or hosted for this product. Repository PUBLIC (free-funnel policy, post-bench): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-benchkit-mcp @ v0.1.1. Official MCP Registry submission: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-benchkit-mcp v0.1.1 (see ship report ship-benchkit.md for live status).",
+        "not_tested": [
+          "Live vendor servers — not tested and not claimed: v0.1.1 is exercised only against fixture vendor servers; no network client exists in the tree (no socket/urllib/requests/http.client) and artefacts carry value_class: test",
+          "N1 (minor, open) — fence-scan encoding gaps: sk_live_ free-text form, uppercase HTTPS scheme, and non-http(s)/scheme-less endpoints can pass check_config; bounded at this scope because fixture execution never dials a descriptor — queued for the next fix loop",
+          "N2 (minor, open) — the verifier seed commitment is not anchored pre-submission (it first appears inside the manifest at draw time); unpredictability is carried by per-draw CSPRNG entropy, not by the commitment — wording/mechanism alignment queued for the next fix loop",
+          "Eclipse Assay / Eclipse Cupel as products — NOT a Benchkit surface by the HARD RULE: Benchkit consumes the Assay scorecard format as a specification only; Assay and Cupel are internal tools with no product surface, price, licence, or buy path anywhere in Benchkit or this listing"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-benchkit-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-benchkit-mcp.png",
+      "name": "Eclipse Benchkit",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The name and descriptor describe a vendor self-bench SDK in a scorecard format only; they never imply a house bench verdict, a certification of any vendor server, or any product status for Eclipse Assay or Eclipse Cupel (internal tools, format attribution only).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE — free local v0.1.1 SDK, open reference implementation (public repository). Funnel role: vendors self-bench in the Assay scorecard format, and verification is ordered through the Eclipse Bazaar bench-order/intake path only. Benchkit's own metering shape is $10/verification — Benchkit spot-check verification only, a metering point shown on the bench-order/intake path; there is no checkout link, no payment path, and no Stripe object for Benchkit in this pass. The full bench is a paid SERVICE engagement reachable via the existing intake only — Eclipse Assay and Eclipse Cupel are internal tools, are not products, are not priced, and have no buy path.",
+      "problem_statements": [
+        "I run my own checks on my MCP server and need the results in the Assay scorecard format — check ids, verdicts, evidence hashes, environment fingerprint — with a spot-check hook embedded so the numbers can be sampled and re-run instead of merely asserted",
+        "My self-bench could be dismissed as fabricated — I need a sealed scorecard whose random sample is drawn verifier-side after the seal, so a counter-signed receipt can show a sample of k of N hook-bearing checks re-ran and matched, powered to detect fabrication at fraction ≥ f",
+        "I want to prepare for a full bench engagement — Benchkit gives me the format and the SDK locally and free; the bench itself is a service I reach through the Eclipse Bazaar intake, not a product I can buy here"
+      ],
+      "source_refs": [
+        "eclipse-benchkit-mcp/README.md",
+        "eclipse-benchkit-mcp/server.json",
+        "eclipse-benchkit-mcp/SPEC.md",
+        "argus101-program-20261027/rebench-benchkit.md"
+      ],
+      "status": "in-development",
+      "tagline": "Free vendor self-bench SDK: run your declared check battery locally, emit a sealed scorecard in the Assay scorecard format, and let a verifier harness re-run a random sample — fabricated self-benches become statistically detectable. CERTIFIED (local/fixture) — fixture vendor servers only; a spot-check receipt is not a house bench verdict and not a certification of any vendor server.",
+      "tools": [
+        "benchkit_run_begin",
+        "benchkit_check_record",
+        "benchkit_scorecard_seal",
+        "benchkit_scorecard_get",
+        "benchkit_export_get",
+        "spotcheck_request",
+        "spotcheck_run",
+        "spotcheck_receipt_get",
+        "spotcheck_recompute",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

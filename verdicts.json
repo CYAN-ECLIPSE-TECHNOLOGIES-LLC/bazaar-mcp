@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 95,
+ "count": 96,
  "records": [
   {
    "record_type": "verdict",
@@ -1903,6 +1903,25 @@
    "scope": "CERTIFIED (LOCAL/simulator, fixture triples) \u2014 Verity narrow re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/rebench-payseal-012.md): R-P1 amount-path fix verified against re-signed forgeries and own variants (derived valuation at PO prices on all paths; no over-blocking on honest full/partial controls); R-P2 (a)\u2013(e) spot-verified; builder suite 38/38; F-P9 independently recomputed. Fixture triples only \u2014 verdict-only, no payment execution.",
    "status": "current",
    "verdict": "CERTIFIED (LOCAL/simulator, fixture triples)"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-settleseal-mcp",
+   "name": "Eclipse Settleseal",
+   "verdict": "CERTIFIED (simulator, fixture records)",
+   "certified": true,
+   "scope": "CERTIFIED (simulator, fixture records) \u2014 Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-settleseal.md): B1 self-keyed verify, B2 shipped private keys, and B3 unrecomputed run receipt all fixed and adversarially re-proven; M1 two-leg classes MISSING_PAYOUT / MISSING_RAIL / MISSING_LEDGER ratified (SPEC \u00a72.5 enum 8\u219211, amendment logged); builder suite 27/27; F-S9 passed with bench-written dataset/matcher and fresh-process recompute. Fixture records on all three legs only \u2014 reconciliation evidence only, moves no money.",
+   "not_tested": [
+    "Live rail connections, live bank connections, or production ledgers \u2014 fixture records on all three legs only; live phase is counsel-gated (SPEC \u00a710) and not built",
+    "Money movement \u2014 reconciliation only by construction; no payout, ledger-correction, or rail-instruction verb exists",
+    "Production signing custody \u2014 Herald fixture key is local-only in keys/ (gitignored, mode 600); the v0.1.0 shipped key was burned and regenerated"
+   ],
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.1",
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-settleseal-mcp/"
   }
  ]
 }

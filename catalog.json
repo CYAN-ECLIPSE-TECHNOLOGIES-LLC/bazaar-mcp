@@ -6220,6 +6220,60 @@
         "payseal_anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "id": "eclipse-settleseal-mcp",
+      "name": "Eclipse Settleseal",
+      "vendor": "Cyan Eclipse Technologies",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-settleseal-mcp.png",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "status": "in-development",
+      "categories": [
+        "Trust & Receipts",
+        "Payments & Settlement"
+      ],
+      "tagline": "Three-way reconciliation — mandate ledger vs rail settlement records (x402/MPP/card) vs bank payout — with every unmatched item sealed as an exception receipt. CERTIFIED (simulator, fixture records) — fixture records on all three legs; moves no money; no live rail or bank integration.",
+      "capabilities": [
+        "Novel mechanism — rail-agnostic three-way match: mandate ledger vs rail settlement records (x402/MPP/card shapes) vs bank payout, with every unmatched item emitted as a sealed exception receipt a third party can recompute offline from the export + public keys alone (SPEC §2.1, verified verbatim via F-S9). The matcher operates on normalized records only; rail identity enters solely as a profile tag in normalization — no rail-specific branch exists in the matcher.",
+        "Complete residue (L4) — nothing unmatched is a log line or a silent drop: matched + exceptioned keys = the full key union of the three legs. Exception taxonomy is 11 classes (SPEC §2.5 as amended 2026-10-27): LEDGER_ONLY / RAIL_ONLY / PAYOUT_ONLY for single-leg presence, MISSING_PAYOUT / MISSING_RAIL / MISSING_LEDGER for two-leg presence (absent from the named leg), AMOUNT_MISMATCH / FIELD_MISMATCH (field named) / FEE_MISMATCH / FEE_UNSTATED (fee never assumed zero) / DUPLICATE (never netted).",
+        "Sealed, pinned verification — the run receipt binds the three leg head hashes, the matched set, and every exception receipt hash; settle_verify recomputes each leg chain, re-runs the deterministic match, and verifies each Herald seal against a key pinned out-of-band from the local key store — a presented public key is never trust material (v0.1.0 self-keyed verify blocker fixed and re-proven adversarially in the re-bench). Unverifiable exports are labelled UNVERIFIED_EXPORT with no outcome claim and are never upgraded post-hoc.",
+        "Honest scope — SIMULATOR, fixture records only: fixture mandate-ledger entries, fixture rail settlement records (x402/MPP/card shapes), and fixture bank-payout records. Settleseal moves no money, initiates no payout, corrects no ledger, and instructs no rail; no live rail connection, bank connection, or production ledger is touched, read, or designed around. Live rail/bank connections are a named counsel-gated phase (SPEC §10), not built. Disjoint surfaces: desk = exactly 7 tools, auditor = exactly 3 (read/verify only); there is deliberately no resolve-exception, manual-match, tolerance, delete-exception, payout, or ledger-correction verb."
+      ],
+      "problem_statements": [
+        "My desk settles across x402, MPP, and card rails at once and reconciles by spreadsheet and sampling — I need the full three-way match (mandate ledger vs rail records vs bank payout) performed neutrally, with the residue sealed as evidence",
+        "A settlement was paid but never appears in my ledger — or a payout moved with no mandate behind it — and I need that discrepancy as a sealed exception receipt a third party can recompute, not a count in a report",
+        "Two of my three legs agree and I cannot tell whether the third disagrees — I need per-key exception classes that name exactly which leg is missing or which field/amount/fee diverged"
+      ],
+      "tools": [
+        "settle_run_open",
+        "settle_leg_ingest",
+        "settle_leg_seal",
+        "settle_match",
+        "settle_exception_list",
+        "settle_run_receipt_get",
+        "settle_exception_ack",
+        "settle_export_get",
+        "settle_verify",
+        "settle_exception_get"
+      ],
+      "pricing_model": "PRICED — $299/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (one metered subscription event per active desk per month; per-run counters for usage visibility; no per-exception charge exists). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "source_refs": [
+        "eclipse-settleseal-mcp/README.md",
+        "eclipse-settleseal-mcp/server.json",
+        "eclipse-settleseal-mcp/SPEC.md",
+        "argus101-program-20261027/rebench-settleseal.md"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (simulator, fixture records)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (simulator, fixture records) — Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-settleseal.md): all three blockers, both majors, and the minor from the v0.1.0 FAIL bench are fixed and independently re-proven — verify pins only the out-of-band key-store Herald key (attacker reseals and presented-key swaps all FAIL), the shipped v0.1.0 private key is burned and absent tree-wide outside keys/, and the run receipt is fully recomputed with run_id bound (rebind/window/leg tampers FAIL by named step). M1 two-leg taxonomy RATIFIED: SPEC §2.5 enum extended 8→11 with MISSING_PAYOUT / MISSING_RAIL / MISSING_LEDGER (present in exactly two legs, absent from the named leg), amendment logged in SPEC.md AMENDMENTS 2026-10-27. Builder suite 27/27 fresh process; F-S9 decisive test passed against a bench-written dataset and bench-written spec matcher (13 keys: 2 matched, 11 exceptions, 11 distinct classes) with fresh-process recompute SETTLE_VERIFY_PASS. Scope never exceeds simulator / fixture records: three-way reconciliation (mandate ledger vs rail settlement vs bank payout) over fixture records only; moves no money; no live rail/bank integration.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-settleseal.md (Verity re-bench, independent, bench-written dataset + spec matcher, fresh-process stdio, cross-process determinism, scratch-tree pin/fence probes, full chain-correct attacker reseals). Prior FAIL bench: bench-settleseal.md; fix claim: fix-settleseal-011.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "scorecard_ref": null
+      }
     }
   ],
   "sources": [

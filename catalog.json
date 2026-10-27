@@ -6338,6 +6338,69 @@
         "mockmint_export"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — every review is bound to a sealed purchase receipt, and the corpus ships with a recomputable verified-share statistic: each submitted review is checked against a sealed purchase receipt (consumed as-is in the Till/Settleseal format) and, on a verified match of receipt + item + seller, bound to that receipt's hash inside a counter-signed, hash-chained review record (binding outcomes: BOUND_VERIFIED · UNBOUND_NO_RECEIPT · UNBOUND_RECEIPT_UNVERIFIABLE · UNBOUND_ITEM_MISMATCH · UNBOUND_SELLER_MISMATCH). Reviews without a verifiable binding are sealed too, labelled UNBOUND — the corpus is complete, not curated — and a replayed receipt is quarantined (RECEIPT_REPLAY) and never enters the corpus.",
+        "Recomputable verified-share statistic — at snapshot time the server computes the verified share over the sealed corpus (exact unreduced rational, e.g. 7/10, never a bare percentage) and counter-signs it into a snapshot record stating numerator, denominator, unbound counts by reason, and tombstoned/superseded exclusions on its face. The exported corpus pack contains the full record stream, binding-check transcripts, and labelled fixture verification keys, so any third party recomputes the statistic and the corpus head hash from the pack alone (re-bench F-R12 decisive: fresh process, pack alone, Fraction(7,10) exact). A corpus that fails recompute exports only as DOWNGRADED_EXPORT with statistic_status UNVERIFIED — never upgraded post-hoc; verified_share_get withholds the statistic on a downgraded corpus (UNVERIFIED + downgrade reason).",
+        "Fail-closed discipline — startup refuses with CONFIG_FENCE_REFUSED:<class> (exit 2, no state written) on any live marketplace/API endpoint, live key, production-corpus or real-review import path, value_class other than test, or receipt-format patch config, on both the env and config-file routes (re-bench: 15 hostile env configs + 5 config-file classes, all refused). Malformed input to any of the 11 tools returns a named refusal with zero corpus mutation and the process survives. Disjoint surfaces: marketplace = exactly 6 tools, auditor = exactly 5 (auditor verbs require the auditor token, fail-closed when unconfigured); no verb issues a receipt, edits or deletes a sealed record, or reclassifies an UNBOUND record post-seal. Corrections are superseding records and removals are tombstone records — the chain keeps both and exclusions are counted on the snapshot's face.",
+        "Honest scope — LOCAL / simulator, fixture corpus ONLY: v0.1.1 is exercised only against a fixture marketplace corpus (fixture listings, fixture reviews, fixture purchase receipts). No live marketplace, no real review, no real buyer is touched. Reviewseal attests binding and corpus integrity only: an UNBOUND review is unbound — a fact about evidence, never a verdict that the review is fake, fraudulent, or inauthentic — and the unbound share is never rendered as a fake rate. It does not verify a review's truth, quality, or authorship and computes no star averages as claims. Reviewer identity appears only as a pseudonymous hash ref; no receipt payload beyond the binding fields enters any record or export."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Agent Commerce"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (LOCAL/simulator, fixture corpus)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (LOCAL/simulator, fixture corpus) — Verity re-bench of v0.1.1, 2026-10-27 (argus101-program-20261027/rebench-reviewseal.md): all 8 re-bench conditions pass on independent probes (fresh stdio processes; pack-alone verification with bench-written stdlib-only code, zero product imports). B3 decisive: chain hashes, both signatures on every record and the corpus-open record, snapshot hash and both snapshot counter-signatures all verify from pack keys alone; recomputed head hash matches; F-R12 exact unreduced rational Fraction(7,10) == snapshot 7/10. Forgery boundary confirmed: minting a BOUND_VERIFIED receipt from source + fixtures + pack alone fails (UNBOUND_RECEIPT_UNVERIFIABLE / UNBOUND) — the issuer key is exported nowhere and lives only in keys/ (mode 600, gitignored). Fence battery 15/15 + 5/5 refused by named class; malformed sweep across all 11 tools = named refusals, zero mutation; builder suite 36/36 fresh process, re-run 36/36 by the shipper. Scope binds exactly: binding, chaining, snapshot, and recompute behaviour over fixture corpus only — not any live marketplace's review integrity, and not the truth of any review's content. Two minor residual notes (n1/n2) recorded in not_tested, neither blocking at LOCAL scope.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-reviewseal.md (Verity independent re-bench; prior FAIL bench bench-reviewseal.md, fix claim fix-reviewseal-011.md). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null). Repository PRIVATE (priced-product policy): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-reviewseal-mcp @ v0.1.1 (commit 8ff7f12a49cdf724dde192d80c0b27f52c8ec018). Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-reviewseal-mcp v0.1.1, status active / isLatest (confirmed by registry API fetch at ship, publishedAt 2026-10-27T06:31:11Z).",
+        "not_tested": [
+          "Live marketplace scope — none claimed and none exists in the tree: no live marketplace integration, no real reviews, no real buyers; any scope beyond LOCAL requires asymmetric keys + re-bench (SPEC §10.2)",
+          "n1 (minor, scope-inherent) — an evidence pack is recomputable but NOT tamper-evident against its own holder: because the sanctioned fixture-HMAC branch exports verification keys and verification key = signing key, a pack holder can alter a record, re-chain, and re-sign records + snapshot so the server recompute returns verified for the fabricated pack (both attacks demonstrated in the re-bench). The statistic claim (recompute over a pack received from a trusted origin) is unaffected and receipt minting is NOT enabled by this (the issuer key is never exported). Pack origin trust is out-of-band at this scope",
+          "n2 (minor) — RECEIPT_UNVERIFIABLE precedence: on a store-tampered transcript the export names CHAIN_GAP, not RECEIPT_UNVERIFIABLE (chain assessed first); the reason is less specific, never less safe — the export still downgrades and the statistic is still withheld on every auditor path",
+          "Production signing custody — signing keys are locally generated fixture keys in the gitignored keys/ store (mode 600); the pack exports marketplace + witness fixture verification keys, explicitly labelled fixture-only; the receipt-issuer key is never exported",
+          "Truth, quality, or authorship of any review's content — Reviewseal attests binding and corpus integrity only (SPEC §0.3); UNBOUND is never a fake/fraudulent verdict"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-reviewseal-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-reviewseal-mcp.png",
+      "name": "Eclipse Reviewseal",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.01/review, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (one review_sealed metering event per review record sealed, bound or unbound — the sealing work, never the outcome; idempotent resubmissions meter zero; verified_share_recompute is unmetered — anyone can check). Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My marketplace shows a 'verified purchase' badge, but it is our own self-attestation over a corpus only we can see — I need each review bound to a sealed purchase receipt in a corpus a third party can recompute",
+        "A fake-review dispute is an argument about screenshots — I need the verified share of my sealed corpus as an exact rational (numerator / denominator, exclusions on the face) that anyone can recompute from the exported pack alone",
+        "I cannot quietly drop unbound reviews to inflate the number — I need bound and unbound reviews in the same hash-chained corpus, so the denominator itself is auditable and a tampered corpus downgrades instead of passing"
+      ],
+      "source_refs": [
+        "eclipse-reviewseal-mcp/README.md",
+        "eclipse-reviewseal-mcp/server.json",
+        "eclipse-reviewseal-mcp/SPEC.md",
+        "argus101-program-20261027/rebench-reviewseal.md"
+      ],
+      "status": "in-development",
+      "tagline": "Receipt-bound review corpus: every review bound to a sealed purchase receipt, with a recomputable verified-share statistic. CERTIFIED (LOCAL/simulator, fixture corpus) — fixture corpus only, no live marketplace integration. An evidence pack is recomputable but not tamper-evident against its own holder (re-bench n1).",
+      "tools": [
+        "corpus_open",
+        "review_submit",
+        "review_correct",
+        "review_tombstone",
+        "corpus_status",
+        "snapshot_seal",
+        "corpus_export_get",
+        "verified_share_get",
+        "verified_share_recompute",
+        "review_binding_check",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

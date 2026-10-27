@@ -140,6 +140,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Payseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/simulator, fixture triples) |
 | Eclipse Settleseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (simulator, fixture records) |
 | Eclipse Mockmint | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/sandbox) |
+| Eclipse Reviewseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/simulator, fixture corpus) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

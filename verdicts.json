@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 117,
+ "count": 118,
  "records": [
   {
    "record_type": "verdict",
@@ -2364,7 +2364,28 @@
   "scope": "CERTIFIED (local, fixture feed entries) — Verity spot re-bench 3 of v0.1.3, 2026-10-27 (argus101-program-20261027/wave2/rebench3-safelist.md): R4-D2 CLOSED, conditions NONE; builder suite 50/50 re-run twice by the bencher, independent probes 23/23 + 93/93 behavioral (14-field transcript sweep) + 11/11 (verdict/transcript mismatch edges + regression spot). Scope is exactly: local, fixture feed entries — local stdio, fixture services/receipts only, value_class \"test\" throughout, no live listing/routing/reliance/bench-sale path; counsel gate (§10) unbuilt by design. Decisive fixture F-L13 stands from the bench record: pack alone ACTIVE@T0+3599, EXPIRED@T0+3600, EXPIRED@T0+7200; backdated receipt (bench_ts=T0+3500, presented now=T0+7200) → REBENCH_LATE.",
   "status": "current",
   "verdict": "CERTIFIED (local, fixture feed entries)"
- }
+ },
+{
+ "bench_date": "2026-10-27",
+ "bench_version": "0.1.3",
+ "canon_version": null,
+ "card_url": null,
+ "certified": false,
+ "name": "Eclipse Muzzle",
+ "not_tested": [
+  "Defamation-risk detection \u2014 not included in v0.1: Defamation detection is not included in v0.1 \u2014 parked for a v0.2 redesign; a PASS verdict is not evidence about defamation",
+  "Any class outside PII and secrets \u2014 not scanned by this release, and a PASS is not evidence about them",
+  "Live, publisher, or production scope \u2014 local/fixture only: no live publisher integration, hosted endpoint, network egress, or production content is certified by this ruling",
+  "Detection rates beyond the seeded-fixture rates stated in the authorised claim block \u2014 measured on seeded shapes in a fresh fixture corpus only",
+  "Production signing custody \u2014 fixture Herald/scanner RS256 keys are local-only in keys/ (gitignored, private keys mode 600, never committed); the v0.1.0 shipped fixture keys were burned and receipts signed under them fail verification at step 2"
+ ],
+ "product": "eclipse-muzzle-mcp",
+ "product_url": "https://eclipsebazaar.com/products/eclipse-muzzle-mcp/",
+ "record_type": "verdict",
+ "scope": "PASS-CONDITIONAL (local/fixture) \u2014 Verity reduced-scope bench of v0.1.3, ruleset muzzle-rules/0.4, 2026-10-27 (argus101-program-20261027/ruling-muzzle-reduced-scope.md), secrets and PII limbs ONLY: fresh bench-authored corpus (36 items, disjoint in values/shapes/phrasing from all repo fixtures and both prior Verity corpora), all rates computed from signed receipts after every receipt was independently re-verified \u2014 secrets 100% recall / 100% precision (13/13, 0 FP), PII 100% recall / 100% precision (13/13, 0 FP; spec thresholds \u226595% / \u226590%), benign controls 10/10 unflagged, verdict agreement 36/36; tamper battery, redaction invariant (zero raw-value escapes over corpus + canary sweeps), downgrade law, fail-closed fence (7/7), and exact 6-tool surface all PASS. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Sole condition: the ruling \u00a79 authorised claim block ships verbatim on every claim surface (README, this listing, server.legacy.json full manifest); the registry server.json description is the \u2264100-char registry short form carrying the \u00a711.1 sentence verbatim and claiming only secrets + PII. This release does not scan for defamation-risk: defamation-risk detection is excluded from the certified scope of this version, and a PASS verdict is not evidence about defamation. Defamation detection is not included in v0.1 \u2014 parked for a v0.2 redesign.",
+ "status": "current",
+ "verdict": "PASS-CONDITIONAL (local/fixture)"
+}
   ]
  }
 

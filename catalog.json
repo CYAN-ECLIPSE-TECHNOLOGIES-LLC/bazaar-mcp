@@ -7369,6 +7369,71 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+          "capabilities": [
+                "Novel mechanism (SPEC §2.1, verbatim) — burn-trajectory forecasting over sealed budget mandates intervenes before breach — throttle, escalate, or abort — and the intervention itself is receipted.",
+                "Forecast over the sealed record (SPEC §2.2.1) — after each spend record is appended, Burnline recomputes cumulative burn and the projected breach point from the sealed record set alone under the pinned model burnline-linear/1.0 (exact rational arithmetic, ceiling rounding, no floats in signed objects); every forecast cites the record-chain head it was computed over — a forecast over an unstated record set does not exist",
+                "Intervention before breach (SPEC §2.2.2) — when the projection crosses a mandate-carried threshold (warn / escalate / abort fractions, strictly increasing in (0,1], never defaulted), the corresponding verdict issues while the recomputed burn is still below the cap, in threshold order only; a single record crossing two thresholds issues the highest verdict only, with the skipped thresholds named; an intervention first issued at or after breach is a LATE_INTERVENTION defect, not an intervention",
+                "The intervention itself is receipted (SPEC §2.2.3) — every verdict is a signed intervention receipt hash-chained into the forecast stream, binding mandate hash ↔ record-chain head at forecast time ↔ projected breach point ↔ verdict, so a third party can recompute offline that the verdict was the one the pinned model produces over those records, issued at that head",
+                "Offline verification (SPEC §6.4) — forecast_verify recomputes the mandate hash, spend chain, every forecast, and every receipt's first-crossing + pre-breach position from the exported pack + pinned public keys alone, in a fresh process with no Burnline state; decisive fixture F-BU14 passes byte-identically on rerun (bench-reproduced: ABORT burn 3100 < cap 10000); any step failing returns BURNLINE_VERIFY_FAIL:<step> with no partial verdict, and an unrecomputable pack is labelled downgraded: true on its face, never upgraded post-hoc; unsealed inputs yield only UNSEALED_EXPORT, which the verifier rejects as a Burnline artifact",
+                "Verify-before-anything hardening (bench conditions C1–C7 + O2 + O3, all CLOSED at v0.1.5) — stored reads, the stream_open idempotent echo, spend_append and stream_close all run full stored-stream verification (chain, burn, state, signatures, ack/defect/receipt recomputation, exact per-type and store-container key sets) before serving, minting, or transitioning; fabricated or suppressed acks/defects and flipped receipt content fields fail with named steps, foreign store keys are refused and never re-persisted, and no signed close or receipt is ever minted over unverified bytes",
+                "Honest failure semantics (SPEC §3.4, on the face of the pack) — a runtime that ignores a verdict is chained as VERDICT_UNACKNOWLEDGED and the stream continues (Burnline never re-issues or claims the spend stopped); a cap jump with no prior threshold crossing closes BREACHED with the NO_PRIOR_INTERVENTION_POSSIBLE defect — no intervention receipt is issued or backdated",
+                "Verdict-not-enforcement fence (SPEC §0.4 / §11, on the face of the listing) — Burnline issues verdicts only: it holds no spend authority, blocks no transaction itself, and moves no money; nothing certifies live budget enforcement, real Herald/Meter/Till interop, or that a verdict stops spend"
+          ],
+          "categories": [
+                "Agent Spend Governance",
+                "Trust & Receipts"
+          ],
+          "certification": {
+                "bench_verdict": "CERTIFIED (local/simulator)",
+                "certified": true,
+                "certified_scope": "CERTIFIED (local/simulator) — CERTIFIED — Eclipse Burnline v0.1.5, local/simulator scope only: fixture spend streams, fixture Till mandates, fixture HMAC stand-in signatures, pinned model burnline-linear/1.0 only. No certification claimed beyond this scope. Final verdict wording (Verity delta re-bench round 5, rebench5-burnline.md, verbatim): CERTIFIED (local/simulator) — v0.1.5. C1+C2 closed in v0.1.1, C3 in v0.1.2, C4 in v0.1.3, C5+C6+O2 in v0.1.4, C7+O3 in v0.1.5; no remaining conditions. Scope: fixture spend streams, fixture Till mandates, fixture HMAC stand-in signatures, pinned model burnline-linear/1.0 only. Nothing certifies live budget enforcement (§10 counsel gate, unbuilt), real Herald/Meter/Till interop, or that a verdict stops spend. Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-burnline.md) PASS-CONDITIONAL with conditions C1–C7; fix rounds v0.1.1–v0.1.5 closed C1–C7 + O2 + O3; delta re-bench round 5 of v0.1.5: C7 CLOSED, O3 CLOSED, C1–C6 not reopened, remaining conditions NONE, builder suite 53/53 re-run by the bencher, independent probes 113 assertions — CERTIFIED at exactly this scope. Decisive fixture F-BU14 independently reproduced at every bench (fresh process, empty data dir): exported ladder pack verifies true and the ABORT verdict sits at exactly the first head where the pinned burnline-linear/1.0 projection crossed the abort threshold, cumulative burn 3100 < cap 10000, byte-identical on rerun. Scope is exactly: local/simulator, fixture spend streams + sealed fixture Till mandates only, fixture HMAC stand-in signatures, pinned model burnline-linear/1.0 only; value_class \"test\" on every artifact; exact rational arithmetic, ceiling rounding, no floats in signed objects. Burnline issues verdicts only — it holds no spend authority, blocks no transaction itself, and moves no money; nothing certifies that a verdict stops spend (enforcement is the consuming runtime's act, and a runtime that ignores a verdict is recorded as VERDICT_UNACKNOWLEDGED). Two limits stated wherever the mechanism is described: (a) intervention is possible only when the trajectory crosses a threshold before the cap — a single record can jump the cap with no prior intervention possible (F-BU8, NO_PRIOR_INTERVENTION_POSSIBLE); (b) the projection is the pinned model's arithmetic over the records presented, not a prediction about any real system's future spend; the model is never a learned model. Novel mechanism (SPEC §2.1, verbatim): burn-trajectory forecasting over sealed budget mandates intervenes before breach — throttle, escalate, or abort — and the intervention itself is receipted. Stored serves and every mint path verify before serving/minting (C1–C7 closures): chain, burn, receipts, acks and the recomputed defect set are recomputed from source data; store containers (root, stream, metering, refusal entries) carry exact key sets — foreign keys are detected and refused, never silently re-persisted (O3); a tampered store yields a named BURNLINE_VERIFY_FAIL refusal or a downgraded pack, never the stored assertion and never a signed close over unverified bytes.",
+                "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-burnline.md (Verity bench of v0.1.0, PASS-CONDITIONAL, conditions C1–C7) + fix/rebench rounds v0.1.1–v0.1.4 (fix-burnline.md … fix4-burnline.md; rebench-burnline.md … rebench4-burnline.md; C1+C2, C3, C4, C5+C6+O2 closed) + fix5-burnline.md / rebench5-burnline.md (v0.1.5: C7+O3 CLOSED, conditions NONE, suite 53/53, independent probes 113 assertions — CERTIFIED (local/simulator)). Shipper suite re-run fresh pre-ship: 53/53 OK (pre- and post-ship-prep). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+                "not_tested": [
+                      "Live budget enforcement (SPEC §10 counsel gate) — forecasting over real spend against real budgets, and any verdict presented as binding on a real runtime or spend account, is OUT of v0.1.5, hard, UNBUILT by design: this tree contains no live spend source, no production-runtime surface, and no dormant live path to flip; a live phase, if counsel clears it, is a separate, re-benched build (counsel packet contents at SPEC §10.2, incl. liability allocation, agency/instruction, and forecast-accuracy representation limits)",
+                      "Real Herald / Meter / Till interop — mandates are consumed in Till's grammar, spend records in Meter's grammar, and signing follows the Herald pattern, all as FIXTURE stand-ins in v0.1.5 only; nothing certifies interop with any real Herald, Meter, or Till system, and Burnline defines no mandate, ledger, or signing format of its own",
+                      "That a verdict stops spend — Burnline issues THROTTLE | ESCALATE | ABORT | CLEAR verdicts only; enforcement is the consuming runtime's act, no verb moves money, blocks or releases a spend, raises a cap, or alters a mandate, and an unacknowledged verdict is recorded as such on the pack's face",
+                      "Forecast accuracy beyond the pinned fixture arithmetic — the projection is burnline-linear/1.0's deterministic arithmetic (exact rationals, ceiling rounding) over the records presented; no claim is made that it predicts any real system's future spend, and a single record can jump the cap with no prior intervention possible (F-BU8)",
+                      "Production signing / Herald authority — fixture HMAC stand-in signatures only (fixture keys in keys/fixture-keys.json, chmod 600, gitignored, never committed; 4 fixture refs: herald/meter/burnline/runtime); verification keys are pinned out-of-band in code and are never accepted from the record under verification; no key in this product can move money. The suite's key-custody test expects the local fixture key file (house pattern) — a fresh clone supplies its own fixture keys, never a committed one",
+                      "Hosted or live operation / charge path — metering points only per SPEC §9 (forecast_computed per spend record appended, intervention_issued per verdict, pack_exported per pack, at the $0.01/task price shape — a task being one spend_append forecast computation), no charge, checkout, or collection path is built and no live Meter ingest is claimed"
+                ],
+                "scorecard_ref": null,
+                "scorecard_url": null
+          },
+          "id": "eclipse-burnline-mcp",
+          "listing_class": "mcp",
+          "logo": "branding/logos/eclipse-burnline-mcp.png",
+          "name": "Eclipse Burnline",
+          "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+          "platforms": [
+                "MCP over stdio"
+          ],
+          "pricing_model": "PRICED — $0.01/task, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering points only in v0.1.5, no charge path built): a task is one spend_append forecast computation (forecast_computed per spend record appended); intervention_issued per verdict and pack_exported per pack also emit Meter-grammar metering points; stream opens, status reads, intervention reads, verifies, refusals and closes never meter beyond those points. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+          "problem_statements": [
+                "Budget mandates today are checked at breach: the cap is hit, the draw is refused, the work is already spent up to the cap — nobody projects the sealed record stream forward and intervenes at a stated, recomputable point before the cap, with the intervention itself entered into the evidence chain",
+                "Post-hoc budget reports tell you what burned; they are reports, not verdicts — they carry no intervention threshold semantics, are issued after the fact, and cannot prove an operator was warned in time",
+                "Cloud / SaaS budget alerts are computed over the provider's own unsealed billing data and delivered as notifications, not signed verdicts bound to a sealed mandate and a record-chain head — no third party can recompute the alert point from an exported pack"
+          ],
+          "source_refs": [
+                "eclipse-burnline-mcp/README.md",
+                "eclipse-burnline-mcp/server.json",
+                "argus101-program-20261027/wave2/bench-burnline.md",
+                "argus101-program-20261027/wave2/rebench5-burnline.md",
+                "argus101-specs-20261027/burnline-spec.md"
+          ],
+          "status": "in-development",
+          "tagline": "Burn-trajectory forecast over sealed fixture budget mandates — recomputes the trajectory after each record and issues a receipted THROTTLE, ESCALATE, or ABORT verdict before the breach. CERTIFIED (local/simulator) — local stdio MCP, fixture spend streams + fixture Till mandates + fixture HMAC stand-ins only, pinned model burnline-linear/1.0 only; nothing certifies live budget enforcement, real Herald/Meter/Till interop, or that a verdict stops spend.",
+          "tools": [
+                "stream_open",
+                "spend_append",
+                "stream_status",
+                "intervention_get",
+                "stream_close",
+                "forecast_verify",
+                "pack_get"
+          ],
+          "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

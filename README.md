@@ -157,6 +157,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Promptseal | in-development | PASS (local/fixture) — not certified |
 | Eclipse Faircharge | in-development | PASS (local, fixture charge streams + sealed authorizations) — not certified |
 | Eclipse Timecapsule | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/simulator, public seal registry over fixture commitments, value_class "test") |
+| Eclipse Burnline | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/simulator) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

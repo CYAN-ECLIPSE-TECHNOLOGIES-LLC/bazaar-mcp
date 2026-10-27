@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 105,
+ "count": 106,
  "records": [
   {
    "record_type": "verdict",
@@ -2111,6 +2111,27 @@
    "scope": "CERTIFIED(local, fixture transactions) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-feeseal.md), clean bench, NO conditions: builder suite 29/29 re-run clean by bencher; decisive fixture F-F9 independently reproduced in fresh processes \u2014 batch spanning the v1 (250 bps) to v2 (300 bps) succession boundary recomputes exactly, including OVERCHARGE +70 (charged 350 vs v1-prescribed 280); relabelling the overcharged transaction as schedule_version 2 does not move the verdict (sealed in-force v1 governs, VERSION_CLAIM_MISMATCH on the verdict's face), and an edited sealed schedule copy fails at step 1 (FEESEAL_VERIFY_FAIL:step1_schedule_seal, UNVERIFIED_EXPORT). Bencher adversarial battery 33/33: forged signatures, presented-verdict substitution, schedule-swap, 21-call malformed-args battery, refusal-must-not-mutate, key custody, metering exactness, determinism \u2014 all pass. Scope is exactly: local stdio MCP, fixture schedules + fixture transactions only, value_class 'test' on all artifacts; no real fee is charged, audited, refunded, or adjusted by Feeseal and no live marketplace is touched; no counsel-gate (SPEC \u00a710) live phase built or claimed. Novel mechanism (SPEC \u00a72.1, verbatim): every fee charged is sealed against the published fee-schedule version in force; overcharges against that version are detected automatically. Advisory F-2/F-3 (non-blocking, do not limit scope): signing is an HMAC fixture stand-in for Herald RS256 (disclosed; live phase would need real Herald signing + re-bench); sealed effective_to is derived, never mutated; feeseal_verify step 4 does not independently anchor prev_hash (not exploitable without the Herald key; v0.2 hardening note).",
    "status": "current",
    "verdict": "CERTIFIED(local, fixture transactions)"
-  }
+
+  },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": true,
+  "name": "Eclipse Trueprice",
+  "not_tested": [
+   "Real quotes, real checkouts, or any live merchant use \u2014 fixture quote/checkout pairs only; the SPEC \u00a710 counsel gate is unbuilt by design, named, with no dormant live mode: (a) sealing real quotes / verifying real checkouts against live merchants, (b) evidence-law wording in any live listing, pack, or sales material (fenced per SPEC \u00a711.2 until counsel clears it), (c) any integration that blocks or alters a live checkout on a DRIFT verdict, (d) retention/handling of real consumers' quote data \u2014 each requires counsel clearance, a scope edit in code, and a Verity re-bench at the new scope",
+   "Any checkout blocked, price altered, merchant contacted, or payment executed/refunded \u2014 Trueprice is evidence-only: a DRIFT verdict is information for the caller and evidence for a later dispute, nothing more; never claimed for v0.1.1 are price accuracy, best-price, merchant endorsement/partnership, live monitoring of any store, that a MATCH means the price was fair, or 'prevents price fraud' (SPEC \u00a711.3 strings are named here only as never claimed); no wording implies a verdict can be bought or a drift finding suppressed (SPEC \u00a711.4 \u2014 metering attaches to the seal, identical regardless of later verdicts)",
+   "Production signing / public-key verification \u2014 v0.1.1 signing is a fixture HMAC stand-in for Herald RS256 (local fixture keys, keys/ gitignored, mode 600, never committed); scope stays local/fixture until signing is real Herald RS256, and v0.1.x verification is NOT public-key verification: the pinned key file holds a shared HMAC secret, not a public key (condition C3, standing scope limit); a fresh clone generates its own fixture keys to run the full suite",
+   "Hosted or live operation \u2014 local stdio only; metering point only per completed quote_seal ($0.02/quote shape), no charge path built and no live Meter ingest"
+  ],
+  "product": "eclipse-trueprice-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-trueprice-mcp/",
+  "record_type": "verdict",
+  "scope": "CERTIFIED(local, fixture quote/checkout pairs) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-trueprice.md) PASS-CONDITIONAL(local, fixture quote/checkout pairs) with conditions C1\u2013C4, plus delta re-bench of v0.1.1 in the same record: C1, C2, C4 CLOSED at scope and C3 satisfied as scope wording (C3 persists as a scope limit, not a defect). Builder suite 35/35 at v0.1.0 and 44/44 at v0.1.1 (35 prior + 9 new TestBenchFixes011) re-run clean-state by bencher both times; decisive fixture F-T8 independently reproduced in fresh processes at both benches \u2014 quote sealed at T=2026-10-27T01:00:00Z, checkout drifting in exactly 3 named terms verified DRIFT, pack re-verified in a verifier-only subprocess from pack + pinned keys alone with drift re-derived exactly {unit_price, fees_as_stated, subscription_terms, total_all_in}. Delta re-bench independent probes 11/11 PASS with fresh bench-generated keys: stored counter-signature stripped/forged/absent-label-injected all SEAL_DEFECT with no verdict, intact MATCH; tampered stored receipt RECEIPT_UNVERIFIED and never served (idempotent re-verify also withholds it), intact served; DRIFT pack with drift_receipts dropped fails at step drift_receipt; key material nested 4 deep rejected key_material_in_pack; quote_ref drift fixture DRIFT ['quote_ref'] exactly. Scope is exactly: local stdio MCP, fixture quote/checkout pairs only, value_class 'test' on all artifacts; no live storefront, cart, payment page, price feed, or merchant system is touched, no real quote or checkout is sealed or judged, and Trueprice never blocks or alters a checkout; no counsel-gate (SPEC \u00a710) live phase built or claimed. Novel mechanism (SPEC \u00a72.1, with the \u00a711.2 substitution applied): quote + full terms are hash-sealed at quote time; checkout drift of any term produces a drift receipt in a Docket-grade evidence pack format \u2014 admissibility is a court's decision; Trueprice warrants the pack's recomputability, not its admission. C3 scope limit (standing): scope stays local/fixture until signing is real Herald RS256; v0.1.x verification is NOT public-key verification \u2014 the pinned key file holds a shared HMAC secret, not a public key, and any holder of it can forge seals; no RS256 / public-key / third-party-verifiability claim is licensed.",
+  "status": "current",
+  "verdict": "CERTIFIED(local, fixture quote/checkout pairs)"
+ }
  ]
 }

@@ -148,6 +148,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Morphguard | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture payee records) |
 | Eclipse Adproof | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/fixture) |
 | Eclipse Feeseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture transactions) |
+| Eclipse Trueprice | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture quote/checkout pairs) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

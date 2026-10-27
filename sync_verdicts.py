@@ -223,6 +223,20 @@ def build_ledger():
         if prev and prev.get("bench_date") is not None \
                 and (_bench_date, seq) <= (prev["bench_date"], prev["seq"]):
             continue
+        if not isinstance(sc.get("verdict"), str):
+            # Card-format variant (Procure re-bench evidence file,
+            # 2026-10-26): a "-rebench" evidence artifact carries no
+            # "verdict" field at all — it is bench evidence, not a
+            # scorecard — yet its seq-50 suffix outranks the standing
+            # card and crashed the ledger build on sc["verdict"].
+            # Skip with a named warning, same treatment as the
+            # dateless/invalid-date skips above. Checker
+            # normalization, WS3 listing pass 2026-10-27 — the
+            # evidence file itself is untouched.
+            print(f"WARN verdict-less card skipped: {p.name} "
+                  f"(no string 'verdict' field — evidence artifact, "
+                  f"not a scorecard)")
+            continue
         _v = sc["verdict"]
         if isinstance(_v, str) and _v.startswith("CERTIFIED-at-scopes"):
             # Card-format variant (Crosslist card -4, 2026-10-26): the

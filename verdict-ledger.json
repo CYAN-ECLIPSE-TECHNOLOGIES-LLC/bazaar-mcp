@@ -346,22 +346,22 @@
   },
   "eclipse-cluster-mcp": {
    "tool": "eclipse-cluster-mcp",
-   "verdict": "CERTIFIED(simulator)",
-   "certified": true,
-   "bench_date": "2026-10-25",
+   "verdict": "PARTIAL",
+   "certified": false,
+   "bench_date": "2026-10-27",
    "bench_version": "0.1.0",
-   "environment": "simulator",
-   "qualifier": "simulator",
-   "seq": 1,
+   "environment": "real-registry: zot v2.1.22 (official OCI distribution implementation, local) + live GHCR/Docker Hub reads",
+   "qualifier": "local-real, live-read",
+   "seq": 3,
    "counts": {
-    "pass": 18,
+    "pass": 19,
     "fail": 0,
     "na": 1,
-    "untestable": 0,
-    "total": 19
+    "untestable": 1,
+    "total": 21
    },
-   "scorecard_ref": "test-bench/results/eclipse-cluster-mcp-2026-10-25.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-cluster-mcp-2026-10-27-3.json",
+   "cards_on_record": 4
   },
   "eclipse-codex-mcp": {
    "tool": "eclipse-codex-mcp",
@@ -424,7 +424,7 @@
    "tool": "eclipse-connect",
    "verdict": "CERTIFIED(dogfood)",
    "certified": true,
-   "bench_date": "2026-10-24",
+   "bench_date": "2026-10-26",
    "bench_version": "0.1.0",
    "environment": "dogfood",
    "qualifier": "dogfood",
@@ -436,8 +436,8 @@
     "untestable": 0,
     "total": 15
    },
-   "scorecard_ref": "test-bench/results/eclipse-connect-2026-10-24-2.json",
-   "cards_on_record": 2
+   "scorecard_ref": "test-bench/results/eclipse-connect-2026-10-26-2.json",
+   "cards_on_record": 4
   },
   "eclipse-connect-beyondcompare-mcp": {
    "tool": "eclipse-connect-beyondcompare-mcp",
@@ -494,6 +494,25 @@
     "total": 17
    },
    "scorecard_ref": "test-bench/results/eclipse-connect-quantum-mcp-2026-10-25.json",
+   "cards_on_record": 1
+  },
+  "eclipse-connect-zoom-mcp": {
+   "tool": "eclipse-connect-zoom-mcp",
+   "verdict": "CERTIFIED(local, fixture)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 1,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-connect-zoom-mcp-2026-10-26.json",
    "cards_on_record": 1
   },
   "eclipse-consent-mcp": {
@@ -629,6 +648,44 @@
    "scorecard_ref": "test-bench/results/eclipse-crosswalk-mcp-2026-10-26-3.json",
    "cards_on_record": 3
   },
+  "eclipse-cupel-mcp": {
+   "tool": "eclipse-cupel-mcp",
+   "verdict": "CERTIFIED(local, fixture)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": "local, fixture: module dispatch (t_screen / t_verdict) at repo HEAD d7c5dcc, isolated state /tmp/cb4_state (plus /tmp/cb4_suite for the suite re-run), M1/repo state untouched; no network, no live surfaces",
+   "qualifier": "local, fixture",
+   "seq": 4,
+   "counts": {
+    "pass": 0,
+    "fail": 12,
+    "na": 0,
+    "untestable": 0,
+    "total": 12
+   },
+   "scorecard_ref": "test-bench/results/eclipse-cupel-mcp-2026-10-26-4.json",
+   "cards_on_record": 4
+  },
+  "eclipse-daybook-mcp": {
+   "tool": "eclipse-daybook-mcp",
+   "verdict": "CERTIFIED",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-daybook-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-deepfield-mcp": {
    "tool": "eclipse-deepfield-mcp",
    "verdict": "CERTIFIED(local)",
@@ -685,6 +742,25 @@
    },
    "scorecard_ref": "test-bench/results/eclipse-docket-mcp-2026-10-25-7.json",
    "cards_on_record": 7
+  },
+  "eclipse-donations-witness": {
+   "tool": "eclipse-donations-witness",
+   "verdict": "PARTIAL(local) \u2014 22/24 checks pass; every sealed artifact recomputes exactly under independent implementation (including the full 34.9M-line FEC re-stream, twice), the census is honest to the figure, and the counsel gate is verifiably CLOSED with no cleared-claim anywhere. Two MED surface defects block CERTIFIED(local): DW-D1 (bridge summary rendering implies 23,189 two-sided comparisons and zero open divergences; the truth is 23,189 one-sided FEC_ONLY records, all OPEN, and zero two-sided comparisons) and DW-D2 (operator intake_record refuses item-bearing LD-203 artifacts via the agent-surface person-scan \u2014 the verb is dead for its primary artifact class). Both are code fixes requiring NO re-seal of data. Fix round -> scoped re-bench on the summary surfaces + intake verb -> CERTIFIED(local) at the scope stated. O2 ACCEPTED (floor 5 / tolerance defaults; S8.2 errata owed), O3 ACCEPTED-SCOPE (spec-defined comparator; two caveats recorded), window-coverage reading CORRECT, int64 stream ids ACCEPTED-SCOPE, fixture signing = owner item O4.",
+   "certified": false,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 1,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 22
+   },
+   "scorecard_ref": "test-bench/results/eclipse-donations-witness-2026-10-26-1.json",
+   "cards_on_record": 1
   },
   "eclipse-dossier-mcp": {
    "tool": "eclipse-dossier-mcp",
@@ -857,6 +933,25 @@
    "scorecard_ref": "test-bench/results/eclipse-gig-core-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-gridline-mcp": {
+   "tool": "eclipse-gridline-mcp",
+   "verdict": "CERTIFIED(local, fixture)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-gridline-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-haven-mcp": {
    "tool": "eclipse-haven-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -916,13 +1011,13 @@
   },
   "eclipse-hosted-tier": {
    "tool": "eclipse-hosted-tier",
-   "verdict": "PARTIAL(hosted) \u2014 narrowed. Per product: HostBridge hosted form CERTIFIED(hosted) (card 1, stands; re-confirmed this battery). AgentReady hosted form CERTIFIED(hosted) (HT-D4 + HT-D5 fixed and verified live, incl. the real cetech.ai grade). Gateway/tenancy substrate CERTIFIED(hosted) (HT-D1 + HT-D2 + HT-D3 fixed and verified against the running gateway; HT-D8 rides as a printed condition). CertBridge hosted form PARTIAL \u2014 its credential gate (HT-D2) is fixed, but the renewal watch still cannot see hosted-engine state (HT-D7, launch-gating for the CertBridge form).",
-   "certified": false,
+   "verdict": "CERTIFIED(hosted) \u2014 bundle complete. Per product: CertBridge hosted form CERTIFIED(hosted) (HT-D7 fixed and verified on card -2's own shapes plus attacks on the fix; HT-D2 credential gate from card -2 stands). Gateway/tenancy substrate CERTIFIED(hosted) with the HT-D8 condition DISCHARGED (both layers re-benched live). HostBridge hosted form CERTIFIED(hosted) (card -1, stands). AgentReady hosted form CERTIFIED(hosted) (card -2, stands). The $49/mo hosted tier's full launch bundle \u2014 gateway substrate + all three hosted forms \u2014 now stands CERTIFIED(hosted); the only remaining signup gates are the dogfood calendar (Thu Oct 29, no reset) and P3 Stripe wiring under owner approval cards.",
+   "certified": true,
    "bench_date": "2026-10-26",
    "bench_version": "",
    "environment": null,
    "qualifier": null,
-   "seq": 2,
+   "seq": 3,
    "counts": {
     "pass": 0,
     "fail": 0,
@@ -930,8 +1025,8 @@
     "untestable": 0,
     "total": 0
    },
-   "scorecard_ref": "test-bench/results/eclipse-hosted-tier-2026-10-26-2.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-hosted-tier-2026-10-26-3.json",
+   "cards_on_record": 2
   },
   "eclipse-keyhold-mcp": {
    "tool": "eclipse-keyhold-mcp",
@@ -1123,6 +1218,25 @@
    "scorecard_ref": "test-bench/results/eclipse-orbit-mcp-2026-10-25.json",
    "cards_on_record": 1
   },
+  "eclipse-orbital-witness": {
+   "tool": "eclipse-orbital-witness",
+   "verdict": "CERTIFIED(local)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-orbital-witness-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-pantry-mcp": {
    "tool": "eclipse-pantry-mcp",
    "verdict": "CERTIFIED(simulator)",
@@ -1180,24 +1294,81 @@
    "scorecard_ref": "test-bench/results/eclipse-permits-mcp-2026-10-26-2.json",
    "cards_on_record": 2
   },
+  "eclipse-picklist-mcp": {
+   "tool": "eclipse-picklist-mcp",
+   "verdict": "CERTIFIED(sandbox)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-picklist-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
+  "eclipse-pratique-mcp": {
+   "tool": "eclipse-pratique-mcp",
+   "verdict": "CERTIFIED(local, fixture)",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "Verity (W-003), independent scoped re-bench",
+   "environment": null,
+   "qualifier": null,
+   "seq": 2,
+   "counts": {
+    "pass": 0,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 0
+   },
+   "scorecard_ref": "test-bench/results/eclipse-pratique-mcp-2026-10-26-2.json",
+   "cards_on_record": 1
+  },
+  "eclipse-presence-mcp": {
+   "tool": "eclipse-presence-mcp",
+   "verdict": "CERTIFIED(local, fixture) \u2014 PR-D2 DISCHARGED \u00b7 PR-D1 DISCHARGED \u00b7 Ruling 6 ACCEPTED (fixture scope, SS5.1 errata owed on the D-DB1 train, recorded). All card-1 findings closed.",
+   "certified": true,
+   "bench_date": "2026-10-26",
+   "bench_version": "2",
+   "environment": "local, fixture (this VM; disposable fixture offices in /tmp; target repo tree read/re-run in place for suite/SMOKE/M1-B and verified clean afterwards)",
+   "qualifier": "local, fixture",
+   "seq": 2,
+   "counts": {
+    "pass": 1,
+    "fail": 0,
+    "na": 0,
+    "untestable": 0,
+    "total": 7
+   },
+   "scorecard_ref": "test-bench/results/eclipse-presence-mcp-2026-10-26-2.json",
+   "cards_on_record": 2
+  },
   "eclipse-procure-mcp": {
    "tool": "eclipse-procure-mcp",
-   "verdict": "CERTIFIED(simulator)",
+   "verdict": "CERTIFIED(production-machinery)",
    "certified": true,
-   "bench_date": "2026-10-25",
-   "bench_version": "0.1.0",
-   "environment": "simulator",
-   "qualifier": "simulator",
+   "bench_date": "2026-10-26",
+   "bench_version": "0.2.0",
+   "environment": "production-machinery (P1 staging scope; no serving merchant door exists)",
+   "qualifier": "production-machinery",
    "seq": 1,
    "counts": {
-    "pass": 14,
+    "pass": 11,
     "fail": 0,
-    "na": 1,
+    "na": 0,
     "untestable": 0,
-    "total": 15
+    "total": 16
    },
-   "scorecard_ref": "test-bench/results/eclipse-procure-mcp-2026-10-25.json",
-   "cards_on_record": 1
+   "scorecard_ref": "test-bench/results/eclipse-procure-mcp-2026-10-26.json",
+   "cards_on_record": 3
   },
   "eclipse-proof-mcp": {
    "tool": "eclipse-proof-mcp",
@@ -1391,22 +1562,22 @@
   },
   "eclipse-spectrum-witness-mcp": {
    "tool": "eclipse-spectrum-witness-mcp",
-   "verdict": "PARTIAL(local)",
+   "verdict": "SW-D20 DISCHARGED \u2014 CERTIFIED(local) stands confirmed. Every confirmation item passes: the live-fetched l_coast file is byte-identical to the sealed build record and parses to exactly E5's stated expectation (35,871 licenses, 373 deadlines, exactly the 15 named bf_orientation_inversion impeachments and no other build-out impeachment); l_paging parses with zero check-7 impeachments; an independent raw replication of check 7 reproduces E5's measured basis number for number on both BF-carrying services; the no-separating-threshold justification is sound on that distribution (genuine counts 3/4/10/250, bench shape at 14 inside the genuine range); no unqualified zero-genuine-violation claim for check 7 remains at any spec or code claim site; and the regression is exact (suite 92/92, sealed store hashes unchanged vs card -5, anchor root unchanged, rcpt-91e7ca55e6411d49 recomputes MATCH). The D15/D11/E4 scope held PARTIAL on card -5 converts to CERTIFIED(local) at the E3/E4 claim boundary as extended by ERRATA E5, with the l_coast check-7 rate carried as a disclosed per-vintage measurement.",
    "certified": false,
    "bench_date": "2026-10-26",
    "bench_version": "",
    "environment": null,
    "qualifier": null,
-   "seq": 3,
+   "seq": 6,
    "counts": {
-    "pass": 36,
-    "fail": 28,
+    "pass": 0,
+    "fail": 0,
     "na": 0,
     "untestable": 0,
-    "total": 64
+    "total": 0
    },
-   "scorecard_ref": "test-bench/results/eclipse-spectrum-witness-mcp-2026-10-26-3.json",
-   "cards_on_record": 3
+   "scorecard_ref": "test-bench/results/eclipse-spectrum-witness-mcp-2026-10-26-6.json",
+   "cards_on_record": 6
   },
   "eclipse-stage-mcp": {
    "tool": "eclipse-stage-mcp",
@@ -1809,13 +1980,13 @@
   },
   "hostbridge-mcp": {
    "tool": "hostbridge-mcp",
-   "verdict": "CERTIFIED(simulator)",
+   "verdict": "CERTIFIED(local-real)",
    "certified": true,
-   "bench_date": "2026-10-24",
+   "bench_date": "2026-10-27",
    "bench_version": "0.1.0",
-   "environment": "simulator",
-   "qualifier": "simulator",
-   "seq": 3,
+   "environment": "local-real (real filesystem docroot served by a real HTTP server process; live-host TCP probe)",
+   "qualifier": "local-real",
+   "seq": 1,
    "counts": {
     "pass": 15,
     "fail": 0,
@@ -1823,8 +1994,8 @@
     "untestable": 0,
     "total": 16
    },
-   "scorecard_ref": "test-bench/results/hostbridge-mcp-2026-10-24-3.json",
-   "cards_on_record": 3
+   "scorecard_ref": "test-bench/results/hostbridge-mcp-2026-10-27.json",
+   "cards_on_record": 4
   },
   "white-report-mcp": {
    "tool": "white-report-mcp",
@@ -1859,11 +2030,17 @@
   "commerce-fixture-store",
   "eclipse-alias-mcp",
   "eclipse-connect-quantum-mcp",
+  "eclipse-connect-zoom-mcp",
+  "eclipse-cupel-mcp",
+  "eclipse-daybook-mcp",
+  "eclipse-donations-witness",
   "eclipse-dossier-mcp",
+  "eclipse-gridline-mcp",
   "eclipse-hosted-tier",
-  "eclipse-patent-witness-mcp",
-  "eclipse-permits-mcp",
-  "eclipse-scholarly-witness-mcp",
+  "eclipse-orbital-witness",
+  "eclipse-picklist-mcp",
+  "eclipse-pratique-mcp",
+  "eclipse-presence-mcp",
   "eclipse-spectrum-witness-mcp",
   "eclipse-vector-mcp",
   "eclipse-witness-drift",

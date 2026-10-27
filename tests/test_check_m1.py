@@ -2,7 +2,7 @@
 # Eclipse Bazaar — C-M1 correctness matrix + fences (gate §7, §5.2, S1–S3).
 # Copyright © 2026 Cyan Eclipse Technologies LLC · cetech.ai
 """M1 for `bazaar check` (Phase 1), all on our own estate:
-  * a generated config references all 86 catalog listings across the
+  * a generated config references all 96 catalog listings across the
     shape matrix (uvx / npx / docker image / local path / bare command)
     — every entry must classify to its listing (CERTIFIED when a Tier-2
     verdict is on record, else LISTED);
@@ -71,9 +71,9 @@ def shape_entry(i, rec):
 
 
 class ShapeMatrix(unittest.TestCase):
-    def test_all_86_listings_classify(self):
+    def test_all_96_listings_classify(self):
         records = corpus_records()
-        self.assertEqual(len(records), 86)
+        self.assertEqual(len(records), 96)
         servers = {}
         expect = {}
         for i, rec in enumerate(records):
@@ -84,14 +84,14 @@ class ShapeMatrix(unittest.TestCase):
             cfg = Path(td) / "mcp.json"
             cfg.write_text(json.dumps({"mcpServers": servers}))
             rep = check_mod.run_check(config_paths=[str(cfg)])
-        self.assertEqual(len(rep["entries"]), 86)
+        self.assertEqual(len(rep["entries"]), 96)
         for row in rep["entries"]:
             self.assertEqual(row["class"], expect[row["config_name"]],
                              f"{row['config_name']}: {row}")
             self.assertEqual(row["listing"]["id"],
                              row["config_name"].split("-", 1)[1])
         s = rep["summary"]
-        self.assertEqual(s[check_mod.CERTIFIED] + s[check_mod.LISTED], 86)
+        self.assertEqual(s[check_mod.CERTIFIED] + s[check_mod.LISTED], 96)
         self.assertEqual(s[check_mod.NOT_LISTED], 0)
         self.assertEqual(s[check_mod.UNRESOLVABLE], 0)
 
@@ -354,7 +354,7 @@ class VersionNotChecked(unittest.TestCase):
 
     def test_pin_against_versionless_listing_discloses(self):
         rep = self._run1({"command": "uvx",
-                          "args": ["agent-ready-mcp@9.9.9"]})
+                          "args": ["hostbridge-mcp@9.9.9"]})
         row = rep["entries"][0]
         self.assertIsNotNone(row["listing"])
         self.assertIsNone(row["listing"]["listing_version"])

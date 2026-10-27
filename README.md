@@ -27,7 +27,7 @@ This MCP server is how agents query that catalog:
 
 Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
 
-## Catalog (v0.1.0 — 64 products, CETech only)
+## Catalog (v0.1.0 — 101 products, CETech only)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -35,7 +35,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 |---|---|---|
 | Eclipse Agent Wallet MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
 | CertBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(staging) |
-| HostBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
+| HostBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local-real) |
 | Eclipse Connect | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood) |
 | The White Report MCP | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(live) |
 | Eclipse Apply MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
@@ -128,6 +128,12 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Crawlway | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 | Eclipse Outwatch | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL) |
 | Eclipse Feedforge | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
+
+| Eclipse Permits | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Scholarly Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture scope) |
+| Eclipse Patent Witness | in-development | PARTIAL (local, FIXTURE scope) — certification withheld on three MED defects (PW-D1, PW-D2, PW-D4); not certified |
+| Eclipse SEC Figure Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
+| Eclipse Trademark Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

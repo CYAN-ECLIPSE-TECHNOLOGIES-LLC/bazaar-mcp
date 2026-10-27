@@ -48,7 +48,7 @@ class SdkParity(unittest.TestCase):
         self.assertEqual(cert["bench_verdict"], "CERTIFIED(local)")
         self.assertIsNotNone(cert["scorecard_summary"])
         cats = bz.categories()
-        self.assertEqual(cats["product_total"], 86)
+        self.assertEqual(cats["product_total"], 96)
 
     def test_sdk_check(self):
         with tempfile.TemporaryDirectory() as td:
@@ -72,7 +72,7 @@ class CliSurface(unittest.TestCase):
         out = json.loads(cli("product", "certbridge-mcp", "--json"))
         self.assertEqual(out["product"]["id"], "certbridge-mcp")
         cats = json.loads(cli("categories", "--json"))
-        self.assertEqual(cats["product_total"], 86)
+        self.assertEqual(cats["product_total"], 96)
 
     def test_check_json_and_outfile(self):
         with tempfile.TemporaryDirectory() as td:

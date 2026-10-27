@@ -182,6 +182,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Greenwash | in-development | PASS-CONDITIONAL (local/fixture) — not certified |
 | Eclipse Agesure | in-development | PASS-CONDITIONAL (local/fixture) — not certified |
 | Eclipse Fairlend | in-development | PASS-CONDITIONAL (local/fixture) — not certified; D-11 named |
+| Eclipse Awardline | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

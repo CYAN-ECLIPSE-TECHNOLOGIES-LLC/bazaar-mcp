@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 139,
+ "count": 140,
  "records": [
   {
    "record_type": "verdict",
@@ -2857,6 +2857,27 @@
   "scope": "PASS-CONDITIONAL (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-fairlend.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-fairlend.md: D-1..D-6, D-8, D-9, D-10 CLOSED; D-7 closed for its probed class with residual Low defect D-11 NAMED — §7.3 identifier fence evadable by token-split spellings (tax_id, ein, gov_id, surname, home_street etc.); builder suite 36/36 reproduced). Scope exactly: local stdio, fixture decisions only, synthetic cohorts; no real applicant, no real credit data, no real model, no lender system; Fairlend makes no credit decision. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/fixture)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Awardline",
+  "not_tested": [
+   "Any reliance on a real award — real award terms, real grantees, real funds, real drawdowns, agency reporting, or any government system is SPEC §10 counsel/govcon-gated (condition C1) and UNBUILT; v0.1.1 contains no dormant live path",
+   "Audit, allowability, or agency acceptance — an Awardline report is a recomputation from sealed receipts, not an audit, not an allowability determination, and not agency acceptance; Awardline does not approve spending or decide allowability under an award",
+   "Term-registration correctness — Awardline seals spend against term versions as registered by the grantee; a mis-registered term produces faithfully sealed evidence against the wrong terms, and detecting that is the grantee's review, not a recomputation result",
+   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator) (condition C2); an external anchor is required before live or multi-party reliance",
+   "Production signing — v0.1.1 signing is an HMAC fixture stand-in for Herald RS256 (condition C3: real Herald RS256 required with re-bench before any live phase; fixture keys in keys/, gitignored, mode 600)"
+  ],
+  "product": "eclipse-awardline-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-awardline-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-awardline.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-awardline.md: D1–D5 all CLOSED, C4 SATISFIED, builder suite 26/26 reproduced). Scope exactly: local stdio, fixture award terms + fixture spend records only, value_class \"test\". Load-bearing label: an Awardline report is a recomputation from sealed receipts, not an audit, not an allowability determination, and not agency acceptance. Standing conditions C1 (§10 counsel/govcon gate), C2 (external anchor), C3 (real Herald RS256), C5 (name screen) remain in force. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local/simulator)"
  }
  ]
 }

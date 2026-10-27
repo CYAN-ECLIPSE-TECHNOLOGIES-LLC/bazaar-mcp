@@ -7500,6 +7500,70 @@
         "receipt_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — feed entries expire unless re-benched inside the window — the allowlist is a live verdict stream, not a static directory.",
+        "Entry = verdict receipt + window — no entry exists without a bench-verdict receipt: the entry record cites the receipt hash, copies the verdict + scope qualifier verbatim from the receipt's face, and seals valid_until = bench_ts + freshness_window; the window is a sealed feed-level parameter, identical for every entry in a feed version — an entry cannot buy or be granted a longer window.",
+        "Re-bench inside the window, or expiry (SPEC §3.4) — a re-bench receipt renews only if its signature + hash verify, it names the same service ref, its bench_ts is strictly after the previous receipt's and strictly before the current valid_until, and its feed-append record also lands strictly before valid_until; a receipt benched in-window but first presented after the boundary fails REBENCH_LATE and does not renew.",
+        "Status is derived by the subscriber, at evaluation time (SPEC §6.4) — the feed signs records, not statuses; any subscriber or verifier recomputes status from the chain + a stated evaluation time T: ACTIVE before the boundary, EXPIRED at and after it (half-open interval); safelist_feed_verify recomputes the whole pack offline from pack + pinned fixture keys alone, any failure returns SAFELIST_VERIFY_FAIL:<step> with no partial verdict, and unverifiable artifacts downgrade, never upgrade.",
+        "Pack-face transcript binding (R4-D2, closed at re-bench 3) — the verifier transcript is bound field-by-field (all 14 canonical fields, presence via `in` so falsy tampering is caught): a tampered step_failed/detail/statuses/verdict face fails step1 named per field with statuses {}, on PASS and FAIL packs alike; genuine PASS and genuine FAIL packs re-verify identically.",
+        "Verdict-carriage fence (SPEC §11.2, verbatim) — A Safelist entry carries a bench verdict exactly as its receipt states it, scope qualifier attached. ACTIVE means only: a verdict receipt of that stated scope was verified, and the entry is inside its freshness window at the stated evaluation time. It does not mean the service is safe, endorsed, compliant, or currently passing anything.",
+        "Internal-bench fence (SPEC §11.3) — No surface may state or imply that the house bench or its internal tooling can be bought, licensed, subscribed to, or ordered through Safelist, or that buying Safelist buys benching, a verdict, a renewal, or a passing result. Staying listed costs a fresh bench — it never costs a fee to this product beyond the §9 feed shape, and no payment to anyone is represented as producing a verdict."
+      ],
+      "categories": [
+        "Marketplace Infrastructure",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local, fixture feed entries)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local, fixture feed entries) — Verity spot re-bench 3 of v0.1.3, 2026-10-27 (argus101-program-20261027/wave2/rebench3-safelist.md): R4-D2 CLOSED, conditions NONE; builder suite 50/50 re-run twice by the bencher, independent probes 23/23 + 93/93 behavioral (14-field transcript sweep) + 11/11 (verdict/transcript mismatch edges + regression spot). Scope is exactly: local, fixture feed entries — local stdio, fixture services/receipts only, value_class \"test\" throughout, no live listing/routing/reliance/bench-sale path; counsel gate (§10) unbuilt by design. Decisive fixture F-L13 stands from the bench record: pack alone ACTIVE@T0+3599, EXPIRED@T0+3600, EXPIRED@T0+7200; backdated receipt (bench_ts=T0+3500, presented now=T0+7200) → REBENCH_LATE.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench3-safelist.md (Verity spot re-bench 3, builder suite re-run twice 50/50, serialized independent probes 23/23 + 93/93 behavioral + 11/11; subject tree unmodified by the bench). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live listing, routing, or reliance (SPEC §10 counsel gate, named, unbuilt) — listing a real service on a feed real routers/enterprises rely on, any claim that an ACTIVE entry means a service is safe, vetted, compliant, or fit for a purpose, and any claim about the legal effect of listing, expiry, or removal are out of v0.1.3, hard; the gate packet (liability for a listing decision a subscriber relies on and for an expiry/removal a listed service disputes — defamation / trade-libel review; the reliance and disclaimers a live feed's terms must carry; sector rules where an allowlist functions as a compliance control; data-handling for real service descriptors; the terms on which verdict receipts from the internal bench may be republished at live scope) is unbuilt by design and no dormant live path exists to flip",
+          "Live services, routers, or enterprises — fixture feed entries only; no live service is listed, benched, routed to, or endorsed by this product, and Safelist enforces nothing in any router and defines no consequence for an EXPIRED status",
+          "Live Herald RS256 signing — v0.1.3 signing is a fixture HMAC stand-in for the Herald pattern, disclosed on every record's face; verification uses pinned fixture keys only, never keys presented inside a record or pack",
+          "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9.1 (feed_month_active, entry_active_at_boundary, feed_pack_exported), no charge path, subscription, or invoice is built and no live Meter ingest is claimed ($149/mo is a book reference)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-safelist-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-safelist-mcp.png",
+      "name": "Eclipse Safelist",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $149/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC §9.2 (book reference, not a charge path), attaching to the §9.1 feed_month_active count; metering points only in v0.1.3 (feed_month_active, entry_active_at_boundary, feed_pack_exported) — counts recomputable from the record stream; expiry, removal, and revocation emit no metering record. No metering point attaches to any bench, verdict, or re-bench (SPEC §9.1). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Allowlists rot silently: a static directory lists a service because it once passed something, once; the listing outlives the verdict, the service changes, and the directory still says allowed — with no moment at which that claim mechanically stops being true",
+        "I need every listing to be self-expiring — an entry bound to a bench-verdict receipt with a freshness window on its face, renewed only by a fresh re-bench receipt that lands inside the window, with status derived by recompute at a stated evaluation time rather than stored",
+        "I need the verdict carried exactly as its receipt states it, scope qualifier attached — never paraphrased, broadened, or upgraded — and a backdated or late-presented re-bench receipt refused by name, so an expired entry can never be quietly resurrected"
+      ],
+      "source_refs": [
+        "eclipse-safelist-mcp/README.md",
+        "eclipse-safelist-mcp/server.json",
+        "eclipse-safelist-mcp/SPEC.md",
+        "argus101-program-20261027/wave2/rebench3-safelist.md"
+      ],
+      "status": "in-development",
+      "tagline": "Freshness-windowed signed allowlist feed for agent services — feed entries expire unless re-benched inside the window; the allowlist is a live verdict stream, not a static directory. CERTIFIED (local, fixture feed entries) — local stdio, fixture services/receipts only, value_class \"test\". A Safelist entry carries a bench verdict exactly as its receipt states it, scope qualifier attached. ACTIVE means only: a verdict receipt of that stated scope was verified, and the entry is inside its freshness window at the stated evaluation time. It does not mean the service is safe, endorsed, compliant, or currently passing anything.",
+      "tools": [
+        "safelist_feed_open",
+        "safelist_entry_add",
+        "safelist_entry_rebench",
+        "safelist_verdict_revocation_present",
+        "safelist_entry_withdraw",
+        "safelist_feed_pack_get",
+        "safelist_feed_get",
+        "safelist_entry_status",
+        "safelist_feed_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

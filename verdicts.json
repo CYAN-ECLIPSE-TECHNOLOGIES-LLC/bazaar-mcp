@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 134,
+ "count": 135,
  "records": [
   {
    "record_type": "verdict",
@@ -2750,6 +2750,27 @@
   "product_url": "https://eclipsebazaar.com/products/eclipse-ward-mcp/",
   "record_type": "verdict",
   "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ward.md) PASS-CONDITIONAL with the guardian-change subsystem carved out under condition C1, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ward.md): defects D1–D10 all CLOSED, guardian-change carve-out LIFTED, bencher delta harness 57/57, builder suite 37/37 re-run by the bencher at commit 35b00eb. Scope exactly: local stdio, fixture action stream + fixture guardian only, value_class \"test\". Ward issues verdicts and receipts; it does not enforce them. Rollback fence: pure local file store caps any verdict at PASS-CONDITIONAL — external anchor required before live or multi-party reliance. Counsel gate (SPEC §10) named and unbuilt. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local/simulator)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Epitaph",
+  "not_tested": [
+   "Legal effect against third parties — any claim that a cascade has legal effect (estoppel, notice, liability cut-off) is SPEC §10 counsel-gated and UNBUILT; no legal-effect claim is made at this scope",
+   "Compromise declarations against an owner's objection, legal consequences of a false-death adjudication, and death records for identities bound to regulated/financial mandates — SPEC §10 counsel-gated, UNBUILT",
+   "Real-registry integration — no external registry is written to in v0.1.1; there is no dormant live path (no network call, no live key) and the startup fence refuses such configuration by name",
+   "External anchoring / multi-party reliance — full coordinated rollback is a fenced condition; the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator) until an external anchor exists",
+   "Production key custody — signing is an HMAC-SHA256 fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+  ],
+  "product": "eclipse-epitaph-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-epitaph-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-epitaph.md) PASS-CONDITIONAL with conditions C1–C4, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-epitaph.md): defects D-EPI-1..4 all CLOSED, conditions C1–C4 satisfied, builder suite 38/38 re-run by the bencher at commit 0c0b027, no new defect found. Scope exactly: local stdio, fixture identities and fixture registries only, value_class \"test\"; no real identity, mandate, alias, or delegation is expired, revoked, or contacted. Rollback fence: full coordinated rollback is a fenced condition — external anchor required before live/multi-party use. Counsel gate (SPEC §10) named and unbuilt. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/simulator)"
  }

@@ -8864,6 +8864,70 @@
         "pack_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — a signed death/compromise record triggers cascade expiry: every outstanding mandate, alias, and delegation issued to the dead identity expires atomically and provably.",
+        "Decisive fixture F-E14 stands from the bench record — produce in one fresh process, then verify + sweep in a separate fresh process from the receipt + snapshots alone; a doctored snapshot fails by name. Atomicity fuzz: failure injected at every expiry step 0–6 of 7, with same-nonce retry after each — the cascade is all-or-nothing, and a failed cascade is recorded as CASCADE_FAILED.",
+        "Delta re-bench of v0.1.1 (wave4/rebench-epitaph.md): bench defects D-EPI-1..4 all CLOSED on independent re-probe (24 bencher scenario logs; builder suite 38/38 re-run by the bencher at commit 0c0b027) — cascade_verify now recomputes presented-snapshot integrity and chain_heads at §6.4 step 3 (C1), cascade_receipt_get serves the stored receipt verbatim plus the derived DISPUTED overlay (C2), corrupt store JSON raises typed STORE_INTEGRITY_FAIL (C3), and the operator token is enforced on all 5 operator verbs (C4). Prior conditions C1–C4 are satisfied by these closures; no new defect found.",
+        "Death is a signed record, not an assertion: an unsigned claim, an operator note, or a missing heartbeat changes nothing. Death is not erasure: expired instruments and the cascade receipt remain verifiable history, and checks return EXPIRED_BY_CASCADE:<cascade_id>, never \"never existed\". Disputes are first-class — a disputed cascade is labelled DISPUTED on its face, and dispute never resurrects expired instruments.",
+        "Rollback fence: cross-artifact cross-commitment (full coordinated rollback) is a fenced condition — external anchor required before live/multi-party use. The v0.1 store is single-process local state anchored by its signed head records and SET anchors; a pure local file store caps any verdict at PASS-CONDITIONAL.",
+        "Counsel gate (SPEC §10) — named, unbuilt: any claim that a cascade has legal effect against third parties (estoppel, notice, liability cut-off); compromise declarations made by a platform against an owner's objection; legal consequences of a false-death adjudication; death records for identities bound to regulated/financial mandates; any real-registry integration. v0.1.1 contains no dormant live path — no network call, no live key, no real-registry integration exists in this tree, and the startup fence refuses such configuration by name.",
+        "A receipt with only the service signature is labelled counter_signatures: partial and verifies only as PARTIAL, never as sweep-proof. Signing is an HMAC-SHA256 fixture stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref. Herald (signing pattern) and Meter (metering grammar) are consumed by reference only."
+      ],
+      "categories": [
+        "Identity & Attestation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local/simulator)",
+        "certified": false,
+        "certified_scope": "Eclipse Epitaph — PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-epitaph.md) PASS-CONDITIONAL with conditions C1–C4, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-epitaph.md): defects D-EPI-1..4 all CLOSED, conditions C1–C4 satisfied by the closures, builder suite 38/38 re-run by the bencher at commit 0c0b027, no new defect found. PASS-CONDITIONAL (local/simulator) is not CERTIFIED — certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture identities and fixture registries only; no real identity, mandate, alias, or delegation is expired, revoked, or contacted, and no external registry is written to. A cascade receipt proves these fixture instruments expired under this signed record — never that a real agent \"is dead\", that a real compromise occurred, or that any real-world instrument is unenforceable. Rollback fence: cross-artifact cross-commitment (full coordinated rollback) is a fenced condition — external anchor required before live/multi-party use; the pure local file store caps any verdict at PASS-CONDITIONAL. Counsel gate (SPEC §10) named and unbuilt for all live phases.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-epitaph.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/simulator), conditions C1–C4 from defects D-EPI-1..4, builder suite 30/30, decisive F-E14 fresh-process verify PASS) + argus101-program-20261027/wave4/rebench-epitaph.md (Verity delta re-bench of v0.1.1: D-EPI-1..4 all CLOSED, 24 bencher scenario logs, builder suite 38/38 re-run by the bencher). Prior observations O-1..O-5 were out of delta scope and stand as recorded in the first bench. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Legal effect against third parties — any claim that a cascade has legal effect (estoppel, notice, liability cut-off) is SPEC §10 counsel-gated and UNBUILT; no legal-effect claim is made at this scope",
+          "Compromise declarations against an owner's objection, legal consequences of a false-death adjudication, and death records for identities bound to regulated/financial mandates — SPEC §10 counsel-gated, UNBUILT",
+          "Real-registry integration — no external registry is written to in v0.1.1; there is no dormant live path (no network call, no live key) and the startup fence refuses such configuration by name",
+          "External anchoring / multi-party reliance — full coordinated rollback is a fenced condition; the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator) until an external anchor exists",
+          "Production key custody — signing is an HMAC-SHA256 fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-epitaph-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-epitaph-mcp.png",
+      "name": "Eclipse Epitaph",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE + PRICED — $0.02/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering points only in v0.1.1, no charge path built): epitaph_check is the $0.02/check price shape's paid leg, emitted as a Meter-grammar usage record, never charged; cascade presentation is metered as a zero-price event; verification (cascade_verify, sweep_verify) is unmetered. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "When an agent identity dies or is compromised today, its outstanding mandates, aliases, and delegations linger — revocation is a scattered, per-registry chore with no single provable moment at which everything bound to that identity stopped being valid",
+        "I need one signed death/compromise record to expire every outstanding mandate, alias, and delegation issued to the dead identity atomically — all of them in one cascade, or none, with a signed cascade receipt proving the sweep",
+        "I need the cascade verifiable by a third party from the receipt and registry snapshots alone, with disputes labelled on the face of the record and no path for a dispute to silently resurrect expired instruments"
+      ],
+      "source_refs": [
+        "eclipse-epitaph-mcp/README.md",
+        "eclipse-epitaph-mcp/server.json",
+        "argus101-specs-20261027/epitaph-spec.md",
+        "argus101-program-20261027/wave4/rebench-epitaph.md"
+      ],
+      "status": "in-development",
+      "tagline": "Agent end-of-life cascade expiry over fixture identities; local/simulator only. PASS-CONDITIONAL (local/simulator) — a signed death/compromise record triggers cascade expiry: every outstanding mandate, alias, and delegation issued to the dead identity expires atomically and provably. Rollback fence: full coordinated rollback is a fenced condition — external anchor required before live/multi-party use. Counsel gate (SPEC §10) named and unbuilt for all live phases.",
+      "tools": [
+        "epitaph_check",
+        "cascade_receipt_get",
+        "cascade_verify",
+        "sweep_verify",
+        "death_record_present",
+        "dispute_file",
+        "dispute_adjudicate",
+        "identity_status",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

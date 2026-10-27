@@ -175,6 +175,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Duet | in-development | PASS-CONDITIONAL(local, attested model-family declarations) — not certified |
 | Eclipse Crosspay | in-development | PASS-CONDITIONAL(local/simulator, fixture FX records) — not certified |
 | Eclipse Phantom | in-development | PASS-CONDITIONAL(simulator) — not certified |
+| Eclipse Capline | in-development | PASS-CONDITIONAL(local) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

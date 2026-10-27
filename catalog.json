@@ -8403,6 +8403,70 @@
         "genesis_metering_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — any witnessed counterparty behavior change (price drift, endpoint change, ownership change) automatically freezes the schedule until re-attestation.",
+        "Sealed baseline + witnessed-change feed — at mandate setup Slowpay seals a baseline of the counterparty as agreed (price, endpoint, ownership refs, each hash-bound); it then consumes a fixture witnessed-change feed. Only a verified witness receipt can freeze a schedule: an unwitnessed allegation (caller claim, unsigned feed item, malformed receipt) is refused by name and freezes nothing. Receipt verification, the match check against the sealed baseline, and the freeze transition are one evaluation — no operator approval step, queue, or discretionary review exists between verification and freeze, no manual freeze or unfreeze verb exists on either surface, and there is no materiality threshold, de minimis band, or tolerance in v0.1 (a witnessed drift of exactly 1 minor unit freezes). Unfreezing requires a buyer re-attestation over a new baseline incorporating every witnessed change on record, or buyer termination; a due event falling while FROZEN is recorded HELD_FROZEN and is never simulated, queued, or back-processed.",
+        "Offline verification (SPEC §6.3) — recompute-only and fail-closed: chain hashes, baseline hashes, witness receipt hashes, and every signature (buyer, witness source, Herald) are recomputed and verified on every path against keys pinned out-of-band in a local chmod-600 gitignored key file (keys are never accepted from the record under verification). Schedule state is derived from signed chain records only. An export that cannot be recompute-verified is labelled UNVERIFIED_EXPORT on its face (verified: false, unsigned summary only) and carries no freeze claim; an unverifiable change record is labelled UNWITNESSED and can never be cited as a freeze basis — downgrade law: a downgraded artifact is never upgraded post-hoc.",
+        "Decisive fixture F-S9 — bench-reproduced (bencher corpus, 4321 USD monthly, drift receipt 4321→4400): the genuine signed witness receipt freezes the schedule in the presenting evaluation (freeze record binds mandate_ref ↔ baseline_hash ↔ receipt_hash, Herald signature verifies); the due event while frozen is HELD_FROZEN; buyer re-attestation over a new baseline incorporating 4400 returns the schedule to ACTIVE and the next due event SIMULATED, with the held event never back-processed and metering staying exactly 1. Run 1 (fresh process, export + pinned keys alone): slowpay_verify returns verified: true, final_state: ACTIVE. Run 2 (decisive): the identical receipt with one observed-value character altered (4400→4409), hash/signature left stale, returns RECEIPT_HASH_MISMATCH — no freeze record, no chain record appended, schedule remains ACTIVE.",
+        "Honest scope — local stdio, fixture schedules + fixture witnessed-change feed ONLY: no payments are executed, initiated, or held, due records are simulated notes, a freeze in v0.1 is a state in a fixture ledger (no funds move, no counterparty is notified, no external system is called), and every emitted artifact carries value_class \"test\". Closed surface of exactly 10 tools (7 buyer + 3 operator/feed, disjoint); no payment execution/initiation/holding, manual freeze/unfreeze, observation, tolerance, edit, or delete verb exists on either surface. Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live-key string, any non-local endpoint or network client configuration, value_class other than 'test', or any payment/rail/wallet/processor/observation module in the tree. Condition C-1: cross-artifact cross-commitment is the local per-schedule hash chain + export SET anchors only; full coordinated rollback not provided — external anchor required before live/multi-party use. Signing is an HMAC fixture stand-in for Herald RS256 (disclosed). Eclipse Assay and Eclipse Cupel are internal tools, not products: this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-slowpay.md): builder suite 42/42 re-run clean by bencher; bencher black-box suite 82/82; decisive fixture F-S9 independently reproduced in both runs (genuine witnessed price drift 4321→4400 freezes in the presenting evaluation, held due event never back-processed, fresh-process verify from export + pinned keys alone returns verified: true / ACTIVE after buyer re-attestation; the one-character altered copy 4400→4409 returns RECEIPT_HASH_MISMATCH, no freeze record, schedule remains ACTIVE). No defects found. Sole condition C-1: cross-artifact cross-commitment is the local per-schedule hash chain + export SET anchors only; full coordinated rollback not provided — external anchor required before live/multi-party use (bench text: cross-artifact cross-commitment in v0.1 is the local per-schedule hash chain plus the export's SET anchors only; full coordinated rollback across artifacts is not provided — external anchor required before live/multi-party use). No live or multi-party use is licensed until that anchor exists and the build is re-benched. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local stdio MCP, fixture schedules + fixture witnessed-change feed only, value_class 'test' on all artifacts, due records simulated notes (simulated: true); no payment is executed, initiated, or held, and no live feed, mandate issuance, or witness product is touched. Novel mechanism (SPEC §2.1, verbatim): any witnessed counterparty behavior change (price drift, endpoint change, ownership change) automatically freezes the schedule until re-attestation. Advisories A-1/A-2 (non-blocking bench notes, do not limit the verdict at the stated scope): A-1 — status/list EXPIRED overlay also applies to a DRAFT schedule past mandate expiry (display-only; no transition or write; sealing against an expired mandate is refused); A-2 — in a store already containing Herald-signed freeze records, removing the Herald key surfaces as CHAIN_BROKEN (whole-store validation) rather than the mint-specific error, with the isolated clean-store probe confirming the mint gate itself (structured error, zero writes, schedule stays ACTIVE). Signing is an HMAC fixture stand-in for Herald RS256 (disclosed on every signed face as 'herald-fixture (fixture HMAC stand-in)'); a live phase would need real Herald signing and a re-bench.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-slowpay.md (Verity bench of v0.1.0, 2026-10-27; builder suite re-run clean-state 42/42, bencher black-box suite 82/82, decisive F-S9 reproduced independently in both runs, 14-point delta law and claim-surface audit confirming the §10 counsel gate genuinely unbuilt; no defects, sole condition C-1, advisories A-1/A-2 non-blocking). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live payment execution or live use of any kind — the SPEC §10 counsel gate is named, unbuilt, with no dormant live mode: live payment execution behind Till's FinTech Law counsel gate; live witness/Till connections unbuilt (any live mandate issuance Slowpay would guard also stays behind Till's existing FinTech Law counsel gate / Till/x402 packet). Any live-feed or live-execution phase is a separate, counsel-cleared, re-benched build — not a configuration change to v0.1.0",
+          "Condition C-1 (sole condition, verbatim): cross-artifact cross-commitment is the local per-schedule hash chain + export SET anchors only; full coordinated rollback not provided — external anchor required before live/multi-party use. Full coordinated rollback across artifacts is not provided in v0.1; no live or multi-party use is licensed until an external anchor exists and the build is re-benched",
+          "Live witness products, feeds, or Till instances — fixture stand-ins only, consumed by grammar/reference: the recognized witness set is a local fixture config of exactly two source refs (trueprice-fixture, morphguard-fixture; pin Q-S1), not a registry design; Slowpay originates no price/endpoint/ownership observations of its own, and Docket adjudication is Docket's (Slowpay's export is Docket-consumable evidence only)",
+          "Any real payment executed, initiated, or held — a freeze in v0.1 states exactly one thing: a verified witness receipt reported a deviation from the sealed baseline; it does not state the counterparty acted wrongly, that the change is unauthorized, or that the new value is incorrect. Never claimed for v0.1.0 are 'fraud detection', 'stops bad payments', 'payment protection', 'we monitor your vendors', or any implication of live execution, live feeds, or live mandate issuance (SPEC §11.4 strings are named here only as never claimed)",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 with local fixture keys (keys/ gitignored, mode 600, never committed); a live phase requires real Herald signing and a re-bench; a fresh clone generates its own fixture keys to run the full suite",
+          "Hosted or live operation — local stdio only; metering point only per SPEC §9: exactly 1 metering point per mandate first reaching ACTIVE with a sealed baseline ($0.25/mandate shape); freezes, re-attestations, due events, and additional schedules under an already-metered mandate emit no further metering point; no charge, checkout, invoice, or payment-collection path is built and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-slowpay-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-slowpay-mcp.png",
+      "name": "Eclipse Slowpay",
+      "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.25/mandate, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering point only in v0.1.0, no charge path built): exactly 1 metering point per mandate first reaching ACTIVE with a sealed baseline; freezes, re-attestations, due events, and additional schedules under an already-metered mandate emit no metering point; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Recurring payments fail silently in one direction: the payee changes — price creeps, the receiving endpoint moves, the entity is sold — and the standing mandate keeps paying the old agreement's counterparty on autopilot, because a mandate records what was authorized once, not what the counterparty is now",
+        "I need a mandate bound to a witnessed baseline with an automatic tripwire: any witnessed counterparty behavior change automatically freezes the schedule until I re-attest — provable offline, from mandate ref + baseline + witness receipt + freeze record + pinned keys alone, with no human step between verification and freeze",
+        "I need the freeze kept honest on its face: only a verified witness receipt can freeze (an unwitnessed allegation freezes nothing), a freeze states only that a verified receipt reported a deviation from the sealed baseline — not wrongdoing — held due events are never back-processed, and unverifiable exports downgrade to UNVERIFIED_EXPORT instead of being upgraded post-hoc"
+      ],
+      "source_refs": [
+        "eclipse-slowpay-mcp/README.md",
+        "eclipse-slowpay-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-slowpay.md",
+        "argus101-specs-20261027/slowpay-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Schedule-integrity guard for recurring agent payments — any witnessed counterparty behavior change (price drift, endpoint change, ownership change) automatically freezes the schedule until re-attestation. PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed) — fixture schedules + fixture witnessed-change feed only; no payments are executed, initiated, or held. Condition C-1: cross-artifact cross-commitment is the local per-schedule hash chain + export SET anchors only; full coordinated rollback not provided — external anchor required before live/multi-party use.",
+      "tools": [
+        "slowpay_schedule_create",
+        "slowpay_baseline_seal",
+        "slowpay_due_simulate",
+        "slowpay_reattest",
+        "slowpay_schedule_cancel",
+        "slowpay_status",
+        "slowpay_verify",
+        "slowpay_change_present",
+        "slowpay_schedule_list",
+        "slowpay_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

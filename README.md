@@ -170,6 +170,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Voiceprint | in-development | PASS-CONDITIONAL(local, fixture call records) — not certified |
 | Eclipse Understudy | in-development | PASS-CONDITIONAL(local, subset proof over Till-grammar fixture mandates) — not certified |
 | Eclipse Genesis | in-development | PASS-CONDITIONAL(local/fixture) — not certified |
+| Eclipse Slowpay | in-development | PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

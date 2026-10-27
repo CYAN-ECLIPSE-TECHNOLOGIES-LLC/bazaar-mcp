@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 142,
+ "count": 143,
  "records": [
   {
    "record_type": "verdict",
@@ -2920,6 +2920,27 @@
   "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ballotbox.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ballotbox.md: D1–D6 all CLOSED on independent evidence, C2 + C3 SATISFIED, builder suite 34/34 reproduced). Scope exactly: local stdio, fixture electorate + fixture governance mandates only, value_class \"test\"; no result binds anyone. Legitimacy limit binds verbatim: recompute proves tally-vs-sealed-ballots; it does not prove electorate legitimacy. Standing conditions C1 (HMAC cap), C4 (§10 counsel gate), C5 (metering-only pricing), C6 (rollback fence) remain in force. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/simulator)"
+ },
+ {
+  "record_type": "verdict",
+  "product": "eclipse-exportcheck-mcp",
+  "name": "Eclipse Exportcheck",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-exportcheck-mcp/",
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.7",
+  "verdict": "PASS (local/fixture)",
+  "scope": "Eclipse Exportcheck — PASS (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-exportcheck.md: PASS-CONDITIONAL (local/fixture), defects D1/D2, conditions C1-C3) + collision-screen fix rounds and spot re-benches rounds 1-6 closing at wave4/spot-exportcheck-022.md (v0.1.7 @5b0ab96: D3 CLOSED, survivors-in-claim 0 forms / 0 glyphs over an exhaustive 2,749-glyph / 9,836-form sweep, determinism 55/55 processes one digest, invariance byte-identical vs v0.1.2, C4 DISCHARGED) — final verdict PASS (local/fixture). PASS (local/fixture) is not CERTIFIED — certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture parties against invented fixture snapshots only, value_class \"test\"; no real list is loaded, fetched, or reproduced, no real party is screened, and no verdict is relied on for anything. Collision screening (local/fixture scope): fixture sets loaded into Eclipse Exportcheck are collision-screened against symbol-, format- and homoglyph-decorated forms of listed names under SPEC Q-E3 as amended at v0.1.7 — assignment, identity and transmitted readings as there defined (bench: spot-exportcheck-022, survivors-in-claim 0). Standing disclosure: fixture sets are invented test data; a fixture CLEAR states only that this invented party record did not match this invented snapshot under this sealed rule-set version, as recomputed by spec 6.3 — it authorises no shipment, transaction, or filing. No live claim is made; no certification is claimed beyond the stated local/fixture bench scope. Standing conditions: C2 (from bench deviation 2): party_screen never links (prior_verdict_id: null) — a repeat party_screen under a newer snapshot produces an unlinked but immutable, vintage-sealed verdict; chain claims rest on verdict_rescreen + pack chain receipts only, and no listing or doc may imply party_screen chains. C3 (rollback fence, builder-stated, bencher-confirmed): verdict caps at PASS-CONDITIONAL(local/fixture) until an external anchor exists; pure local file store + signed head/SET anchors only. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "certified": false,
+  "canon_version": null,
+  "card_url": null,
+  "not_tested": [
+   "Any real list, real party, reliance, or redistribution — loading any real sanctions/export list (licensed or public), screening any real party, relying on a verdict for any transaction, shipment, onboarding, or filing, or redistributing list-derived data is SPEC §10 counsel-gated (export-control counsel + live list-licensing clearance) and UNBUILT; no dormant live path exists (no fetcher/connector/ingest code, grep-verified at bench)",
+   "Live or production screening of any kind — v0.1.7 screens fixture parties against invented fixture snapshots only (value_class \"test\" on every artifact); no real list is loaded, fetched, or reproduced and no verdict is relied on for anything",
+   "Production signatures — v0.1.7 signing is an HMAC fixture stand-in for Herald RS256 (operator + witness counter-signatures, fixture keys in keys/, gitignored, mode 600), disclosed on every artifact face as signature_scheme; no RS256/JWS production claim is made",
+   "External anchoring / live use — the pure local file store + signed head/SET anchors are the only anchors in v0.1.7 (standing condition C3, rollback fence); an external anchor is required before any live use",
+   "Trademark clearance of the name \"Exportcheck\" — the house trademark screen on the name is still pending per spec; the name is a working name"
+  ]
  }
  ]
 }

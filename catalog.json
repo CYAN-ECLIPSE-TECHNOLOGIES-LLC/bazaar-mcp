@@ -6629,6 +6629,71 @@
         "receipt_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — a continuous fingerprint chain over a payee's bank/rail details; any silent change blocks payment and issues a drift receipt — the classic vendor-bank-fraud pattern becomes impossible to hide. (That sentence describes the fixture chain's tamper-evidence property, not a real-world fraud guarantee — SPEC §11.4 fence, attached per the spec's honest-label rules.)",
+        "Fingerprint chain — fingerprint = sha256(canonical(payee_detail_set)) over a fixed field set (payee_ref, beneficiary_name, bank_id, account_id as fixture tokens only, rail, unit); every witnessed state appends one signed, hash-chained record, so rewriting history breaks every later hash. A check recomputes the presented fingerprint against the chain head: match → CLEAR; mismatch → BLOCK_DRIFT plus a signed drift receipt naming the changed field classes only — never values — with the last agreeing sequence and prior fingerprint. Silence is drift: a missing field, an added field, or a re-ordered canonical form does not match; a legitimate change is absorbed only by an explicit re-enrollment citing the drift receipt, and the seam stays in the chain permanently.",
+        "Offline recompute with pinned fixture keys — chain_verify recomputes every fingerprint, record hash, changed-field-class list and verdict from the source detail sets in an exported pack, using only the local pinned fixture keys (never keys presented inside a pack; a pack carrying keys fails at keys_pinned). The pinned fixture keys are HMAC secrets — they are NOT public keys, and no public or third-party verifiability is claimed at v0.1.1. An export is labelled witnessed:true / WITNESSED_EXPORT only when its embedded verifier transcript actually verified.",
+        "Completeness limits (bench condition C-4, on the face) — chain_verify proves the integrity of the records presented, NOT the completeness of the payee's history: a pack truncated to a prefix of the chain (receipts pruned consistently) verifies true as that shorter chain, because the pack format carries no external head-hash or length anchor; callers needing completeness must pin the head fingerprint and record count out-of-band (both are on the verify result's face). Appending an exact duplicate of a valid drift receipt still verifies (linkage is set-compared; the duplicate inflates the reported drift_receipts count, and no false history is created). The pack's own witnessed/export label is never trusted — the result label is re-derived from the recompute.",
+        "Export packs are NOT value-free (bench condition C-3, on the face) — chain_export packs contain the full fixture detail sets (enrollment, re-enrollment and check sets) by design, because drift classes and fingerprints are recomputed from them; the values are synthetic fixture tokens only (bank_fixture_…, acct_fixture_…), never real bank data, and packs must be handled as 'fixture tokens only' until a live-scope redesign. What is values-free, accurately, is the drift receipt (and logs): fingerprints + changed field classes only, never detail values. No value-free-export claim is made anywhere for this product.",
+        "Honest scope — LOCAL stdio, fixture payee records ONLY: no live bank, rail, vendor-master, or payment system is touched and no real bank-account number enters any fixture. Morphguard never pays, settles, releases, or holds funds — a drift result is a verdict returned to the caller (CLEAR / BLOCK_DRIFT / BLOCK_UNKNOWN_PAYEE / BLOCK_CHAIN_DEFECT); payment execution, if the caller proceeds on a CLEAR, stays entirely with Till behind Till's existing gates. A CLEAR means only 'presented fixture details match the chain head' — nothing more. Closed surface: exactly 9 tools across 2 disjoint surfaces (caller 6 / operator 3); no pay/settle/release/hold/edit/delete verb exists on either surface. Startup is fail-closed: a real ABA-shaped routing token, a live-key string, a non-local endpoint, or value_class other than 'test' refuses startup."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local, fixture payee records)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local, fixture payee records) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-morphguard.md) returned PASS-CONDITIONAL at that scope subject to conditions C-1..C-4; the spot re-bench of v0.1.1 in the same record CLOSED C-1 and confirmed C-2/C-3/C-4: builder suite 32/32 re-run from clean state; decisive fixture F-G9 independently reproduced in a fresh process from pack file + local pinned fixture keys alone (drift classes exactly [bank_id, rail], last_agreeing_seq=4, head_fingerprint == fingerprint(drifted set)); C-1 long chains verified end-to-end at 23/30/40 records (verify args >20k generic cap, within the 200k pack limit) and chain_export labels witnessed only when its embedded transcript actually verified (refusal/failed transcripts downgrade to UNWITNESSED_EXPORT); 28-check adversarial battery on the verify layer (tamper, swap, deletion, forged signatures, pack-carried keys rejected at keys_pinned, wrong/swapped pinned keys fail) and 300-step model-checked state fuzz with 0 illegal transitions. Scope is exactly: local stdio MCP, fixture payee records only, verdict to caller only (never executes payment), HMAC pinned-fixture-keys signing (fixture stand-in, not public keys), no counsel-gate (§10) live phase built or claimed. Export packs carry fixture detail tokens for recompute and are NOT value-free (C-3); drift receipts carry fingerprints + changed field classes only, never values. chain_verify proves integrity of the records presented, not completeness of history (C-4): a consistently pruned prefix verifies as that shorter chain, so callers needing completeness must pin the head fingerprint + record count out-of-band.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-morphguard.md (Verity bench of v0.1.0 + spot re-bench of v0.1.1 closing C-1; independent fresh-process F-G9 and long-chain verification, bench-side adversarial battery, subject tree unmodified by the bench). Fix of record: wave2/fix-morphguard.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Real payee, vendor-master, bank, or rail data — fixture payee records only; SPEC §10 counsel gate (a) checking details against any real vendor-master / bank / rail system is unbuilt by design, named, with no dormant live path",
+          "Holding or processing real bank-account numbers — SPEC §10 counsel gate (b) (data-protection + NACHA-adjacent obligations) is unbuilt by design; no real bank-account number enters any fixture",
+          "Automatically halting a real payment — SPEC §10 counsel gate (c): any integration where a BLOCK automatically halts a real payment inside a third party's AP flow (interference/liability review) is unbuilt by design; Morphguard returns a verdict to the caller only and never pays, settles, releases, or holds funds",
+          "Fraud prevention for live payments — SPEC §10 counsel gate (d): marketing the verdict as fraud prevention for live payments is counsel-gated and NOT claimed; never claimed for v0.1.1 are fraud prevention, bank-account verification, 'prevents vendor fraud', live monitoring, or any Till/payment capability",
+          "Asymmetric / third-party verifiability — v0.1.1 signing is an HMAC-SHA256 fixture stand-in for the Herald RS256 pattern using pinned fixture keys only; the pinned fixture keys are HMAC secrets, NOT public keys, and anyone holding a pinned fixture key could forge a chain, so no public or third-party verifiability is claimed; RS256 (or equivalent asymmetric) is required before any scope where verifier and signer are in different trust domains",
+          "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation — local stdio only; metering point only on payee_check ($0.05/check shape), no charge path built and no live Meter ingest"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-morphguard-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-morphguard-mcp.png",
+      "name": "Eclipse Morphguard",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering point only in v0.1.1, no charge path built): payee_check evaluations only (including BLOCK_UNKNOWN_PAYEE) meter at the $0.05/check book shape; idempotent retries do not double-meter; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "A vendor's bank details were silently changed in our payee records and the next payment went to the wrong account — I need a check before paying that proves the details I am about to pay to are the details that were witnessed, or blocks with a receipt naming exactly which field classes changed",
+        "When payee details legitimately change, the change disappears into an edit history nobody can recompute — I need drift absorbed only by an explicit re-enrollment citing the drift receipt, with the seam permanent in a hash-chained fingerprint history",
+        "An auditor asks whether a payee's detail history was rewritten after the fact — I need an exported pack that recomputes offline from the pack plus pinned fixture keys alone, with honest labelling: witnessed only when the embedded transcript actually verified, and integrity of the records presented never dressed up as completeness of history"
+      ],
+      "source_refs": [
+        "eclipse-morphguard-mcp/README.md",
+        "eclipse-morphguard-mcp/server.json",
+        "eclipse-morphguard-mcp/SPEC.md",
+        "argus101-program-20261027/wave2/bench-morphguard.md"
+      ],
+      "status": "in-development",
+      "tagline": "Payee-detail drift evidence over fixture records — before paying a known payee, Morphguard compares the bank/rail details presented against a continuous, hash-chained fingerprint history and returns CLEAR or BLOCK plus a drift receipt naming exactly which field classes changed. CERTIFIED (local, fixture payee records) — fixture payee records only; verdict to caller only, never executes payment; verification uses pinned fixture keys (HMAC fixture stand-in — not public keys); export packs carry fixture detail tokens for recompute and are not value-free.",
+      "tools": [
+        "payee_enroll",
+        "payee_check",
+        "payee_reenroll",
+        "payee_status",
+        "drift_receipt_get",
+        "chain_verify",
+        "payee_retire",
+        "chain_export",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

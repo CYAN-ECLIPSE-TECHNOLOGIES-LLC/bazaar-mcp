@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 102,
+ "count": 103,
  "records": [
   {
    "record_type": "verdict",
@@ -2045,6 +2045,29 @@
    "scope": "PASS-CONDITIONAL (local) \u2014 Verity bench of v0.1.0, 2026-10-27 (argus101-program-20261027/wave2/bench-sponsorline.md): builder suite 25/25 from clean state; F-S14 independently reproduced from pack + pinned keys alone (payments ACTIVE, publishing + contracting UNACCEPTED by derivation over the complete chain, same descriptor COVERED-BY-RECEIPT as payments / CLASS_MISMATCH as the other classes); 44/44 adversarial probes. Local stdio, fixture sponsors/parties only, value_class \"test\" on all artifacts, fixture HMAC Herald stand-in. PASS-CONDITIONAL is not CERTIFIED. Conditions at ship: C1 internal library helper never exposed as a tool or cited standalone; C2 \u00a711.2 liability fence verbatim in README, full manifest of record (server.legacy.json), and the Bazaar listing. A Sponsorline receipt evidences a signed acceptance \u2014 it does not itself create, transfer, or enforce legal liability; enforceability is a counsel question (\u00a710), gate unbuilt.",
    "status": "current",
    "verdict": "PASS-CONDITIONAL (local)"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.1",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Morphguard",
+   "not_tested": [
+    "Real payee, vendor-master, bank, or rail data \u2014 fixture payee records only; SPEC \u00a710 counsel gate (a) checking details against any real vendor-master / bank / rail system is unbuilt by design, named, with no dormant live path",
+    "Holding or processing real bank-account numbers \u2014 SPEC \u00a710 counsel gate (b) (data-protection + NACHA-adjacent obligations) is unbuilt by design; no real bank-account number enters any fixture",
+    "Automatically halting a real payment \u2014 SPEC \u00a710 counsel gate (c): any integration where a BLOCK automatically halts a real payment inside a third party's AP flow (interference/liability review) is unbuilt by design; Morphguard returns a verdict to the caller only and never pays, settles, releases, or holds funds",
+    "Fraud prevention for live payments \u2014 SPEC \u00a710 counsel gate (d): marketing the verdict as fraud prevention for live payments is counsel-gated and NOT claimed; never claimed for v0.1.1 are fraud prevention, bank-account verification, 'prevents vendor fraud', live monitoring, or any Till/payment capability",
+    "Asymmetric / third-party verifiability \u2014 v0.1.1 signing is an HMAC-SHA256 fixture stand-in for the Herald RS256 pattern using pinned fixture keys only; the pinned fixture keys are HMAC secrets, NOT public keys, and anyone holding a pinned fixture key could forge a chain, so no public or third-party verifiability is claimed; RS256 (or equivalent asymmetric) is required before any scope where verifier and signer are in different trust domains",
+    "Production key custody \u2014 fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+    "Hosted or live operation \u2014 local stdio only; metering point only on payee_check ($0.05/check shape), no charge path built and no live Meter ingest"
+   ],
+   "product": "eclipse-morphguard-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-morphguard-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (local, fixture payee records) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-morphguard.md) returned PASS-CONDITIONAL at that scope subject to conditions C-1..C-4; the spot re-bench of v0.1.1 in the same record CLOSED C-1 and confirmed C-2/C-3/C-4: builder suite 32/32 re-run from clean state; decisive fixture F-G9 independently reproduced in a fresh process from pack file + local pinned fixture keys alone (drift classes exactly [bank_id, rail], last_agreeing_seq=4, head_fingerprint == fingerprint(drifted set)); C-1 long chains verified end-to-end at 23/30/40 records (verify args >20k generic cap, within the 200k pack limit) and chain_export labels witnessed only when its embedded transcript actually verified (refusal/failed transcripts downgrade to UNWITNESSED_EXPORT); 28-check adversarial battery on the verify layer (tamper, swap, deletion, forged signatures, pack-carried keys rejected at keys_pinned, wrong/swapped pinned keys fail) and 300-step model-checked state fuzz with 0 illegal transitions. Scope is exactly: local stdio MCP, fixture payee records only, verdict to caller only (never executes payment), HMAC pinned-fixture-keys signing (fixture stand-in, not public keys), no counsel-gate (\u00a710) live phase built or claimed. Export packs carry fixture detail tokens for recompute and are NOT value-free (C-3); drift receipts carry fingerprints + changed field classes only, never values. chain_verify proves integrity of the records presented, not completeness of history (C-4): a consistently pruned prefix verifies as that shorter chain, so callers needing completeness must pin the head fingerprint + record count out-of-band.",
+   "status": "current",
+   "verdict": "CERTIFIED (local, fixture payee records)"
   }
  ]
 }

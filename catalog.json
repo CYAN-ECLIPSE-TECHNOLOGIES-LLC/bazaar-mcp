@@ -7626,6 +7626,69 @@
         "muzzle_export"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 every eval score carries an expiry computed from measured model/tool drift rates; consumers get a 'stale eval' verdict when a score outlives its evidence.",
+        "Pinned estimator sandclock/1.0 \u2014 least-squares slope of drift magnitude over time over all presented observations for the subject, computed in exact rational arithmetic, floored at 0; DRIFT_BUDGET = 1/10, MIN_DRIFT_OBS = 3, MIN_SPAN_DAYS = 7, MIN_EXPIRY_DAYS = 1, MAX_EXPIRY_DAYS = 180; expiry = issued_at + DRIFT_BUDGET / drift_rate, clamped to the pinned bounds with the clamp recorded on the record's face; below the evidence minimums the outcome is INSUFFICIENT_DRIFT_EVIDENCE \u2014 no expiry is issued and no default TTL exists anywhere in the product.",
+        "Decisive fixture F-S13 stands from the bench record \u2014 two fixture scorecards issued the same fixture day, fast drifter vs near-frozen subject, same pinned budget: expiries 10 days vs the 180-day clamp in the drift-implied order, split verdicts at day 30 (STALE_EVAL / CURRENT), reproduced exactly by fresh-process recompute from scorecards + evidence sets + public keys alone; a fixed-TTL implementation fails by construction.",
+        "Evidence-decay fence (SPEC \u00a711.2, verbatim discipline) \u2014 expiry is evidence-decay arithmetic, not a claim the score was wrong. Every expiry, check record, and receipt states on its face: the estimator version (sandclock/1.0), the drift budget and clamp bounds in force, the evidence count and span, and the computed expires_at, in the permitted sense only: \"this score's evidence decays past budget 1/10 at measured drift rate <r> under estimator sandclock/1.0; the score is stale as evidence after <expires_at>.\" Sandclock measures no current performance, never re-runs an eval, never edits a score, and never blocks a consumer from using a stale score \u2014 it issues the verdict; consumers decide.",
+        "Condition 1 \u2014 Scope/fence condition (from F1 residual, bench, verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec \u00a710.2) remains unbuilt and separately gated.",
+        "Whole-file-rollback honesty fence (README, verbatim): a rollback of the entire store.json file to an earlier self-consistent snapshot (entries, all anchors, and metering together) is undetectable in this local single-file model, because no artifact outside the file survives to contradict it; every partial rollback, deletion, or transplant is detected by the set / tail / metering cross-checks above.",
+        "Downgrade law (SPEC \u00a76.3) \u2014 an expiry or check record that fails recompute at any step, or lacks a witness counter-signature, exports only as DOWNGRADED_EXPIRY_EXPORT \u2014 unsigned summary, verified: false, failure_step on its face, no citable verdict \u2014 and no tool path upgrades it; remediation is a new expiry record in superseding lineage.",
+        "Format attribution is exact and minimal (SPEC \u00a711.4): scorecards are consumed in Benchkit format; drift records are consumed as Doppel/Replay evidence types and verified in their own formats. Eclipse Assay and Eclipse Cupel are internal tools, not products (SPEC \u00a70.3): this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere \u2014 never \"Assay-verified\", \"Cupel-tested\", or \"powered by Assay\"."
+      ],
+      "categories": [
+        "Certification & Testing",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL (local) \u2014 Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-sandclock.md): F1\u2013F4 closed (store set-anchor / key-binding / mint-signing / envelope findings), F1 whole-file residual adjudicated acceptable-at-scope under condition 1; builder suite 50/50, independent probes 55/55; closed F1\u2013F6 first-pass items spot-checked \u2014 none reopened. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local (fixture scorecards + fixture drift evidence only, value_class \"test\") under the local single-file / single-operator store model \u2014 local stdio MCP (SPEC \u00a70.1); no live model/tool observation, no eval run, no score issued; the counsel-gated live phase (SPEC \u00a710.2) remains unbuilt and separately gated. Condition 1 (verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec \u00a710.2) remains unbuilt and separately gated.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench2-sandclock.md (Verity delta re-bench 2, suite 50/50 re-run by the bencher, 55 independent serialized probes; F-S13 decisive recompute with bench-side independent estimator matched). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live, multi-party, shared-filesystem, or adversarial-operator use \u2014 CONDITION 1 (bench, verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec \u00a710.2) remains unbuilt and separately gated.",
+          "Complete coordinated whole-file rollback \u2014 Honesty fence (README, verbatim): a rollback of the entire store.json file to an earlier self-consistent snapshot (entries, all anchors, and metering together) is undetectable in this local single-file model, because no artifact outside the file survives to contradict it; every partial rollback, deletion, or transplant is detected by the set / tail / metering cross-checks. No stronger claim is made.",
+          "Live phase (SPEC \u00a710.2 counsel gate, named, unbuilt) \u2014 consuming live Doppel/Replay drift feeds, clocking real third-party eval scores, publishing staleness verdicts, or a verdict a marketplace/registry acts on are out of v0.1.2, hard; the gate packet (defamation / disparagement exposure of a public STALE_EVAL verdict over another party's score; the \u00a711 evidence-decay wording as the claim submission; reliance posture of consumers who act on a verdict; estimator/budget disclosure duties) is unbuilt by design and no dormant live path exists to flip \u2014 live mode is a post-gate, re-benched code change, not a config flip",
+          "Live subjects and real eval scores \u2014 fixture scorecards in Benchkit format + fixture drift evidence only; no live model/tool is observed, no eval is run, no score is issued, no drift is measured by this product, and a STALE_EVAL verdict is evidence-decay arithmetic only \u2014 never a claim a score was or is wrong (SPEC \u00a711.3: never \"expired certification\", \"invalid score\", or \"failed eval\")",
+          "Live Herald signing \u2014 v0.1.2 signing is a fixture HMAC stand-in consumed through Herald's signing interface (Sandclock defines no signature scheme of its own), disclosed on the product's face; verification uses pinned fixture keys only, never keys presented inside a record",
+          "Production key custody \u2014 fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path \u2014 local stdio only; metering point only per SPEC \u00a79.1 (stale_check_completed at the $0.01/check price shape, per stale_check record and per expiry_verify receipt), no charge path, payment call, or entitlement check is built and no live Meter ingest is claimed; a check is never refused for non-payment"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-sandclock-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-sandclock-mcp.png",
+      "name": "Eclipse Sandclock",
+      "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED \u2014 FREE scorecard/clocking side + $0.01/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC \u00a79 (FREE + $0.01/check; the price book governs): the scorecard/clocking side is FREE (counted, never metered for charge); one metered event class stale_check_completed \u2014 per stale_check record issued (any verdict) and per expiry_verify receipt at $0.01/check, keyed to (expiry_id, checked_at, checker_ref) so an identical resubmitted check returns the recorded record with no second metering event. Metering records only in v0.1.2 \u2014 no charge path, payment call, or entitlement check is built, no live Meter ingest is claimed, and a check is never refused for non-payment. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Eval scores are quoted indefinitely while the thing scored drifts underneath them: a model or tool changes, the old scorecard still circulates at face value, and no artifact says when its evidence stopped supporting it",
+        "I need every score to carry an expiry computed from its own measured drift \u2014 not a fixed calendar TTL that is identical for a frozen tool and a fast-drifting model \u2014 recomputable from the scorecard ref + drift evidence alone",
+        "I need a stale verdict that is honest about what it is: evidence-decay arithmetic under a pinned estimator, with the budget, clamp bounds, evidence count and span on its face \u2014 never a claim the score was wrong, and never a block on using it"
+      ],
+      "source_refs": [
+        "eclipse-sandclock-mcp/README.md",
+        "eclipse-sandclock-mcp/server.json",
+        "argus101-specs-20261027/sandclock-spec.md",
+        "argus101-program-20261027/wave2/rebench2-sandclock.md"
+      ],
+      "status": "in-development",
+      "tagline": "Eval-expiry clock over fixture Benchkit-format scorecards + fixture drift evidence \u2014 every eval score carries an expiry computed from measured model/tool drift rates; consumers get a 'stale eval' verdict when a score outlives its evidence. PASS-CONDITIONAL (local) \u2014 local stdio, fixture scorecards + fixture drift evidence only, value_class \"test\"; no live model/tool observation, no eval is run, no score is issued. Expiry is evidence-decay arithmetic, not a claim the score was wrong.",
+      "tools": [
+        "expiry_issue",
+        "expiry_status",
+        "stale_check",
+        "expiry_verify",
+        "expiry_export"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

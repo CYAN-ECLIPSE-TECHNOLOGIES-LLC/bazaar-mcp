@@ -6694,6 +6694,67 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — a claim cannot pass the publish gate without a sealed pointer to its substantiation document; the published artifact carries the pointer (SPEC §2.1). Load-bearing label (SPEC §11.1, verbatim): the pointer proves substantiation was BOUND, not that it substantiates — substantiation adequacy is the publisher's/counsel's call.",
+        "Seal, gate on verification, carry — at bind time claim_hash and substantiation_doc_hash plus document ref, binder ref, and bind time are sealed into a hash-chained bind record with two signatures (binder counter-signature + Herald RS256 JWS). At publish the gate recomputes both hashes from the artifact and document as presented and verifies the seal — a pointer merely present, stale, or pointing at a different document does not pass; there is no override verb, manual pass, or publish-first-bind-later path. The published fixture artifact embeds the pointer triple (bind_id, claim_hash, substantiation_doc_hash) on its face in an in-band footer block.",
+        "Offline pointer verification (SPEC §6.4) — a pure function of the published artifact + the document + the pointer (+ optional gate receipt / chain segment) + the pinned public keys in keys/pinned-public.json: recompute claim and document hashes from source bytes (presented digests are never trusted), verify both signatures against pinned keys only (a key carried on a pointer, receipt, or tool argument is never consumed), walk the chain, and check the gate receipt. Failing steps are named VERIFY_FAIL:1..5. Unverifiable material exports only as UNVERIFIED_EXPORT, verified: false — downgrade law: no tool path upgrades it and no path from it leads to a gate pass.",
+        "Decisive fixture + C1 closure — bench F-A10: end-to-end bound/gated/published fixture artifact verified VERIFY_PASS in a fresh subprocess with an empty data dir (no store created), and every tamper fails at its named step. At v0.1.1 the state machine is closed as specced (SPEC §3.1): adproof_bind refuses a claim_hash with no submitted claim record as CLAIM_NOT_SUBMITTED — no state change, no metering — so BOUND without CLAIM_HASHED does not exist, and the zero-submit sequence that previously reached PUBLISHED/VERIFY_PASS now refuses at bind.",
+        "F5 scope fence (standing, exactly as benched) — RSA key generation uses the random module (Mersenne Twister), not a CSPRNG. That is acceptable only for these fixture keys at this local/fixture scope. Before any scope above fixture is ever contemplated, key generation must move to a CSPRNG and be re-benched; no scope claim above local/fixture is made or implied by this code.",
+        "Honest scope — LOCAL stdio, fixture claims/documents ONLY: no live publisher, ad platform, or marketing system is touched, no real claim or real substantiation document enters a fixture, and every emitted artifact carries value_class \"test\". Adproof binds, gates, and stamps: it does not read a document and judge it, does not rewrite claims, and does not approve claims — closed surface of exactly 6 tools; no adequacy/score/approve/pay/charge verb exists. Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live endpoint, an enabled network client, a non-fixture source, or value_class other than 'test'; no network or publisher client exists in the tree."
+      ],
+      "categories": [
+        "Compliance & Regulation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local/fixture)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-adproof.md) returned PASS-CONDITIONAL (local/fixture) subject to condition C1; the spot re-bench of v0.1.1 in the same record CLOSED C1 and F2: builder suite 26/26 re-run from clean state; bencher-written independent C1 probes — orphan bind (locally hashed real fixture claim never submitted, and an arbitrary 'a'*64 hash) refused CLAIM_NOT_SUBMITTED with no pointer, no store.json created, zero state and zero metering; the full zero-submit path never reaches PUBLISHED or VERIFY_PASS; submitted binds meter exactly once and idempotent re-binds do not double-meter; future-bound pointer at the gate refuses POINTER_BOUND_IN_FUTURE (F2, not POINTER_MISMATCH, no gate receipt). Decisive fixture F-A10 independently reproduced: VERIFY_PASS in a fresh subprocess with a new empty data dir (no store.json created — genuinely offline/stateless), and tamper classes fail at their named steps (claim word altered VERIFY_FAIL:1, Herald signature stripped VERIFY_FAIL:3, presented-digest substitution both variants VERIFY_FAIL:1). Scope is exactly: local stdio MCP, fixture claims/documents only, fixture publish pipeline, offline pointer verification from artifact+document+pointer+gate receipt+chain segment+pinned public keys; value_class 'test' on all artifacts; no advertising-claims counsel-gate (SPEC §10) live phase built or claimed. Load-bearing label (SPEC §11.1, verbatim): the pointer proves substantiation was BOUND, not that it substantiates — substantiation adequacy is the publisher's/counsel's call. F5 standing fence: RSA key generation uses the random module (Mersenne Twister), not a CSPRNG — fixture-only; CSPRNG keygen + re-bench required before any scope above fixture.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-adproof.md (Verity bench of v0.1.0 + spot re-bench of v0.1.1 closing C1/F2; builder suite re-run clean-state, decisive F-A10 and C1 probes reproduced independently in fresh processes, 28/29 adversarial verify battery with the 1 miss a bencher expectation error recorded in the bench, subject tree unmodified by the bench). Fix of record: wave2/fix-adproof.md. No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Real claims, real substantiation documents, or any live publisher / ad-platform / marketing use — fixture claims/documents only; the SPEC §10 advertising-claims counsel gate is unbuilt by design, named, with no dormant live mode: before any live use counsel must clear (a) §11's label language, (b) the gate's marketing description, (c) what, if anything, a carried pointer may be represented as to advertisers, publishers, and regulators",
+          "Substantiation adequacy — whether a document actually substantiates a claim, and whether a claim may lawfully run, is the publisher's/advertiser's call with their counsel, outside Adproof entirely; never claimed for v0.1.1 are 'substantiated', 'verified claim', 'compliant advertising', 'FTC-safe', 'legally cleared', or any implication that a gate PASS means a claim is true, supported, or lawful to publish; no tool reads, scores, or reviews a substantiation document's contents (no adequacy verb exists)",
+          "F5 — RSA key generation uses the random module (Mersenne Twister), not a CSPRNG: acceptable only for fixture keys at local/fixture scope; any scope above fixture requires CSPRNG key generation and a re-bench, and no such scope is claimed",
+          "Bench C2 notes F3/F4, left as documented notes at v0.1.1 — the key-argument blocklist is enumerative rather than an allowlist (inert: no code path consumes a key from a pointer, receipt, or tool argument; verification uses pinned public keys only), and the function layer tolerates extra/irrelevant fields (server schemas declare additionalProperties: false but server.handle does not enforce schemas; no malformed required field was accepted in any bench test)",
+          "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone generates its own fixture keys on first run to run the full suite",
+          "Hosted or live operation — local stdio only; metering point only per claim bound ($0.05/claim shape), no charge path built and no live Meter ingest"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-adproof-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-adproof-mcp.png",
+      "name": "Eclipse Adproof",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.05/claim, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering point only in v0.1.1, no charge path built): one metering point per claim bound (a bind reaching BOUND with both signatures); gate checks, publishes, verifies, and refused binds are not metering points, and idempotent re-binds assert no new metering point; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My agent generates marketing claims and the substantiation lives in a separate folder or an approver's memory — after publication nothing in the artifact itself says which document was supposed to support which claim, and a claim edited after review silently inherits the earlier approval",
+        "I need publication gated structurally, not by checklist: an unbound claim cannot pass, an edited claim no longer matches its pointer, and the pointer travels with the published artifact so a later reader can recompute which document was bound to which claim at publish time — offline, from the artifact plus the document and public keys alone",
+        "I need the binding claim kept honest on its face: the pointer proves substantiation was BOUND, not that it substantiates — adequacy stays the publisher's/counsel's call, and unverifiable links downgrade to UNVERIFIED_EXPORT instead of being upgraded post-hoc"
+      ],
+      "source_refs": [
+        "eclipse-adproof-mcp/README.md",
+        "eclipse-adproof-mcp/server.json",
+        "argus101-program-20261027/wave2/bench-adproof.md",
+        "argus101-specs-20261027/adproof-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Pre-publication substantiation gate for fixture marketing claims — no sealed pointer, no publish; the published fixture artifact carries the pointer. CERTIFIED (local/fixture) — fixture claims/documents only, fixture publish pipeline only. The pointer proves substantiation was BOUND, not that it substantiates — substantiation adequacy is the publisher's/counsel's call. RSA key generation uses the random module (Mersenne Twister), not a CSPRNG — fixture keys only.",
+      "tools": [
+        "adproof_claim_submit",
+        "adproof_bind",
+        "adproof_gate_check",
+        "adproof_publish",
+        "adproof_pointer_verify",
+        "adproof_export"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

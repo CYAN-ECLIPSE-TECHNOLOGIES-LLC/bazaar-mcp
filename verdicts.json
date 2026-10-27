@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 103,
+ "count": 104,
  "records": [
   {
    "record_type": "verdict",
@@ -2068,6 +2068,28 @@
    "scope": "CERTIFIED (local, fixture payee records) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-morphguard.md) returned PASS-CONDITIONAL at that scope subject to conditions C-1..C-4; the spot re-bench of v0.1.1 in the same record CLOSED C-1 and confirmed C-2/C-3/C-4: builder suite 32/32 re-run from clean state; decisive fixture F-G9 independently reproduced in a fresh process from pack file + local pinned fixture keys alone (drift classes exactly [bank_id, rail], last_agreeing_seq=4, head_fingerprint == fingerprint(drifted set)); C-1 long chains verified end-to-end at 23/30/40 records (verify args >20k generic cap, within the 200k pack limit) and chain_export labels witnessed only when its embedded transcript actually verified (refusal/failed transcripts downgrade to UNWITNESSED_EXPORT); 28-check adversarial battery on the verify layer (tamper, swap, deletion, forged signatures, pack-carried keys rejected at keys_pinned, wrong/swapped pinned keys fail) and 300-step model-checked state fuzz with 0 illegal transitions. Scope is exactly: local stdio MCP, fixture payee records only, verdict to caller only (never executes payment), HMAC pinned-fixture-keys signing (fixture stand-in, not public keys), no counsel-gate (\u00a710) live phase built or claimed. Export packs carry fixture detail tokens for recompute and are NOT value-free (C-3); drift receipts carry fingerprints + changed field classes only, never values. chain_verify proves integrity of the records presented, not completeness of history (C-4): a consistently pruned prefix verifies as that shorter chain, so callers needing completeness must pin the head fingerprint + record count out-of-band.",
    "status": "current",
    "verdict": "CERTIFIED (local, fixture payee records)"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.1",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Adproof",
+   "not_tested": [
+    "Real claims, real substantiation documents, or any live publisher / ad-platform / marketing use \u2014 fixture claims/documents only; the SPEC \u00a710 advertising-claims counsel gate is unbuilt by design, named, with no dormant live mode: before any live use counsel must clear (a) \u00a711's label language, (b) the gate's marketing description, (c) what, if anything, a carried pointer may be represented as to advertisers, publishers, and regulators",
+    "Substantiation adequacy \u2014 whether a document actually substantiates a claim, and whether a claim may lawfully run, is the publisher's/advertiser's call with their counsel, outside Adproof entirely; never claimed for v0.1.1 are 'substantiated', 'verified claim', 'compliant advertising', 'FTC-safe', 'legally cleared', or any implication that a gate PASS means a claim is true, supported, or lawful to publish; no tool reads, scores, or reviews a substantiation document's contents (no adequacy verb exists)",
+    "F5 \u2014 RSA key generation uses the random module (Mersenne Twister), not a CSPRNG: acceptable only for fixture keys at local/fixture scope; any scope above fixture requires CSPRNG key generation and a re-bench, and no such scope is claimed",
+    "Bench C2 notes F3/F4, left as documented notes at v0.1.1 \u2014 the key-argument blocklist is enumerative rather than an allowlist (inert: no code path consumes a key from a pointer, receipt, or tool argument; verification uses pinned public keys only), and the function layer tolerates extra/irrelevant fields (server schemas declare additionalProperties: false but server.handle does not enforce schemas; no malformed required field was accepted in any bench test)",
+    "Production key custody \u2014 fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone generates its own fixture keys on first run to run the full suite",
+    "Hosted or live operation \u2014 local stdio only; metering point only per claim bound ($0.05/claim shape), no charge path built and no live Meter ingest"
+   ],
+   "product": "eclipse-adproof-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-adproof-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-adproof.md) returned PASS-CONDITIONAL (local/fixture) subject to condition C1; the spot re-bench of v0.1.1 in the same record CLOSED C1 and F2: builder suite 26/26 re-run from clean state; bencher-written independent C1 probes \u2014 orphan bind (locally hashed real fixture claim never submitted, and an arbitrary 'a'*64 hash) refused CLAIM_NOT_SUBMITTED with no pointer, no store.json created, zero state and zero metering; the full zero-submit path never reaches PUBLISHED or VERIFY_PASS; submitted binds meter exactly once and idempotent re-binds do not double-meter; future-bound pointer at the gate refuses POINTER_BOUND_IN_FUTURE (F2, not POINTER_MISMATCH, no gate receipt). Decisive fixture F-A10 independently reproduced: VERIFY_PASS in a fresh subprocess with a new empty data dir (no store.json created \u2014 genuinely offline/stateless), and tamper classes fail at their named steps (claim word altered VERIFY_FAIL:1, Herald signature stripped VERIFY_FAIL:3, presented-digest substitution both variants VERIFY_FAIL:1). Scope is exactly: local stdio MCP, fixture claims/documents only, fixture publish pipeline, offline pointer verification from artifact+document+pointer+gate receipt+chain segment+pinned public keys; value_class 'test' on all artifacts; no advertising-claims counsel-gate (SPEC \u00a710) live phase built or claimed. Load-bearing label (SPEC \u00a711.1, verbatim): the pointer proves substantiation was BOUND, not that it substantiates \u2014 substantiation adequacy is the publisher's/counsel's call. F5 standing fence: RSA key generation uses the random module (Mersenne Twister), not a CSPRNG \u2014 fixture-only; CSPRNG keygen + re-bench required before any scope above fixture.",
+   "status": "current",
+   "verdict": "CERTIFIED (local/fixture)"
   }
  ]
 }

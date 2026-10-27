@@ -7299,6 +7299,76 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — predictions and SLA commitments are sealed publicly before the outcome window and scored at maturity — a track record that cannot be backdated or cherry-picked.",
+        "Seal before the window, or it is not a seal (SPEC L2) — a commitment enters the registry only if its seal time precedes its outcome window; backdating is refused by name (SEAL_TOO_LATE), seal times are service-stamped from the fixture clock and never presented, and the Herald witness (not the record's own field) carries the time",
+        "Append-only completeness (SPEC L3) — one hash-chained registry; the Herald-signed head seal (RS256 JWS) commits to the total seal count and per-author seal counts, and each author's seals carry a gapless per-author sequence, so a presentation omitting misses fails completeness by sequence and count before any scoring is checked",
+        "Scoring rule pinned at seal time (SPEC L4) — each seal carries its scoring rule by id + version + rule hash (closed fixture set: binary_prediction / threshold_prediction / sla_commitment); a type or rule outside the set is refused (SCORING_RULE_UNPINNED), never scored under a nearest rule; a rule change applies to later seals only",
+        "Offline verification (SPEC §6.4) — track_record_verify recomputes every hash, result, tally and count from the export + pinned public keys alone (keys/public-keys.json only; keys embedded in a record or export are never read) and cryptographically verifies every signature on the path; decisive fixture F-T10 passes in a fresh process with state discarded, and the cherry-pick run fails at step 5 naming the missing author_seq values; any step failing returns TIMECAPSULE_VERIFY_FAIL:<step> with no partial verdict, and a failed export is labelled UNVERIFIED_EXPORT claiming no results in either direction",
+        "Stored-serve + aux hardening (bench conditions C1–C8, D1–D5, N1–N3, R1, all CLOSED at v0.1.4) — head last_record_hash + registry_id binding, presented records bound byte-for-byte to the chain, verify-before-serve or UNVERIFIED labelling on stored reads, metering + anomaly aux stores Herald-anchored with entry-by-entry validation, and an aux anchor whose signature is null/missing/non-verifying (or whose pinned Herald key is unavailable) fails every surface closed: anomaly reads withhold as UNVERIFIED_AUX and every mint refuses STORE_DEFECT / AUX_ANCHOR_DEFECT with zero writes — no genuine signature ever lands over forged aux content",
+        "Partial counter-signature labelling (SPEC §6.3) — a score awaiting the author's counter-signature is labelled counter_signatures: partial wherever it appears and is still included in the track record; an author who refuses to counter-sign a MISS produces a labelled partial, never a missing score; no verb deletes, edits, unseals, re-scores, suppresses or reclassifies a record on either surface",
+        "Score ≠ merit fence (SPEC §10.3, on the face of the listing) — a track record establishes only that stated commitments were sealed before their windows and scored under their pinned rules over presented outcomes; whether the commitments were hard, the outcomes true, or the author skilled is outside what the recomputation shows"
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Identity & Attestation"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local/simulator, public seal registry over fixture commitments, value_class \"test\")",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local/simulator, public seal registry over fixture commitments, value_class \"test\") — CERTIFIED — Eclipse Timecapsule v0.1.4, local/simulator scope only: public seal registry over fixture commitments, value_class \"test\". No certification claimed beyond this scope. Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-timecapsule.md) PASS-CONDITIONAL (local/simulator, public seal registry over fixture commitments) with conditions C1–C8; fix rounds v0.1.1–v0.1.3 closed C1–C8, D1–D5 and N1–N3; delta re-bench round 4 of v0.1.4 (rebench4-timecapsule.md): R1 (aux anchor signature-null bypass) CLOSED, remaining conditions NONE, builder suite 69/69 re-run by the bencher, independent harness 72/72 checks PASS, regression spot probes confirm C/D classes stay closed — CERTIFIED at exactly this scope. Decisive fixture F-T10 independently reproduced at the bench: from the registry export + pinned public keys alone, an author's complete track record recomputes (8 seals, gapless author_seq, head counts exact, tallies identical) and a cherry-picked presentation of only the winners fails step 5, naming the missing author_seq values. Scope is exactly: local/simulator, public seal registry over fixture commitments, value_class \"test\"; fixture cryptography only (1024-bit fixture RSA, fixture keys, fixture clock); no live prediction, real SLA, real outcome feed, or public registry deployment exists in v0.1.4. Gates remain unbuilt by design and are OUT of certified scope: no public hosting, no outcome feed, no SLA enforcement, no charge path, no network. Score ≠ merit (SPEC §10.3): a track record establishes only that stated commitments were sealed before their windows and scored under their pinned rules over presented outcomes — whether the commitments were hard, the outcomes true, or the author skilled is outside what the recomputation shows. Novel mechanism (SPEC §2.1, verbatim): predictions and SLA commitments are sealed publicly before the outcome window and scored at maturity — a track record that cannot be backdated or cherry-picked. Stored serves are verify-before-serve / downgrade-labelled (C5), aux stores (metering + anomalies) are Herald-anchored with entry-by-entry validation (C6 + R1), and every anchor-consulting surface fails closed as STORE_DEFECT / AUX_ANCHOR_DEFECT on a signature-defective aux anchor with zero writes.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/bench-timecapsule.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/simulator, public seal registry over fixture commitments), conditions C1–C8, suite 27/27 re-run x2, F-T10 decisive independent) + fix/rebench rounds v0.1.1–v0.1.3 (C1–C8, D1–D5, N1–N3 closed) + fix4-timecapsule.md / rebench4-timecapsule.md (v0.1.4: R1 CLOSED, conditions NONE, suite 69/69, independent harness 72/72 — CERTIFIED). Shipper suite re-run fresh pre-ship: 69/69 OK (pre- and post-ship-prep). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live public track records relied on by third parties (SPEC §10 counsel gate) — a track record marketed to sell agent services or forecasts, cited in investment or procurement decisions, or attached to an enforceable SLA with penalties is OUT of v0.1.4, hard, UNBUILT by design: this tree contains no public-registry hosting, no outcome-feed integration, no public anchoring, and no SLA-enforcement code whose later activation the gate could be misread to authorize; a live phase, if counsel clears it, is a separate, re-benched build",
+          "Public hosting / network operation — local stdio only, no network imports tree-wide; the gates (hosting, outcome feed, SLA enforcement, charge path, network) are unbuilt and out of certified scope by design",
+          "Real outcomes / oracle claims — outcome records are fixture records presented with a source ref; Timecapsule does not originate outcomes and no fixture source is styled as an oracle or anything more than a fixture source in any artifact (Q-T1); the track record's honesty extends exactly as far as those presented sources (§10.3 disclaimer)",
+          "Enforcement / collection / reputation rating — Timecapsule scores commitments; it does not collect on them, enforce them, or move money, and a track record is never a single blended reputation rating or a claim that a HIT rate establishes skill (SPEC §11.3 forbidden claims are bench-grepped absent tree-wide)",
+          "Production signing / Herald authority — fixture cryptography only (1024-bit fixture RSA, locally generated fixture keys in keys/, chmod 600, gitignored, never committed); verification reads pinned keys/public-keys.json only and never keys embedded in a record or export; no key in this product can move money or enforce an SLA. A fresh clone generates its own fixture keys on first run to run the full suite",
+          "Author identity continuity (SPEC Q-T3, accepted, stated not solved) — author_ref is a fixture key hash; an author who rotates keys forks their track record into two authors under this spec; author_counter_sign uses server-held fixture author keys (house fixture custody pattern) with no caller-identity proof — in-scope for simulator, must not survive a live phase",
+          "Hosted or live operation / charge path — metering points only per SPEC §9 (exactly one Meter-grammar metering point per accepted seal at the FREE + $0.10/seal price shape; scoring, outcome presentation, reads, verifies, refusals, voids and idempotent re-seals emit none), no charge, checkout, or collection path is built and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-timecapsule-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-timecapsule-mcp.png",
+      "name": "Eclipse Timecapsule",
+      "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE + $0.10/seal, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering points only in v0.1.4, no charge path built): exactly one Meter-grammar metering point per accepted seal (FREE tier + $0.10/seal shape) — scoring, outcome presentation, track-record reads, verifies, refusals, voids, and idempotent re-seals never meter. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Agent track records today are self-published: a forecaster posts predictions across channels, later screenshots the winners; an SLA vendor reports its own attainment over a window it chose — the misses were never in the denominator because no complete, timestamped record of all commitments exists anywhere",
+        "A scoring service that scores what an author shows it cannot fix selection: winners can be complete and honestly scored while the record is still false, because no registry head anywhere states how many commitments the author made",
+        "Timestamping services prove a document existed at a time — one commitment at a time, with no per-author completeness commitment, no pinned scoring rule, and no maturity scoring; a backdating proof is not a track record"
+      ],
+      "source_refs": [
+        "eclipse-timecapsule-mcp/README.md",
+        "eclipse-timecapsule-mcp/server.json",
+        "argus101-program-20261027/wave2/bench-timecapsule.md",
+        "argus101-program-20261027/wave2/rebench4-timecapsule.md",
+        "argus101-specs-20261027/timecapsule-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Commitment-first track-record registry over fixture commitments — predictions and SLA commitments are sealed publicly before the outcome window and scored at maturity — a track record that cannot be backdated or cherry-picked. CERTIFIED (local/simulator, public seal registry over fixture commitments, value_class \"test\") — local stdio MCP, fixture commitments + fixture outcomes only, value_class \"test\"; no live registry, no enforceable SLAs, no reputation rating.",
+      "tools": [
+        "commitment_seal",
+        "commitment_status",
+        "author_counter_sign",
+        "track_record_get",
+        "registry_open",
+        "outcome_present",
+        "commitment_score",
+        "registry_head_get",
+        "registry_export",
+        "track_record_verify",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

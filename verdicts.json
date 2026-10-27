@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 84,
+ "count": 85,
  "records": [
   {
    "record_type": "verdict",
@@ -1680,6 +1680,26 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-nexus-witness-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-warranty-mcp",
+   "name": "Eclipse Warranty",
+   "verdict": "CERTIFIED (local, fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture) \u2014 Verity independent bench 2026-10-26, REBENCH-1 of the v0.1.1 D1/D2 fix round (repo @ 6fd6784): 96 probes recorded, 95 asserted PASS, 0 FAIL, 1 observation (O1, design-consistent, no condition attached). D1 attacks PASS 26/26 (supplied-pack injections/relabels/wrong-types \u2192 INVALID; store copies \u2192 INVALID + transfer refused; get_pack structural refusal 3/3); D2 attacks PASS 24/24 (wrong-type and extra-field arguments rejected cleanly on all five tools, zero coercion, nothing registered by a rejected call); P2 tamper matrix PASS 5/5 bound fields + 11/11 chain + 6/6 supplied-pack attacks; P4 negative space PASS 18/18 (unregistered serial = plain negative, duplicate serial SERIAL_ALREADY_REGISTERED, unknown tools NO_SUCH_TOOL); P1 mechanism spot-check PASS 3/3 (fresh-process verify VALID after transfer, no original holder). Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local, fixture), 67 asserted PASS / 0 hard FAIL, defects D1 (MEDIUM, unsealed-field injection) + D2 (LOW, schemas unenforced) \u2014 both closed by this re-bench. The v0.1.0 seal break is verified real and its disclosure judged honest and complete for LOCAL/fixture scope: packs sealed under v0.1.0 verify INVALID under v0.1.1, no migration, fixtures re-registered. Scope = LOCAL/fixture only: caller-supplied fixture purchase refs, stdio transport, HMAC-SHA256 demo seal with a local demo key. The pack is a witness record, not a warranty contract \u2014 no adjudication, coverage, eligibility, or enforceability is claimed by the product or tested here. Observation O1 stands on the record: get_pack refusal is structural-only by design (a pure value tamper is still returned by get_pack but gated everywhere it matters \u2014 verify INVALID, claim_check transferable:false, transfer refused); consumers must treat verify_pack, not get_pack, as the validity gate (SPEC \u00a75.3). Bench note D3 (informational, by design): transfer requires no holder authorization \u2014 possession of pack_id is a bearer capability, exactly as SPEC \u00a73/\u00a75 specify for v0.1; it must be revisited before any hosted/live scope.",
+   "not_tested": [
+    "Live retailer, manufacturer, or payment integration \u2014 not in v0.1.1 by design: no third party is contacted and no claim is filed anywhere; registrations operate on caller-supplied fixture refs only",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only; transfer is a bearer capability on pack_id possession (bench D3, informational, by SPEC design) and must be revisited before any hosted/live scope",
+    "Warranty adjudication, coverage, eligibility, or enforceability \u2014 none exists in the product at any scope; the pack is a witness record, not a warranty contract",
+    "Migration of v0.1.0-sealed packs \u2014 none exists by disclosed design: v0.1.0 packs verify INVALID under v0.1.1 and fixture packs are re-registered (SPEC Bench Fix addendum)"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-warranty-mcp/"
   }
  ]
 }

@@ -121,6 +121,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Recall Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Sunset | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 | Eclipse Nexus Witness | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture-vintage) |
+| Eclipse Warranty | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

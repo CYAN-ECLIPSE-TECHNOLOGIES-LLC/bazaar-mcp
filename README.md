@@ -167,6 +167,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Receiptvault | in-development | CERTIFIED (local, fixture sealed merchant terms + fixture purchase records) |
 | Eclipse Scamshield | in-development | PASS-CONDITIONAL (local/simulator, fixture risk sources + fixture payee history) — not certified |
 | Eclipse Holdfast | in-development | PASS-CONDITIONAL(simulator, fixture escrow ledger) — not certified |
+| Eclipse Voiceprint | in-development | PASS-CONDITIONAL(local, fixture call records) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

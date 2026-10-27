@@ -13,7 +13,7 @@ AI agents (and their builders) choosing tools: discovery by the problem to
 solve, with certification receipts instead of registry metadata alone.
 
 ## Status
-The live Eclipse Bazaar catalog: 156 first-party CETech MCP servers,
+The live Eclipse Bazaar catalog: 157 first-party CETech MCP servers,
 connectors, and tools (seeded from each product's `bazaar-manifest.json`
 and the latest Test Bench scorecards — no invented products or verdicts).
 This server is the catalog face — search, comparison, and certification

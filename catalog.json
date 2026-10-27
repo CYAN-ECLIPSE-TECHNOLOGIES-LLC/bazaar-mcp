@@ -6040,6 +6040,66 @@
         "supersede_mandate"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — runtimes poll a local policy endpoint; a BRAKE verdict halts the fleet within the poll interval, and the runtime returns a signed halt receipt proving it actually stopped (SPEC §2.1, the mechanism the bench verified verbatim via F-B14). Brake has no push channel, no remote kill, and no verb inside any runtime — a runtime that never polls cannot be halted by Brake, and Brake never claims otherwise.",
+        "HALTED only on proof — a fleet is HALTED only when every enrolled runtime has a valid, in-window, counter-signed halt receipt bound to the verdict's hash. Absence of a receipt is never evidence of a halt: the complementary terminal state is UNPROVEN-HALT, stated on the episode pack's face and never softened. Late receipts are recorded as defects and never amend a closed episode; a stale verdict closes its episode STALE-UNDELIVERED.",
+        "Offline-recomputable episode pack — the pack (fleet record, verdict token, poll records, receipts, defects, close statement, hash chain) recomputes via receipt_verify executing the full §6.4 procedure: fleet-record hash recomputed from the full record in the pack and bound to the signed chain, chain and poll-record signatures verified, receipts bound to recorded poll deliveries, post-halt attestations recomputed against the Brake-side fixture task log exported in the pack, and the close state derived mechanically from the enrolled roster — a partial fleet's pack cannot be re-hashed into HALTED (re-bench D1 forgery now fails at verifier step 1 with no key).",
+        "Named refusals + configuration fence — duplicate receipts, receipts from non-enrolled runtimes, no-poll receipts, poll-time mismatches, excess latency, and malformed inputs are all refused by name (RECEIPT_DUPLICATE, RECEIPT_RUNTIME_NOT_ENROLLED, RECEIPT_NO_POLL_RECORD, RECEIPT_POLL_TIME_MISMATCH, RECEIPT_LATENCY_INVALID, RECEIPT_MALFORMED, and the §5.4 set); startup hard-refuses fenced configurations (CONFIG_FENCE_REFUSED:<class>, §7.3 — non-local endpoints, real credentials, production identifiers, non-test value_class, non-mock relay modes all hard-exit code 2). Disjoint surfaces: operator = exactly 5 tools, runtime = exactly 3; cross-surface calls return the identical unknown-tool refusal as a nonsense name.",
+        "Honest scope — LOCAL/simulator ONLY: local stdio MCP server (Python stdlib only) + fixture fleet runtime on an integer fixture clock; signing is a fixture HMAC stand-in for the Herald pattern (fixture keys are derivable from the published source — the labelled §7.4 fixture discipline, scope-inherent and disclosed by the bench). No real fleet is halted, polled, or contacted; no live-fleet path exists in the tree (no socket/urllib.request/requests/http.client imports). Halting real fleets is behind a named counsel gate — v0.1.1 contains no dormant live path."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Agent Safety & Oversight"
+      ],
+      "certification": {
+        "bench_verdict": "CONDITIONAL (LOCAL/simulator)",
+        "certified": false,
+        "certified_scope": "CONDITIONAL (LOCAL/simulator) — Verity re-bench of v0.1.1, 2026-10-26 (argus101-program-20261027/rebench-brake.md): every defect from the v0.1.0 FAIL bench (D1–D10) is fixed and independently verified, including both blockers — the P9b partial→HALTED forgery now fails at verifier step 1 with no key, and the submit path can no longer put Brake into a state its own verifier rejects. Builder suite 43/43 (fresh process); bench probes in the bench's own code: D1–D10 classes 30/30, F-B14 decisive 5/5 recomputed from packs alone (fleet hash, chain hashes + Brake signatures, verdict HMAC, both receipt signatures, latency, attestation vs exported task log, chain-bound close statement, mechanical close-state derivation, both HALTED and UNPROVEN-HALT branches), fresh adversarial 12/12 attacks refused, D5 startup fence 7/7 hostile envs + clean-env serve, fresh-stdio surfaces 5/5. CONDITION C1 (ND1, the sole condition): receipt_verify must not return verified: true for a pack presented as final (final: true) whose close_statement has been stripped — refuse BRAKE_VERIFY_FAIL:5 (or return an explicit downgraded: true per §6.6); final-pack close-statement erasure currently downgrades silently (erasure, not forgery — no close claim can be manufactured this way; every forgery asserting a false state fails). Fix + one regression test, or a SPEC amendment explicitly blessing interim-style verification of final packs, closes the condition; fix queued as v0.1.2. CONDITIONAL is not CERTIFIED — certified is false. Scope never exceeds LOCAL/simulator: local policy endpoint + fixture runtime, no live fleets.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/rebench-brake.md (Verity re-bench, independent fresh-process, own probe scripts — no builder test code reused; prior FAIL bench bench-brake.md, fix claim fix-brake-011.md). This bench issued no test-bench/results scorecard; scorecard_ref is null and no scorecard is claimed or hosted for this product. ND2 (multi-runtime reenrol strands later runtimes) and ND3 (defect record chained after episode_closed) are recorded non-blocking notes for the next fix pass.",
+        "not_tested": [
+          "Live fleets — not tested and not claimed: v0.1.1 runs a local policy endpoint + fixture runtime only; no real fleet is halted, polled, or contacted, and no live-fleet path exists in the tree",
+          "Production signing custody — signing is a fixture HMAC stand-in for the Herald pattern; fixture keys are derivable from the published source (labelled §7.4 fixture discipline), so a presenter holding the fixture keys can mint indistinguishable artifacts — scope-inherent, disclosed by the bench",
+          "Condition C1 (ND1) — final-pack close-statement erasure downgrading silently is OPEN: fix queued as v0.1.2 (refuse BRAKE_VERIFY_FAIL:5 or explicit downgraded: true, plus one regression test)",
+          "Hosted fleet shape — waits Gate B1; the local package is the reference implementation and no hosted endpoint exists or is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-brake-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-brake-mcp.png",
+      "name": "Eclipse Brake",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (spec: public use is hard-gated on the name screen; the working name is not a public claim). The name and descriptor never imply a safety certification or a guarantee that any real fleet will stop.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $199/mo per fleet, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The hosted fleet shape waits Gate B1; the local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My fleet's kill switch is self-operated and self-attested — I need a halt ordered through a neutral third-party authority, executed by the runtime, and proved by a signed receipt bound to the verdict that ordered it",
+        "A runtime never responded to a halt order and I need that failure named on the record — UNPROVEN-HALT — not smoothed into a claim that the fleet stopped",
+        "I insure or regulate agent fleets and need halt evidence a third party can recompute offline from the episode pack alone — verdict token, poll log, and halt receipts — without trusting the operator or the halt authority"
+      ],
+      "source_refs": [
+        "eclipse-brake-mcp/README.md",
+        "eclipse-brake-mcp/server.json",
+        "argus101-specs-20261027/brake-spec.md",
+        "argus101-program-20261027/rebench-brake.md"
+      ],
+      "status": "in-development",
+      "tagline": "Third-party halt authority for agent fleets: runtimes poll, a BRAKE verdict halts within the poll interval, and signed halt receipts prove the stop — or the episode closes UNPROVEN-HALT. LOCAL/simulator scope only — local policy endpoint + fixture runtime, no live fleets.",
+      "tools": [
+        "fleet_enrol",
+        "verdict_issue",
+        "fleet_status",
+        "episode_pack_get",
+        "receipt_verify",
+        "policy_poll",
+        "halt_receipt_submit",
+        "runtime_reenrol"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

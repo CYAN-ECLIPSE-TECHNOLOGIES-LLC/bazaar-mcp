@@ -6458,6 +6458,65 @@
         "continuity_verify_prefix"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism — regulator publications are witnessed on release and machine-mapped to the subscriber's own control/product set, so 'this rule changed' arrives as 'these three of your controls are affected.' A publication enters only as a witnessed record (content hash + footprint + release stamp, witness counter-signed); the subscriber's control set enters only as a sealed, versioned declaration (subscriber-signed, witness counter-signed); the mapping is a deterministic boolean anchor match (citation ∈ declared anchors OR topic-key intersection) under the versioned rule set regulens-rules/1.0 — no model inference, no embeddings, no per-run judgement. The output is a signed impact receipt naming affected declared controls with the triggering anchor + passage refs, recomputable offline from the receipt + witnessed publication + sealed set + rule-set version alone (spot re-bench F-R13: P4 × S-B recomputed exactly, affected B1, B2, B3).",
+        "Single trust anchor + downgrade law (v0.1.2, conditions N1–N3) — verification pins to the local keys/ store only: production code contains zero reads of fixtures/fixture-keys.json (that file is public keys only, informational, never consulted); rotating or deleting both keys/ files makes pre-rotation artifacts fail IMPACT_VERIFY_FAIL:1, never RECOMPUTED, and a missing store raises the named KEY_STORE_MISSING:<role> class — issuance over missing keys refuses SIGNATURE_INVALID with no sealed output. A receipt that fails recompute at any step exports only as DOWNGRADED_IMPACT_EXPORT (verified: false, failing step on its face) — no tool path upgrades, repairs, or edits a receipt, a witnessed publication, or a sealed set in place; a republication or redeclaration produces a new record under its own triple.",
+        "§6.2 face posture on every envelope — the verbatim standing face text rides the top level of every emitted envelope class (14/14 probed in the spot re-bench, including server ToolError / generic-error envelopes and the downgraded export): 'Impact receipt — a deterministic mapping over your declared control set only. Not legal advice; not a compliance determination. Controls you did not declare were not mapped (see set_hash).' Regulens output is an impact receipt, never legal advice; not a compliance determination. It never states a remediation instruction, required action, or deadline, and it maps only controls the subscriber declared — controls not declared were not mapped, and a nil receipt (affected: []) is a first-class recomputable artifact proving only that the mapping over the declared set found no anchor match.",
+        "Honest scope — LOCAL / simulator, fixture corpus ONLY: v0.1.2 runs over fixture regulator publications (P1–P4, invented fixture citations) and fixture subscriber control sets (S-A: 5 controls, S-B: 3 controls), local stdio only, all artifacts value_class: test. NO live ingestion exists or is claimed: no live regulator site is fetched, scraped, polled, or republished, there is no dormant live-ingestion path to flip, and startup refuses CONFIG_FENCE_REFUSED:<class> on any live-source / HTTP-client / non-test configuration. Live ingestion is gated on the SPEC §10 source-terms review (the source-terms gate is unbuilt by design) plus counsel review of the §11.2 'not legal advice' language — a post-gate, re-benched code change, not a configuration flip."
+      ],
+      "categories": [
+        "Trust & Receipts",
+        "Compliance & Regulation"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (LOCAL/simulator)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (LOCAL/simulator) — Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-regulens-012.md), closing all three conditions (N1–N3) of the v0.1.1 re-bench (rebench-regulens.md; original bench bench-regulens.md): N1 single trust anchor closed (genuine artifacts RECOMPUTED; rotation and deletion of both keys/ files fail closed IMPACT_VERIFY_FAIL:1, never via the fixtures fallback; KEY_STORE_MISSING:<role> at the anchor layer; issuance with keys missing refuses SIGNATURE_INVALID, no sealed output); N2 §6.2 face text verbatim at the top level of 14/14 envelope classes; N3 unhashable subscriber_ref yields named SET_VERSION_NOT_FOUND across the surface (9/9 named tools + 21-call same-class sweep, zero generic-envelope leaks). No-regression spots pass (T7 fabrication FAIL:5, T8 total fabrication FAIL:1, F-R13 P4 × S-B independently recomputed exactly with no regulens imports, 5-process determinism 1 distinct output, builder suite 47/47 with socket-denied parity). Scope binds exactly: regulation-change impact receipts mapped to the subscriber's own declared control set over fixture regulator publications, local stdio only — NO live ingestion (SPEC §10 source-terms gate unbuilt by design) and the §6.2 'not legal advice; not a compliance determination' posture applies to every receipt and envelope.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/spot-regulens-012.md (Verity spot re-bench; history bench-regulens.md + rebench-regulens.md). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null). Repository PRIVATE (priced-product policy): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-regulens-mcp @ v0.1.2 (commit ada541cf0de2f8748ec171e37330d9b2203a5460). Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-regulens-mcp v0.1.2, status active / isLatest (confirmed by registry API fetch at ship, publishedAt 2026-10-27T07:00:15.326369Z).",
+        "not_tested": [
+          "Live ingestion — none claimed and none built by design: no live regulator feed, site fetch, scrape, poll, or republication exists in v0.1.2; live phases are gated on the SPEC §10 source-terms review + counsel review of the §11.2 language and require a re-benched code change",
+          "Legal advice / compliance determinations — never offered: Regulens emits a deterministic impact receipt over declared controls only; it states no remediation, required action, or deadline, and an unaffected (nil) result means only that the mapping over the declared set found no anchor match, never that a subscriber is unaffected in law",
+          "Undeclared controls — invisible by construction (SPEC L5): the mapping sees only the subscriber's sealed declared set at the cited set_version; no inference, enrichment, or validation of the legal correctness of a subscriber's anchors",
+          "Production signing custody — witness + subscriber keys are locally generated fixture keys in the gitignored keys/ store (files mode 600, never committed); signing is consumed through the Herald interface pattern and no production custody scheme is claimed. Informational observation from the spot re-bench: the signing path retains its documented D3 bootstrap (a signing call on a missing store key creates a fresh keys/ key, operationally a rotation) — verify/resolve paths create nothing and no burned artifact is resurrected",
+          "Hosted/networked operation — local stdio only in v0.1.2; no charge path exists (SPEC §9.2: metering records only, no payment call, no entitlement/subscription check)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-regulens-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-regulens-mcp.png",
+      "name": "Eclipse Regulens",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $199/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (the $199/mo subscriber subscription is the whole price shape — no per-receipt figure; v0.1.2 records subscription-period usage in Meter grammar only, implements no charge path, no payment call, and no entitlement check; charging waits a hosted endpoint). Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "My compliance feed tells me 'this rule changed' and leaves the expensive step to manual reading — I need a receipt naming which of my own declared controls the change touches, with the triggering anchor and passage for each",
+        "Our change-to-control mapping lives in a mutable database nobody can audit afterwards — I need the publication, my control set, and the mapping rules all sealed and versioned so a third party recomputes the exact affected set offline",
+        "A vendor's rule-change summary is editorial judgement I cannot reproduce — I need a deterministic mapping (same sealed inputs + same rule-set version, byte-identical mapping section) whose output is an impact receipt, not legal advice"
+      ],
+      "source_refs": [
+        "eclipse-regulens-mcp/README.md",
+        "eclipse-regulens-mcp/server.json",
+        "eclipse-regulens-mcp/SPEC.md",
+        "argus101-program-20261027/spot-regulens-012.md"
+      ],
+      "status": "in-development",
+      "tagline": "Regulation-change impact receipts: fixture publications witnessed and deterministically mapped to your declared controls. CERTIFIED (LOCAL/simulator) — fixture corpus only, local stdio, no live ingestion. Not legal advice; not a compliance determination.",
+      "tools": [
+        "publication_witness",
+        "publication_get",
+        "control_set_declare",
+        "control_set_get",
+        "impact_map",
+        "impact_receipt_get",
+        "impact_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

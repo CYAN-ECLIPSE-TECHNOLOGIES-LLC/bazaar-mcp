@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 99,
+ "count": 100,
  "records": [
   {
    "record_type": "verdict",
@@ -1982,6 +1982,27 @@
    "scope": "CERTIFIED (local/fixture) \u2014 Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-continuity-012.md): condition C1 closed \u2014 pin parser fails closed on all probes (4 N1 shapes 28/28 refuse, no verdict/receipt; 102/102 unconsumable variants refuse; every supported shape binds), N2 fixed, no-regression spots pass (A5/A6/A7, F-C14 independently recomputed, builder suite 49/49). Fixture principals/models/keys, local stdio only \u2014 signed identity-continuity chains across model/config changes, fork freeze, principal-only resolution; no live registry or identity claim.",
    "status": "current",
    "verdict": "CERTIFIED (local/fixture)"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.2",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Regulens",
+   "not_tested": [
+    "Live ingestion \u2014 none claimed, none built by design; gated on SPEC \u00a710 source-terms review + counsel, requires re-benched code change",
+    "Legal advice / compliance determinations \u2014 never offered; impact receipt over declared controls only, no remediation, required action, or deadline",
+    "Undeclared controls \u2014 not mapped by construction (declared set only, SPEC L5)",
+    "Production signing custody \u2014 fixture keys local-only in the gitignored keys/ store (mode 600); Herald interface pattern only",
+    "Hosted/networked operation \u2014 none in v0.1.2; no charge path (metering records only, SPEC \u00a79.2)"
+   ],
+   "product": "eclipse-regulens-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-regulens-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED (LOCAL/simulator) \u2014 Verity spot re-bench of v0.1.2, 2026-10-27 (argus101-program-20261027/spot-regulens-012.md): conditions N1\u2013N3 closed (single trust anchor fail-closed, \u00a76.2 face text on 14/14 envelope classes, unhashable refs yield named refusals), no-regression spots pass (T7 FAIL:5, T8 FAIL:1, F-R13 independently recomputed exact, builder suite 47/47). Fixture regulator publications mapped deterministically to the subscriber's sealed declared control set, local stdio only \u2014 no live ingestion, and not legal advice / not a compliance determination on every receipt's face (\u00a76.2).",
+   "status": "current",
+   "verdict": "CERTIFIED (LOCAL/simulator)"
   }
  ]
 }

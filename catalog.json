@@ -954,7 +954,7 @@
         "eclipse-beacon-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-beacon-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "The insurance watcher \u2014 signals your policies' expiries before they happen. It does not insure, bind, or advise.",
       "tools": [
         "policy_ingest",

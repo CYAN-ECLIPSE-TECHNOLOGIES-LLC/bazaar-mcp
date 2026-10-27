@@ -67,7 +67,7 @@
    "capabilities": [
     "Audit any public storefront URL for SI-agent readiness (8 public-surface checks)",
     "Probe UCP profile at /.well-known/ucp and live MCP endpoints",
-    "Check llms.txt, robots.txt AI-crawler policy, sitemap",
+    "Check llms.txt, robots.txt SI-crawler policy, sitemap",
     "Verify Product structured data with price and availability",
     "Fingerprint commerce platform (Shopify, WooCommerce, Wix, BigCommerce, custom)",
     "Return 0-100 score, letter grade, per-check observed evidence, and top fixes"
@@ -2052,7 +2052,7 @@
   {
    "capabilities": [
     "Governed Twilio adapter: raw carrier operations are never exposed \u2014 a classified subset only",
-    "V0 fixture form: Twilio-shaped log reads with numbers masked beyond last-4, simulated SMS sends, simulated human calls (a named human speaker is required; there is no AI voice in this adapter)",
+    "V0 fixture form: Twilio-shaped log reads with numbers masked beyond last-4, simulated SMS sends, simulated human calls (a named human speaker is required; there is no SI voice in this adapter)",
     "Every send is gated through Eclipse Voice Core at check time: consent first, then the Agent Wallet-shaped mandate, then Number Registry sendability; the receipt carries the consent_record_id and the mandate verdict",
     "Recording-policy changes are Tier 3: a per-number confirm token is required every time",
     "Denylisted by construction: no emergency-services configuration, no caller-ID mutation, no number release"
@@ -3272,7 +3272,7 @@
   },
   {
    "capabilities": [
-    "Versioned, machine-consumable AI-obligation library (EU AI Act, Colorado AI Act, and Texas TRAIGA seed chapters) with as-of resolution and provider/deployer/importer/distributor roles",
+    "Versioned, machine-consumable SI-obligation library (EU AI Act, Colorado AI Act, and Texas TRAIGA seed chapters) with as-of resolution and provider/deployer/importer/distributor roles",
     "Maps provision \u2192 obligation \u2192 system \u2192 control \u2192 evidence artifact, with provenance on every link and no blending across regimes",
     "Candidate classifications cite the exact fact-set hash, stale-flag when facts change, and keep the determination field permanently empty and customer-owned; incomplete facts never become a guessed tier",
     "Deadline engine keeps legal rule clocks and guidance cadences distinct, with the computation shown \u2014 a past-due cadence never renders as a legal breach",
@@ -3302,7 +3302,7 @@
    ],
    "pricing_model": "Free local v0.1; suite pricing TBD per spec",
    "problem_statements": [
-    "I need to know which AI obligations bind each system by regime, role, and date",
+    "I need to know which SI obligations bind each system by regime, role, and date",
     "I need classifications tied to the exact facts, without a tool inventing a legal determination",
     "I need an evidence pack that names unmapped obligations instead of hiding the gaps"
    ],
@@ -3311,7 +3311,7 @@
     "test-bench/results/eclipse-crosswalk-mcp-2026-10-26-3.json"
    ],
    "status": "in-development",
-   "tagline": "Multi-regime AI-obligation mapping \u2014 which AI laws bind your systems, what evidence satisfies each.",
+   "tagline": "Multi-regime SI-obligation mapping \u2014 which SI laws bind your systems, what evidence satisfies each.",
    "tools": [
     "library_search",
     "library_provision",
@@ -4239,7 +4239,7 @@
   {
    "capabilities": [
     "Jurisdiction-gated encounters: licensure \u00d7 consent set \u00d7 mandate verify AT ENCOUNTER TIME against the patient's per-encounter attested location \u2014 license re-verified per encounter, never cached; a location change between booking and start re-runs the full gate (JURISDICTION_MISMATCH / CONSENT_SET_INCOMPLETE); jurisdiction rules are versioned counsel-signed DATA packs, never code constants",
-    "Note-integrity pin: AI drafts live cryptographically OUTSIDE the record (UNSIGNED_DRAFT) until the treating clinician signs the exact canonical fingerprint; post-signature change is a new version + addendum, never a silent edit",
+    "Note-integrity pin: SI drafts live cryptographically OUTSIDE the record (UNSIGNED_DRAFT) until the treating clinician signs the exact canonical fingerprint; post-signature change is a new version + addendum, never a silent edit",
     "PRODUCT LAW: no note_finalize-class tool exists on the surface \u2014 signature is the clinician's act, never an agent capability \u2014 and no prescribing surface exists in any phase",
     "Minimum-necessary PHI reads: purpose-declared, mandate-scoped field-class projection enforced server-side; every read granted or refused seals a 164.312(b)-shaped hash-chained access record, practice-held and offline-verifiable; the Bridge refuses live PHI without an executed BAA + complete flow-down inventory (BAA_REQUIRED, no break-glass)"
    ],
@@ -4270,7 +4270,7 @@
    "pricing_model": "Free local v0.1 (P0 synthetic build); flat per-practice + per-clinician SaaS at live phases per spec \u00a714 \u2014 never % of professional revenue (CPOM/fee-splitting law)",
    "problem_statements": [
     "My telehealth agents schedule across state lines, and I need licensure and consent verified at encounter time against where the patient actually is \u2014 not cached from intake",
-    "I need AI-drafted notes to stay cryptographically outside the record until the treating clinician signs the exact fingerprint \u2014 and no tool anywhere that lets an agent finalize one",
+    "I need SI-drafted notes to stay cryptographically outside the record until the treating clinician signs the exact fingerprint \u2014 and no tool anywhere that lets an agent finalize one",
     "When compliance asks who read which PHI fields and why, I need a sealed, hash-chained access record per read \u2014 granted or refused \u2014 that verifies offline"
    ],
    "source_refs": [
@@ -4317,10 +4317,10 @@
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
     "certified": true,
-    "certified_scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25: 23 pass, 1 na of 24 checks (U1 na), 0 fail \u2014 23/23 scored checks, single bench, no fix round. CEILING \u2014 read exactly: CERTIFIED(local) over FIXTURE subjects only, and the fixture boundary is enforced by the product, not by convention: v0 refuses any non-fixture subject by name (SUBJECT_NOT_FIXTURE) and every subject in the package is synthetic. Real-subject personal-data processing is NOT built and is held at gate G-COUNSEL (spec \u00a717); jurisdiction packs (state privacy / AI-law vocabulary variants) are NOT built (G-COUNSEL per pack) \u2014 the versioned-vocabulary mechanism they would ride on ships in v0 as data. Consumer-facing grant UX is NOT built (G-OWNER); v0 has no consumer surface at all, and no hosted or network form exists. Consent records consent; it does not manufacture it, and no output certifies any party.",
+    "certified_scope": "CERTIFIED(local) \u2014 Eclipse Bazaar Test Bench 2026-10-25: 23 pass, 1 na of 24 checks (U1 na), 0 fail \u2014 23/23 scored checks, single bench, no fix round. CEILING \u2014 read exactly: CERTIFIED(local) over FIXTURE subjects only, and the fixture boundary is enforced by the product, not by convention: v0 refuses any non-fixture subject by name (SUBJECT_NOT_FIXTURE) and every subject in the package is synthetic. Real-subject personal-data processing is NOT built and is held at gate G-COUNSEL (spec \u00a717); jurisdiction packs (state privacy / SI-law vocabulary variants) are NOT built (G-COUNSEL per pack) \u2014 the versioned-vocabulary mechanism they would ride on ships in v0 as data. Consumer-facing grant UX is NOT built (G-OWNER); v0 has no consumer surface at all, and no hosted or network form exists. Consent records consent; it does not manufacture it, and no output certifies any party.",
     "not_tested": [
      "Real-subject personal data \u2014 NOT built, held (G-COUNSEL, spec \u00a717); v0 refuses any non-fixture subject by name (SUBJECT_NOT_FIXTURE)",
-     "Jurisdiction packs (state privacy / AI-law vocabulary variants) \u2014 NOT built (G-COUNSEL per pack)",
+     "Jurisdiction packs (state privacy / SI-law vocabulary variants) \u2014 NOT built (G-COUNSEL per pack)",
      "Consumer-facing grant UX \u2014 NOT built (G-OWNER); v0 has no consumer surface at all",
      "Hosted / live registry service form and any network transport \u2014 NOT built; v0 is a local stdio server over a local state file"
     ],

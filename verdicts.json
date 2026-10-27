@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 85,
+ "count": 86,
  "records": [
   {
    "record_type": "verdict",
@@ -1700,6 +1700,26 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-warranty-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-toolprint-mcp",
+   "name": "Eclipse Toolprint",
+   "verdict": "CERTIFIED (local)",
+   "certified": true,
+   "scope": "CERTIFIED (local) \u2014 Verity independent bench 2026-10-26, REBENCH-1 of the v0.1.1 Bench Fix D1 round (repo @ 240c329): 18/18 PASS, deterministic across 2 runs. Anchored tail-truncation (the v0.1 D1 repro) detected as TAIL_TRUNCATION_SUSPECTED with chain_valid:false; unanchored reads explicitly carry anchored:false / anchor_match:null and assert internal consistency only; a same-count forged tail (independently recomputed record_hash, invisible to bare-chain recompute) is caught as CHAIN_HEAD_MISMATCH by the caller anchor alone; anchor material (head_hash + record_count) present and advancing on pin_session, verify_call, and get_session_chain, with tool_version 0.1.1 on every envelope. Regression spot-checks PASS: verbatim presented description = VALID, swapped-fixture search = INVALIDATED with pinned 332a2771\u2026 / presented 6246163e\u2026, and the v1 fixture fingerprint + SPEC \u00a73.1 canonical preimage are byte-exact unchanged by the fix. Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local), 40/40 probes PASS, defect D1 (MEDIUM \u2014 tail truncation erased a proof record undetectably, falsifying SPEC \u00a72.3's unqualified tamper claim) \u2014 closed by this re-bench via implementation (caller-anchored head) plus the qualified SPEC \u00a710 claim. Scope = LOCAL only: a local verification engine operating on caller-supplied tool lists/descriptions plus bundled fixtures, stdio transport; it does NOT proxy live MCP traffic, does not connect to remote servers, does not execute described tools, and makes no network calls \u2014 no live-traffic claim is made by the product or tested here. Claim honesty PASS with 1 non-blocking observation on the record: SPEC \u00a72.3's original unqualified sentence and \u00a78 item 4 remain verbatim in the body, neutralized only by \u00a710's supersession header; the document read whole is accurate. \u00a79.3 signed/external anchoring for cross-party evidence remains open by design and is not claimed.",
+   "not_tested": [
+    "Live MCP traffic proxying or interception \u2014 not in v0.1.1 by design: the engine never proxies live traffic, connects to remote servers, or executes described tools; a live-traffic scope upgrade requires its own spec + bench",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only, operating on caller-supplied tool lists + bundled fixtures",
+    "Cross-party evidence use \u2014 signed chain heads / external anchoring (SPEC \u00a79.3) remain open by design and are not claimed; unanchored chain reads assert internal consistency only, never truncation detection",
+    "Per-call metering or payment enforcement \u2014 none exists in v0.1.1 by design: the $0.05/call (PC-3) term is commercial metadata for hosted/commercial deployment; no payment, checkout, or billing code is in the server"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-toolprint-mcp/"
   }
  ]
 }

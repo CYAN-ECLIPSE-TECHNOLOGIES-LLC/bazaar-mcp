@@ -1318,7 +1318,7 @@
         "eclipse-dispatch-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-dispatch-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "Drafts once, syndicates drafts everywhere sanctioned, unifies the analytics. Never publishes without approval; never scrapes.",
       "tools": [
         "draft_create",

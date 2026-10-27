@@ -151,6 +151,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Trueprice | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture quote/checkout pairs) |
 | Eclipse Kitseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture loadouts) |
 | Eclipse Shelfprice | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture listing/checkout pairs) |
+| Eclipse Skillseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture claims + fixture verdict receipts) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

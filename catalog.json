@@ -8597,6 +8597,69 @@
         "duet_anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — rate source, rate, and spread are sealed at execution, and settlement is refused pre-flight when the spread exceeds the mandate's cap — enforcement before money moves, not evidence after.",
+        "Sealed pre-flight verdict — fx_seal = sha256(canonical(source_id ‖ benchmark_rate ‖ offered_rate ‖ spread_bps ‖ mandate_hash ‖ intent_hash)); rates are scaled integers (never floats) so spread_bps = round_half_even((benchmark_rate − offered_rate) × 10_000 / benchmark_rate) recomputes exactly; the quote's self-stated spread is recorded, never trusted (SPREAD_MISSTATED), and a mandate carrying no max_spread_bps can never be cleared (MANDATE_NO_SPREAD_CAP — the cap is read from the mandate's face, never set, defaulted, or coerced). Refusals are first-class sealed, Herald-signed verdict records (except the no-seal INTENT_INCOMPLETE class, which issues no seal, no verdict, and no metering point).",
+        "Decisive fixture F-X9 — bench independently re-derived from the bencher's own corpus (GBP/USD pair the builder never used, bencher-owned keys): under-cap check → CLEAR, spread_bps 40, max_spread_bps 100 on the face, fx_seal == bencher-recomputed seal; over-cap twin (offered 103939500) → REFUSED / SPREAD_CAP_EXCEEDED, spread_bps 101, cap 100 on the face; fresh process, export + pinned keys alone, empty data dir: both exports verify (CLEAR claim and REFUSED/SPREAD_CAP_EXCEEDED claim reproduced). Re-bench confirmed F-X9 end-to-end after the D1/D2/D3 fixes.",
+        "Offline verification — fail-closed and recompute-only: intent, mandate, and quote hashes, the seal, the spread, the cap comparison, the Herald signature, and every counter-signature are recomputed and verified on every check and every offline verify against keys pinned out-of-band in a local chmod-600 gitignored key file (keys are never accepted from the record under verification). An export that cannot be recompute-verified is labelled UNVERIFIED_EXPORT, carries no verdict claim, and can never be upgraded back to a sealed verdict. D2 lineage exports: prior_export carried in verdict_get bundles; replay verdicts verify from export + pinned keys alone.",
+        "Honest scope — local/simulator, fixture FX records only, pre-flight verdicts only, value_class \"test\": Crosspay never converts, settles, or moves currency, fetches no live rates, and holds no funds; no live FX source/rails exist (fixture records only). Closed surface of exactly 6 tools (4 caller + 2 operator, disjoint); 25 forbidden verbs (convert/settle/transfer/pay/fetch_rate and peers) probed on both surfaces return the same NO_SUCH_TOOL as a nonsense name. Signing is an HMAC fixture stand-in for Herald RS256, disclosed on every face."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(local/simulator, fixture FX records)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(local/simulator, fixture FX records) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-crosspay.md) + delta re-bench (argus101-program-20261027/wave3/rebench-crosspay.md, D1/D2/D3 CLOSED, C2/C3/C4 discharged): builder suite 39/39 re-run clean by bencher (34 baseline + 5 fix regressions); decisive fixture F-X9 independently re-derived from the bencher's own corpus (GBP/USD pair the builder never used) — under-cap CLEAR at spread 40 bps vs cap 100 with fx_seal == bencher-recomputed seal, over-cap twin REFUSED / SPREAD_CAP_EXCEEDED at 101 bps, both exports fresh-verify in a fresh process from export + pinned keys alone. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond this scope is claimed. Scope is exactly: local stdio, fixture FX records only, pre-flight verdicts only, value_class 'test'; Crosspay never converts, settles, or moves currency and fetches no live rates. Sole remaining condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Novel mechanism (SPEC §2.1, verbatim): rate source, rate, and spread are sealed at execution, and settlement is refused pre-flight when the spread exceeds the mandate's cap — enforcement before money moves, not evidence after.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-crosspay.md + rebench-crosspay.md (Verity bench + delta re-bench of v0.1.0, 2026-10-27; builder suite re-run clean 39/39 on re-bench, decisive F-X9 re-derived incl. fresh-process verify from export + pinned keys alone, bencher battery 144 probes at bench and 33 probes at re-bench, D1/D2/D3 closed and C2/C3/C4 discharged, sole remaining condition C1 as stated). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live FX — SPEC §10 counsel gate (named, unbuilt): live FX — fetching live rates for real payments, quoting or executing conversion, or any cross-border settlement — is counsel-gated (joined to the existing FinTech Law packet (Till/x402)) and unbuilt; no live FX source/rails exist in v0.1.0 (fixture records only), no live rate is fetched, no currency is converted or settled, and any live phase is a separate, counsel-cleared, re-benched build, not a configuration change",
+          "Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (seal ↔ verdict ↔ export) provides full coordinated rollback only as a fenced condition: external anchor required before live/multi-party use. No live or multi-party use is licensed until that anchor exists and the build is re-benched",
+          "D2 lineage exports — CHECK_REPLAY sealed verdicts are offline-verifiable from export + pinned keys alone via lineage: prior_export is carried in verdict_get bundles, and replay verdicts verify from export + pinned keys alone (re-bench D2 CLOSED, condition C3 discharged); a replay bundle is never served unlabelled/unverifiable",
+          "Non-blocking observation (re-bench): with ≥2 priors a second replay's prior_export may point to the earliest prior rather than the immediate predecessor (spec predicate unaffected) — §5.3's replay predicate requires only the existence of a prior distinct-triple same-intent sealed check, which the shipped prior satisfies and the verifier re-derives; soundness is unaffected",
+          "Real FX rates, quotes, mandates, payments, or settlement — local/simulator, fixture FX records only, value_class \"test\": no live FX source/rails (fixture records only); Crosspay never converts, settles, or moves currency, fetches no live rates, and holds no funds; a CLEAR speaks only to the sealed fixture quote against the presented mandate's cap",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly +1 per sealed verdict, CLEAR or REFUSED alike; 0 for no-seal refusals, verifies, verdict-gets, handoff marks, and idempotent re-presentations; no charge path built, no payment taken, no live Meter ingest claimed)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-crosspay-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-crosspay-mcp.png",
+      "name": "Eclipse Crosspay",
+      "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.10/call, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 (metering point only in v0.1.0, no charge path built): exactly +1 per sealed verdict (CLEAR or REFUSED alike) at the $0.10/call price shape; 0 for no-seal refusals, verifies, verdict-gets, handoff marks, and idempotent re-presentations. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
+      "problem_statements": [
+        "Cross-currency agent payments leak value in the spread, invisibly: the payer sees a rate, not the distance between that rate and the source benchmark, and the mandate that authorized the payment almost never says how much spread is too much",
+        "Post-hoc reporting doesn't fix this — by the time an auditor finds a 4% spread on a payment capped at 1%, the money has moved at 4%; nobody seals the three numbers (source, rate, spread) at the moment of decision and refuses before movement when the cap is breached",
+        "I need a sealed pre-flight verdict a third party can recompute offline — from export + pinned keys alone — proving the spread was checked against the mandate's cap before any settlement could occur, and the over-cap twin of the same payment refused pre-flight by name"
+      ],
+      "source_refs": [
+        "eclipse-crosspay-mcp/README.md",
+        "eclipse-crosspay-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-crosspay.md",
+        "argus101-program-20261027/wave3/rebench-crosspay.md",
+        "argus101-specs-20261027/crosspay-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Pre-flight FX guard for agent cross-currency payments — rate source, rate, and spread are sealed at execution, and settlement is refused pre-flight when the spread exceeds the mandate's cap. PASS-CONDITIONAL(local/simulator, fixture FX records) — fixture FX records only; never converts, settles, or moves currency. Sole condition: cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use.",
+      "tools": [
+        "crosspay_check",
+        "crosspay_verdict_get",
+        "crosspay_verify",
+        "crosspay_handoff_mark",
+        "crosspay_check_list",
+        "crosspay_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

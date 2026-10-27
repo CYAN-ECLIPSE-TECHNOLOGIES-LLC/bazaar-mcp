@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 130,
+ "count": 131,
  "records": [
   {
    "record_type": "verdict",
@@ -2658,6 +2658,30 @@
  "scope": "PASS-CONDITIONAL(local, attested model-family declarations) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-duet.md) + D1 spot re-bench (wave3/rebench-duet.md, D1 CLOSED): builder suite 31/31 re-run clean by bencher at bench, 32/32 after the D1 fix (the +1 is the D1 regression test); decisive fixture F-D9 independently re-derived (bencher corpus, bencher keys, black-box stdio) — seal via stdio → SEALED with face families [orion, vega], fresh process with empty data dir from export + pinned keys alone → verified: true / SEALED, and the same-family control (signer B's identity record family edited to orion, attestation hash recomputed, record re-sealed under the bencher issuer key, refs re-derived) fails at DUET_VERIFY_FAIL:step2_check4_distinctness, UNVERIFIED_EXPORT, attestation_claim: null — the diversity leg is load-bearing; bencher battery 72 checks, 71 PASS at bench (sole failure = D1, closed on re-bench). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture proposals, fixture agents and fixture identity records only, value_class 'test'; attestations only — Duet executes, authorizes, and approves nothing. Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Duet's diversity/independence proofs establish attested model families/providers and bound signatures — NOT actual running models, NOT non-collusion. Advisory O1/O2 (non-blocking): pairs carrying different family taxonomies seal (face surfaces each ref's own taxonomy; §2.4 includes no taxonomy-equality check — recorded for the live-identity phase), and signing is an HMAC fixture stand-in for Herald RS256 (disclosed).",
  "status": "current",
  "verdict": "PASS-CONDITIONAL(local, attested model-family declarations)"
+},
+{
+ "bench_date": "2026-10-27",
+ "bench_version": "0.1.0",
+ "canon_version": null,
+ "card_url": null,
+ "certified": false,
+ "name": "Eclipse Crosspay",
+ "not_tested": [
+  "Live FX — SPEC §10 counsel gate (named, unbuilt): live FX — fetching live rates for real payments, quoting or executing conversion, or any cross-border settlement — is counsel-gated (joined to the existing FinTech Law packet (Till/x402)) and unbuilt; no live FX source/rails exist in v0.1.0 (fixture records only), no live rate is fetched, no currency is converted or settled, and any live phase is a separate, counsel-cleared, re-benched build, not a configuration change",
+  "Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (seal ↔ verdict ↔ export) provides full coordinated rollback only as a fenced condition: external anchor required before live/multi-party use. No live or multi-party use is licensed until that anchor exists and the build is re-benched",
+  "D2 lineage exports — CHECK_REPLAY sealed verdicts are offline-verifiable from export + pinned keys alone via lineage: prior_export is carried in verdict_get bundles, and replay verdicts verify from export + pinned keys alone (re-bench D2 CLOSED, condition C3 discharged); a replay bundle is never served unlabelled/unverifiable",
+  "Non-blocking observation (re-bench): with ≥2 priors a second replay's prior_export may point to the earliest prior rather than the immediate predecessor (spec predicate unaffected) — §5.3's replay predicate requires only the existence of a prior distinct-triple same-intent sealed check, which the shipped prior satisfies and the verifier re-derives; soundness is unaffected",
+  "Real FX rates, quotes, mandates, payments, or settlement — local/simulator, fixture FX records only, value_class \"test\": no live FX source/rails (fixture records only); Crosspay never converts, settles, or moves currency, fetches no live rates, and holds no funds; a CLEAR speaks only to the sealed fixture quote against the presented mandate's cap",
+  "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+  "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+  "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly +1 per sealed verdict, CLEAR or REFUSED alike; 0 for no-seal refusals, verifies, verdict-gets, handoff marks, and idempotent re-presentations; no charge path built, no payment taken, no live Meter ingest claimed)"
+ ],
+ "product": "eclipse-crosspay-mcp",
+ "product_url": "https://eclipsebazaar.com/products/eclipse-crosspay-mcp/",
+ "record_type": "verdict",
+ "scope": "PASS-CONDITIONAL(local/simulator, fixture FX records) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-crosspay.md) + delta re-bench (argus101-program-20261027/wave3/rebench-crosspay.md, D1/D2/D3 CLOSED, C2/C3/C4 discharged): builder suite 39/39 re-run clean by bencher (34 baseline + 5 fix regressions); decisive fixture F-X9 independently re-derived from the bencher's own corpus (GBP/USD pair the builder never used) — under-cap CLEAR at spread 40 bps vs cap 100 with fx_seal == bencher-recomputed seal, over-cap twin REFUSED / SPREAD_CAP_EXCEEDED at 101 bps, both exports fresh-verify in a fresh process from export + pinned keys alone. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond this scope is claimed. Scope is exactly: local stdio, fixture FX records only, pre-flight verdicts only, value_class 'test'; Crosspay never converts, settles, or moves currency and fetches no live rates. Sole remaining condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Novel mechanism (SPEC §2.1, verbatim): rate source, rate, and spread are sealed at execution, and settlement is refused pre-flight when the spread exceeds the mandate's cap — enforcement before money moves, not evidence after.",
+ "status": "current",
+ "verdict": "PASS-CONDITIONAL(local/simulator, fixture FX records)"
 }
  ]
 }

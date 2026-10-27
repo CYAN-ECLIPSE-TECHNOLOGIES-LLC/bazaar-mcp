@@ -1105,7 +1105,7 @@
         "eclipse-constellation-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-constellation-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "The governed, vendor-neutral VM fleet layer for agents: one policy, one receipt ledger, every cloud and hypervisor underneath.",
       "tools": [
         "target_list",

@@ -9293,6 +9293,66 @@
     "awardline_verify"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 a live underwriter-facing evidence API fed by bench verdicts, incident records, and control receipts \u2014 premium-relevant changes emit change receipts to the insured. (In v0.1.1 the API shape is rehearsed locally over fixtures only: no live API is built, no underwriter is served, and no insurer system is touched.)",
+    "Load-bearing disclosure (SPEC \u00a711.1, verbatim): the evidence pack is insured-side disclosure tooling; underwriting reliance is the insurer's process, not Insurepack's claim. Insurepack is evidence assembly only. It does not underwrite, is not an insurer, broker, MGA, or underwriting tool, does not price or bind coverage, does not adjust or pay claims, and does not act for any carrier.",
+    "Bench path: v0.1.0 bench (wave4/bench-insurepack.md, DEFECT-1..3) + v0.1.1 delta re-bench (wave4/rebench-insurepack.md: DEFECT-1..3 all CLOSED, Condition 1 amended to Condition 1\u2032 by the bench, builder suite 28/28 reproduced, no new defect).",
+    "Amended Condition 1\u2032 (verbatim, named by the bench): a single-pack VERIFY_PASS attests the pack, its own transition, and the internal integrity of the presented stream; it must NOT be relied on as proof of completeness of transitions earlier than the pack's immediate predecessor (a fully re-signed, re-linked rewritten stream is indistinguishable there); full-history reliance requires per-pack chain verification (which the export transcript now performs) or an external anchor.",
+    "Change receipts are issued for premium-relevant CHANGES only (verdict/insured-tool-set/control/incident-summary/named-field changes), never for re-assembly, verification, export, or same-state refresh \u2014 the change-receipt stream cannot be flooded into meaningless noise by re-running assembly. Absence of evidence is shown as absence: an input class with no registered fixture records is named in gaps[] (INPUT_ABSENT), never fabricated or silently omitted. Herald (signing pattern), Meter (metering grammar), and Docket (pack grammar) are consumed by reference only."
+   ],
+   "categories": [
+    "Compliance & Evidence",
+    "Security & Audit"
+   ],
+   "certification": {
+    "bench_verdict": "PASS-CONDITIONAL (local/simulator)",
+    "certified": false,
+    "certified_scope": "Eclipse Insurepack \u2014 PASS-CONDITIONAL (local/simulator) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-insurepack.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-insurepack.md: DEFECT-1..3 all CLOSED, Condition 1 amended to Condition 1\u2032 by the bench, builder suite 28/28 reproduced). PASS-CONDITIONAL (local/simulator) is not CERTIFIED \u2014 certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, evidence assembly over fixture verdict/incident/control records only, value_class \"test\"; no live API is built, no underwriter is served, no insurer system is touched, and no real insured, real incident, or real policy enters a pack. Load-bearing disclosure (SPEC \u00a711.1): the evidence pack is insured-side disclosure tooling; underwriting reliance is the insurer's process, not Insurepack's claim. Amended Condition 1\u2032 binds verbatim: a single-pack VERIFY_PASS attests the pack, its own transition, and the internal integrity of the presented stream; it must NOT be relied on as proof of completeness of transitions earlier than the pack's immediate predecessor (a fully re-signed, re-linked rewritten stream is indistinguishable there); full-history reliance requires per-pack chain verification (which the export transcript now performs) or an external anchor. Rollback fence and the SPEC \u00a710 counsel gate (named, unbuilt) also bind.",
+    "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-insurepack.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/simulator), DEFECT-1..3) + argus101-program-20261027/wave4/rebench-insurepack.md (Verity delta re-bench of v0.1.1 fix commit 440c3cc: DEFECT-1..3 all CLOSED, Condition 1 amended to Condition 1\u2032, builder suite 28/28 reproduced, no new defect). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+    "not_tested": [
+     "Underwriting, pricing, binding, claims, or any insurer-side reliance \u2014 Insurepack is evidence assembly only (evidence assembly only; no underwriting): it does not underwrite, is not an insurer, broker, MGA, or underwriting tool, does not price or bind coverage, does not adjust or pay claims, and does not act for any carrier; underwriting reliance is the insurer's process, not Insurepack's claim (SPEC \u00a711.1)",
+     "Any live phase \u2014 serving real insureds, real incident records, real policies, a live underwriter-facing API, or any insurer/carrier/regulator integration is SPEC \u00a710 counsel-gated and UNBUILT; there is no dormant live path in v0.1.1",
+     "Full-history completeness from a single pack \u2014 per amended Condition 1\u2032, a single-pack VERIFY_PASS must NOT be relied on as proof of completeness of transitions earlier than the pack's immediate predecessor; full-history reliance requires per-pack chain verification (which the export transcript performs) or an external anchor",
+     "External anchoring / multi-party reliance \u2014 the pure local file store caps any verdict at PASS-CONDITIONAL (local/simulator); an external anchor is required before live or multi-party reliance",
+     "Production key custody \u2014 signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+    ],
+    "scorecard_ref": null,
+    "scorecard_url": null
+   },
+   "id": "eclipse-insurepack-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-insurepack-mcp.png",
+   "name": "Eclipse Insurepack",
+   "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen.",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "PRICED \u2014 $149/mo (evidence assembly only; no underwriting), via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 (metering points only in v0.1.1, no charge path built): packs assembled / change receipts issued at the $149/mo shape. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "problem_statements": [
+    "Cyber-insurance evidence gets assembled once, at application or renewal, from whatever screenshots and spreadsheets are at hand \u2014 then it goes stale while the insured's actual posture changes underneath it",
+    "I need the pack to be a signed, recomputable index over artifacts that already exist \u2014 bench verdicts, incident records, control receipts \u2014 kept current by change receipts that name the field, the prior value, and the new value whenever a premium-relevant fact changes",
+    "I need the disclosure boundary load-bearing: the pack is insured-side disclosure tooling; underwriting reliance is the insurer's process \u2014 and absence of evidence shown as absence, never fabricated or silently omitted"
+   ],
+   "source_refs": [
+    "eclipse-insurepack-mcp/README.md",
+    "eclipse-insurepack-mcp/server.json",
+    "argus101-specs-20261027/insurepack-spec.md",
+    "argus101-program-20261027/wave4/rebench-insurepack.md"
+   ],
+   "status": "in-development",
+   "tagline": "Continuous cyber-insurance evidence assembly over fixture records; local/simulator only. PASS-CONDITIONAL (local/simulator) \u2014 a live underwriter-facing evidence API fed by bench verdicts, incident records, and control receipts \u2014 premium-relevant changes emit change receipts to the insured. Evidence assembly only; no underwriting. Amended Condition 1\u2032: a single-pack VERIFY_PASS is not proof of completeness of earlier transitions. Counsel gate (SPEC \u00a710) named and unbuilt: any live phase.",
+   "tools": [
+    "insurepack_profile_register",
+    "insurepack_input_present",
+    "insurepack_assemble",
+    "insurepack_pack_get",
+    "insurepack_verify",
+    "insurepack_changes_list",
+    "insurepack_export"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

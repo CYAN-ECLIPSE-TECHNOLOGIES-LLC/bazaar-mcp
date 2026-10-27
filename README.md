@@ -171,6 +171,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Understudy | in-development | PASS-CONDITIONAL(local, subset proof over Till-grammar fixture mandates) — not certified |
 | Eclipse Genesis | in-development | PASS-CONDITIONAL(local/fixture) — not certified |
 | Eclipse Slowpay | in-development | PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed) — not certified |
+| Eclipse Layaway | in-development | PASS-CONDITIONAL(simulator) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

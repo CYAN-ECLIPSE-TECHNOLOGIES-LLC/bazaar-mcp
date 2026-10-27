@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 128,
+ "count": 129,
  "records": [
   {
    "record_type": "verdict",
@@ -2612,6 +2612,28 @@
   "scope": "PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-slowpay.md): builder suite 42/42 re-run clean by bencher; bencher black-box suite 82/82; decisive fixture F-S9 independently reproduced in both runs (genuine witnessed price drift 4321\u21924400 freezes in the presenting evaluation, held due event never back-processed, fresh-process verify from export + pinned keys alone returns verified: true / ACTIVE after buyer re-attestation; the one-character altered copy 4400\u21924409 returns RECEIPT_HASH_MISMATCH, no freeze record, schedule remains ACTIVE). No defects found. Sole condition C-1: cross-artifact cross-commitment is the local per-schedule hash chain + export SET anchors only; full coordinated rollback not provided \u2014 external anchor required before live/multi-party use (bench text: cross-artifact cross-commitment in v0.1 is the local per-schedule hash chain plus the export's SET anchors only; full coordinated rollback across artifacts is not provided \u2014 external anchor required before live/multi-party use). No live or multi-party use is licensed until that anchor exists and the build is re-benched. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local stdio MCP, fixture schedules + fixture witnessed-change feed only, value_class 'test' on all artifacts, due records simulated notes (simulated: true); no payment is executed, initiated, or held, and no live feed, mandate issuance, or witness product is touched. Novel mechanism (SPEC \u00a72.1, verbatim): any witnessed counterparty behavior change (price drift, endpoint change, ownership change) automatically freezes the schedule until re-attestation. Advisories A-1/A-2 (non-blocking bench notes, do not limit the verdict at the stated scope): A-1 \u2014 status/list EXPIRED overlay also applies to a DRAFT schedule past mandate expiry (display-only; no transition or write; sealing against an expired mandate is refused); A-2 \u2014 in a store already containing Herald-signed freeze records, removing the Herald key surfaces as CHAIN_BROKEN (whole-store validation) rather than the mint-specific error, with the isolated clean-store probe confirming the mint gate itself (structured error, zero writes, schedule stays ACTIVE). Signing is an HMAC fixture stand-in for Herald RS256 (disclosed on every signed face as 'herald-fixture (fixture HMAC stand-in)'); a live phase would need real Herald signing and a re-bench.",
   "status": "current",
   "verdict": "PASS-CONDITIONAL(simulator, fixture schedules + witnessed-change feed)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.0",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Layaway",
+  "not_tested": [
+   "Real purchase execution — SPEC §10 counsel gate (named, unbuilt): real purchase execution (plus Till's own gates), real funds custody/direction, real price feed as witness — counsel gate, unbuilt; no merchant stub exists. Any execution that places a real order, instructs a merchant, or triggers a real payment (which must additionally pass Till's own gates), holding/directing real goal funds in any form, consuming a real price feed as a witnessed source, and any consumer-facing claim that funds are saved, held, protected, or guaranteed available are counsel-gated and unbuilt; there is no dormant live path, no merchant integration stub, and no funds verb waiting to be enabled",
+   "Sole condition (verbatim from the bench record): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (mandate chain + balance segment + price observation bound by hash citations in one execution record) is a fenced condition — external anchor required before live/multi-party use",
+   "Real balances, prices, merchants, products, or purchases — simulator/fixture only: fixture goal-balance ledger + fixture witnessed prices only, value_class \"test\"; the 'execution' is a simulator state transition — NO purchase is executed, no funds move, and nothing is instructed to any merchant",
+   "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256, disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+   "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+   "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1x layaway_execution point per simulated execution + 1x free-funnel active-period accounting event per mandate; 0 for refusals/non-executions; no charge path built, no payment taken, no live Meter ingest claimed)"
+  ],
+  "product": "eclipse-layaway-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-layaway-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL(simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-layaway.md): builder suite 33/33 re-run clean by bencher; decisive fixture F-L13 re-derived from the bencher's own corpus (bencher battery 90/90) — a 12-tick history executed at exactly the coincidence tick and no other (executed_at 2026-03-01T07:30:00Z, balance 62,000, price 31,000 == target), both witnesses recomputed fresh-process two ways (artifact execution_verify from pack + pinned keys alone, and bencher standalone recompute with no artifact code). PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond this scope is claimed. Scope is exactly: local stdio, fixture goal-balance ledger + fixture witnessed prices, value_class \"test\"; execution = a mandate state transition only — NO purchase is executed, no funds move, nothing was bought, ordered, or paid. Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (mandate chain + balance segment + price observation bound by hash citations in one execution record) is a fenced condition — external anchor required before live/multi-party use",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL(simulator)"
  }
  ]
 }

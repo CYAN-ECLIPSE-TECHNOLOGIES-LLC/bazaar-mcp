@@ -8467,6 +8467,71 @@
         "slowpay_anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — the mandate self-executes only when two witnessed conditions coincide — goal balance reached and a witnessed price at or below the target — with progress receipts throughout.",
+        "Two witnessed inputs, independently sealed — the goal-balance ledger's hash-chained segment shows balance at or above the goal, and a Trueprice-style sealed observation for the mandate's exact item shows price at or below target, fresh within the mandate's stated window; both are evaluated as of the same evaluation tick, the execution record binds both witness citations in one record, and condition statuses from earlier ticks have no causal force (no latching). 'Witnessed' in this scope means a Trueprice-style seal over a fixture observation, verified in its native grammar against a pinned fixture witness key — not attestation by any real price service, and not evidence about any real item's price.",
+        "Decisive fixture F-L13 — bench re-derived from the bencher's own corpus (bencher keys throughout, bencher battery 90/90): a 12-tick history on 2026-03-01 (price-only, balance-only, neither, and a PRICE_STALE tick) executed at exactly the coincidence tick and no other — exactly 12 tick receipts, exactly 1 execution record, executed_at 2026-03-01T07:30:00Z, balance 62,000 / price 31,000 (== target). Both witnesses (balance 62,000, price 31,000) were recomputed fresh-process two ways: the artifact's execution_verify in a fresh operator process from pack + pinned keys alone, and the bencher's standalone recompute with no artifact code at all.",
+        "Honest scope — simulator only, local stdio, fixture goal-balance ledger + fixture witnessed prices ONLY, value_class \"test\": execution = a mandate state transition only — NO purchase is executed, no funds move, nothing was bought, ordered, or paid, and nothing is instructed to any merchant. Closed surface of exactly 12 tools (8 owner + 4 operator, disjoint); no purchase/order/funds verb exists on either surface (18 forbidden verbs bench-probed NO_SUCH_TOOL). Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on any merchant/marketplace/payment/price-feed endpoint or key, real balance source, or value_class other than 'test'. Signing is an HMAC fixture stand-in for Herald RS256 (disclosed). Sole condition: cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use."
+      ],
+      "categories": [
+        "Agent Payments",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(simulator)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-layaway.md): builder suite 33/33 re-run clean by bencher; decisive fixture F-L13 re-derived from the bencher's own corpus (bencher battery 90/90) — execution at exactly the coincidence tick and no other, both witnesses recomputed fresh-process two ways. PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture goal-balance ledger + fixture witnessed prices, value_class 'test'; execution = a mandate state transition only — nothing was bought, ordered, or paid. Sole condition (verbatim): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (mandate chain + balance segment + price observation bound by hash citations in one execution record) is a fenced condition — external anchor required before live/multi-party use Advisory A-1/A-2 (non-blocking): the config fence scans all environment values fail-closed, and signing is an HMAC fixture stand-in for Herald RS256 (disclosed; live phase would need real Herald signing + re-bench).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-layaway.md (Verity bench of v0.1.0, 2026-10-27; builder suite re-run clean 33/33, decisive F-L13 re-derived incl. fresh-process recompute two ways, bencher battery 90/90, 14-point delta law, metering exactness, fuzz 60 ops, scope + claim-surface audit confirming the §10 counsel gate genuinely unbuilt and no purchase path exists; sole condition as stated, A-1/A-2 advisory only). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Real purchase execution — SPEC §10 counsel gate (named, unbuilt): real purchase execution (plus Till's own gates), real funds custody/direction, real price feed as witness — counsel gate, unbuilt; no merchant stub exists. Any execution that places a real order, instructs a merchant, or triggers a real payment (which must additionally pass Till's own gates), holding/directing real goal funds in any form, consuming a real price feed as a witnessed source, and any consumer-facing claim that funds are saved, held, protected, or guaranteed available are counsel-gated and unbuilt; there is no dormant live path, no merchant integration stub, and no funds verb waiting to be enabled",
+          "Sole condition (verbatim from the bench record): cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use. Cross-artifact cross-commitment (mandate chain + balance segment + price observation bound by hash citations in one execution record) is a fenced condition — external anchor required before live/multi-party use",
+          "Real balances, prices, merchants, products, or purchases — simulator/fixture only: fixture goal-balance ledger + fixture witnessed prices only, value_class \"test\"; the 'execution' is a simulator state transition — NO purchase is executed, no funds move, and nothing is instructed to any merchant",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256, disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never keys supplied by a record; a live phase requires real Herald signing and a re-bench",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1x layaway_execution point per simulated execution + 1x free-funnel active-period accounting event per mandate; 0 for refusals/non-executions; no charge path built, no payment taken, no live Meter ingest claimed)"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-layaway-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-layaway-mcp.png",
+      "name": "Eclipse Layaway",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE + $0.25/execution, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 (metering points only in v0.1.0, no charge path built): exactly 1x layaway_execution metering point per simulated execution, plus 1x free-funnel active-period accounting event per mandate (free funnel, not a charge basis); 0 for refusals and non-executions. The 'execution' is a simulator state transition — NO purchase is executed, no funds move, and nothing is presented as owed for a fixture execution. The local package is the reference implementation. Repository is PRIVATE (priced execution tier).",
+      "problem_statements": [
+        "Savings goals execute at goal-reached regardless of price (buying high because the money is ready), while price alerts fire regardless of funds (a deal the owner cannot yet take, gone by the time they can) — each half exists separately and fails separately",
+        "The conjunction is the product, and it must be witnessed: a self-reported price or a self-reported balance makes any execution claim self-attested",
+        "I need an execution record that binds both witnesses — goal-balance ledger state and a sealed price at or below target, coinciding at one evaluation tick — so a third party can recompute that both conditions genuinely held, together, at execution, with progress receipts throughout showing why it had not executed earlier"
+      ],
+      "source_refs": [
+        "eclipse-layaway-mcp/README.md",
+        "eclipse-layaway-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-layaway.md",
+        "argus101-specs-20261027/layaway-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Patient-buying mandate over fixture balance + fixture witnessed prices — the mandate self-executes only when two witnessed conditions coincide — goal balance reached and a witnessed price at or below the target — with progress receipts throughout. PASS-CONDITIONAL(simulator) — simulator only; execution is a mandate state transition only, NO purchase is executed and no funds move. Sole condition: cross-artifact cross-commitment is fenced — external anchor required before live/multi-party use.",
+      "tools": [
+        "mandate_create",
+        "balance_present",
+        "price_present",
+        "mandate_evaluate",
+        "mandate_status",
+        "progress_get",
+        "execution_get",
+        "mandate_cancel",
+        "mandate_list",
+        "execution_verify",
+        "dispute_pack_get",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

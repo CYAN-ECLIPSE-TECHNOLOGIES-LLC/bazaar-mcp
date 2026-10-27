@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 118,
+ "count": 119,
  "records": [
   {
    "record_type": "verdict",
@@ -2385,6 +2385,29 @@
  "scope": "PASS-CONDITIONAL (local/fixture) \u2014 Verity reduced-scope bench of v0.1.3, ruleset muzzle-rules/0.4, 2026-10-27 (argus101-program-20261027/ruling-muzzle-reduced-scope.md), secrets and PII limbs ONLY: fresh bench-authored corpus (36 items, disjoint in values/shapes/phrasing from all repo fixtures and both prior Verity corpora), all rates computed from signed receipts after every receipt was independently re-verified \u2014 secrets 100% recall / 100% precision (13/13, 0 FP), PII 100% recall / 100% precision (13/13, 0 FP; spec thresholds \u226595% / \u226590%), benign controls 10/10 unflagged, verdict agreement 36/36; tamper battery, redaction invariant (zero raw-value escapes over corpus + canary sweeps), downgrade law, fail-closed fence (7/7), and exact 6-tool surface all PASS. PASS-CONDITIONAL is not CERTIFIED \u2014 certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Sole condition: the ruling \u00a79 authorised claim block ships verbatim on every claim surface (README, this listing, server.legacy.json full manifest); the registry server.json description is the \u2264100-char registry short form carrying the \u00a711.1 sentence verbatim and claiming only secrets + PII. This release does not scan for defamation-risk: defamation-risk detection is excluded from the certified scope of this version, and a PASS verdict is not evidence about defamation. Defamation detection is not included in v0.1 \u2014 parked for a v0.2 redesign.",
  "status": "current",
  "verdict": "PASS-CONDITIONAL (local/fixture)"
+},
+{
+ "bench_date": "2026-10-27",
+ "bench_version": "0.1.2",
+ "canon_version": null,
+ "card_url": null,
+ "certified": false,
+ "name": "Eclipse Sandclock",
+ "not_tested": [
+  "Live, multi-party, shared-filesystem, or adversarial-operator use — CONDITION 1 (bench, verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec §10.2) remains unbuilt and separately gated.",
+  "Complete coordinated whole-file rollback — Honesty fence (README, verbatim): a rollback of the entire store.json file to an earlier self-consistent snapshot (entries, all anchors, and metering together) is undetectable in this local single-file model, because no artifact outside the file survives to contradict it; every partial rollback, deletion, or transplant is detected by the set / tail / metering cross-checks. No stronger claim is made.",
+  "Live phase (SPEC §10.2 counsel gate, named, unbuilt) — consuming live Doppel/Replay drift feeds, clocking real third-party eval scores, publishing staleness verdicts, or a verdict a marketplace/registry acts on are out of v0.1.2, hard; the gate packet (defamation / disparagement exposure of a public STALE_EVAL verdict over another party's score; the §11 evidence-decay wording as the claim submission; reliance posture of consumers who act on a verdict; estimator/budget disclosure duties) is unbuilt by design and no dormant live path exists to flip — live mode is a post-gate, re-benched code change, not a config flip",
+  "Live subjects and real eval scores — fixture scorecards in Benchkit format + fixture drift evidence only; no live model/tool is observed, no eval is run, no score is issued, no drift is measured by this product, and a STALE_EVAL verdict is evidence-decay arithmetic only — never a claim a score was or is wrong (SPEC §11.3: never \"expired certification\", \"invalid score\", or \"failed eval\")",
+  "Live Herald signing — v0.1.2 signing is a fixture HMAC stand-in consumed through Herald's signing interface (Sandclock defines no signature scheme of its own), disclosed on the product's face; verification uses pinned fixture keys only, never keys presented inside a record",
+  "Production key custody — fixture keys are local-only in keys/ (gitignored, mode 600, never committed); a fresh clone must create its own fixture key file to run the full suite",
+  "Hosted or live operation / charge path — local stdio only; metering point only per SPEC §9.1 (stale_check_completed at the $0.01/check price shape, per stale_check record and per expiry_verify receipt), no charge path, payment call, or entitlement check is built and no live Meter ingest is claimed; a check is never refused for non-payment"
+ ],
+ "product": "eclipse-sandclock-mcp",
+ "product_url": "https://eclipsebazaar.com/products/eclipse-sandclock-mcp/",
+ "record_type": "verdict",
+ "scope": "PASS-CONDITIONAL (local) — Verity delta re-bench 2 of v0.1.2, 2026-10-27 (argus101-program-20261027/wave2/rebench2-sandclock.md): F1–F4 closed (store set-anchor / key-binding / mint-signing / envelope findings), F1 whole-file residual adjudicated acceptable-at-scope under condition 1; builder suite 50/50, independent probes 55/55; closed F1–F6 first-pass items spot-checked — none reopened. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond the conditional verdict at its exact scope is claimed. Scope is exactly: local (fixture scorecards + fixture drift evidence only, value_class \"test\") under the local single-file / single-operator store model — local stdio MCP (SPEC §0.1); no live model/tool observation, no eval run, no score issued; the counsel-gated live phase (SPEC §10.2) remains unbuilt and separately gated. Condition 1 (verbatim): certification holds only at scope local (fixture scorecards + fixture drift evidence only, value_class:\"test\") under the local single-file / single-operator store model. The README whole-file-rollback residual fence + scope label must remain on the product face. Any live, multi-party, shared-filesystem, or adversarial-operator use requires an anchor outside store.json (e.g. receipt-held head hash / external append-only log) + fresh bench; the counsel-gated live phase (spec §10.2) remains unbuilt and separately gated.",
+ "status": "current",
+ "verdict": "PASS-CONDITIONAL (local)"
 }
   ]
  }

@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 87,
+ "count": 88,
  "records": [
   {
    "record_type": "verdict",
@@ -1740,6 +1740,27 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-boomerang-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-rebuttal-mcp",
+   "name": "Eclipse Rebuttal",
+   "verdict": "CERTIFIED (local, fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture) \u2014 Verity independent re-bench 2026-10-26, REBENCH-1 of the v0.1.1 Bench Fix C1\u2013C4/D5 round (repo @ 3f0668c): 39/39 scoped probes PASS, builder suite re-run 23/23. C1/D2 (HIGH \u2014 build_packet/map_evidence never verified the case seal, so a tampered chain was re-sealed into a VALID packet) CLOSED: tampered stored case (authorized_by -> buyer:mallory) -> validate_case case_seal_valid=false, map_evidence + build_packet hard refusal SEAL_INVALID, no packet stored, attacker value emitted nowhere (6/6). C2/D1 (HIGH \u2014 packet seal excluded text_rendering, so fabricated text verified VALID) CLOSED: seal now covers the full packet incl. text_rendering; supplied + stored text tamper INVALID and edit-any-field sweep 12/12 INVALID (5/5). C3/D3 (MED \u2014 mismatched receipt silently used via receipts[0] fallback) CLOSED: receipt sections MISSING, packet INCOMPLETE, mismatched receipt traced nowhere under 2 reason classes (8/8). C4/D4 (MED \u2014 external re-seal verified under unkeyed SHA-256) CLOSED: HMAC-SHA256 demo-key seals; unkeyed/wrong-key/foreign-key re-seals INVALID, legitimate key-holder flow VALID (7/7). D5 (LOW \u2014 null-valued elements in present sections) CLOSED: no null elements, partial nulls emit only present values (6/6). Spot-check P1 regression PASS (7/7): complete fixture COMPLETE + case_seal_valid=true, 11/11 elements traced, within_scope derivation correct, all 5 sections present, get_packet VALID. Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local, fixture), 45/51 probes, core mechanism (traceability + anti-fabrication battery) passing in full with defects D1\u2013D5 \u2014 all closed by this re-bench. Scope = LOCAL/fixture only: caller-supplied fixture dispute + mandate-chain + receipt data, stdio transport, HMAC-SHA256 demo seal with a local demo key (keys/demo.key, gitignored, mode 0600). Packet generation only \u2014 the tool never files, submits, or transmits anything, no card network/issuer/merchant/platform is contacted, and the generic GEN-* reason-code table is not any network's proprietary codes and claims no network affiliation; nothing about real filing, submission, or network acceptance is claimed by the product or tested here.",
+   "not_tested": [
+    "Filing, submission, or transmission to any card network, issuer, merchant, or platform \u2014 not in v0.1.1 by design (SPEC \u00a79 non-goals): packet generation only, no network calls at all",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only, operating on caller-supplied fixture dispute + mandate-chain + receipt data",
+    "Payment, checkout, or per-filing metering enforcement \u2014 none exists in v0.1.1 by design: the $5.00/filing term is commercial metadata (PC-7 pattern); no payment or checkout code is in the server",
+    "Proprietary network reason codes or network affiliation \u2014 mapping is a small generic GEN-* table, labelled generic; no legal advice or win/loss prediction is provided",
+    "Production key custody \u2014 seals use an HMAC-SHA256 demo key generated locally (gitignored keys/demo.key); the seal proves unchanged-since-sealed under that local demo key only, no production key claim is made"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-rebuttal-mcp/"
   }
  ]
 }

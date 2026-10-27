@@ -124,6 +124,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Warranty | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 | Eclipse Toolprint | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local) |
 | Eclipse Boomerang | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
+| Eclipse Rebuttal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

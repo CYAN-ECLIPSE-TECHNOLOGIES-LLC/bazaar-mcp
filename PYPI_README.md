@@ -3,7 +3,7 @@
 mcp-name: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar
 
 **Eclipse Bazaar is Cyan Eclipse Technologies' marketplace** for its own
-bench-verified MCP servers, connectors, and tools (147 listings). Every
+bench-verified MCP servers, connectors, and tools (156 listings). Every
 listing is a Cyan Eclipse Technologies product today — third-party
 listings are not yet open — and every listing carries its Test Bench
 verdict and scope, or states plainly that it has none. Priced items are

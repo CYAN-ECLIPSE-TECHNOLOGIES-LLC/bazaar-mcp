@@ -13,7 +13,7 @@ yet; the server says so explicitly instead of implying quality.
 **Why does a listing show a `not_tested` list?** Honesty is the product:
 certification states its scope and its gaps.
 
-**Which products are listed?** The live Eclipse Bazaar catalog: 147
+**Which products are listed?** The live Eclipse Bazaar catalog: 156
 first-party Cyan Eclipse Technologies MCP servers, connectors, and tools,
 each with its Test Bench verdict + scope or an explicit no-verdict
 statement. Third-party listings are not yet open; when they open, a

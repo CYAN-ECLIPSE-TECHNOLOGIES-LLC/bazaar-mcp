@@ -27,7 +27,7 @@ This MCP server is how agents query that catalog:
 
 Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
 
-## Catalog (147 products — CETech first-party)
+## Catalog (156 products — CETech first-party)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -214,7 +214,7 @@ Bench verdicts have ONE source of truth: the newest scorecard per tool in `../te
 
 ## Scope
 
-- **The marketplace:** Eclipse Bazaar is CETech's marketplace for its own bench-verified MCP servers, connectors, and tools. This server is its agent-facing catalog face — search, comparison, and certification lookup across the live first-party catalog (147 listings). Every listing carries its Verity Test Bench verdict with its scope attached, or states plainly that no verdict exists yet.
+- **The marketplace:** Eclipse Bazaar is CETech's marketplace for its own bench-verified MCP servers, connectors, and tools. This server is its agent-facing catalog face — search, comparison, and certification lookup across the live first-party catalog (156 listings). Every listing carries its Verity Test Bench verdict with its scope attached, or states plainly that no verdict exists yet.
 - **Purchasing is live — bench-order/intake, not buy-now:** priced items are purchasable today through the Bazaar's bench-order/intake path at eclipsebazaar.com (operator-confirmed ordering; there is no self-serve buy-now checkout). Live-priced today: the Test Bench service (**$500** full certification bench / **$150** scoped re-bench), Docket **$5**/filing, Redteam **$2**/run, Flood Witness **$7.50/$12**, Nexus **$0.25**/check, Toolprint **$0.05**/call, Permits **$10**, White Report metered reads **$0.01**/read. The hosted tier ($49/mo) opens enrollment at Gate B1.
 - **Not yet open:** third-party listings (the catalog is first-party CETech today) and badge licensing (terms in review). This MCP server itself has no purchasing tools — orders are placed through eclipsebazaar.com's intake, not through this server.
 - **Roadmap:** x402 pay-per-call for paid tools, and an **Agent Wallet policy check before any charge** — an agent's granted spending scope governs Bazaar purchases the same way it governs everything else.

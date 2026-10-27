@@ -147,6 +147,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Sponsorline | in-development | PASS-CONDITIONAL (local) — not certified |
 | Eclipse Morphguard | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture payee records) |
 | Eclipse Adproof | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/fixture) |
+| Eclipse Feeseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local, fixture transactions) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

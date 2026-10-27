@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 104,
+ "count": 105,
  "records": [
   {
    "record_type": "verdict",
@@ -2090,6 +2090,27 @@
    "scope": "CERTIFIED (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-adproof.md) returned PASS-CONDITIONAL (local/fixture) subject to condition C1; the spot re-bench of v0.1.1 in the same record CLOSED C1 and F2: builder suite 26/26 re-run from clean state; bencher-written independent C1 probes \u2014 orphan bind (locally hashed real fixture claim never submitted, and an arbitrary 'a'*64 hash) refused CLAIM_NOT_SUBMITTED with no pointer, no store.json created, zero state and zero metering; the full zero-submit path never reaches PUBLISHED or VERIFY_PASS; submitted binds meter exactly once and idempotent re-binds do not double-meter; future-bound pointer at the gate refuses POINTER_BOUND_IN_FUTURE (F2, not POINTER_MISMATCH, no gate receipt). Decisive fixture F-A10 independently reproduced: VERIFY_PASS in a fresh subprocess with a new empty data dir (no store.json created \u2014 genuinely offline/stateless), and tamper classes fail at their named steps (claim word altered VERIFY_FAIL:1, Herald signature stripped VERIFY_FAIL:3, presented-digest substitution both variants VERIFY_FAIL:1). Scope is exactly: local stdio MCP, fixture claims/documents only, fixture publish pipeline, offline pointer verification from artifact+document+pointer+gate receipt+chain segment+pinned public keys; value_class 'test' on all artifacts; no advertising-claims counsel-gate (SPEC \u00a710) live phase built or claimed. Load-bearing label (SPEC \u00a711.1, verbatim): the pointer proves substantiation was BOUND, not that it substantiates \u2014 substantiation adequacy is the publisher's/counsel's call. F5 standing fence: RSA key generation uses the random module (Mersenne Twister), not a CSPRNG \u2014 fixture-only; CSPRNG keygen + re-bench required before any scope above fixture.",
    "status": "current",
    "verdict": "CERTIFIED (local/fixture)"
+  },
+  {
+   "bench_date": "2026-10-27",
+   "bench_version": "0.1.0",
+   "canon_version": null,
+   "card_url": null,
+   "certified": true,
+   "name": "Eclipse Feeseal",
+   "not_tested": [
+    "Real fees, real marketplace schedules, or any live marketplace use \u2014 fixture schedules + fixture transactions only; the SPEC \u00a710 counsel gate is unbuilt by design, named, with no dormant live mode: operating Feeseal live (sealing a real marketplace's schedule as evidence against it, publishing findings about a named live marketplace, enforcing or collecting on variances, or holding Feeseal out as an audit of a named live marketplace) is counsel-gated under the FinTech Law / marketplace packet, additionally implicating defamation/commercial-disparagement and contract-interference analysis counsel must scope before any live design exists",
+    "Any real fee audited, charged, refunded, or adjusted \u2014 Feeseal detects and evidences variances against the sealed version only; it never charges, refunds, withholds, adjusts, or collects any amount and issues no instruction to do so; never claimed for v0.1.0 are 'fee audit', 'refund recovery', 'guaranteed accurate fees', 'certified fee schedule', any implication of live marketplace coverage or enforcement, or any finding about a real platform (SPEC \u00a711.3 strings are named here only as never claimed)",
+    "Provenance beyond the seal \u2014 a verdict proves only that the charged fee does or does not equal the deterministic output of the sealed version as presented, for the stated inputs; it does not prove the presented schedule was the one actually published to the world, that transaction inputs are complete, or that any remedy is owed (SPEC \u00a711.4)",
+    "Production signing \u2014 v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 with local fixture keys (keys/ gitignored, mode 600, never committed); a live phase requires real Herald signing and a re-bench; a fresh clone generates its own fixture keys to run the full suite",
+    "Hosted or live operation \u2014 local stdio only; metering point only per signed-verdict transaction ($0.002/transaction shape), no charge path built and no live Meter ingest"
+   ],
+   "product": "eclipse-feeseal-mcp",
+   "product_url": "https://eclipsebazaar.com/products/eclipse-feeseal-mcp/",
+   "record_type": "verdict",
+   "scope": "CERTIFIED(local, fixture transactions) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave2/bench-feeseal.md), clean bench, NO conditions: builder suite 29/29 re-run clean by bencher; decisive fixture F-F9 independently reproduced in fresh processes \u2014 batch spanning the v1 (250 bps) to v2 (300 bps) succession boundary recomputes exactly, including OVERCHARGE +70 (charged 350 vs v1-prescribed 280); relabelling the overcharged transaction as schedule_version 2 does not move the verdict (sealed in-force v1 governs, VERSION_CLAIM_MISMATCH on the verdict's face), and an edited sealed schedule copy fails at step 1 (FEESEAL_VERIFY_FAIL:step1_schedule_seal, UNVERIFIED_EXPORT). Bencher adversarial battery 33/33: forged signatures, presented-verdict substitution, schedule-swap, 21-call malformed-args battery, refusal-must-not-mutate, key custody, metering exactness, determinism \u2014 all pass. Scope is exactly: local stdio MCP, fixture schedules + fixture transactions only, value_class 'test' on all artifacts; no real fee is charged, audited, refunded, or adjusted by Feeseal and no live marketplace is touched; no counsel-gate (SPEC \u00a710) live phase built or claimed. Novel mechanism (SPEC \u00a72.1, verbatim): every fee charged is sealed against the published fee-schedule version in force; overcharges against that version are detected automatically. Advisory F-2/F-3 (non-blocking, do not limit scope): signing is an HMAC fixture stand-in for Herald RS256 (disclosed; live phase would need real Herald signing + re-bench); sealed effective_to is derived, never mutated; feeseal_verify step 4 does not independently anchor prev_hash (not exploitable without the Herald key; v0.2 hardening note).",
+   "status": "current",
+   "verdict": "CERTIFIED(local, fixture transactions)"
   }
  ]
 }

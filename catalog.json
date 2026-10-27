@@ -8796,6 +8796,74 @@
         "capline_anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — a designated human guardian holds veto rights over sealed action classes, and every veto (or veto-window lapse) is receipted into the agent's own record.",
+        "Decisive fixture F-W13 stands from the bench record — in a fresh subprocess with no Ward state, pack_verify recomputes the verdict from the exported pack and pinned keys alone (branches (a)–(d)); every outcome — veto, approval, lapse — is a signed receipt in the agent's own hash-chained record.",
+        "Delta re-bench of v0.1.1 (wave4/rebench-ward.md): defects D1–D10 all CLOSED on independent re-probe (57/57 bencher checks, builder suite 37/37 re-run by the bencher) — the guardian-change subsystem (replacement/revocation outcomes), carved out of the v0.1.0 pass under condition C1, is now INSIDE the PASS-CONDITIONAL (local/simulator) scope; the carve-out is LIFTED and no condition from the first bench remains open.",
+        "Enforcement fence (verbatim, on every surface): Ward issues verdicts and receipts; it does not enforce them. Enforcement is the consuming runtime's mandate layer (§12): a runtime that does not check Ward, or that proceeds despite a VETOED verdict, is outside Ward's control, and Ward claims nothing about such a runtime's actions.",
+        "The lapse deal, stated wherever the veto is described: a window that expires with no guardian act produces a lapse receipt stating the window opened, when it expired, and that no veto or approval was recorded; only with that receipt chained is the action proceed-eligible to the mandate layer. A lapse is never an approval. An open window is never proceed-eligible; a VETOED action is terminal — no appeal verb, no revival.",
+        "Rollback fence (verbatim): the v0.1 store is a pure local file store anchored only by its signed store head and hash chains; verdicts are capped at PASS-CONDITIONAL(local/simulator) — an external anchor is required before any live or multi-party reliance.",
+        "Counsel gate (SPEC §10) — named, unbuilt: connecting Ward verdicts to a real agent runtime such that real actions are barred or cleared in reliance on them, and any use of Ward for a legally recognised ward/guardian relationship, requires counsel clearance first (guardian authority and liability, lapse-based auto-proceed defensibility per class, the legal meaning of \"guardian\"/\"ward\" in naming and copy). There is no dormant live path in v0.1.1 to flip: the startup fence refuses non-local endpoints, live keys, runtime credentials, production agent sources, and value_class ≠ \"test\" by name.",
+        "Signing in v0.1.1 is a fixture HMAC stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref and never accepted from the record under verification. Till (mandate layer), Herald (counter-signing pattern), Meter (metering grammar), and Docket (evidence-pack shape) are consumed by grammar/reference only."
+      ],
+      "categories": [
+        "Identity & Attestation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local/simulator)",
+        "certified": false,
+        "certified_scope": "Eclipse Ward — PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ward.md) PASS-CONDITIONAL with the guardian-change subsystem carved out under condition C1, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ward.md): defects D1–D10 all CLOSED, guardian-change carve-out LIFTED, bencher delta harness 57/57, builder suite 37/37 re-run by the bencher at commit 35b00eb. PASS-CONDITIONAL (local/simulator) is not CERTIFIED — certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture action stream + fixture guardian only, value_class \"test\"; no real agent action is proposed, vetoed, executed, or stopped, and no production runtime is connected. Ward issues verdicts and receipts; it does not enforce them — enforcement is the consuming runtime's mandate layer. Rollback fence: the v0.1 store is a pure local file store, so any verdict is capped at PASS-CONDITIONAL — an external anchor is required before any live or multi-party reliance. Counsel gate (SPEC §10) named and unbuilt: live runtime reliance and any legally recognised ward/guardian use require counsel clearance first; no dormant live path exists.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-ward.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/simulator) with guardian-change carve-out C1, builder suite 24/24) + argus101-program-20261027/wave4/rebench-ward.md (Verity delta re-bench of v0.1.1: D1–D10 all CLOSED, carve-out LIFTED, 57/57 checks, builder suite 37/37 re-run by the bencher). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live runtime reliance — connecting Ward verdicts to a real agent runtime such that real actions are barred or cleared in reliance on them is SPEC §10 counsel-gated and UNBUILT; there is no dormant live path in v0.1.1 and the startup fence refuses non-local endpoints, live keys, runtime credentials, and production agent sources by name",
+          "Legally recognised ward/guardian use — requires counsel clearance first (guardian authority and liability, lapse-based auto-proceed defensibility per class, the legal meaning of \"guardian\"/\"ward\" in naming and copy); pre-counsel language is \"guardian veto verdicts + receipts (local/simulator)\" only — never \"guardian protection\", \"human oversight guaranteed\", or \"actions are stopped\"",
+          "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL(local/simulator); an external anchor is required before any live or multi-party reliance",
+          "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-ward-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-ward-mcp.png",
+      "name": "Eclipse Ward",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $9/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering point only in v0.1.1, no charge path built): the $9/mo price shape attaches at the ward_active_month metering point only; window_opened, outcome_receipt_issued, and ward_pack_exported are zero-price events. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "\"Human in the loop\" for agents today usually means a dashboard a human might look at, an approval buried in a log the agent's operator wrote, or nothing — there is no portable, third-party-recomputable record that a named guardian held the right to stop a sensitive action class, and what they did or did not do with it",
+        "I need a designated human guardian to hold veto rights over enumerated sealed action classes for my agent — veto inside the window bars the action, approval clears it early, and every outcome is receipted into the agent's own hash-chained record",
+        "I need a veto-window lapse to be its own receipted fact — the window expired unused — never silently treated as an approval, and the whole record recomputable offline from the exported pack alone"
+      ],
+      "source_refs": [
+        "eclipse-ward-mcp/README.md",
+        "eclipse-ward-mcp/server.json",
+        "argus101-specs-20261027/ward-spec.md",
+        "argus101-program-20261027/wave4/rebench-ward.md"
+      ],
+      "status": "in-development",
+      "tagline": "Guardian veto verdicts + receipts over fixture actions; local/simulator only. PASS-CONDITIONAL (local/simulator) — a designated fixture guardian holds veto rights over sealed action classes, and every veto (or veto-window lapse) is receipted into the agent's own hash-chained record, recomputable offline from the exported pack. Ward issues verdicts and receipts; it does not enforce them. Rollback fence: the pure local file store caps any verdict at PASS-CONDITIONAL — an external anchor is required before any live or multi-party reliance. Counsel gate (SPEC §10) named and unbuilt: live runtime reliance and any legally recognised ward/guardian use require counsel clearance first.",
+      "tools": [
+        "ward_enrol",
+        "action_propose",
+        "action_withdraw",
+        "guardian_change",
+        "ward_status",
+        "ward_pack_get",
+        "clock_advance",
+        "ward_close",
+        "veto_cast",
+        "action_approve",
+        "guardian_accept_designation",
+        "verdict_get",
+        "pack_verify"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

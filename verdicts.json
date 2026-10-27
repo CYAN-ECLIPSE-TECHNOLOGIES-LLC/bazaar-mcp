@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 133,
+ "count": 134,
  "records": [
   {
    "record_type": "verdict",
@@ -2732,6 +2732,26 @@
   "scope": "PASS-CONDITIONAL(local) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-capline.md) + delta re-bench (argus101-program-20261027/wave3/rebench-capline.md, 45/45 checks PASS: D1 CLOSED, D2 CLOSED, D3 CLOSED, D4 accepted as documented deviation (not a defect), C4 DISCHARGED): builder suite 31/31 re-run clean by bencher at re-bench (27 original + 4 D1/D2/D3 regressions); decisive fixture F-C14 independently re-derived at bench and re-bench (see capabilities). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture policies/spends, fixture unaudited group parameters, no live merchant, no real policy proven, value_class 'test'. Conditions (verbatim-listable): C1 §10 two-key gate — counsel clearance via FinTech Law packet AND independent crypto audit, both required, no dormant live path: live phases (real enterprise policy/cap, merchant-facing reliance, production parameters/audited cryptosystem, privacy/compliance marketing claims) require BOTH (i) counsel clearance through the existing FinTech Law packet AND (ii) an independent cryptographic audit of the §2.2 construction and this implementation; neither substitutes for the other. C2 cross-artifact cross-commitment fenced — external anchor required before live/multi-party use: full coordinated cross-artifact rollback requires an external anchor before live/multi-party use; v0.1 state is single-process local, anchored only by its signed store head + hash chains (re-bench §1 demonstrated a whole-store rollback to an earlier self-consistent snapshot is accepted locally — exactly this fenced condition). C3 deterministic fixture-seed prover randomness must be replaced/audited before any live phase: deterministic fixture-seed-derived prover randomness must be replaced by a CSPRNG (or an audited deterministic derivation under production key custody) before any live phase — seed compromise recomputes every nonce and blinding factor, including the cap. C5 \"Capline\" trademark screen still pending: trademark screen on the name \"Capline\" is still pending; the name remains a placeholder. Both §11.4 disclosures, verbatim: verdict-oracle disclosure: each verdict reveals one bit of ordering information about the sealed cap (whether the stated spend is above or below it); repeated proofs against one commitment narrow the cap by binary search (spec 2.3(c)). stated-spend disclosure: the stated spend is public to the verifier (it is the merchant's own price) (spec 11.4). Novel mechanism (SPEC §2.1, verbatim): a range proof over a sealed internal policy — the agent proves 'this spend is within my cap' to a merchant without revealing the cap or the policy. Signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in, disclosed on every artifact face as signature_scheme); a live phase would need real Herald signing and a re-bench.",
   "status": "current",
   "verdict": "PASS-CONDITIONAL(local)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Ward",
+  "not_tested": [
+   "Live runtime reliance — connecting Ward verdicts to a real agent runtime such that real actions are barred or cleared in reliance on them is SPEC §10 counsel-gated and UNBUILT; there is no dormant live path in v0.1.1 and the startup fence refuses non-local endpoints, live keys, runtime credentials, and production agent sources by name",
+   "Legally recognised ward/guardian use — requires counsel clearance first (guardian authority and liability, lapse-based auto-proceed defensibility per class, the legal meaning of \"guardian\"/\"ward\" in naming and copy); pre-counsel language is \"guardian veto verdicts + receipts (local/simulator)\" only — never \"guardian protection\", \"human oversight guaranteed\", or \"actions are stopped\"",
+   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL(local/simulator); an external anchor is required before any live or multi-party reliance",
+   "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+  ],
+  "product": "eclipse-ward-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-ward-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ward.md) PASS-CONDITIONAL with the guardian-change subsystem carved out under condition C1, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ward.md): defects D1–D10 all CLOSED, guardian-change carve-out LIFTED, bencher delta harness 57/57, builder suite 37/37 re-run by the bencher at commit 35b00eb. Scope exactly: local stdio, fixture action stream + fixture guardian only, value_class \"test\". Ward issues verdicts and receipts; it does not enforce them. Rollback fence: pure local file store caps any verdict at PASS-CONDITIONAL — external anchor required before live or multi-party reliance. Counsel gate (SPEC §10) named and unbuilt. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local/simulator)"
  }
  ]
 }

@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 82,
+ "count": 83,
  "records": [
   {
    "record_type": "verdict",
@@ -1642,6 +1642,25 @@
    "canon_version": null,
    "card_url": "https://eclipsebazaar.com/cards/eclipse-recall-witness-mcp-2026-10-26-2.json",
    "product_url": "https://eclipsebazaar.com/products/eclipse-recall-witness-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-sunset-mcp",
+   "name": "Eclipse Sunset",
+   "verdict": "CERTIFIED (local, fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture) \u2014 Verity independent bench 2026-10-26, REBENCH-1 of the v0.1.1 D1 fix (repo @ 88f2aa6): probe 5 chain attacks PASS 4/4 + strict extras 9/9 \u2014 on a tampered ledger the previously-PROVEN claim returns UNPROVEN + chain_invalid: true, no forged PROVEN is minted, detect_sunsets / migration_diff / ingest_snapshot refuse CHAIN_INVALID; full prior suite re-run 44/44 (unwitnessed claims UNPROVEN, witnessed proof citing bench-recomputed snapshot hashes, fixture-pair detection exact, migration diff sane, hygiene 14/14). Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local, fixture), 41/44, defect D1 HIGH \u2014 closed by this re-bench. Scope = LOCAL/fixture only: local JSON snapshot ingest, stdio transport, bundled weather fixtures. No live-registry claim is made or tested \u2014 none exists in v0.1.1, and the server honestly says so.",
+   "not_tested": [
+    "Live registry crawling \u2014 not in v0.1.1 by design (later phase); the server ingests local snapshot JSON files only and makes no live-registry claim",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only",
+    "A schema_breaking claim type in verify_sunset_claim \u2014 by SPEC design the claim enum is deprecated|removed only; the schema-breaking proof surface is detect_sunsets / migration_diff, verified there at bench"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-sunset-mcp/"
   }
  ]
 }

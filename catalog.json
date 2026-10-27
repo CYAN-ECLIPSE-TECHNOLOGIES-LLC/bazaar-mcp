@@ -1371,7 +1371,7 @@
         "eclipse-social-core-mcp/bazaar-manifest.json",
         "test-bench/results/eclipse-social-core-mcp-2026-10-25.json"
       ],
-      "status": "in-development",
+      "status": "live",
       "tagline": "One canonical, hash-bound package behind every Eclipse social adapter. It publishes nothing itself \u2014 it makes sure nothing unapproved moves.",
       "tools": [
         "account_set",

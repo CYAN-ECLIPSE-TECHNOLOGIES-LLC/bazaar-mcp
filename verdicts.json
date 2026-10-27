@@ -2650,28 +2650,7 @@
   "Live identity — real Genesis/Continuity records, real agents, and real model families are not tested or claimed: fixture agents and fixture identity records only; Genesis/Continuity-style records are consumed by reference only, Duet issues, alters, and classifies nothing about them and defines no family taxonomy or equivalence mapping; startup fence refuses live keys, non-local endpoints, value_class other than 'test', and any model-probing or action-execution module (CONFIG_FENCE_REFUSED:<class>)",
   "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (HMAC Herald stand-in disclosure), disclosed on the product's face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never key material from the record under verification; a live phase requires real Herald signing and a re-bench",
   "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone generates its own fixture key file to run the full suite",
-  "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1 point per distinct signer pair per fixture month window with at least one sealed attestation, event duet_active_pair_month at the $99/mo price shape; 0 for all refusals and for verifies; idempotent second-signature re-presentation meters no second point); no charge, checkout, invoice, subscription, or payment-collection path is built and no live Meter ingest is claimed",
- {
-  "bench_date": "2026-10-27",
-  "bench_version": "0.1.1",
-  "canon_version": null,
-  "card_url": null,
-  "certified": false,
-  "name": "Eclipse Fairlend",
-  "not_tested": [
-   "Any use beyond fixture decisions — real applicants, a real model, a real lender's decision stream, real adverse-action reason codes, audit figures relied on by any party, or any applicant-facing artifact is SPEC §10 fair-lending-counsel-gated and UNBUILT; v0.1.1 contains no dormant live path",
-   "Credit-decision correctness or fairness — Fairlend never decides: it has no scoring, approval, denial, pricing, override, or recommendation function, and a seal does not prove the decision was fair, lawful, unbiased, or correct",
-   "Token-split identifier spellings (D-11, NAMED standing condition): tax_id, tax_id_number, taxIdNumber, taxpayer_id, ein, ein_number, gov_id, govt_id, govtId, social_sec_no, surname, home_street seal today when they should refuse — a known residual Low in the SPEC §7.3 fence that must close before any non-fixture scope",
-   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture); an external anchor is required before live or multi-party reliance",
-   "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
-  ],
-  "product": "eclipse-fairlend-mcp",
-  "product_url": "https://eclipsebazaar.com/products/eclipse-fairlend-mcp/",
-  "record_type": "verdict",
-  "scope": "PASS-CONDITIONAL (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-fairlend.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-fairlend.md: D-1..D-6, D-8, D-9, D-10 CLOSED; D-7 closed for its probed class with residual Low defect D-11 NAMED — §7.3 identifier fence evadable by token-split spellings (tax_id, ein, gov_id, surname, home_street etc.); builder suite 36/36 reproduced). Scope exactly: local stdio, fixture decisions only, synthetic cohorts; no real applicant, no real credit data, no real model, no lender system; Fairlend makes no credit decision. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
-  "status": "current",
-  "verdict": "PASS-CONDITIONAL (local/fixture)"
- }
+  "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1 point per distinct signer pair per fixture month window with at least one sealed attestation, event duet_active_pair_month at the $99/mo price shape; 0 for all refusals and for verifies; idempotent second-signature re-presentation meters no second point); no charge, checkout, invoice, subscription, or payment-collection path is built and no live Meter ingest is claimed"
  ],
  "product": "eclipse-duet-mcp",
  "product_url": "https://eclipsebazaar.com/products/eclipse-duet-mcp/",
@@ -2855,6 +2834,27 @@
   "product_url": "https://eclipsebazaar.com/products/eclipse-agesure-mcp/",
   "record_type": "verdict",
   "scope": "PASS-CONDITIONAL (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-agesure.md) PASS-CONDITIONAL with conditions C1–C7, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-agesure.md: D1–D8 all CLOSED, new D9 + condition C8), + spot re-bench of v0.1.2 (argus101-program-20261027/wave4/spot-agesure-012.md: D9 CLOSED, C8 DISCHARGED, builder suite 35/35 reproduced). Scope exactly: local stdio, fixture attestations only, value_class \"test\"; no real person checked. Standing conditions C1 (rollback fence), C2 (§10 counsel gate), C5 (issuer key separation), C7 (name screen) still bind. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local/fixture)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.1",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Fairlend",
+  "not_tested": [
+   "Any use beyond fixture decisions — real applicants, a real model, a real lender's decision stream, real adverse-action reason codes, audit figures relied on by any party, or any applicant-facing artifact is SPEC §10 fair-lending-counsel-gated and UNBUILT; v0.1.1 contains no dormant live path",
+   "Credit-decision correctness or fairness — Fairlend never decides: it has no scoring, approval, denial, pricing, override, or recommendation function, and a seal does not prove the decision was fair, lawful, unbiased, or correct",
+   "Token-split identifier spellings (D-11, NAMED standing condition): tax_id, tax_id_number, taxIdNumber, taxpayer_id, ein, ein_number, gov_id, govt_id, govtId, social_sec_no, surname, home_street seal today when they should refuse — a known residual Low in the SPEC §7.3 fence that must close before any non-fixture scope",
+   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture); an external anchor is required before live or multi-party reliance",
+   "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+  ],
+  "product": "eclipse-fairlend-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-fairlend-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-fairlend.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-fairlend.md: D-1..D-6, D-8, D-9, D-10 CLOSED; D-7 closed for its probed class with residual Low defect D-11 NAMED — §7.3 identifier fence evadable by token-split spellings (tax_id, ein, gov_id, surname, home_street etc.); builder suite 36/36 reproduced). Scope exactly: local stdio, fixture decisions only, synthetic cohorts; no real applicant, no real credit data, no real model, no lender system; Fairlend makes no credit decision. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/fixture)"
  }

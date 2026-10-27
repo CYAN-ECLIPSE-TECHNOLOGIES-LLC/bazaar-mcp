@@ -9168,6 +9168,71 @@
     "attestation_register"
    ],
    "vendor": "Cyan Eclipse Technologies"
+  },
+  {
+   "capabilities": [
+    "Novel mechanism (SPEC \u00a72.1, verbatim) \u2014 each decision seals its feature set, model version, and adverse-action reason codes at decision time, making later disparate-impact audits a recompute.",
+    "Fairlend never decides: it makes no credit decision and influences none \u2014 it has no scoring, approval, denial, pricing, override, or recommendation function. A Fairlend seal proves what was recorded at decision time \u2014 the presented feature set, model version, and reason codes, counter-signed then. It does not prove the decision was fair, lawful, unbiased, or correct.",
+    "Bench path: v0.1.0 bench (wave4/bench-fairlend.md, defects D-1..D-10) + v0.1.1 delta re-bench (wave4/rebench-fairlend.md: D-1..D-6, D-8, D-9, D-10 CLOSED; D-7 closed for its probed class with residual Low defect D-11, named below; builder suite 36/36 reproduced).",
+    "D-11 \u2014 NAMED standing condition (Low, residual of the D-7 class): the SPEC \u00a77.3 identifier fence is still evadable by token-split spellings. Feature names that seal today when they should refuse: tax_id, tax_id_number, taxIdNumber, taxpayer_id, ein, ein_number, gov_id, govt_id, govtId, social_sec_no (government-id class), surname, home_street (name/address classes). Cause (from the re-bench): the checker matches whole tokens and a substring list that omits taxid; splitting a compound into tax+id tokens defeats both. D-11 must close before any non-fixture scope; it does not expand v0.1.1's fixture scope, and the same helper binds seal_verify and recompute step 3, so the gap is consistent, not divergent.",
+    "Rollback fence: pure local file store caps verdict at PASS-CONDITIONAL \u2014 external anchor required before live/multi-party use. Fair-lending counsel gate (SPEC \u00a710) \u2014 named, unbuilt: any use beyond fixture decisions \u2014 real applicants, a real model, a real lender's decision stream, real adverse-action reason codes, audit figures relied on by any party, or any applicant-facing artifact \u2014 is out of v0.1, hard, until fair-lending counsel clears it in writing; v0.1.1 contains no dormant live path.",
+    "Cohort tags are fixture-supplied labels sealed with the record (synthetic cohorts \u2014 cohort-A / cohort-B over invented records); Fairlend never infers a cohort, and untagged records are counted and excluded from cohort rates visibly. Late-presented decisions export only as downgraded LATE_RECORDED_EXPORT \u2014 there is no backdating path. Hash construction is pinned in SPEC \u00a74.1 and reproduced by the bench from the documented text alone. Herald (signing pattern), Meter (metering grammar), and Docket (pack shape) are consumed by reference only."
+   ],
+   "categories": [
+    "Compliance & Evidence",
+    "Payments & Commerce"
+   ],
+   "certification": {
+    "bench_verdict": "PASS-CONDITIONAL (local/fixture)",
+    "certified": false,
+    "certified_scope": "Eclipse Fairlend \u2014 PASS-CONDITIONAL (local/fixture) \u2014 Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-fairlend.md) + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-fairlend.md: D-1..D-6, D-8, D-9, D-10 CLOSED; D-7 closed for its probed class with residual Low defect D-11 NAMED; builder suite 36/36 reproduced). PASS-CONDITIONAL (local/fixture) is not CERTIFIED \u2014 certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture decisions only, synthetic cohorts; no real applicant, no real credit data, no real model, and no lender system is touched, and Fairlend makes no credit decision and influences none. A Fairlend seal proves what was recorded at decision time \u2014 the presented feature set, model version, and reason codes, counter-signed then; it does not prove the decision was fair, lawful, unbiased, or correct. Standing condition D-11 (NAMED): the SPEC \u00a77.3 identifier fence is still evadable by token-split spellings (tax_id, ein, gov_id, surname, home_street etc. seal today when they should refuse); D-11 must close before any non-fixture scope. Rollback fence and the SPEC \u00a710 fair-lending counsel gate (named, unbuilt) also bind.",
+    "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-fairlend.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local/fixture), defects D-1..D-10) + argus101-program-20261027/wave4/rebench-fairlend.md (Verity delta re-bench of v0.1.1 fix commit 01cceda: D-1..D-6, D-8, D-9, D-10 CLOSED, D-7 partially closed with residual D-11 named, builder suite 36/36 reproduced). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+    "not_tested": [
+     "Any use beyond fixture decisions \u2014 real applicants, a real model, a real lender's decision stream, real adverse-action reason codes, audit figures relied on by any party, or any applicant-facing artifact is SPEC \u00a710 fair-lending-counsel-gated and UNBUILT; v0.1.1 contains no dormant live path",
+     "Credit-decision correctness or fairness \u2014 Fairlend never decides: it has no scoring, approval, denial, pricing, override, or recommendation function, and a seal does not prove the decision was fair, lawful, unbiased, or correct",
+     "Token-split identifier spellings (D-11, NAMED standing condition): tax_id, tax_id_number, taxIdNumber, taxpayer_id, ein, ein_number, gov_id, govt_id, govtId, social_sec_no, surname, home_street seal today when they should refuse \u2014 a known residual Low in the SPEC \u00a77.3 fence that must close before any non-fixture scope",
+     "External anchoring / multi-party reliance \u2014 the pure local file store caps any verdict at PASS-CONDITIONAL (local/fixture); an external anchor is required before live or multi-party reliance",
+     "Production key custody \u2014 signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+    ],
+    "scorecard_ref": null,
+    "scorecard_url": null
+   },
+   "id": "eclipse-fairlend-mcp",
+   "listing_class": "mcp",
+   "logo": "branding/logos/eclipse-fairlend-mcp.png",
+   "name": "Eclipse Fairlend",
+   "name_status": "Working name \u2014 placeholder pending the house brand + trademark/confusion screen.",
+   "platforms": [
+    "MCP over stdio"
+   ],
+   "pricing_model": "PRICED \u2014 $0.15/decision (evidence sealing only; no credit decisions), via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC \u00a79 (metering points only in v0.1.1, no charge path built): one Meter-grammar record per successfully sealed decision at the $0.15/decision price shape. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "problem_statements": [
+    "A lending decision is made from inputs that are never frozen \u2014 feature set, model version, reason codes \u2014 so a later disparate-impact audit has nothing to recompute from but logs and memory",
+    "I need each decision sealed at decision time with the exact inputs that produced it, so the audit is a deterministic recompute over seals \u2014 reproducible figures, not an argument",
+    "I need the evidence tool itself to be incapable of deciding: no scoring, approval, denial, pricing, or recommendation function \u2014 and a seal that never claims the decision was fair, lawful, unbiased, or correct"
+   ],
+   "source_refs": [
+    "eclipse-fairlend-mcp/README.md",
+    "eclipse-fairlend-mcp/server.json",
+    "argus101-specs-20261027/fairlend-spec.md",
+    "argus101-program-20261027/wave4/rebench-fairlend.md"
+   ],
+   "status": "in-development",
+   "tagline": "Decision-evidence sealer + audit recompute engine over fixture decisions; local/fixture only. PASS-CONDITIONAL (local/fixture) \u2014 each decision seals its feature set, model version, and adverse-action reason codes at decision time, making later disparate-impact audits a recompute. Fairlend never decides. D-11 NAMED: \u00a77.3 identifier fence evadable by token-split spellings \u2014 must close before any non-fixture scope.",
+   "tools": [
+    "decision_seal",
+    "model_register_fixture",
+    "reason_table_register_fixture",
+    "decision_get",
+    "decision_retract",
+    "seal_verify",
+    "audit_define",
+    "audit_run",
+    "audit_receipt_get",
+    "audit_pack_get",
+    "decision_export"
+   ],
+   "vendor": "Cyan Eclipse Technologies"
   }
  ],
  "sources": [

@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 89,
+ "count": 90,
  "records": [
   {
    "record_type": "verdict",
@@ -1782,6 +1782,27 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-crawlway-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-outwatch-mcp",
+   "name": "Eclipse Outwatch",
+   "verdict": "CERTIFIED (LOCAL)",
+   "certified": true,
+   "scope": "CERTIFIED (LOCAL) \u2014 Verity independent re-bench 2026-10-26, REBENCH-1 of the v0.1.1 Bench Fix D1\u2013D3 round (repo @ b65c32e): 21/21 checks PASS, 0 FAIL (P6 aggregates 82 fresh-process vectors). D1 (HIGH \u2014 malformed arguments crashed the server process: list/dict target_id TypeError, invalid-IPv6 urlparse ValueError) FIXED: 25 original malformed cases + 57-vector fuzz sweep (wrong types on every arg of every tool, fresh process per vector) \u2192 0 crashes, 0 tracebacks, every vector a clean JSON-RPC isError, process alive and tools/list responsive after each. D2 (HIGH \u2014 probes followed HTTP redirects, LOCAL scope bypassable by trampoline to an always-200 or external page) FIXED: redirects never followed, witnessed as-is \u2014 same-origin 302\u2192/down(503), cross-origin 302\u2192second-port /ok(200), external-shaped 302, redirect loop, and 302\u2192302\u2192503 chain all record status=302 only with destination hit counts unchanged (0\u21920). D3 (LOW \u2014 self-report refusal was an exact-key denylist and declared schemas were never enforced) FIXED: 19 variant shapes across all read/probe tools (uptime_pct, Uptime, UPTIME, selfReportedUptime, sla_pct, nested {meta:{uptime:\u2026}}, unknown keys, register-time and nested-in-list forms) all refused cleanly, zero influence (availability exactly 0.5, receipt_count 2, badge unchanged). Regression spot-checks PASS: badge ladder 19\u00d7200+1\u00d7503 \u2192 availability 0.95 \u2192 UP; chain tamper on a store copy (seq-3 field edit) \u2192 valid=false, tampered_seqs=[3], pristine chain valid=true checked=6. New defects: none. Known LOWs remain open as documented for LOCAL scope, non-blocking (D4: hash chain unauthenticated \u2014 forged append / tail truncation undetectable under store-write access; pin chain_head externally, call verify_chain separately. D5: vantage names free-form and list form uncapped, mitigated by vantage_mode: local-simulated stamp). Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (LOCAL), 72/76 checks PASS with HIGH defects D1/D2 and LOWs D3\u2013D6 \u2014 D1/D2/D3 (and D6 bool-as-int as a side effect) closed by this re-bench. Scope = LOCAL only: probes run only against localhost or fixture:// endpoints, external probing refused; vantage points are local-simulated probe identities, NOT geographically independent; no self-report input accepted; $299/mo is a pricing term only \u2014 no checkout/payment code.",
+   "not_tested": [
+    "External or public network probing \u2014 refused by design in v0.1.1 (SCOPE_EXTERNAL_REFUSED): no live external monitoring is performed, tested, or claimed",
+    "Real geographic vantage independence \u2014 not in v0.1.1 by design: vantage points are local-simulated probe identities only, stamped vantage_mode: local-simulated on every receipt",
+    "Hosted or remote serving \u2014 v0.1.1 is local stdio only; known LOWs D4 (unauthenticated chain, tail truncation undetectable under store-write access) and D5 (free-form vantage names, uncapped list form) remain documented for LOCAL scope",
+    "Payment, checkout, or charging \u2014 none exists in v0.1.1 by design: the $299/mo feed license is commercial metadata / a stated pricing term only, and no payment or checkout code is in the server",
+    "Dashboards, alerting, badge issuance/revocation beyond the derived badge_state, or any certification claim by the product itself \u2014 none exists in v0.1.1; certification is Verity's bench verdict only"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-outwatch-mcp/"
   }
  ]
 }

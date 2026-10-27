@@ -3,7 +3,7 @@
  "name": "io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar",
  "title": "Eclipse Bazaar MCP",
  "description": "Discover agent tools by problem: every listing carries its Test Bench verdict or says it has none.",
- "version": "0.1.0",
+ "version": "0.1.1",
  "websiteUrl": "https://eclipsebazaar.com",
  "icons": [
   {
@@ -21,7 +21,7 @@
  "packages": [
   {
    "registryType": "oci",
-   "identifier": "ghcr.io/cyan-eclipse-technologies-llc/bazaar-mcp:3d3ede38bf40a123d22ab191421b2de29f25bcf1",
+   "identifier": "ghcr.io/cyan-eclipse-technologies-llc/bazaar-mcp:0b0883a4d28e925063a4665430e6a5401da15c20",
    "runtimeHint": "docker",
    "transport": {
     "type": "stdio"

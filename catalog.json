@@ -7824,6 +7824,71 @@
         "spend_history_get"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — return deadlines are computed at purchase time from the merchant's sealed terms, so the countdown can't be gaslit later; alerts fire before windows close.",
+        "Decisive fixture F-RV9 stands from the bench record — post-purchase terms edits (window_days 30 → 14, basis flipped) re-presented as authoritative are refused TERMS_SEAL_MISMATCH on every tool; the vault's deadline_instant, alert schedule and fired alerts are byte-identical before/after; in a fresh process, from the export + public keys alone, receiptvault_verify recomputes the ORIGINAL deadline (True, 2026-10-16T03:59:59Z) from the purchase-time sealed terms (regression spot, delta re-probe 3).",
+        "Integrity (v0.1.2 cross-commitments + v0.1.3 RB-F9 sweep) — each entry carries its signed chain head anchor; the store carries a signed set anchor over the entries set (sorted ids, per-entry head hashes and counts, the purchase index, the fixture clock) and a signed aux anchor over the anomaly/metering/refusal streams, each committing to the other's digest; reverting any subset of artifacts is detected as SEAL_DEFECT on every serve and mutation path; the purchase index served at read time is derived from the verified entries, never trusted as stored; dangling, repointed, or wrong-type index rows and deleted-field entries defect structurally with zero raw exceptions and zero writes (RB-F9, re-bench 3).",
+        "Standing condition — full coordinated local snapshot restore is undetectable in the local model — fenced verbatim in README + server.json; an external anchor (witnessed/countersigned head hash outside the local store) is REQUIRED before any live or multi-party use.",
+        "Key-fact label (SPEC §11.2, verbatim): the deadline is arithmetic over the merchant's terms as sealed at purchase; it is not a legal determination, and Receiptvault does not warrant that any merchant will accept a return by it. Where sealed terms are absent the product says NO_SEALED_TERMS; it never fills the gap with current, scraped, or typical terms.",
+        "Downgrade law (SPEC §6.4) — any export that cannot be offline-recompute-verified (seal, chain, deadline recomputation, alert derivation, Herald seal — each failing step named RECEIPTVAULT_VERIFY_FAIL:<step>) is labelled UNVERIFIED_EXPORT on its face (verified: false) and its deadline renders as UNVERIFIED — do not rely, never as a date; downgraded labels are never removed or upgraded post-hoc, and no tool edits, refreshes, re-seals, or substitutes terms, recomputes or overrides a frozen deadline, or computes a deadline from unsealed/scraped/current terms (SPEC §5.4 — absence bench-checked by dispatch-table enumeration).",
+        "Pinned arithmetic (SPEC §3.2) — every input must be declared in the sealed terms (window_days, timezone, day_basis, count_start, deadline_time, and holiday_calendar_ref for business basis); a missing, malformed, or contradictory declaration is a named UNCOMPUTABLE:<declaration> refusal — no assumed timezone, calendar/business basis, start rule, or holiday table exists anywhere; ambiguous/nonexistent local deadline times (DST edges) refuse the same way, never a silently shifted deadline. Dual-seal purchases refuse as DUAL_SEAL_CONFLICT (Q-RV1 — no issuer is silently preferred); a seal carrying multiple return-window declarations refuses as UNCOMPUTABLE ambiguity (Q-RV4).",
+        "Format attribution is exact and minimal: term seals are Trueprice/Shelfprice's (consumed by reference, never issued or redefined), signing is Herald's pattern (fixture HMAC stand-in), and metering points are emitted in Meter grammar — consumed, never redefined. Eclipse Assay and Eclipse Cupel are internal tools, not products: this product has no dependency on them, no integration with them, and no buy path, price, licence, or checkout for them anywhere."
+      ],
+      "categories": [
+        "Consumer-Agent Protection",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "CERTIFIED (local, fixture sealed merchant terms + fixture purchase records)",
+        "certified": true,
+        "certified_scope": "CERTIFIED (local, fixture sealed merchant terms + fixture purchase records) — Verity delta re-probe (re-bench 3) of v0.1.3, 2026-10-27 (argus101-program-20261027/wave2/rebench3-receiptvault.md): RB-F9 CLOSED on fresh repros (dangling/repointed purchase index and deleted-field entries defect as SEAL_DEFECT on every surface, no raw KeyError anywhere, stdio process survives, zero writes on defect paths), RB-F1–RB-F8 closed at re-bench 2 and not reopened, regression spot PASS (F-RV9 decisive fresh-process recompute holds; full-export head-anchor/record-count drops fail verification); builder suite 66/66 PASS plus socket-denied 66/66, bencher battery 130/130 PASS. Scope is exactly: local, fixture sealed merchant terms + fixture purchase records — local stdio MCP (SPEC §0.1), fixture purchases, merchants, terms, seals, holiday calendars, clock and alert sink only, every artifact value_class \"test\"; no live merchant, storefront, receipt inbox, terms page, or notification channel is touched in v0.1.3 and no real purchase or terms are vaulted. Standing condition (verbatim): full coordinated local snapshot restore is undetectable in the local model — fenced verbatim in README + server.json; an external anchor (witnessed/countersigned head hash outside the local store) is REQUIRED before any live or multi-party use.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave2/rebench3-receiptvault.md (Verity delta re-probe of v0.1.3, RB-F9 only + regression spot: suite 66/66 re-run by the bencher plus socket-denied 66/66, bencher battery 130/130 PASS, supplementary S23/F-RV9 probes PASS). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Full coordinated local snapshot restore — STANDING CONDITION (bench, verbatim): full coordinated local snapshot restore is undetectable in the local model — fenced verbatim in README + server.json; an external anchor (witnessed/countersigned head hash outside the local store) is REQUIRED before any live or multi-party use. Honesty fence — rollback residual: within this local file model, a rollback that restores *every* local artifact (the whole store file, every anchor, and the fixture clock) to one earlier, internally consistent snapshot is undetectable; the cross-commitments detect partial rollbacks and single-artifact tampering, not a complete coordinated snapshot restore. Closing that residual requires an external anchor — a head hash witnessed or countersigned outside this local store — which is required before any live or multi-party use. No stronger claim is made.",
+          "Counsel-gated phase (SPEC §10, named, unbuilt/unclaimed): (a) presenting a computed deadline to consumers as a legal return right or as binding on a merchant; (b) ingesting live merchant terms / live purchase records and relying on live Trueprice/Shelfprice seals; (c) sending alerts over real channels on the basis of computed deadlines (a missed/wrong alert becoming a lapsed-right claim) — all out of v0.1, hard. A live phase is a separate, re-benched build after counsel clearance; v0.1.3 builds nothing around, against, or in anticipation of this gate and there is no dormant live path to activate — the startup fence refuses live-key strings, non-local endpoints, external notification/send modules, and terms-fetch/refresh modules by name.",
+          "Live merchants and live purchases — fixtures only: fixture purchase records plus merchant terms sealed at purchase time under a deterministic seed; merchant refs name no real merchant, and every artifact carries value_class \"test\"",
+          "Live Herald signing — v0.1.3 signing is a fixture HMAC stand-in for the Herald pattern, disclosed on the product's face; verification keys are pinned out-of-band in code (PINNED_KEY_REFS) — a record under verification can never select its own verification key, and key references inside a presented record are ignored",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed); a fresh clone must create its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9.1 (one vault-month Meter-shaped event per distinct vault, by user ref, with at least one entry in COMPUTED/WINDOW_CLOSED/RETURNED_MARKED state during a fixture month window, at the $5/mo shape; the free shape emits no per-call metering point, and NO_SEALED_TERMS/UNCOMPUTABLE verdicts and idempotent re-opens emit none), no charge path is built, no payment is taken, and no live Meter ingest is claimed"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-receiptvault-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-receiptvault-mcp.png",
+      "name": "Eclipse Receiptvault",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE + $5/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Price shape per SPEC §9 (FREE + $5/mo; the price book governs): which free-tier limits (entry counts, alert counts) bound the free shape is a price-book question, not defined by the spec and never implied by a metering point (SPEC §9.1 / Q-RV3) — v0.1 designs no limit enforcement. Metering points only — one vault-month Meter-shaped event per distinct vault (by user ref) with at least one entry in COMPUTED/WINDOW_CLOSED/RETURNED_MARKED state during a fixture month window, at the $5/mo shape; the free shape emits no per-call metering point. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "Return windows are normally reconstructed later — from a merchant's current terms page, an order email, or memory — after the merchant may have edited the terms, shortened the window, or reworded the day-count basis; the buyer arguing 'it was 30 days when I bought it' has only their word against a live page",
+        "I need the return deadline computed at purchase time from the merchant's terms as sealed at that moment, frozen into a hash-chained vault record with its alert schedule, so no later terms edit, re-issue, or refresh can move the deadline or the alerts",
+        "I need any third party to be able to recompute the original deadline offline from the purchase-time seal alone, and any export that cannot be recompute-verified labelled UNVERIFIED_EXPORT with no deadline claim — and where no sealed terms exist, a plain NO_SEALED_TERMS rather than a deadline built from current, scraped, or typical terms"
+      ],
+      "source_refs": [
+        "eclipse-receiptvault-mcp/README.md",
+        "eclipse-receiptvault-mcp/server.json",
+        "argus101-specs-20261027/receiptvault-spec.md",
+        "argus101-program-20261027/wave2/rebench3-receiptvault.md"
+      ],
+      "status": "in-development",
+      "tagline": "Purchase-receipt vault with a gaslight-proof return countdown — return deadlines are computed at purchase time from the merchant's sealed terms, so the countdown can't be gaslit later; alerts fire before windows close. CERTIFIED (local, fixture sealed merchant terms + fixture purchase records) — local stdio, fixture sealed merchant terms + fixture purchase records only, value_class \"test\"; the deadline is arithmetic over the merchant's terms as sealed at purchase; it is not a legal determination, and Receiptvault does not warrant that any merchant will accept a return by it. Standing condition: full coordinated local snapshot restore is undetectable in the local model — fenced verbatim in README + server.json; an external anchor (witnessed/countersigned head hash outside the local store) is REQUIRED before any live or multi-party use.",
+      "tools": [
+        "receiptvault_open",
+        "receiptvault_status",
+        "receiptvault_mark_returned",
+        "receiptvault_get",
+        "receiptvault_verify",
+        "receiptvault_list",
+        "receiptvault_clock_advance",
+        "receiptvault_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

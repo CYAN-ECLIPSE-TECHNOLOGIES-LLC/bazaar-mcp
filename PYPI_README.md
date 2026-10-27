@@ -2,11 +2,15 @@
 
 mcp-name: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar
 
-**Eclipse Bazaar is Cyan Eclipse Technologies' own catalog** of tested
-MCP products — at v0.1.0 it lists Cyan Eclipse Technologies products
-only (86 listings). It is not a general index of every MCP server, and
-this package does not claim to be one. Third-party listings are future
-work (P2 on the server's own roadmap).
+**Eclipse Bazaar is Cyan Eclipse Technologies' marketplace** for its own
+bench-verified MCP servers, connectors, and tools (147 listings). Every
+listing is a Cyan Eclipse Technologies product today — third-party
+listings are not yet open — and every listing carries its Test Bench
+verdict and scope, or states plainly that it has none. Priced items are
+purchasable through the Bazaar's bench-order/intake path at
+eclipsebazaar.com (operator-confirmed ordering; no self-serve buy-now).
+This package is the Bazaar's agent-facing catalog face; it is not a
+general index of every MCP server, and does not claim to be one.
 
 One distribution, three surfaces:
 

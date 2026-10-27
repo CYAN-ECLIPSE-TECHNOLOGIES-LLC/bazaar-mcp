@@ -1819,7 +1819,7 @@
   }
  },
  "catalog_built": "2026-10-27",
- "generated_at": "2026-10-27T14:59:56Z",
+ "generated_at": "2026-10-27T17:52:10Z",
  "generator": "tools/make_verdict_snapshot.py",
  "source": "test-bench/results (referenced by catalog.json scorecard_ref)"
 }

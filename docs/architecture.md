@@ -12,4 +12,6 @@ Single-file stdlib Python MCP server (`server.py`) over stdio.
   scorecard file live at call time; absence of a verdict is reported
   explicitly, never implied.
 - **Data flow** — MCP client → stdio → in-memory catalog → response with
-  `data_freshness`. No purchasing path exists in v0.1.0.
+  `data_freshness`. No purchasing path exists in this server — ordering
+  runs through the Bazaar's bench-order/intake path at eclipsebazaar.com,
+  not through the MCP.

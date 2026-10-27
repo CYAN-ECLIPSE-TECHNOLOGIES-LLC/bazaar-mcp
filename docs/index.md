@@ -13,10 +13,13 @@ AI agents (and their builders) choosing tools: discovery by the problem to
 solve, with certification receipts instead of registry metadata alone.
 
 ## Status
-v0.1.0, in development / dogfood. Catalog covers 14 CETech products only
-(seeded from each product's `bazaar-manifest.json` and the latest Test Bench
-scorecards — no invented products or verdicts). Discovery only: **no
-purchasing**. Third-party listings are P2.
+The live Eclipse Bazaar catalog: 147 first-party CETech MCP servers,
+connectors, and tools (seeded from each product's `bazaar-manifest.json`
+and the latest Test Bench scorecards — no invented products or verdicts).
+This server is the catalog face — search, comparison, and certification
+lookup; it has no purchasing tools. Priced Bazaar items are purchasable
+via the bench-order/intake path at eclipsebazaar.com. Third-party
+listings are not yet open.
 
 Catalog snapshot: <img src="../seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> Agent Wallet CERTIFIED(sandbox), CertBridge
 CERTIFIED(staging), HostBridge CERTIFIED(simulator), Eclipse Connect

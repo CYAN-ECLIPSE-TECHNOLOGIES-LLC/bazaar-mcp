@@ -487,7 +487,7 @@
       "platforms": [
         "MCP over stdio"
       ],
-      "pricing_model": "Free discovery (v0.1.0, CETech catalog only); marketplace economics are P2 — no purchasing in v0.1.0",
+      "pricing_model": "Free — this server is the Bazaar's catalog face (search / compare / certification lookup). Priced catalog items are purchasable via the bench-order/intake path at eclipsebazaar.com; no purchasing runs through this server.",
       "problem_statements": [
         "I need to find an MCP tool that solves a specific problem",
         "Which agent tools are actually tested and certified, and what was not tested?",

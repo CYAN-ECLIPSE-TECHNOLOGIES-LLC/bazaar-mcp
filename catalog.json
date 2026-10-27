@@ -37,7 +37,7 @@
    ],
    "pricing_model": "Free sandbox / open reference implementation; hosted tier planned",
    "problem_statements": [
-    "I need to give an AI agent spending limits so it can pay for things without spending freely",
+    "I need to give an SI agent spending limits so it can pay for things without spending freely",
     "My agent needs to make payments but only to approved recipients and only up to a cap",
     "I need a kill switch that stops my agent's spending immediately",
     "I need proof of exactly what my agent was authorized to spend, for liability",
@@ -65,7 +65,7 @@
   },
   {
    "capabilities": [
-    "Audit any public storefront URL for AI-agent readiness (8 public-surface checks)",
+    "Audit any public storefront URL for SI-agent readiness (8 public-surface checks)",
     "Probe UCP profile at /.well-known/ucp and live MCP endpoints",
     "Check llms.txt, robots.txt AI-crawler policy, sitemap",
     "Verify Product structured data with price and availability",
@@ -97,8 +97,8 @@
    ],
    "pricing_model": "Free local audit (open reference implementation); hosted monitoring tier planned at $99-$199/mo (not yet launched)",
    "problem_statements": [
-    "I need to know if a store is ready for AI shopping agents",
-    "Is my storefront discoverable and purchasable by AI agents?",
+    "I need to know if a store is ready for SI shopping agents",
+    "Is my storefront discoverable and purchasable by SI agents?",
     "Audit a store for agent readiness: UCP profile, MCP endpoint, structured product data",
     "Why can't shopping agents complete a purchase from this store?"
    ],
@@ -108,7 +108,7 @@
     "test-bench/results/agent-ready-mcp-2026-10-25.json"
    ],
    "status": "live",
-   "tagline": "Can an AI agent actually buy from your store? Score it, see the evidence, fix the gaps.",
+   "tagline": "Can an SI agent actually buy from your store? Score it, see the evidence, fix the gaps.",
    "tools": [
     "audit_storefront",
     "list_checks"
@@ -437,7 +437,7 @@
    "pricing_model": "Free (read-only public tier) stays free, and free self-host stays free. PRICED \u2014 metered reads $0.01/read (PC-1) via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product.",
    "problem_statements": [
     "I need to search crypto news and get article text an agent can read",
-    "Give my agent structured crypto and AI news, not scraped HTML",
+    "Give my agent structured crypto and SI news, not scraped HTML",
     "What are the latest market numbers and how did this source's past calls grade out?"
    ],
    "source_refs": [
@@ -445,7 +445,7 @@
     "mcp-product-slate-20261023.md (product zero)"
    ],
    "status": "live",
-   "tagline": "Free read-only crypto + AI news for agents: search articles, get full article text, live ticker, and a graded prediction scoreboard. Also a Muse custom connector \u2014 one-paste setup at thewhitereport.com/agents.",
+   "tagline": "Free read-only crypto + SI news for agents: search articles, get full article text, live ticker, and a graded prediction scoreboard. Also a Muse custom connector \u2014 one-paste setup at thewhitereport.com/agents.",
    "tools": [
     "get_latest",
     "search_articles",
@@ -1753,7 +1753,7 @@
     "test-bench/results/eclipse-stage-mcp-2026-10-25.json"
    ],
    "status": "in-development",
-   "tagline": "The console bridge \u2014 deploy and playtest AI-built games on your own Dev Mode console, with receipts.",
+   "tagline": "The console bridge \u2014 deploy and playtest SI-built games on your own Dev Mode console, with receipts.",
    "tools": [
     "console_list",
     "device_info",
@@ -3375,7 +3375,7 @@
     "test-bench/results/eclipse-redteam-mcp-2026-10-26-3.json"
    ],
    "status": "in-development",
-   "tagline": "Adversarial simulation for AI agents \u2014 sandboxed twins only.",
+   "tagline": "Adversarial simulation for SI agents \u2014 sandboxed twins only.",
    "tools": [
     "rt_register_target",
     "rt_suites_list",
@@ -3663,7 +3663,7 @@
     "test-bench/results/eclipse-steward-mcp-2026-10-26-4.json"
    ],
    "status": "in-development",
-   "tagline": "Team-chat agent governance \u2014 the signed mandate, verified disclosure, review-first posting and receipts that govern an AI agent inside Slack, Teams and Discord. It governs the agent \u2014 it never monitors the people.",
+   "tagline": "Team-chat agent governance \u2014 the signed mandate, verified disclosure, review-first posting and receipts that govern an SI agent inside Slack, Teams and Discord. It governs the agent \u2014 it never monitors the people.",
    "tools": [
     "workspace_bind",
     "mandate_issue",

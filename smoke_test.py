@@ -29,7 +29,7 @@ REQUESTS = [
 ]
 CALLS = [
     (3, "find_solutions", {"problem": "deploy a website to shared hosting"}),
-    (4, "find_solutions", {"problem": "is a store ready for AI shopping agents"}),
+    (4, "find_solutions", {"problem": "is a store ready for SI shopping agents"}),
     (5, "find_solutions", {"problem": "search crypto news and get article text"}),
     (6, "find_solutions", {"problem": "spending limits for agents"}),
     (7, "search_products", {"query": "certificate renewal ssl"}),
@@ -97,7 +97,7 @@ def top_is(rid, pid):
 
 check("problem 'deploy a website to shared hosting' -> HostBridge top",
       top_is(3, "hostbridge-mcp"))
-check("problem 'is a store ready for AI shopping agents' -> AgentReady top",
+check("problem 'is a store ready for SI shopping agents' -> AgentReady top",
       top_is(4, "agent-ready-mcp"))
 check("problem 'search crypto news and get article text' -> White Report MCP top",
       top_is(5, "white-report-mcp"))

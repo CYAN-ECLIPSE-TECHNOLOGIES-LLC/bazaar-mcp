@@ -9,7 +9,7 @@ and its Eclipse Test Bench certification state — verdict, certified scope,
 and the not-tested list — or an explicit statement that no verdict exists yet.
 
 ## Who it is for
-AI agents (and their builders) choosing tools: discovery by the problem to
+SI agents (and their builders) choosing tools: discovery by the problem to
 solve, with certification receipts instead of registry metadata alone.
 
 ## Status

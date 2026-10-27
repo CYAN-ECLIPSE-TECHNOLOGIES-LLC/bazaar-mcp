@@ -8928,6 +8928,70 @@
         "anomaly_queue_read"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — the full fine-tune/distillation ancestry chain is sealed at registration, and handshakes enforce buyer ancestry policies (e.g. 'no models distilled from X') automatically.",
+        "Declaration label (verbatim, on every chain, verdict, listing, and export): Ancestry is creator-declared and sealed at registration. Sealing proves the declaration has not changed since registration; it does not independently prove the declared lineage.",
+        "Decisive behaviour from the bench record: a third party recomputes the check verdict offline from the chain, the policy, and the seal alone; editing any link after sealing breaks the seal and refuses the check by name; matching on model refs is exact-ref or declared-alias-set match — never fuzzy/name-similarity matching. A chain with a missing, malformed, or unverifiable link cannot produce PASS: gap outcomes are named (CHAIN_INCOMPLETE, LINK_UNVERIFIABLE), and an unchecked chain is UNCHECKED, never implicitly PASS.",
+        "Gap-verdict condition (verbatim): a verified gap verdict binds to the chain + seal + sealed head + gap kind only; it does NOT identify which link is missing or unverifiable, and must not be presented as evidence about the exact presented link set or as proof two presentations are the same copy. (Defect D3 — the gap branch's missing chain/seal/head binding — is CLOSED at the v0.1.2 spot re-bench, wave4/spot-ancestor-012.md, 22/22 binding probes: cross-chain, wrong-seal, empty-seal, bogus-seal, and cross-gap-kind presentations all fail at a named step; the residual same-chain behaviour above is the deliberately minimal asserted content of a gap verdict.)",
+        "Bench path: v0.1.0 bench (wave4/bench-ancestor.md) + v0.1.1 delta re-bench (wave4/rebench-ancestor.md: D1 combined-fault check ordering CLOSED, D2 signature_scheme disclosure on 38/38 faces CLOSED, new D3) + v0.1.2 spot re-bench (D3 CLOSED; builder suite 39/39 reproduced by the bencher). Disclosure amendments append new signed links and never rewrite sealed links; verdicts against amended chains carry amended: true + amendment ids, and a pre-amendment verdict stands only for its head (AS_OF_HEAD).",
+        "Rollback fence: the v0.1 store is a pure local file store (signed store head + SET anchors, no external anchor), so any bench verdict is capped at PASS-CONDITIONAL — an external anchor is required before live/multi-party use. Local scope never upgrades by usage, dogfood, or implication.",
+        "Counsel gate (SPEC §10) — named, unbuilt: any representation of ancestry verdicts to regulated buyers as compliance evidence; licence-contamination opinions derived from teacher lineage; ancestry declarations incorporated into contracts/warranties; any claim that sealing proves lineage (barred at every phase); live registry/handshake integration with third-party platforms. v0.1.2 contains no dormant live path — no network call, model fetch, weight access, or external registry call exists in this tree, and the startup fence refuses such configuration by name.",
+        "Signing is a fixture HMAC stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref and never accepted from the record under verification. Herald (signing pattern) and Meter (metering grammar) are consumed by reference only."
+      ],
+      "categories": [
+        "Compliance, Provenance & the Builder Economy",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL (local)",
+        "certified": false,
+        "certified_scope": "Eclipse Ancestor — PASS-CONDITIONAL (local) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ancestor.md), + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ancestor.md: D1 + D2 CLOSED, new defect D3), + spot re-bench of v0.1.2 (argus101-program-20261027/wave4/spot-ancestor-012.md: D3 CLOSED, 22/22 binding probes, builder suite 39/39 reproduced). PASS-CONDITIONAL (local) is not CERTIFIED — certified is false, and nothing beyond that verdict at its exact scope is claimed. Scope is exactly: local stdio, fixture chains + fixture policies only, value_class \"test\"; no real model, registry, or counterparty is contacted and no live handshake is mediated. Declaration label: ancestry is creator-declared and sealed at registration; sealing proves the declaration has not changed since registration — it does not independently prove the declared lineage. Gap-verdict condition: a verified gap verdict binds to the chain + seal + sealed head + gap kind only; it does NOT identify which link is missing or unverifiable, and must not be presented as evidence about the exact presented link set or as proof two presentations are the same copy. Rollback fence: the pure local file store caps any verdict at PASS-CONDITIONAL — an external anchor is required before live/multi-party use. Counsel gate (SPEC §10) named and unbuilt.",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave4/bench-ancestor.md (Verity bench of v0.1.0, PASS-CONDITIONAL (local)) + argus101-program-20261027/wave4/rebench-ancestor.md (Verity delta re-bench of v0.1.1: D1/D2 CLOSED, new D3 (Low), 114 delta probes) + argus101-program-20261027/wave4/spot-ancestor-012.md (Verity spot re-bench of v0.1.2: D3 CLOSED, 22/22 hard probes PASS, builder suite 39/39 reproduced). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Representations to regulated buyers as compliance evidence, licence-contamination opinions derived from teacher lineage, and ancestry declarations incorporated into contracts/warranties — SPEC §10 counsel-gated and UNBUILT",
+          "Live registry/handshake integration with third-party platforms — no network call, model fetch, weight access, or external registry call exists in v0.1.2; the startup fence refuses such configuration by name",
+          "Lineage truth — sealing proves the declaration has not changed since registration; it does not independently prove the declared lineage (declaration label, verbatim, on every face)",
+          "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local); an external anchor is required before live or multi-party reliance",
+          "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-ancestor-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-ancestor-mcp.png",
+      "name": "Eclipse Ancestor",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC §9 (metering points only in v0.1.2, no charge path built): one Meter-grammar record per ancestry_check at the $0.05/check price shape, plus a zero-price registration-seal event. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+      "problem_statements": [
+        "Model and agent lineage today is a marketing claim: a model card says 'fine-tuned from X, distilled from Y' and a buyer has no sealed, recomputable record to check that declaration against — or to enforce a policy like 'no models distilled from X' at handshake time",
+        "I need the full fine-tune/distillation ancestry chain sealed at registration, so any later edit to a link breaks the seal and refuses the check by name, and handshake checks evaluate my ancestry policy mechanically against the sealed chain with a signed verdict citing the decisive links",
+        "I need the honesty label on the face of it: sealing proves the declaration has not changed since registration — it does not independently prove the declared lineage — and a gap verdict that names only that a chain is incomplete or a link unverifiable, never which link"
+      ],
+      "source_refs": [
+        "eclipse-ancestor-mcp/README.md",
+        "eclipse-ancestor-mcp/server.json",
+        "argus101-specs-20261027/ancestor-spec.md",
+        "argus101-program-20261027/wave4/spot-ancestor-012.md"
+      ],
+      "status": "in-development",
+      "tagline": "Sealed model-ancestry chains + buyer policy checks over fixture chains/policies; local only. PASS-CONDITIONAL (local) — the full fine-tune/distillation ancestry chain is sealed at registration, and handshakes enforce buyer ancestry policies automatically. Ancestry is creator-declared and sealed at registration; sealing proves the declaration has not changed since registration — it does not independently prove the declared lineage. Rollback fence: an external anchor is required before live/multi-party use. Counsel gate (SPEC §10) named and unbuilt.",
+      "tools": [
+        "ancestry_check",
+        "chain_get",
+        "verdict_verify",
+        "chain_seal_verify",
+        "chain_register_seal",
+        "chain_amend",
+        "registration_status",
+        "anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

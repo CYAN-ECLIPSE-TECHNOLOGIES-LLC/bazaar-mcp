@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited — corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 135,
+ "count": 136,
  "records": [
   {
    "record_type": "verdict",
@@ -2773,6 +2773,27 @@
   "scope": "PASS-CONDITIONAL (local/simulator) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-epitaph.md) PASS-CONDITIONAL with conditions C1–C4, + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-epitaph.md): defects D-EPI-1..4 all CLOSED, conditions C1–C4 satisfied, builder suite 38/38 re-run by the bencher at commit 0c0b027, no new defect found. Scope exactly: local stdio, fixture identities and fixture registries only, value_class \"test\"; no real identity, mandate, alias, or delegation is expired, revoked, or contacted. Rollback fence: full coordinated rollback is a fenced condition — external anchor required before live/multi-party use. Counsel gate (SPEC §10) named and unbuilt. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
   "status": "current",
   "verdict": "PASS-CONDITIONAL (local/simulator)"
+ },
+ {
+  "bench_date": "2026-10-27",
+  "bench_version": "0.1.2",
+  "canon_version": null,
+  "card_url": null,
+  "certified": false,
+  "name": "Eclipse Ancestor",
+  "not_tested": [
+   "Representations to regulated buyers as compliance evidence, licence-contamination opinions derived from teacher lineage, and ancestry declarations incorporated into contracts/warranties — SPEC §10 counsel-gated and UNBUILT",
+   "Live registry/handshake integration with third-party platforms — no network call, model fetch, weight access, or external registry call exists in v0.1.2; the startup fence refuses such configuration by name",
+   "Lineage truth — sealing proves the declaration has not changed since registration; it does not independently prove the declared lineage (declaration label, verbatim, on every face)",
+   "External anchoring / multi-party reliance — the pure local file store caps any verdict at PASS-CONDITIONAL (local); an external anchor is required before live or multi-party reliance",
+   "Production key custody — signing is an HMAC fixture stand-in for Herald RS256 (fixture keys in keys/, gitignored, mode 600); a live phase would need real Herald signing and a re-bench"
+  ],
+  "product": "eclipse-ancestor-mcp",
+  "product_url": "https://eclipsebazaar.com/products/eclipse-ancestor-mcp/",
+  "record_type": "verdict",
+  "scope": "PASS-CONDITIONAL (local) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave4/bench-ancestor.md), + delta re-bench of v0.1.1 (argus101-program-20261027/wave4/rebench-ancestor.md: D1 + D2 CLOSED, new D3), + spot re-bench of v0.1.2 (argus101-program-20261027/wave4/spot-ancestor-012.md: D3 CLOSED, 22/22 binding probes, builder suite 39/39 reproduced). Scope exactly: local stdio, fixture chains + fixture policies only, value_class \"test\". Gap-verdict condition: a verified gap verdict binds to the chain + seal + sealed head + gap kind only; it does NOT identify which link is missing or unverifiable, and must not be presented as evidence about the exact presented link set or as proof two presentations are the same copy. Rollback fence: pure local file store caps any verdict at PASS-CONDITIONAL — external anchor required before live or multi-party reliance. Counsel gate (SPEC §10) named and unbuilt. No test-bench scorecard was issued for this verdict and none is claimed (card_url null).",
+  "status": "current",
+  "verdict": "PASS-CONDITIONAL (local)"
  }
  ]
 }

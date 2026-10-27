@@ -178,6 +178,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Capline | in-development | PASS-CONDITIONAL(local) — not certified |
 | Eclipse Ward | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
 | Eclipse Epitaph | in-development | PASS-CONDITIONAL (local/simulator) — not certified |
+| Eclipse Ancestor | in-development | PASS-CONDITIONAL (local) — not certified |
 
 ## The `bazaar` CLI — including `bazaar check`
 

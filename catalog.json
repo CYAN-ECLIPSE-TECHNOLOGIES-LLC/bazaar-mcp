@@ -8279,6 +8279,130 @@
         "token_verify"
       ],
       "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — a cryptographic subset proof that the sub-agent's mandate is a strict attenuation of the delegator's — delegation can narrow authority, provably never widen it.",
+        "Dimension-by-dimension subset proof — the delegate mandate is checked against the delegator mandate over the complete Till mandate dimension set (SPEC §2.3, fixed order: amount/cap, single-action max, scope, counterparty, expiry, approval threshold, velocity/count limits, delegability) under a total absence rule (a constraint present on the delegator and absent on the delegate is WIDER, never EQUAL). subset_proof = sha256(canonical(delegator_hash ‖ delegate_hash ‖ dimension_vector)); every vector entry is on the proof record's face so a verifier re-derives the vector itself. Attenuation requires subset-or-equal on every dimension and strictly narrower on at least one; an identical mandate proves SUBSET_EQUAL, a distinct verdict, never labelled attenuation.",
+        "Offline verification (SPEC §6.4) — a pure function of the §6.2 export (proof + binding records + both mandates + chain) + pinned keys alone: both mandate hashes, the full dimension vector, the proof hash, and the Herald signature are recomputed on every verify. Any export that cannot be recompute-verified is labelled UNVERIFIED_EXPORT with no verdict claim in either direction; downgraded labels are never removed or upgraded and there is no path from a downgraded export back to a sealed proof.",
+        "Decisive fixture F-U9 — bench-reproduced in fresh processes from bencher corpus + bencher keys (signers the product does not operate): understudy_prove → STRICT_ATTENUATION with the face vector and subset_proof equal to the bencher's own §2.3/§2.2 recomputation, and all 8 single-dimension widenings (amount, single-action, scope, counterparty, expiry, approval threshold, omitted velocity amount, depth) each recompute to NOT_SUBSET with the named §5.3 code; a fresh process with an empty data dir, from the export + pinned keys alone, re-derives the vector and verifies VERIFIED_EXPORT / STRICT_ATTENUATION.",
+        "Honest scope — LOCAL stdio, fixture mandate pairs ONLY: Understudy evaluates fixture mandate pairs and issues proofs about the two presented mandates; it issues no mandates, grants no authority, registers no agents, and executes no delegated action, and every artifact carries value_class \"test\". Closed surface of exactly 6 tools (4 caller + 2 operator, disjoint); no issuance/grant/execute/register/revoke/waive verb exists on either surface. Startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live-key string, a non-local endpoint, value_class other than 'test', or any mandate-issuance/wallet/execution module in the tree. Grammar is Till §5 consumed verbatim (GRAMMAR_PIN disclosed). Signing is an HMAC fixture stand-in for Herald RS256 (disclosed). Sole condition: Cross-artifact cross-commitment note: full coordinated rollback across separately held artifacts is a fenced condition — external anchor required before live/multi-party use."
+      ],
+      "categories": [
+        "Identity & Attestation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(local, subset proof over Till-grammar fixture mandates)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(local, subset proof over Till-grammar fixture mandates) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-understudy.md): builder suite 34/34 re-run clean by bencher; decisive fixture F-U9 independently reproduced (bencher corpus, bencher keys, black-box stdio) — STRICT_ATTENUATION with face vector and subset_proof equal to bencher recomputation, full chain recomputed from the §6.2 export alone, and fresh-process empty-data-dir verify → VERIFIED_EXPORT / STRICT_ATTENUATION re-derived; all 8 F-U5 single-dimension widenings NOT_SUBSET with named codes and fresh-process recompute; 9-field absence totality, §5.3 refusal partition, verify/tamper/downgrade battery, metering exactness, and malformed battery all pass (bencher battery 99 checks). PASS-CONDITIONAL is not CERTIFIED — certified is false. Scope is exactly: local stdio, fixture mandate pairs only, value_class 'test'; Understudy issues no mandates, grants no authority, registers no agents, and executes no delegated action. Sole condition (verbatim): Cross-artifact cross-commitment note: full coordinated rollback across separately held artifacts is a fenced condition — external anchor required before live/multi-party use. Advisory F-2/F-3 (non-blocking, v0.2 hardening notes): chain-hop hash continuity (chain_verify binds hops by mandate_id, not hash/citation) and offline verify temporal re-check (verify step 2 does not re-run write-time predates/expiry-at-issuance checks; prove, the sole mint path, refuses both).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-understudy.md (Verity bench of v0.1.0, 2026-10-27; builder suite re-run clean-state 34/34, decisive F-U9 reproduced independently incl. fresh-process re-derivation, bencher battery 99 checks, scope + claim-surface audit confirming the §10 counsel gate genuinely unbuilt; single condition as stated, F-2/F-3 advisory only). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null).",
+        "not_tested": [
+          "Live delegated-authority reliance — SPEC §10 counsel gate (named, unbuilt): a production platform admitting, limiting, or acting on sub-agents in reliance on Understudy proofs over live mandates, or any marketing of the proof as establishing legal agency, authority, or liability allocation — is out of v0.1, hard, gated on counsel clearance; no issuance, registration, or enforcement code exists, and a subset proof establishes a mathematical relation between two mandates only — whether that relation creates, evidences, or limits legal authority is a counsel question this product never answers on its own face",
+          "Condition (bench, verbatim): Cross-artifact cross-commitment note: full coordinated rollback across separately held artifacts is a fenced condition — external anchor required before live/multi-party use. v0.1 anchors are local to the evaluation (binding prev_hash = pair-hash anchor); no coordinated rollback across separately held artifacts is possible or claimed until an external anchor exists",
+          "Advisory F-2 (bench, v0.2 hardening note, non-blocking): chain_verify binds hops by mandate_id equality and does not check that hop i+1's delegator mandate is hash-identical to hop i's delegate mandate, nor that hop i+1's proof cites hop i's subset_proof in prior_hop_proof — the direct root-vs-final recompute still prevents any chain-verified final delegate from exceeding the root mandate, and each hop proof is individually genuine; hash + citation continuity in chain_verify is recorded for v0.2 hardening",
+          "Advisory F-3 (bench, v0.2 hardening note, non-blocking): offline understudy_verify re-runs structure, pinned-key signatures, binding, and delegability at SPEC §6.4 step 2, but does not re-run the write-time temporal checks (DELEGATE_PREDATES_DELEGATOR, delegator expiry at evaluation) — reachable only by the Herald-key holder, since prove, the sole mint path, refuses both",
+          "Production signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256 (signer face: herald-fixture (fixture HMAC stand-in for Herald RS256)), disclosed on every signed face; verification uses keys pinned out-of-band in a local chmod-600 gitignored key file, never key material from the record under verification; a live phase requires real Herald signing and a re-bench",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed); a fresh clone generates its own fixture key file to run the full suite",
+          "Hosted or live operation / charge path — local stdio only; metering points only per SPEC §9 (exactly 1 point per sealed proof, any verdict; 0 for refusals, verifies, chain reads, and idempotent resubmissions), no charge path is built, no payment is taken, and no live Meter ingest is claimed",
+          "Grammar pin — mandate fields, canonical form, hash construction, and verification order are Till §5's, consumed verbatim (GRAMMAR_PIN: Till section 5 mandate grammar (eclipse-till-mcp README section 5 + MPP Session Witness spec 4.1), dimension set per Understudy spec 2.3, pinned 2026-10-27); the B0 checkout-profile spellings are the purchase profile of the same grammar, mapped semantically and disclosed per SPEC §14 Q-U1 — if a future Till grammar revision renames fields, a spec amendment (not builder discretion) is required"
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-understudy-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-understudy-mcp.png",
+      "name": "Eclipse Understudy",
+      "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "PRICED — $0.02/delegation, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 (metering point only in v0.1.0, no charge path built): exactly 1 Meter record per sealed proof — STRICT_ATTENUATION, SUBSET_EQUAL, and NOT_SUBSET alike; 0 for refusals, verifies, chain verifies/reads, proof_gets, and idempotent resubmissions; a failing proof meters identically to a passing one — the proof is the product, never the outcome. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+      "problem_statements": [
+        "Delegation is where agent authority silently grows: a sub-agent commissioned for one task ends up holding the delegator's full cap, a longer expiry than the delegator itself, or a counterparty the delegator could never pay — assembled from mandate fields nobody compared as a set",
+        "Each mandate verifies fine on its own under Till's grammar; the widening only exists between the two mandates, where no single-mandate verifier looks — platforms currently trust the orchestrator's assertion that it delegated narrowly",
+        "I need narrowness as a proof, not an assertion: a Herald-signed, dimension-by-dimension subset proof over two Till-grammar mandates I present, recomputable offline by a third party from the mandates + pinned keys alone — and the same machinery failing a delegation widened on any single dimension"
+      ],
+      "source_refs": [
+        "eclipse-understudy-mcp/README.md",
+        "eclipse-understudy-mcp/server.json",
+        "argus101-program-20261027/wave3/bench-understudy.md",
+        "argus101-specs-20261027/understudy-spec.md"
+      ],
+      "status": "in-development",
+      "tagline": "Delegation subset proofs over Till-grammar fixture mandate pairs — a cryptographic subset proof that the sub-agent's mandate is a strict attenuation of the delegator's. PASS-CONDITIONAL(local, subset proof over Till-grammar fixture mandates) — fixture mandate pairs only; issues no mandates, grants no authority, registers no agents.",
+      "tools": [
+        "understudy_prove",
+        "understudy_proof_get",
+        "understudy_verify",
+        "understudy_chain_verify",
+        "understudy_evaluation_list",
+        "understudy_anomaly_queue_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
+    },
+    {
+      "capabilities": [
+        "Novel mechanism (SPEC §2.1, verbatim) — at registration the agent's creator, model, config hash, and declared purpose scope are sealed; acting outside the declared purpose is detectable by any counterparty who checks the certificate.",
+        "Decisive fixture F-G13 — bench-reproduced from the bencher's own corpus/keys in a fresh process with no Genesis state: the exported certificate's seal (certificate_id, record_hash, seed prev_hash, creator signature, witness counter-signature, export head anchor) recomputes, verify returns SEAL_VALID, and detection reproduces exactly [IN_PURPOSE, IN_PURPOSE, IN_PURPOSE, OUT_OF_PURPOSE, INDETERMINATE] — the out-of-purpose record naming clause action_types, the indeterminate record naming reason unmapped; no store file was created by verify/detect and nothing was blocked, altered, or deleted.",
+        "Sealed birth certificate + offline verification + windowed detection — creator/model/config hash/structured purpose scope are sealed at registration (Herald-signed by the creator, counter-signed by the witness, hash-chained); any holder recomputes the seal offline from the certificate + pinned keys alone; detection judges each presented action against the certificate active at the action's timestamp, classifying IN_PURPOSE / OUT_OF_PURPOSE:<clause> / INDETERMINATE:<reason> — indeterminate is never coerced to either side. A certificate that fails recompute exports only as DOWNGRADED_CERTIFICATE_EXPORT (verified: false); no artifact is ever upgraded post-hoc.",
+        "Detects, never blocks (SPEC L3) — detection is a verdict over presented records; Genesis never intercepts, prevents, suspends, or punishes an action or an agent, and no verb exists that can: dispatch enumeration shows no block/suspend/penal/enforce/intercept/delete/edit/unseal/approve/license/ban/freeze/punish/prevent tool on either surface (party = exactly 7 tools, operator = exactly 2 read-only tools, disjoint). Permitted claim, exact sense only: creator, model, config hash, and declared purpose scope as declared and sealed at registration, recomputable from the certificate — a certificate asserts nothing about whether the declarations were true; registration is sealing, not endorsement.",
+        "Condition + signing disclosure — sole condition (verbatim): full coordinated rollback is a fenced condition — external anchor required before live/multi-party use. Signing in v0.1.0 is an HMAC fixture stand-in for Herald RS256 (disclosed); startup is fail-closed (CONFIG_FENCE_REFUSED:<class>) on a live-key string, a live registry URL or other non-local endpoint, a non-fixture source, value_class other than \"test\", or any network/payment module in the tree; every artifact carries value_class \"test\"."
+      ],
+      "categories": [
+        "Identity & Attestation",
+        "Trust & Receipts"
+      ],
+      "certification": {
+        "bench_verdict": "PASS-CONDITIONAL(local/fixture)",
+        "certified": false,
+        "certified_scope": "PASS-CONDITIONAL(local/fixture) — Verity bench of v0.1.0 (2026-10-27, argus101-program-20261027/wave3/bench-genesis.md): builder suite 43/43 re-run clean by the bencher; decisive fixture F-G13 independently re-derived from the bencher's own corpus and bencher-generated keys — registration agent_ref matched the bencher-predicted mint, exported certificate / seed prev_hash / creator + witness signatures / export head anchor all recompute under bencher code, fresh-process verify from export + pinned keys alone returned SEAL_VALID, and detection over the bencher's 5 actions reproduced exactly [IN_PURPOSE, IN_PURPOSE, IN_PURPOSE, OUT_OF_PURPOSE, INDETERMINATE] with the out-of-purpose record naming clause action_types and the indeterminate record naming reason unmapped, never coerced. PASS-CONDITIONAL is not CERTIFIED — certified is false, and nothing beyond this scope is claimed. Scope is exactly: local stdio, fixture agents/creators/keys, fixture Docket/Meter-grammar action records, value_class \"test\"; no live registry, no third-party reliance, no enforcement use. Sole condition (verbatim): cross-artifact cross-commitment — full coordinated rollback = fenced condition — external anchor required before live/multi-party use. Genesis detects, it never blocks: no blocking/enforcement verb exists on either surface (dispatch enumeration by the bencher).",
+        "live_state_note": "Bench evidence: argus101-program-20261027/wave3/bench-genesis.md (Verity bench of v0.1.0, 2026-10-27; builder suite re-run clean-state 43/43, F-G13 independently re-derived with bencher corpus/keys, detects-never-blocks dispatch enumeration, metering partition probed). No test-bench scorecard was issued for this verdict and none is claimed (scorecard_ref/card_url null). Repository PUBLIC (free-tier policy, Benchkit precedent): https://github.com/CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-genesis-mcp @ v0.1.0. Official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/eclipse-genesis-mcp v0.1.0, status active, isLatest true.",
+        "not_tested": [
+          "Live registry reliance — SPEC §10 counsel gate (named, unbuilt): a real registry accepting real registrations, certificates presented to third parties for reliance, detection records used in disputes, enforcement, or platform decisions, or any \"registered agent\" claim towards regulated buyers requires counsel review before build (claim language, declaration-warranty/liability, creator-identity data posture, retention/takedown). v0.1.0 contains no dormant live path, no dormant enforcement/blocking verb, and no config flip that turns this build live; the startup fence refuses live-registry / non-local config (CONFIG_FENCE_REFUSED). Genesis DETECTS, NEVER BLOCKS — this listing does not imply any blocking or enforcement capability.",
+          "Sole condition (verbatim from the bench record): full coordinated rollback is a fenced condition — external anchor required before live/multi-party use. The local stream seed anchor + witness-signed export head anchor are implemented and verified, but no external/cross-artifact anchor exists.",
+          "Live Herald signing — v0.1.0 signing is an HMAC fixture stand-in for Herald RS256, disclosed on the product's face; a live phase (counsel-gated, SPEC §10) would need real Herald signing and a re-bench. Verification keys are pinned out-of-band by fixed ref from the local key file only; a record-supplied key is never read (UNKNOWN_FIELD refusal).",
+          "Production key custody — fixture keys live in keys/fixture-keys.json (chmod 600, gitignored, never committed; GitHub contents/keys verified 404); a fresh clone must supply its own fixture key file to run the full suite.",
+          "Hosted or live operation / charge path — local stdio only; metering records only per SPEC §9 (registration = exactly 1 zero-value FREE record; verify/detect receipts carry the $0.05/verification-shape meter record inside the signed receipt; a BROKEN verify still meters because the issuance happened; tool refusals never meter); no charge path, payment call, entitlement check, or live Meter ingest is built or claimed."
+        ],
+        "scorecard_ref": null,
+        "scorecard_url": null
+      },
+      "id": "eclipse-genesis-mcp",
+      "listing_class": "mcp",
+      "logo": "branding/logos/eclipse-genesis-mcp.png",
+      "name": "Eclipse Genesis",
+      "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
+      "platforms": [
+        "MCP over stdio"
+      ],
+      "pricing_model": "FREE — free local v0.1.0; registration is FREE and emits exactly 1 zero-value FREE Meter record (amount_minor: 0), so the funnel is counted. Verification-class issuances carry a $0.05/verification metering shape, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering honesty per SPEC §9 / bench: verify and detect receipts carry the $0.05-shape meter record inside the signed receipt; a BROKEN verify still meters (the issuance happened); tool refusals never meter; no charge path, payment call, or entitlement check is built. The local package is the reference implementation. Repository is PUBLIC (free-tier policy, Benchkit precedent).",
+      "problem_statements": [
+        "Agents appear with self-described identities and purposes that live in editable profile pages and README files — change the description and the past changes with it; a counterparty has no sealed, recomputable record of what was declared at the start",
+        "I need the declaration itself made evidence — creator, model, config hash, and declared purpose scope sealed at registration — so any counterparty can verify the certificate offline and detect action outside the declared purpose from presented witnessed records, naming the clause violated",
+        "I need that detection kept honest: it detects, it never blocks — INDETERMINATE is a standing outcome never silently dropped or coerced, historical (superseded/revoked/expired-window) judgments are never presented as current standing, and a broken seal downgrades instead of being upgraded post-hoc"
+      ],
+      "source_refs": [
+        "eclipse-genesis-mcp/README.md",
+        "eclipse-genesis-mcp/server.json",
+        "argus101-specs-20261027/genesis-spec.md",
+        "argus101-program-20261027/wave3/bench-genesis.md"
+      ],
+      "status": "in-development",
+      "tagline": "Agent birth-certificate issuer — at registration the agent's creator, model, config hash, and declared purpose scope are sealed; acting outside the declared purpose is detectable by any counterparty who checks the certificate. PASS-CONDITIONAL(local/fixture) — local stdio, fixture agents/creators/keys only, value_class \"test\"; Genesis detects, it never blocks. Sole condition: full coordinated rollback is a fenced condition — external anchor required before live/multi-party use.",
+      "tools": [
+        "genesis_certificate_register",
+        "genesis_certificate_amend",
+        "genesis_certificate_revoke",
+        "genesis_certificate_get",
+        "genesis_certificate_verify",
+        "genesis_purpose_detect",
+        "genesis_certificate_export",
+        "genesis_family_list",
+        "genesis_metering_read"
+      ],
+      "vendor": "Cyan Eclipse Technologies"
     }
   ],
   "sources": [

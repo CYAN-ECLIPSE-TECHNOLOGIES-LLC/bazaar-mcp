@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 83,
+ "count": 84,
  "records": [
   {
    "record_type": "verdict",
@@ -1661,6 +1661,25 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-sunset-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-nexus-witness-mcp",
+   "name": "Eclipse Nexus Witness",
+   "verdict": "CERTIFIED (local, fixture-vintage)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture-vintage) \u2014 Verity independent bench 2026-10-26 (repo @ ec06f2e): 81/81 checks passed, two consecutive runs. Replay fidelity 11/11 (an old receipt verifies against the OLD fixture rule after a newer vintage is added; receipt id/hashes recomputed independently per SPEC \u00a76); forgery matrix 22/22 (naive tamper INVALID on every field; re-sealed forgeries \u2014 including the new rate claimed at the old vintage \u2014 still INVALID, because verify_receipt replays the fixture rule at the receipt's vintage instead of trusting the seal); N-check 18/18 (no bare-answer path; unknown jurisdiction/category/vintage refuse cleanly and no rate is ever invented); honesty sweep 12/12 (DEMO envelope on every determination output; zero real-rate, tax-advice, or live-determination claims); hygiene 18/18 (zero network/payment code; exactly the 4 spec tools). Scope = LOCAL / fixture-vintage ONLY: local fixture lookup, stdio transport, bundled fictional fixture rates (13 rules, 5 fictional 'Fixture *' jurisdictions). DEMO rates only \u2014 NOT tax advice; no live tax determination is made by the product or tested here. Defects D1\u2013D3 (all LOW) stand on the record as fix-before-live and are not hidden: D1 unkeyed seal (VALID means 'consistent with the fixture rule at its vintage', not 'issued by this server'; _verify does not assert source/demo_label/scope constants), D2 refusal responses carry no DEMO envelope, D3 advertised additionalProperties: false schemas not enforced in dispatch (extra argument keys silently ignored). Any live phase remains behind the SPEC \u00a72 counsel gate (licensed data source + legal counsel review + explicit owner gate), and D1 must be closed before any hosted/live scope.",
+   "not_tested": [
+    "Live tax determination \u2014 not in v0.1 by design: no real jurisdiction, real rate, tax-advice, or filing surface exists; any live phase remains behind the SPEC \u00a72 counsel gate (licensed data source + legal counsel review + explicit owner gate) and is out of scope for this verdict",
+    "Hosted or remote serving \u2014 v0.1 is local stdio only; bench defect D1 (unkeyed seal) must be closed before any hosted/live scope",
+    "Server-issued authenticity \u2014 the seal is an unkeyed local SHA-256 hash seal, disclosed in SPEC \u00a72/\u00a76; VALID means 'consistent with the fixture rule at its vintage', not 'issued by this server' (bench defect D1)"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-nexus-witness-mcp/"
   }
  ]
 }

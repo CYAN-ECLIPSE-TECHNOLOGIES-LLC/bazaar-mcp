@@ -134,6 +134,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Patent Witness | in-development | PARTIAL (local, FIXTURE scope) — certification withheld on three MED defects (PW-D1, PW-D2, PW-D4); not certified |
 | Eclipse SEC Figure Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
 | Eclipse Trademark Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
+| Eclipse Split | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 
 ## The `bazaar` CLI — including `bazaar check`
 

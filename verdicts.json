@@ -4,7 +4,7 @@
  "base_url": "https://eclipsebazaar.com",
  "semantics": "Append-only in shape: each record states one product's current bench verdict as published in the Bazaar catalog. A verdict is withdrawn or replaced ONLY by a superseding record for the same product (a later record with status 'superseded' pointing at its replacement, or a record with verdict 'WITHDRAWN'); consumers should take the latest record per product as current. Records are never silently edited \u2014 corrections arrive as new records. This file is regenerated from catalog.json + the hosted scorecards at /cards/ and always represents current state.",
  "generated_from": "bazaar-mcp/catalog.json certification blocks + test-bench/results/*.json cards",
- "count": 91,
+ "count": 92,
  "records": [
   {
    "record_type": "verdict",
@@ -1824,6 +1824,26 @@
    "canon_version": null,
    "card_url": null,
    "product_url": "https://eclipsebazaar.com/products/eclipse-feedforge-mcp/"
+  },
+  {
+   "record_type": "verdict",
+   "status": "current",
+   "product": "eclipse-split-mcp",
+   "name": "Eclipse Split",
+   "verdict": "CERTIFIED (local, fixture)",
+   "certified": true,
+   "scope": "CERTIFIED (local, fixture) \u2014 Verity: v0.1.1 independent re-bench 35/35 PASS, 0 FAIL (REBENCH-1 of the v0.1.1 Bench Fix D1\u2013D4 round, repo @ e213490) plus v0.1.2 Amendment #1 scoped delta-bench 94/94 PASS, 0 FAIL (repo @ 1daf662) \u2014 the CERTIFIED (local, fixture) verdict carries to v0.1.2. Delta-bench: order event default + explicit identical (partial-completion allocations 63/37 over 100 per \u00a76 independent recompute; settlement hash recomputes with settlement_event as hash-covered sealed content; genuine order verifies VALID via stored and supplied paths); session close-out seals settlement_event {type: session_closeout, session_id, draw_count, draw_attestation_ref} exactly as specified, draw_count 4117 \u2192 exactly ONE settlement record/event, accumulated total 250 allocated exactly; required-field validation 36/36 clean typed refusals with no settlement written and a valid settle succeeding afterward; hash/producibility on event data \u2014 tamper without rehash INVALID 5/5, malformed settlement_event with fully consistent rehash INVALID 18/18, never a crash; idempotence absolute in both orders (first sealed record returned verbatim, incl. garbage repeat arguments \u2014 judged consistent with the amended spec's verbatim wording); legacy v0.1.1 compatibility \u2014 supplied and stored-path legacy records without settlement_event verify VALID as order events, stored record byte-identical afterwards (verify fabricates nothing); process safety \u2014 wrong-type + protocol fuzz all clean errors, process alive, happy path works afterward; version metadata \u2014 initialize serverInfo 0.1.2, server.json 0.1.2, exactly six tools, settle schema documents session_closeout as ONE event. Re-bench v0.1.1: D1 CLOSED (4 original death vectors \u2192 clean errors, alive, incl. fresh-process re-runs; 59 wrong-type fuzz + 9 protocol fuzz cases clean; raw NaN/Infinity weights refused; garbage non-JSON line survived; happy path works after the full battery in the same process); D2 CLOSED (crafted zero-completion/total-0/empty-allocations record, non-completer allocation, and off-by-one allocations, each with consistent re-hash \u2192 INVALID; genuine settlement VALID via stored and supplied paths); D3 CLOSED (repeat settle with total 0, a different total 999, or a string total all return the SAME sealed record); D4 CLOSED (superseded mandate recomputes clean to its own mandate_hash under independent recompute excluding lifecycle fields; weights remain hash-covered). Regression spot-checks PASS: rounding 100/3 equal \u2192 34/33/33 byte-exact; partial-completion renormalization 63/37 per \u00a76; amend_weights \u2192 MANDATE_SEALED. Prior verdict on v0.1.0 (VERDICT.md): CONDITIONAL (local, fixture), 65/69 \u2014 defects D1\u2013D4, all closed at v0.1.1. Scope = LOCAL/fixture only: allocation math + sealed records only \u2014 no money movement, no payment rails/wallets/payouts; fixture completion records with unkeyed SHA-256 demo seals (fix-before-live: keyed seal required before any non-fixture use); partial-completion renormalization is the documented \u00a76 rule; the $1.00/settlement-event figure is a commercial term only \u2014 no payment/checkout/MPP network code exists in the build.",
+   "not_tested": [
+    "Any money movement, payment rails, wallets, payouts, checkout, or MPP network/session code \u2014 none exists in v0.1.2 by design (SPEC \u00a72/\u00a77): allocation math + sealed records only; the Amendment #1 session close-out is a settlement-event definition over local records, not a live MPP integration",
+    "Production attestation, identity verification, or non-repudiation \u2014 fixture completion records with unkeyed SHA-256 demo seals only; DISCLOSED fix-before-live: a keyed seal (HMAC/signature) is required before any non-fixture use",
+    "A settle gate for non-fixture use \u2014 in fixture scope any caller may settle once \u22651 completion exists and idempotence makes that eligible set permanent; delegator-only settle / all-participants-recorded / settle window required before any non-fixture claim (SPEC v0.1.1 addendum)",
+    "Hosted or remote deployment, multi-currency / FX, and dispute resolution \u2014 none exists in v0.1.2 by design (SPEC \u00a77 non-goals)"
+   ],
+   "bench_date": null,
+   "bench_version": null,
+   "canon_version": null,
+   "card_url": null,
+   "product_url": "https://eclipsebazaar.com/products/eclipse-split-mcp/"
   }
  ]
 }

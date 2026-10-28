@@ -5775,11 +5775,15 @@
     "Document Analysis"
    ],
    "certification": {
-    "bench_verdict": null,
+    "bench_verdict": "PASS-CONDITIONAL (local, FIXTURE_SIGNED snapshot)",
     "certified": false,
-    "certified_scope": null,
+    "certified_scope": "CERTIFIED (bench, 2026-10-27) at this scope only: Eclipse SEC Figure Witness v0.1.0, 12-verb stdio surface, serving figures-as-filed bound to value-as-printed and a byte-range passage hash or XBRL fact identity, with restatement chains and offline-recomputable receipts (shipped verify.py), under sealed snapshot secfig-2026-10-27-70ac28bebd \u2014 FIXTURE_SIGNED (fixture key fixture-secfig-1; no production-signature claim) \u2014 P0 corpus scope: 48 CIKs / 905 accessions, 809,134 figures, convergence 34,206 compared / 0 divergences, seal sha256 7bb283e3891cc1c1c798df098335c316100456193e98683be5d49b52a30eb47a. EXCLUDED from this certification: observations and the divergence_edgar_self verb (v1 observations payload is empty \u2014 UNPROVEN), live ingestion, production/non-fixture signatures, and any coverage beyond the sealed snapshot. Release-leg coverage is capped: 153 of 262 release accessions extracted (41.6% not-extracted, above the spec-17 O4 40% bar) \u2014 per-figure release receipts are certified, release coverage completeness is not. Known limitations: release figures sealed with period_end = null are served via release_figures, not figure_at_moment; where a release repeats a figure label across passages, figure_at_moment returns the first sealed match without an ambiguity signal.",
     "not_tested": [
-     "Test Bench certification \u2014 UNCERTIFIED: no Test Bench scorecard exists for this product in test-bench/results/ and none is claimed; this listing is LISTED only"
+     "Observations and EDGAR-self divergence \u2014 UNPROVEN and EXCLUDED from the bench verdict (BENCH.md condition C2): the v1 seal contains no observations payload (pre-existing unit-namespace defect left the observations aggregate empty), and the divergence_edgar_self verb's presence on the 12-verb surface is not a certified claim. A v2 re-seal mints a new snapshot and requires its own bench before any observation claim attaches (C5).",
+     "Release-leg coverage completeness \u2014 153 of 262 release accessions extracted (41.6% not-extracted, above the product's own spec-17 O4 40% bar); per-figure release receipts are certified, release coverage completeness is not (C3).",
+     "Production signatures \u2014 the sealed snapshot is FIXTURE_SIGNED (fixture key fixture-secfig-1); no production or non-fixture signature claim is made or certified.",
+     "Live ingestion and any coverage beyond the sealed snapshot secfig-2026-10-27-70ac28bebd \u2014 the serving code contains no live source path (grep-audited at bench: no network or subprocess primitives in the serving modules); figures outside the named snapshot are named as gaps, never fetched.",
+     "Known limitations disclosed per C4 (bench findings B1-1 LOW, B1-2 MEDIUM): release figures sealed with period_end = null are served by accession via release_figures, not via figure_at_moment (which returns a generic -32602 for them); where a release repeats a figure label across passages, figure_at_moment returns the first sealed match without an ambiguity signal \u2014 both figures are enumerable via release_figures and each is individually recomputable."
     ],
     "scorecard_ref": null,
     "scorecard_url": null
@@ -5802,7 +5806,7 @@
     "eclipse-sec-figure-witness-mcp/server.json"
    ],
    "status": "in-development",
-   "tagline": "Sealed SEC filing figures as filed + restatement chains, recomputable offline.",
+   "tagline": "Sealed SEC filing figures as filed + restatement chains, recomputable offline. PASS-CONDITIONAL (bench, 2026-10-27) at FIXTURE_SIGNED P0 snapshot scope \u2014 48 CIKs / 905 accessions; observations and EDGAR-self divergence UNPROVEN and excluded; release coverage capped (see Certification).",
    "tools": [
     "figure_at_moment",
     "figure_history",

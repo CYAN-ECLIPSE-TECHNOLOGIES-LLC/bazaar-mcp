@@ -39,7 +39,6 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Connect | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood) |
 | The White Report MCP | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(live) |
 | Eclipse Apply MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
-| Eclipse Herald MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Beacon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Cluster MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Thread MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
@@ -136,7 +135,6 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Trademark Witness | in-development | not certified — no Test Bench verdict on record yet (listed only) |
 | Eclipse Split | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local, fixture) |
 | Eclipse Brake | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/simulator) |
-| Eclipse Benchkit | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (local/fixture) |
 | Eclipse Payseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/simulator, fixture triples) |
 | Eclipse Settleseal | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (simulator, fixture records) |
 | Eclipse Mockmint | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED (LOCAL/sandbox) |

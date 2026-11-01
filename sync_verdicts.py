@@ -406,7 +406,10 @@ def scope_counts(scope):
 
 def main():
     apply_mode = "--apply" in sys.argv
-    exclude = set()
+    # Standing exclusions (P8 catalog-regeneration discipline, 2026-11-01):
+    # internal assets and removed products never sync into public surfaces.
+    exclude = {"eclipse-cupel-mcp", "eclipse-benchkit-mcp",
+               "eclipse-herald-mcp"}
     args = sys.argv[1:]
     for i, a in enumerate(args):
         if a == "--exclude" and i + 1 < len(args):

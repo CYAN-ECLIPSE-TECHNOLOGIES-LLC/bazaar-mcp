@@ -31,7 +31,7 @@
    "id": "eclipse-agent-wallet-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-agent-wallet-mcp.png",
-   "name": "Eclipse Agent Wallet MCP",
+   "name": "Cyan Eclipse Agent Wallet MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -258,7 +258,7 @@
    "id": "eclipse-connect",
    "listing_class": "connector",
    "logo": "branding/logos/eclipse-connect.png",
-   "name": "Eclipse Connect",
+   "name": "Cyan Eclipse Connect",
    "platforms": [
     "HTTPS relay (hosted)"
    ],
@@ -302,7 +302,7 @@
    "id": "eclipse-apply-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-apply-mcp.png",
-   "name": "Eclipse Apply MCP",
+   "name": "Cyan Eclipse Apply MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -367,7 +367,7 @@
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "P0 free dogfood (CETech internal); P1 Bazaar listing planned at $49/mo (owner pick, not live)",
+   "pricing_model": "P0 free dogfood (CETech internal); P1 Bazaar listing planned at hosted pricing pending Gate B1 (owner pick, not live)",
    "problem_statements": [
     "I need to find Florida state contract opportunities that fit my company",
     "The MyFloridaMarketPlace portal grid shows misleading end dates; I need real proposal deadlines",
@@ -419,7 +419,7 @@
    "platforms": [
     "HTTPS (hosted, thewhitereport.com/mcp.php)"
    ],
-   "pricing_model": "Free (read-only public tier) stays free, and free self-host stays free. PRICED — metered reads $0.01/read (PC-1) via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product.",
+   "pricing_model": "Free (read-only public tier) stays free, and free self-host stays free. PRICED — metered reads $0.01/read (PC-1) via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product.",
    "problem_statements": [
     "I need to search crypto news and get article text an agent can read",
     "Give my agent structured crypto and SI news, not scraped HTML",
@@ -465,7 +465,7 @@
    "id": "eclipse-bazaar-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-bazaar-mcp.png",
-   "name": "Eclipse Bazaar MCP",
+   "name": "Cyan Eclipse Bazaar MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -520,11 +520,11 @@
    "id": "eclipse-bidmatrix-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-bidmatrix-mcp.png",
-   "name": "Eclipse BidMatrix MCP",
+   "name": "Cyan Eclipse BidMatrix MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
-   "pricing_model": "Free local v0.1; planned PAID: per-shred credits + $49-$99/mo subscription tier (slate sketch, not launched)",
+   "pricing_model": "Free local v0.1; planned PAID: per-shred credits + hosted subscription pricing pending Gate B1 subscription tier (slate sketch, not launched)",
    "problem_statements": [
     "I need to shred an RFP into a compliance matrix without doing it by hand",
     "Extract requirements, deadlines, and set-asides from a SAM.gov solicitation",
@@ -675,7 +675,7 @@
    "id": "eclipse-health-check-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-health-check-mcp.png",
-   "name": "Eclipse Health Check MCP",
+   "name": "Cyan Eclipse Health Check MCP",
    "platforms": [
     "MCP over stdio (static local targets only; no live probing, no network)"
    ],
@@ -733,7 +733,7 @@
    "id": "eclipse-legacy-recon-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-legacy-recon-mcp.png",
-   "name": "Eclipse Legacy Recon MCP",
+   "name": "Cyan Eclipse Legacy Recon MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -762,7 +762,7 @@
     "Review-first sending: draft → owner approval of the exact draft (hash-bound) → send; the owner-set signature is part of the approved text and changing it invalidates the approval; template sends require template AND recipient allowlist (to + cc), both owner-pre-approved",
     "Anti-fraud envelope engine: per-message SPF/DKIM/DMARC verdicts with alignment — fail, absent, or temperror drops the message to the lowest trust tier; no valid Herald signed envelope means never agent-tier, even from a registered agent domain",
     "Lookalike detection a lookalike's own passing DMARC does not save: edit distance, homoglyph/IDN confusables, TLD swaps, and subdomain/substring tricks — flagged, tier 0, operator alerted",
-    "Herald RS256 signed envelopes with thread hash-chaining: inserted or unsigned messages verify as not part of the chain; inbound content renders as quarantined data with provenance — injection-shaped content is a signal about the sender and satisfies no gate, including the send approval",
+    "Herald RS256 signed envelopes with thread hash-chaining: inserted or unsigned messages verify as not part of the chain; inbound content renders as quarantined data with lineage — injection-shaped content is a signal about the sender and satisfies no gate, including the send approval",
     "Append-only hash-chained audit with exactly one entry per call — refusals and crashed calls included; the attachment ledger is truthful about hashing (body_hash is the SHA-256 of content bytes only when content exists; the metadata-only path carries a separate metadata_hash and says so)"
    ],
    "categories": [
@@ -787,7 +787,7 @@
    "id": "eclipse-mail-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-mail-mcp.png",
-   "name": "Eclipse Mail MCP",
+   "name": "Cyan Eclipse Mail MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -827,7 +827,7 @@
   },
   {
    "capabilities": [
-    "Ingest declarations pages (JSON or text) into a policy graph with per-field provenance",
+    "Ingest declarations pages (JSON or text) into a policy graph with per-field lineage",
     "Propose-only merges: unconfirmed ingests write nothing to the graph",
     "Expiry radar: renewals, premium dues, grace-period ends, escrow proof deadlines, enrollment windows",
     "Gap report: uncovered assets, duplicate coverage, premium spikes",
@@ -851,7 +851,7 @@
    "id": "eclipse-beacon-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-beacon-mcp.png",
-   "name": "Eclipse Beacon MCP",
+   "name": "Cyan Eclipse Beacon MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -879,7 +879,7 @@
    "capabilities": [
     "Resolve an image's digest from its registry with a read-only OCI client (digest computed over served bytes)",
     "Verify cosign-style signatures (ECDSA P-256, Ed25519, RSA) with a pure-stdlib gate",
-    "Verify DSSE / in-toto provenance against a written policy and local trust bundle",
+    "Verify DSSE / in-toto lineage against a written policy and local trust bundle",
     "Per-check PASS/FAIL verdict (10 gate checks), fail-closed on every error",
     "Wrong-signer failures distinguished: forgery fails the signature, an unauthorized signer fails policy"
    ],
@@ -901,7 +901,7 @@
    "id": "eclipse-cluster-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-cluster-mcp.png",
-   "name": "Eclipse Cluster MCP",
+   "name": "Cyan Eclipse Cluster MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -914,7 +914,7 @@
     "eclipse-cluster-mcp/bazaar-manifest.json"
    ],
    "status": "in-development",
-   "tagline": "Signed images, governed runtimes — the gate runs first: no verified signature and provenance, no workload.",
+   "tagline": "Signed images, governed runtimes — the gate runs first: no verified signature and lineage, no workload.",
    "tools": [
     "verify_image",
     "policy_show",
@@ -925,7 +925,7 @@
   {
    "capabilities": [
     "Ingest Jira-DC-shaped REST exports, SARIF findings, VectorCAST-shaped coverage and XMI-lite model exports into one artifact graph",
-    "Typed trace links with provenance {source tool, version, run id, source ref} on every artifact",
+    "Typed trace links with lineage {source tool, version, run id, source ref} on every artifact",
     "Gap-first trace analysis: unlinked requirements, untested code, findings without tickets, per-layer coverage",
     "Deterministic, hash-chained evidence packages (same graph, same package identity)",
     "Standalone evidence verification: artifact substitution and link removal detected and named"
@@ -948,7 +948,7 @@
    "id": "eclipse-thread-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-thread-mcp.png",
-   "name": "Eclipse Thread MCP",
+   "name": "Cyan Eclipse Thread MCP",
    "platforms": [
     "MCP over stdio (local; enclave deployment shape)"
    ],
@@ -999,7 +999,7 @@
    "id": "eclipse-constellation-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-constellation-mcp.png",
-   "name": "Eclipse Constellation MCP",
+   "name": "Cyan Eclipse Constellation MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1051,7 +1051,7 @@
    "id": "eclipse-deepfield-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-deepfield-mcp.png",
-   "name": "Eclipse Deep Field MCP",
+   "name": "Cyan Eclipse Deep Field MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1081,7 +1081,7 @@
    "capabilities": [
     "Fail-closed DEX/UCS ingest: malformed files rejected whole, at the offending line",
     "PCI law in code: a PAN-shaped string anywhere in an export rejects it, and the digits appear in no error, state or receipt",
-    "Per-selection inventory reads with staleness flags and full provenance",
+    "Per-selection inventory reads with staleness flags and full lineage",
     "Sales summaries reconciled against hand-computed totals, cash vs cashless split",
     "Days-to-empty stock-out forecasts (labeled heuristics from measured velocity)",
     "Fault reads from DEX event records; unenrolled machines invisible"
@@ -1104,7 +1104,7 @@
    "id": "eclipse-pantry-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-pantry-mcp.png",
-   "name": "Eclipse Pantry MCP",
+   "name": "Cyan Eclipse Pantry MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1135,7 +1135,7 @@
     "Face value and every fee stay separate fields forever; watcher ceilings compare the all-in per-ticket price only",
     "Price Watcher that may only tighten: ceiling down, sections narrower, expiry no later — loosening rejected by name",
     "Expired watches cannot alert, however deep the price dips",
-    "Alerts and evaluations receipted into first-party price history with per-source provenance",
+    "Alerts and evaluations receipted into first-party price history with per-source lineage",
     "No purchase, checkout or transfer tools exist in v0.1 (capability denylist enforced in code)"
    ],
    "categories": [
@@ -1158,7 +1158,7 @@
    "id": "eclipse-marquee-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-marquee-mcp.png",
-   "name": "Eclipse Marquee MCP",
+   "name": "Cyan Eclipse Marquee MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1208,7 +1208,7 @@
    "id": "eclipse-dispatch-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-dispatch-mcp.png",
-   "name": "Eclipse Dispatch MCP",
+   "name": "Cyan Eclipse Dispatch MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1260,7 +1260,7 @@
    "id": "eclipse-social-core-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-social-core-mcp.png",
-   "name": "Eclipse Social Core MCP",
+   "name": "Cyan Eclipse Social Core MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1320,7 +1320,7 @@
    "id": "eclipse-aperture-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-aperture-mcp.png",
-   "name": "Eclipse Aperture MCP",
+   "name": "Cyan Eclipse Aperture MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1368,7 +1368,7 @@
    "id": "eclipse-zephyr-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-zephyr-mcp.png",
-   "name": "Eclipse Zephyr MCP",
+   "name": "Cyan Eclipse Zephyr MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1419,7 +1419,7 @@
    "id": "eclipse-environment-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-environment-mcp.png",
-   "name": "Eclipse Environment MCP",
+   "name": "Cyan Eclipse Environment MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1450,7 +1450,7 @@
     "Incomplete quotes (e.g. tax unknowable) can never be authorized at any stage",
     "Abort-on-drift at the payment-authorization boundary: a changed final total aborts before any payment record exists",
     "Single-use, hash-bound mandate tokens above the approval threshold; forged or replayed tokens rejected",
-    "Every persisted record carries a Data Rights Ledger provenance block"
+    "Every persisted record carries a Data Rights Ledger lineage block"
    ],
    "categories": [
     "Agent Commerce / Procurement"
@@ -1469,7 +1469,7 @@
    "id": "eclipse-procure-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-procure-mcp.png",
-   "name": "Eclipse Procure MCP",
+   "name": "Cyan Eclipse Procure MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1522,7 +1522,7 @@
    "id": "eclipse-gig-core-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-gig-core-mcp.png",
-   "name": "Eclipse Gig Core MCP",
+   "name": "Cyan Eclipse Gig Core MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1557,7 +1557,7 @@
     "Native request-form previews built from the approved Task Brief, with every difference classified (CATEGORY_MAP, BUDGET_FORM, FEE_FORM, LICENSE_FIELD, FORMAT_OMISSION, LOCATION_PRECISION)",
     "Unanswered form fields surface as diffs — answers are never invented",
     "Licensed categories block until the brief declares its license posture",
-    "Pro license claims surfaced verbatim with provenance, verified_by_compass: false",
+    "Pro license claims surfaced verbatim with lineage, verified_by_compass: false",
     "Quotes normalized through the Gig Core engine (one normalization law per family)"
    ],
    "categories": [
@@ -1580,7 +1580,7 @@
    "id": "eclipse-compass-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-compass-mcp.png",
-   "name": "Eclipse Compass MCP",
+   "name": "Cyan Eclipse Compass MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1634,7 +1634,7 @@
    "id": "eclipse-stage-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-stage-mcp.png",
-   "name": "Eclipse Stage MCP",
+   "name": "Cyan Eclipse Stage MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1690,7 +1690,7 @@
    "id": "eclipse-zenith-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-zenith-mcp.png",
-   "name": "Eclipse Zenith MCP",
+   "name": "Cyan Eclipse Zenith MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -1718,7 +1718,7 @@
   },
   {
    "capabilities": [
-    "Canonical Customer Graph: Person, Company, Deal, Ticket, Conversation, Activity — every field provenance-bearing, every record carrying a Data Rights Ledger block",
+    "Canonical Customer Graph: Person, Company, Deal, Ticket, Conversation, Activity — every field lineage-bearing, every record carrying a Data Rights Ledger block",
     "Identity merges propose-only: evidence and conflicts surfaced; execution requires an owner-confirm token bound to the proposal hash; unmerge restores exactly from the receipt snapshot",
     "Field-level masking at egress (Deep Field pattern): phone partial; email full on the owner surface, domain-only on analytic surfaces; government/payment/health fields nulled in v1",
     "Reply drafting from record facts only, with citation lists; untraceable facts become MISSING_FACT markers",
@@ -1744,7 +1744,7 @@
    "id": "eclipse-muster-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-muster-mcp.png",
-   "name": "Eclipse Muster MCP",
+   "name": "Cyan Eclipse Muster MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -1758,7 +1758,7 @@
     "eclipse-muster-mcp/bazaar-manifest.json"
    ],
    "status": "live",
-   "tagline": "The Customer Graph core: one register of the people an account serves, with provenance on every field and a receipt for every decision.",
+   "tagline": "The Customer Graph core: one register of the people an account serves, with lineage on every field and a receipt for every decision.",
    "tools": [
     "record_ingest",
     "record_read",
@@ -1800,7 +1800,7 @@
    "id": "eclipse-haven-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-haven-mcp.png",
-   "name": "Eclipse Haven MCP",
+   "name": "Cyan Eclipse Haven MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -1857,7 +1857,7 @@
    "id": "eclipse-orbit-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-orbit-mcp.png",
-   "name": "Eclipse Orbit MCP",
+   "name": "Cyan Eclipse Orbit MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -1882,9 +1882,9 @@
   },
   {
    "capabilities": [
-    "Consent Registry: provenance-bound consent records — a record without provenance is void, refused at write time, and receipted as a violation",
+    "Consent Registry: lineage-bound consent records — a record without lineage is void, refused at write time, and receipted as a violation",
     "Revocation is one-way and effective at the next check on every adapter, because adapters hold no consent copies",
-    "DNC overlays and calling windows as versioned, provenance-bearing datasets; windows evaluate in the subject's timezone; an unknown timezone denies marketing contact",
+    "DNC overlays and calling windows as versioned, lineage-bearing datasets; windows evaluate in the subject's timezone; an unknown timezone denies marketing contact",
     "Number Registry: enrolled numbers only, each with A2P 10DLC / toll-free verification / STIR-SHAKEN / branded-ID registration state deciding sendability per channel and scope",
     "Send gate: consent first, then an Agent Wallet-shaped mandate (cap, allowlists, threshold, expiry); a send receipt is writable only with a consent_record_id — an unconsented attempt produces a violation record and nothing else"
    ],
@@ -1907,7 +1907,7 @@
    "id": "eclipse-voice-core-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-voice-core-mcp.png",
-   "name": "Eclipse Voice Core MCP",
+   "name": "Cyan Eclipse Voice Core MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -1966,7 +1966,7 @@
    "id": "eclipse-trunk-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-trunk-mcp.png",
-   "name": "Eclipse Trunk MCP",
+   "name": "Cyan Eclipse Trunk MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -1993,7 +1993,7 @@
   },
   {
    "capabilities": [
-    "MCP facade over the Eclipse Connect relay: connect account, grant status, upload video, publish video, revoke grant — 5 tools over stdio",
+    "MCP facade over the Cyan Eclipse Connect relay: connect account, grant status, upload video, publish video, revoke grant — 5 tools over stdio",
     "Agents act through a revocable agent key, never raw OAuth tokens; the relay holds the grant",
     "Review-first enforced in the facade before any network call, and again at the relay: going public requires an explicit human approval flag",
     "The facade passes relay state through verbatim; it invents no status of its own",
@@ -2017,7 +2017,7 @@
    "id": "eclipse-connect-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-connect-mcp.png",
-   "name": "Eclipse Connect MCP",
+   "name": "Cyan Eclipse Connect MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -2070,7 +2070,7 @@
    "id": "eclipse-envoy-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-envoy-mcp.png",
-   "name": "Eclipse Envoy MCP",
+   "name": "Cyan Eclipse Envoy MCP",
    "platforms": [
     "MCP over stdio (two capability records via ENVOY_SURFACE; hosted split at E1)"
    ],
@@ -2126,7 +2126,7 @@
   },
   {
    "capabilities": [
-    "Signed, versioned Protocol Registry (Uniswap/Aave/Compound/Lido across Ethereum/Arbitrum/Base): audit status as dated data with provenance, risk tiers, admin posture; addresses are never scraped live into trust and never copied from transaction history",
+    "Signed, versioned Protocol Registry (Uniswap/Aave/Compound/Lido across Ethereum/Arbitrum/Base): audit status as dated data with lineage, risk tiers, admin posture; addresses are never scraped live into trust and never copied from transaction history",
     "Position + Risk reads over a chain-transport seam: dual-source health and liquidation distance that render DIVERGENT instead of averaging when price sources disagree (bench-measured edge: 2.00% divergence still renders, 2.01% is DIVERGENT with headline fields null)",
     "Flagship allowance_audit: ERC-20 + Permit2 grants ranked by value at risk; unlimited grants flagged structurally; spenders Registry-resolved or labeled UNRESOLVED",
     "Address lookalike (poisoning) checks, depeg watch, and exposure by protocol/chain/risk tier",
@@ -2152,7 +2152,7 @@
    "id": "eclipse-fathom-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-fathom-mcp.png",
-   "name": "Eclipse Fathom MCP",
+   "name": "Cyan Eclipse Fathom MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2210,7 +2210,7 @@
    "id": "eclipse-codex-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-codex-mcp.png",
-   "name": "Eclipse Codex MCP",
+   "name": "Cyan Eclipse Codex MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2280,7 +2280,7 @@
    "id": "eclipse-ledger-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-ledger-mcp.png",
-   "name": "Eclipse Ledger MCP",
+   "name": "Cyan Eclipse Ledger MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2360,7 +2360,7 @@
    "id": "eclipse-till-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-till-mcp.png",
-   "name": "Eclipse Till MCP",
+   "name": "Cyan Eclipse Till MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2398,7 +2398,7 @@
    "capabilities": [
     "Descriptor: market data + venue access layer — not an exchange. One canonical Instrument / Book / Quote / Order / Position / Resolution model across exchanges and prediction markets; venue adapters translate and never improvise",
     "Resolution criteria stored verbatim and hash-pinned: a venue criteria edit is a CRITERIA_CHANGED event, and positions keep the criteria as of entry",
-    "Fee truth: quotes carry all-in buy/sell cost for a stated size from versioned, provenance-stamped fee schedules; a stale or missing schedule degrades all-in fields to FEE_UNVERIFIED rather than quoting a wrong number",
+    "Fee truth: quotes carry all-in buy/sell cost for a stated size from versioned, lineage-stamped fee schedules; a stale or missing schedule degrades all-in fields to FEE_UNVERIFIED rather than quoting a wrong number",
     "Resolution lifecycle REPORTED -> VERIFIED only against the criteria's own named source; DISPUTED is first-class and blocks verification until cleared",
     "The probability law enforced in code: no output ever carries a probability field — a runtime guard refuses probability-shaped keys in any carrier; outputs carry price + liquidity flag + depth + criteria reference; unmapped native statuses surface as UNMAPPED with the native string preserved",
     "M0 is data only: no accounts, no keys, no order submission at any tier; order_draft is an unsubmitted record whose mandate pre-evaluation is honestly NOT_EVALUATED"
@@ -2423,7 +2423,7 @@
    "id": "eclipse-book-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-book-mcp.png",
-   "name": "Eclipse Book MCP",
+   "name": "Cyan Eclipse Book MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2487,7 +2487,7 @@
    "id": "eclipse-forecast-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-forecast-mcp.png",
-   "name": "Eclipse Forecast MCP",
+   "name": "Cyan Eclipse Forecast MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2540,7 +2540,7 @@
    "id": "eclipse-strike-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-strike-mcp.png",
-   "name": "Eclipse Strike MCP",
+   "name": "Cyan Eclipse Strike MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -2567,7 +2567,7 @@
   {
    "capabilities": [
     "Cross-provider agent spend analytics: ingests cost records from provider-shaped sources (v0 fixture adapters for model-API usage logs, Agent Wallet ledger exports, Eclipse Till receipt exports) into one signed cost-record schema",
-    "Every record ECDSA-signed at ingest and hash-chained, carrying source, provenance, adapter version and methodology version; attestation exports verify offline with the public key only",
+    "Every record ECDSA-signed at ingest and hash-chained, carrying source, lineage, adapter version and methodology version; attestation exports verify offline with the public key only",
     "Retry attribution is a first-class field: retry records cite parent_call_ref, so the orchestration/retry share of spend is computed from links, not estimated; orphan retries degrade honestly (parent_resolved=false), never dropped",
     "Rollups by agent/provider/category/period with Decimal totals kept per-unit — USD and test credits never comingled; caller-injected units cannot enter a rollup; unmappable kinds render UNMAPPED with the native label preserved",
     "Budget posture against owner-stated budgets is arithmetic only (80%/100% boundaries verified); a figure without a methodology_version is refused at render (spec L8)",
@@ -2593,7 +2593,7 @@
    "id": "eclipse-meter-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-meter-mcp.png",
-   "name": "Eclipse Meter MCP",
+   "name": "Cyan Eclipse Meter MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -2649,7 +2649,7 @@
    "id": "eclipse-tripwire-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-tripwire-mcp.png",
-   "name": "Eclipse Tripwire MCP",
+   "name": "Cyan Eclipse Tripwire MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -2706,7 +2706,7 @@
    "id": "eclipse-umbra-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-umbra-mcp.png",
-   "name": "Eclipse Umbra MCP",
+   "name": "Cyan Eclipse Umbra MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -2757,7 +2757,7 @@
    "id": "eclipse-test-bench",
    "listing_class": "tool",
    "logo": "branding/logos/eclipse-test-bench.png",
-   "name": "Eclipse Test Bench",
+   "name": "Cyan Eclipse Test Bench",
    "platforms": [
     "CLI (local)",
     "hosted run service (planned)"
@@ -2801,7 +2801,7 @@
    "id": "eclipse-stocktake",
    "listing_class": "tool",
    "logo": "branding/logos/eclipse-stocktake.png",
-   "name": "Eclipse Stocktake",
+   "name": "Cyan Eclipse Stocktake",
    "platforms": [
     "CLI (local)",
     "CI action (planned)"
@@ -2847,7 +2847,7 @@
    "id": "eclipse-press",
    "listing_class": "tool",
    "logo": "branding/logos/eclipse-press.png",
-   "name": "Eclipse Press",
+   "name": "Cyan Eclipse Press",
    "platforms": [
     "CLI pipeline (local)"
    ],
@@ -2872,9 +2872,9 @@
   },
   {
    "capabilities": [
-    "Issue and verify signed A2A Agent Cards offline: the same cards.py / jwscore.py tooling the Eclipse Herald MCP runs in production shape",
+    "Issue and verify signed A2A Agent Cards offline: the same cards.py / jwscore.py tooling the Cyan Eclipse Herald MCP runs in production shape",
     "Offline verification with receipts — a card checks out (or doesn't) without calling home",
-    "Productizing as slate item T7; the tooling runs in-house today inside eclipse-herald-mcp — the Herald MCP server itself stays an MCP-class listing; this is its artifact-form toolkit"
+    "Productizing as slate item T7; the tooling runs in-house today — the Herald MCP server itself stays an MCP-class listing; this is its artifact-form toolkit"
    ],
    "categories": [
     "Agent-to-Agent Infrastructure"
@@ -2901,10 +2901,7 @@
     "I'm building on A2A and hand-rolling JWS Agent Cards badly",
     "I need to verify a counterparty's Agent Card offline, with a receipt"
    ],
-   "source_refs": [
-    "eclipse-herald-mcp/cards.py",
-    "eclipse-herald-mcp/jwscore.py"
-   ],
+   "source_refs": [],
    "status": "in-development",
    "tagline": "Agent Card issue/verify toolkit — the Herald JWS card tooling (cards.py, jwscore.py) productizing as a CLI + library for A2A builders.",
    "tool": {
@@ -2944,7 +2941,7 @@
    "id": "eclipse-blackbox-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-blackbox-mcp.png",
-   "name": "Eclipse Blackbox MCP",
+   "name": "Cyan Eclipse Blackbox MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -2997,11 +2994,11 @@
    "id": "eclipse-docket-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-docket-mcp.png",
-   "name": "Eclipse Docket MCP",
+   "name": "Cyan Eclipse Docket MCP",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $5.00/filing (PC-7) via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Free local v0.1 (own-products dispute machinery) remains free; the priced third-party filing rail is counsel-gated — intake orders are reviewed and confirmed by the operator before any payment link is sent.",
+   "pricing_model": "PRICED — $5.00/filing (PC-7) via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Free local v0.1 (own-products dispute machinery) remains free; the priced third-party filing rail is counsel-gated — intake orders are reviewed and confirmed by the operator before any payment link is sent.",
    "problem_statements": [
     "Two agents disagree about a purchase and each has its own version — I need a case built from the receipts, not the retellings",
     "The other side went silent; I need the silence itself on the record — without it turning into a default judgment nobody made",
@@ -3025,7 +3022,7 @@
   {
    "capabilities": [
     "One verification call for presented agent cards and payment mandates across formats, returning a signed finding in the closed vocabulary CONSISTENT / DIVERGED / EXPIRED / REVOKED_BY_ISSUER / UNRESOLVED",
-    "Every verdict enumerates the checks actually performed and carries provenance for the artifact hash, key source, and revocation-feed epoch; presented-only artifacts cap at UNRESOLVED",
+    "Every verdict enumerates the checks actually performed and carries lineage for the artifact hash, key source, and revocation-feed epoch; presented-only artifacts cap at UNRESOLVED",
     "Mandate checks bind structure, signature, expiry, amount, scope, cart, and counterparty to the presented cart — a valid signature on the wrong cart still lands DIVERGED",
     "Instruction-like content inside artifacts is quarantined as data (hash only, never echoed) and never instructs the verifier; findings supersede, never edit",
     "Verification only: no approve_transaction, release_funds, trust_score, or mark_trusted surface exists. v0.1 is local over fixture issuers and a fixture revocation feed; live issuer discovery is not built"
@@ -3048,7 +3045,7 @@
    "id": "eclipse-countermark-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-countermark-mcp.png",
-   "name": "Eclipse Countermark MCP",
+   "name": "Cyan Eclipse Countermark MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -3080,7 +3077,7 @@
     "Source-native claims stay attributed per source and are never promoted to Census fields; reconciliation is propose-only until a named human accepts. v0.1 is local over fixture sources; tenant connectors are gated and not built"
    ],
    "categories": [
-    "Compliance, Provenance & the Builder Economy"
+    "Compliance, Lineage & the Builder Economy"
    ],
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
@@ -3098,7 +3095,7 @@
    "id": "eclipse-census-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-census-mcp.png",
-   "name": "Eclipse Census MCP",
+   "name": "Cyan Eclipse Census MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -3130,13 +3127,13 @@
   {
    "capabilities": [
     "Versioned, machine-consumable SI-obligation library (EU AI Act, Colorado AI Act, and Texas TRAIGA seed chapters) with as-of resolution and provider/deployer/importer/distributor roles",
-    "Maps provision → obligation → system → control → evidence artifact, with provenance on every link and no blending across regimes",
+    "Maps provision → obligation → system → control → evidence artifact, with lineage on every link and no blending across regimes",
     "Candidate classifications cite the exact fact-set hash, stale-flag when facts change, and keep the determination field permanently empty and customer-owned; incomplete facts never become a guessed tier",
     "Deadline engine keeps legal rule clocks and guidance cadences distinct, with the computation shown — a past-due cadence never renders as a legal breach",
     "Evidence packs carry a mandatory gap section and a hash-chained receipt. Evidence machinery only: no filing, submission, regulator-channel, or determination tool exists. v0.1 uses a synthetic fixture deployer only"
    ],
    "categories": [
-    "Compliance, Provenance & the Builder Economy"
+    "Compliance, Lineage & the Builder Economy"
    ],
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
@@ -3150,7 +3147,7 @@
    "id": "eclipse-crosswalk-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-crosswalk-mcp.png",
-   "name": "Eclipse Crosswalk MCP",
+   "name": "Cyan Eclipse Crosswalk MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -3211,11 +3208,11 @@
    "id": "eclipse-redteam-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-redteam-mcp.png",
-   "name": "Eclipse Redteam MCP",
+   "name": "Cyan Eclipse Redteam MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
-   "pricing_model": "PRICED — $2.00/run (PC-8) via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Free local v0.1 (fixture twins) remains free; external runs are counsel-gated — intake orders are reviewed and confirmed by the operator before any payment link is sent.",
+   "pricing_model": "PRICED — $2.00/run (PC-8) via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Free local v0.1 (fixture twins) remains free; external runs are counsel-gated — intake orders are reviewed and confirmed by the operator before any payment link is sent.",
    "problem_statements": [
     "I need to attack-test an agent twin without ever pointing probes at production",
     "I need proof a target was authorized before any adversarial probe is constructed",
@@ -3261,7 +3258,7 @@
    "id": "eclipse-span-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-span-mcp.png",
-   "name": "Eclipse Span MCP",
+   "name": "Cyan Eclipse Span MCP",
    "platforms": [
     "MCP over stdio (HTTP transport on roadmap)"
    ],
@@ -3319,7 +3316,7 @@
    "id": "eclipse-airtime-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-airtime-mcp.png",
-   "name": "Eclipse Airtime MCP",
+   "name": "Cyan Eclipse Airtime MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3383,7 +3380,7 @@
    "id": "eclipse-friction-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-friction-mcp.png",
-   "name": "Eclipse Friction MCP",
+   "name": "Cyan Eclipse Friction MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3445,7 +3442,7 @@
    "id": "eclipse-steward-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-steward-mcp.png",
-   "name": "Eclipse Steward MCP",
+   "name": "Cyan Eclipse Steward MCP",
    "name_status": "CONDITIONAL — brand system §3: trademark/confusion screen required before first public surface; fallback name: Eclipse Usher",
    "open_owner_decisions": [
     {
@@ -3494,7 +3491,7 @@
    "platforms": [
     "MCP over stdio — two disjoint surfaces selected by ECLIPSE_STEWARD_SURFACE (operator | agent); simulated route fixtures, no live platform"
    ],
-   "pricing_model": "Free local v0.1 (governance core + simulator fixtures); hosted venue service is a separate, unbuilt phase gated on Eclipse Connect P2 decisions",
+   "pricing_model": "Free local v0.1 (governance core + simulator fixtures); hosted venue service is a separate, unbuilt phase gated on Cyan Eclipse Connect P2 decisions",
    "problem_statements": [
     "An agent posting in our team chat needs a signed mandate, review-first approval, and a kill switch that binds at dispatch — not after the fact",
     "I need proof of what the agent saw and did in chat — receipts for reads as well as acts",
@@ -3559,7 +3556,7 @@
    "id": "eclipse-proof-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-proof-mcp.png",
-   "name": "Eclipse Proof MCP",
+   "name": "Cyan Eclipse Proof MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3597,7 +3594,7 @@
   {
    "capabilities": [
     "Policy-of-record drift checking across all of the owner's accounts — drift is named with both values (actual vs band), never a bare flag",
-    "2008-5), caught pre-settlement — including silent scheduled-contribution triggers and spouse-supplied activity with provenance",
+    "2008-5), caught pre-settlement — including silent scheduled-contribution triggers and spouse-supplied activity with lineage",
     "Permanent in-house grant-keeper (owner-ratified D1) behind GrantKeeperPort: Schwab grants go AGING at day 5 and EXPIRED_FAIL_CLOSED at day 7 with guided re-auth; no dead-grant reads pass silently",
     "401(k) permanently fenced to the participant's own reads, fees and drift; T3 classes (tax determinations, order submission) refused even inside a valid mandate, with byte-identical state after every refusal",
     "The descriptor — 'Not a bank. Not an investment adviser. Charter checks your rules — it never writes them.' — rides every envelope, refusals included; fee math checked against policy ceilings"
@@ -3623,7 +3620,7 @@
    "id": "eclipse-charter-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-charter-mcp.png",
-   "name": "Eclipse Charter MCP",
+   "name": "Cyan Eclipse Charter MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3680,7 +3677,7 @@
    "id": "eclipse-colophon-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-colophon-mcp.png",
-   "name": "Eclipse Colophon MCP",
+   "name": "Cyan Eclipse Colophon MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3749,7 +3746,7 @@
    "id": "eclipse-tether-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-tether-mcp.png",
-   "name": "Eclipse Tether MCP",
+   "name": "Cyan Eclipse Tether MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3817,7 +3814,7 @@
    "id": "eclipse-proving-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-proving-mcp.png",
-   "name": "Eclipse Proving MCP",
+   "name": "Cyan Eclipse Proving MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3893,7 +3890,7 @@
    "id": "eclipse-connect-beyondcompare-mcp",
    "listing_class": "connector",
    "logo": "branding/logos/eclipse-connect-beyondcompare-mcp.png",
-   "name": "Eclipse Connect · Beyond Compare MCP",
+   "name": "Cyan Eclipse Connect · Beyond Compare MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3947,7 +3944,7 @@
    "id": "eclipse-wageward-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-wageward-mcp.png",
-   "name": "Eclipse Wageward MCP",
+   "name": "Cyan Eclipse Wageward MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -3982,7 +3979,7 @@
   },
   {
    "capabilities": [
-    "Every lead carries a Herald-signed provenance record — CERTIFIED_CAPTURE / SELF_CAPTURED / VENDOR_ASSERTED / LEGACY_UNVERIFIED, never blended — and outreach executes only through a send-time Gate inside the contact tools: mandate × per-channel consent scope (voice consent is not text consent) × named-seller coverage × no open revocation × fresh DNC scrub at send × fair-housing guards",
+    "Every lead carries a Herald-signed lineage record — CERTIFIED_CAPTURE / SELF_CAPTURED / VENDOR_ASSERTED / LEGACY_UNVERIFIED, never blended — and outreach executes only through a send-time Gate inside the contact tools: mandate × per-channel consent scope (voice consent is not text consent) × named-seller coverage × no open revocation × fresh DNC scrub at send × fair-housing guards",
     "Consent and revocation rules are versioned DATA packs (PEWC + April 2025 revocation rules, 10-business-day honor), never code constants — missing or stale packs fail closed, and unknown vendor-posture values refuse by name at pack load, mandate create, and the Gate (state-tamper included)",
     "Every send and every refusal seals into a Blackbox-form evidence pack addressed to the broker of record, verifiable offline via consent_record_verify",
     "Copy Screen + Criteria Screen run a closed findings vocabulary and never silently rewrite; NO data/scraping layer exists — Covenant never holds or redistributes MLS data, scrapes portals, or resells/transfers/pools leads"
@@ -4007,7 +4004,7 @@
    "id": "eclipse-covenant-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-covenant-mcp.png",
-   "name": "Eclipse Covenant MCP",
+   "name": "Cyan Eclipse Covenant MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -4019,7 +4016,7 @@
    ],
    "source_refs": [],
    "status": "in-development",
-   "tagline": "Consent-bound lead work for real-estate agents — provenance on every lead, a Gate on every send, a sealed pack for the broker.",
+   "tagline": "Consent-bound lead work for real-estate agents — lineage on every lead, a Gate on every send, a sealed pack for the broker.",
    "tools": [
     "lead_intake",
     "consent_attach_certificate",
@@ -4064,7 +4061,7 @@
    "id": "eclipse-meridian-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-meridian-mcp.png",
-   "name": "Eclipse Meridian MCP",
+   "name": "Cyan Eclipse Meridian MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -4103,7 +4100,7 @@
   {
    "capabilities": [
     "A check-gate, not a registry: a processor agent presents a consent receipt id at action time and gets ALLOW/DENY + reason + record id synchronously — a revocation is effective at the very next check, for every processor, with no sync step and no consent copies held by processors",
-    "Provenance law: every grant names subject, grantor, grantee, purpose, data classes, capture method, capture evidence ref, captured_at and expiry — a record without provenance is void, refused at grant time and denied at check time",
+    "Lineage law: every grant names subject, grantor, grantee, purpose, data classes, capture method, capture evidence ref, captured_at and expiry — a record without lineage is void, refused at grant time and denied at check time",
     "Separation of duties by name: the grantee can never write its own consent (CONSENT_SELF_ASSERTED); grants issue only from the subject or a recorded delegate; revocation is subject/delegate only",
     "Append-only, hash-chained records; revocation is a new record that supersedes at check time, and consent_dependents returns the propagation map — exactly the processors who presented a receipt — with the revocation notices issued to them",
     "Purposes, data classes, capture methods and revocation sources are versioned vocabularies shipped as data (vocabularies.json), not code; consent_bulk_import / consent_extend / consent_check_skip do not exist and refuse -32602 at the transport; family T3 is empty — no enforcement verb at any tier"
@@ -4127,7 +4124,7 @@
    "id": "eclipse-consent-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-consent-mcp.png",
-   "name": "Eclipse Consent MCP",
+   "name": "Cyan Eclipse Consent MCP",
    "platforms": [
     "MCP over stdio — local v0.1 build over a local state file; no network transport"
    ],
@@ -4155,7 +4152,7 @@
    "capabilities": [
     "Generation semantics: a behavior-relevant config change (model id, system-prompt hash, tool-surface hash, policy ref) MINTS a new generation identity as a new append-only record — a write aimed at an existing generation refuses GENERATION_IMMUTABLE by name",
     "Per-root hash chains, signed: lineage_verify recomputes each root's chain and names the first broken link; system prompts and configs are recorded as hashes + owner-held refs only — there is no prompt_get",
-    "Provenance labels that never overclaim: self-emission is a subject-provided claim forever; parent+child signature corroboration is labeled corroborated — and in v0, presented corroboration strings are unverifiable by construction (no per-agent key registry), so they are labeled corroboration_unverified inside the signed record body; a spawn without a mandate ref is recorded UNMANDATED, visible, never hidden",
+    "Lineage labels that never overclaim: self-emission is a subject-provided claim forever; parent+child signature corroboration is labeled corroborated — and in v0, presented corroboration strings are unverifiable by construction (no per-agent key registry), so they are labeled corroboration_unverified inside the signed record body; a spawn without a mandate ref is recorded UNMANDATED, visible, never hidden",
     "Hash values are shape-validated everywhere they enter (SHA-256, 64 hex chars) — non-digest values refuse HASH_VALUE_INVALID with nothing stored",
     "Self/consented emission only: framework emission adapters (G-LIVE per framework) and any external or hosted emission surface (G-OWNER) are held, not built; family T3 is empty — no rewrite, prune, delist or enforcement verb exists"
    ],
@@ -4178,7 +4175,7 @@
    "id": "eclipse-lineage-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-lineage-mcp.png",
-   "name": "Eclipse Lineage MCP",
+   "name": "Cyan Eclipse Lineage MCP",
    "platforms": [
     "MCP over stdio — local v0.1 build; records stay on the operator's machine"
    ],
@@ -4231,7 +4228,7 @@
    "id": "eclipse-attest-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-attest-mcp.png",
-   "name": "Eclipse Attest MCP",
+   "name": "Cyan Eclipse Attest MCP",
    "platforms": [
     "MCP over stdio — local v0.1 build; offline verification, no network egress"
    ],
@@ -4258,7 +4255,7 @@
   {
    "capabilities": [
     "Issuer-only origination: a revocation record is accepted only when its signature verifies against the registry key of the identity that issued the original artifact (or its recorded successor) — any other signer refuses REVOKE_NOT_ISSUER by name and is receipted as a violation attempt; Revoke distributes revocations, it never originates one for an artifact it does not hold",
-    "Four subject classes (cards, keys, mandates, attestations) under a closed reason vocabulary (KEY_COMPROMISED / ISSUER_ROTATED / SUBJECT_RETIRED / POLICY / ISSUER_ERROR); records are append-only and hash-chained per issuer with full provenance",
+    "Four subject classes (cards, keys, mandates, attestations) under a closed reason vocabulary (KEY_COMPROMISED / ISSUER_ROTATED / SUBJECT_RETIRED / POLICY / ISSUER_ERROR); records are append-only and hash-chained per issuer with full lineage",
     "list_publish derives epoch-versioned signed lists (full + delta) from the record store — recomputable from the records, so a list that disagrees with its records fails verification; revocation_check is a pure offline function of a list copy; staleness and epoch divergence are announced, never silent",
     "A mistaken revocation is corrected by the issuer's signed counter-notice — both records remain and a check shows the pair's net effect; subscribers acknowledge epochs with signed propagation receipts surfaced by feed_status",
     "Family T3 is empty: there is no enforcement verb — nothing delists, blocks, freezes or takes down anything; external distribution (G-REG/G-LIVE per consumer), emergency revocation classes (G-COUNSEL) and any live push are held gates, not built"
@@ -4283,7 +4280,7 @@
    "id": "eclipse-revoke-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-revoke-mcp.png",
-   "name": "Eclipse Revoke MCP",
+   "name": "Cyan Eclipse Revoke MCP",
    "platforms": [
     "MCP over stdio — local v0.1 build; offline revocation checks against signed list copies"
    ],
@@ -4338,7 +4335,7 @@
    "id": "eclipse-keyhold-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-keyhold-mcp.png",
-   "name": "Eclipse Keyhold MCP",
+   "name": "Cyan Eclipse Keyhold MCP",
    "platforms": [
     "MCP over stdio — local v0.1 build; redemption by co-located executor, exercised on fixture transport"
    ],
@@ -4394,7 +4391,7 @@
    "id": "eclipse-strata-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-strata-mcp.png",
-   "name": "Eclipse Loft MCP",
+   "name": "Cyan Eclipse Loft MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -4406,7 +4403,7 @@
    ],
    "source_refs": [],
    "status": "in-development",
-   "tagline": "Governed design-to-print authority for agents — signed provenance from model to machine, safety envelopes at the bridge, evidence for every print.",
+   "tagline": "Governed design-to-print authority for agents — signed lineage from model to machine, safety envelopes at the bridge, evidence for every print.",
    "tools": [
     "design_register",
     "design_inspect",
@@ -4454,7 +4451,7 @@
    "id": "eclipse-corona-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-corona-mcp.png",
-   "name": "Eclipse Corona MCP",
+   "name": "Cyan Eclipse Corona MCP",
    "name_status": "CONDITIONAL — trademark screen pending before any public surface (screen items: Chaos Corona; Corona beer — dilution note only); fallbacks on record: Eclipse Transit, Eclipse Behold, Eclipse Lantern",
    "platforms": [
     "MCP over stdio"
@@ -4481,7 +4478,7 @@
   },
   {
    "capabilities": [
-    "Registry-native facets: selecting a registry (Eclipse Bazaar, Official MCP Registry, Glama, Smithery) materializes that registry's own verb set and native data model as MCP tools, each with native|adapted|absent provenance — honest absences included (Glama carries ZERO write verbs; claim execution is refused permanently)",
+    "Registry-native facets: selecting a registry (Cyan Eclipse Bazaar, Official MCP Registry, Glama, Smithery) materializes that registry's own verb set and native data model as MCP tools, each with native|adapted|absent lineage — honest absences included (Glama carries ZERO write verbs; claim execution is refused permanently)",
     "A single Herald-signed mandate (agent × registry set × manifest hash × window) drives submission of one canonical server.json manifest across registries; namespace-proof and hosted-deploy steps additionally require T3 ECDSA owner-signed, params-bound approvals",
     "Listing-state ledger: a hash-chained ledger tracks each registry's independent state (tracked/submitted/live/claimed/stale/failed) with Herald-sealable receipts (seal.status pending — sealable, never sealed)",
     "Identity-bound acceptance: a submit-accepted receipt is written only when the observed registry record matches the submitted name + version + payload hash; foreign, partial, or version-swapped evidence refuses MANIFEST_HASH_MISMATCH with no acceptance — and every poll transition out of 'submitted' is identity-gated the same way",
@@ -4508,7 +4505,7 @@
    "id": "eclipse-crosslist-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-crosslist-mcp.png",
-   "name": "Eclipse Crosslist MCP",
+   "name": "Cyan Eclipse Crosslist MCP",
    "platforms": [
     "MCP over stdio"
    ],
@@ -4575,7 +4572,7 @@
     "Cite-check (the headline mechanism): a quoted passage is checked byte-for-byte against the sealed statutory text and returns a closed verdict — MATCH, DIVERGES with the first divergence localized by byte offsets, or NOT_IN_CORPUS. Bench facts: the hostile battery produced 0 false MATCH across digit swaps, word substitutions, punctuation changes, cross-section splices, editorial-notes-passed-as-statute, other-title text, and instruction-shaped passages; whitespace-only differences MATCH by published design and nothing non-whitespace is laundered",
     "An independent implementation written from the spec text alone reproduces the seal exactly: 2,277/2,277 statutory and 2,277/2,277 editorial entries, both roots, the manifest hash, and the snapshot-id derivation",
     "Notes are not statute: OLRC editorial notes are sealed in a separate EDITORIAL layer with its own hash root, served only under an EDITORIAL label; a note passage checked as statute returns NOT_IN_CORPUS with an EDITORIAL layer hint. Public Law history is served as labelled DERIVED data, never as statutory text",
-    "Verbatim retrieval + verification surface (10 tools, all read-only): get_section, search, and notes_get (retrieval is 3 of 10 verbs); cite_check, section_verify, manifest_get, and manifest_verify (verification); corpus_status, snapshot_list, and lineage (provenance).",
+    "Verbatim retrieval + verification surface (10 tools, all read-only): get_section, search, and notes_get (retrieval is 3 of 10 verbs); cite_check, section_verify, manifest_get, and manifest_verify (verification); corpus_status, snapshot_list, and lineage (lineage).",
     "No-advice surface, by construction: no tool interprets, explains, applies, or calculates anything; no response carries a score or a characterization beyond the closed verdict vocabulary. Title 26 statute only — no CFR. Title 26 is not positive law: claims are limited to the OLRC-published text at the named release point, identified by hash; the corpus is a dated snapshot, never described as current law"
    ],
    "categories": [
@@ -4600,7 +4597,7 @@
    "id": "eclipse-verbatim-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-verbatim-mcp.png",
-   "name": "Eclipse Verbatim MCP",
+   "name": "Cyan Eclipse Verbatim MCP",
    "name_status": "CONDITIONAL — trademark + confusion screen (spec D1) is owner-side and still open; it gates any public surface under any name. Fallbacks on record: Eclipse Quire, then Eclipse Schedule",
    "platforms": [
     "MCP over stdio"
@@ -4659,7 +4656,7 @@
    "id": "eclipse-roll-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-roll-mcp.png",
-   "name": "Eclipse Roll MCP",
+   "name": "Cyan Eclipse Roll MCP",
    "name_status": "CONDITIONAL — trademark screen (spec D2) is an owner item, owed before any public surface; the screen, not the spec, clears the mark. Fallbacks on record, in order: Eclipse Seal (N4-flagged — usable only with copy making the seal ours, never the registry's), then Eclipse Record",
    "platforms": [
     "MCP over stdio"
@@ -4700,7 +4697,7 @@
   {
    "capabilities": [
     "Sealed corpus, recomputable by anyone: 1,315 Executive Orders (Federal Register full-text XML) sealed per section under canon-eo/1.0 into snapshot eo-20261022-26818c895dee — per-section hashes, a signed manifest, append-only snapshot history; the bench re-derives the seal from the stored artifacts and a spec-only build-time recompute converged 1,315/1,315 document hashes identical",
-    "The novel mechanism — a disposition graph extracted from the orders' own sealed sections: 10,667 edges, every edge pinned to the hash of the asserting section and typed by provenance (TEXT / FR_NOTE / NARA_TABLE), so a graph claim can always be recomputed against the sealed text that asserts it; where the consulted sources disagree, the disagreement itself is sealed as a DIVERGENCE record (823, status OPEN forever, never resolved by the product)",
+    "The novel mechanism — a disposition graph extracted from the orders' own sealed sections: 10,667 edges, every edge pinned to the hash of the asserting section and typed by lineage (TEXT / FR_NOTE / NARA_TABLE), so a graph claim can always be recomputed against the sealed text that asserts it; where the consulted sources disagree, the disagreement itself is sealed as a DIVERGENCE record (823, status OPEN forever, never resolved by the product)",
     "Scope is clause-bound, never idiom-bound: a whole-order cue binds only in a clause naming the target; part-governed cues mint IN_PART with the stated range; the savings idiom is stripped before cue search and can never mint a whole-order scope — the bench's exhaustive sentence-level sweep of all 13,282 sealed segments finds exactly the 5 genuine whole-order edges and zero contamination",
     "Honest coverage, measured not assumed: the Federal Register full-text XML floor is 2000 (the 1994 gate assumption was falsified by measurement) — 258 orders are EXCLUDED_NAMED (NO_FR_FULL_TEXT_XML), never silently absent; pre-2000 orders ride in an unsealed metadata+edges layer reaching back to 1931, labelled unsealed on every surface; Public Inspection versions are refused by name (PUBLIC_INSPECTION_NOT_INGESTED)",
     "The fence, by construction (gate C3): no tool characterizes legal effect and no status field exists anywhere in the product — every disposition answer is an edge set + as_of + a coverage window + the standing completeness sentence, served byte-identically; cite_check verifies a claimed section against its sealed hash, and resolve_authority resolves an order's statutory citations against the consumed sealed Code corpus (an empty port answers by name until that corpus lands — never a fabricated resolution)"
@@ -4727,7 +4724,7 @@
    "id": "eclipse-verbatim-eo-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-verbatim-eo-mcp.png",
-   "name": "Eclipse Verbatim — Executive Orders",
+   "name": "Cyan Eclipse Verbatim — Executive Orders",
    "name_status": "CONDITIONAL — inherits the pending Eclipse Verbatim trademark + confusion screen (owner-side, still open); it gates any public surface under the name. Family fallbacks on record: Eclipse Quire, then Eclipse Schedule",
    "platforms": [
     "MCP over stdio"
@@ -4742,7 +4739,7 @@
     "eclipse-verbatim-eo-mcp/bazaar-manifest.json"
    ],
    "status": "in-development",
-   "tagline": "Executive Orders as sealed objects: per-section hashes, a provenance-typed disposition graph, divergences kept as data.",
+   "tagline": "Executive Orders as sealed objects: per-section hashes, a lineage-typed disposition graph, divergences kept as data.",
    "tools": [
     "search_orders",
     "get_order",
@@ -4786,12 +4783,12 @@
    "id": "eclipse-flood-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-flood-witness-mcp.png",
-   "name": "Eclipse Flood Witness",
+   "name": "Cyan Eclipse Flood Witness",
    "name_status": "CONDITIONAL — working name, trademark screen owed (spec O1, owner-side); it gates any public surface under the name. Certification covers the local product's function under its working name, not the name",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "Free local v0.1 remains free. PRICED — witnessed reads $7.50 single-parcel $12.00 footprint/parcel (PC-5) via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Evidence-grade sealed receipt only — NOT a determination of record, NOT an SFHDF, NOT lender-compliant.",
+   "pricing_model": "Free local v0.1 remains free. PRICED — witnessed reads $7.50 single-parcel $12.00 footprint/parcel (PC-5) via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product. Evidence-grade sealed receipt only — NOT a determination of record, NOT an SFHDF, NOT lender-compliant.",
    "problem_statements": [
     "I need a flood-zone answer for a parcel or footprint that any third party can recompute — not a screenshot of a viewer I have to trust",
     "FEMA's layer changes over time — I need the determination bound to the exact sealed snapshot it was computed from, with drift between vintages classified by its causal source record",
@@ -4845,7 +4842,7 @@
    "id": "eclipse-recall-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-recall-witness-mcp.png",
-   "name": "Eclipse Recall Witness",
+   "name": "Cyan Eclipse Recall Witness",
    "name_status": "CONDITIONAL — working name, trademark screen owed (spec O1, owner-side); it gates any public surface under the name. Certification covers the local product's function under its working name, not the name",
    "platforms": [
     "MCP over stdio"
@@ -4905,7 +4902,7 @@
    "id": "eclipse-sunset-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-sunset-mcp.png",
-   "name": "Eclipse Sunset",
+   "name": "Cyan Eclipse Sunset",
    "platforms": [
     "MCP over stdio"
    ],
@@ -4934,7 +4931,7 @@
     "No bare-answer path exists: every determination ships a sealed receipt (receipt_hash + inputs_hash + rule version + vintage), and receipt_basis returns the exact rule record that produced it, resolved by the receipt's own vintage. Unknown jurisdiction, category, or vintage returns a clean refusal — no rate is invented, no latest-fallback, no fuzzy match.",
     "Honesty envelope by construction: every determination output carries demo_label 'DEMO — FIXTURE DATA — NOT TAX ADVICE — NOT REAL RATES', scope 'LOCAL / fixture-vintage ONLY', and source 'FIXTURE-DEMO'. The bundled table holds 13 rules across 5 fictional jurisdictions (Fixture Aurora/Boreal/Cascadia/Delta/Ember) — DEMO/fixture rates only, NOT tax advice, no live tax determination claim anywhere.",
     "Fix-before-live defects disclosed on the bench record (all LOW, none hidden): D1 the seal is an unkeyed local SHA-256 hash seal — VALID means consistent with the fixture rule at its vintage, not server-issued, and _verify does not assert the source/demo_label/scope constants; D2 refusal responses carry no DEMO envelope (no rate or advice is emitted on a refusal); D3 the advertised additionalProperties: false schemas are not enforced in dispatch (extra argument keys are silently ignored). D1 must be closed before any hosted/live scope.",
-    "Python 3 standard library only; MCP over stdio; zero network calls and zero payment-processing code in the package (bench AST audit). Pricing is metadata only — paid access is via the Eclipse Bazaar bench-order path only; no checkout, payment, or buy-now surface exists."
+    "Python 3 standard library only; MCP over stdio; zero network calls and zero payment-processing code in the package (bench AST audit). Pricing is metadata only — paid access is via the Cyan Eclipse Bazaar bench-order path only; no checkout, payment, or buy-now surface exists."
    ],
    "categories": [
     "Trust & Receipts",
@@ -4956,11 +4953,11 @@
    "id": "eclipse-nexus-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-nexus-witness-mcp.png",
-   "name": "Eclipse Nexus Witness",
+   "name": "Cyan Eclipse Nexus Witness",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.25/check (PC-2) with sealed receipt, via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1 contains no payment, checkout, or billing code. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.25/check (PC-2) with sealed receipt, via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1 contains no payment, checkout, or billing code. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent checked out a cross-border order last quarter — I need to prove exactly which rate, jurisdiction, and rule version produced its tax figure, not just re-ask an API what today's answer is",
     "A tax API returned a number with no evidence attached — I need the determination itself to ship as a sealed, replayable witness receipt my auditor can verify",
@@ -5006,7 +5003,7 @@
    "id": "eclipse-warranty-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-warranty-mcp.png",
-   "name": "Eclipse Warranty",
+   "name": "Cyan Eclipse Warranty",
    "platforms": [
     "MCP over stdio"
    ],
@@ -5055,11 +5052,11 @@
    "id": "eclipse-toolprint-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-toolprint-mcp.png",
-   "name": "Eclipse Toolprint",
+   "name": "Cyan Eclipse Toolprint",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/call (PC-3) for hosted/commercial deployment, via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment, checkout, metering-enforcement, or billing code. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.05/call (PC-3) for hosted/commercial deployment, via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment, checkout, metering-enforcement, or billing code. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "An MCP server showed my agent a benign tool description at review time, then silently swapped it mid-session — I need every call bound to the hash of the exact description the agent saw when it decided to call",
     "A static scanner cleared a server once, at rest — I need a session-layer proof that catches a description or schema changed AFTER the pin, with the invalidation recorded so it cannot be quietly un-swapped",
@@ -5104,11 +5101,11 @@
    "id": "eclipse-boomerang-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-boomerang-mcp.png",
-   "name": "Eclipse Boomerang",
+   "name": "Cyan Eclipse Boomerang",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $1.00/return (per executed return, Procure per-order pattern), via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $1.00/return (per executed return, Procure per-order pattern), via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My buying agent needs to return a purchase — I need the return authorized only against the original purchase receipt and the mandate that governed the purchase, never on a bare claim",
     "A receipt-free or wrong-serial agent return, or a mandate that never included returns, must be denied with a machine-readable reason — and there must be no override or manual-approve path around the check",
@@ -5153,11 +5150,11 @@
    "id": "eclipse-rebuttal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-rebuttal-mcp.png",
-   "name": "Eclipse Rebuttal",
+   "name": "Cyan Eclipse Rebuttal",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $5.00/filing (PC-7 pattern), via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $5.00/filing (PC-7 pattern), via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 contains no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent made a purchase that is now disputed — I need a chargeback rebuttal evidence packet built from the original Procure/Till mandate and receipt chain, with every evidence element traced to its source record",
     "If the mandate chain is incomplete or a receipt does not match the disputed order, the packet must say INCOMPLETE and name the gap — evidence must never be fabricated or borrowed from another order",
@@ -5201,11 +5198,11 @@
    "id": "eclipse-crawlway-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-crawlway-mcp.png",
-   "name": "Eclipse Crawlway",
+   "name": "Cyan Eclipse Crawlway",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.01/call (PC-1 pattern), via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 records the meter only — the meter is never charged in v0.1 and there is no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.01/call (PC-1 pattern), via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; v0.1.1 records the meter only — the meter is never charged in v0.1 and there is no payment or checkout code (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I publish content that agent crawlers access — I need a sealed license receipt per crawl that proves who crawled what, under which license terms, as one recomputable artifact",
     "If my license terms change or are revoked, receipts under the old version must flip to TERMS_REVOKED without losing proof they were issued, and no new receipts may mint under revoked or substituted terms",
@@ -5252,11 +5249,11 @@
    "id": "eclipse-outwatch-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-outwatch-mcp.png",
-   "name": "Eclipse Outwatch",
+   "name": "Cyan Eclipse Outwatch",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $299/mo feed license, via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; there is no payment or checkout code in this package (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $299/mo feed license, via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product; there is no payment or checkout code in this package (the price is a stated term only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I run or list MCP servers with SLA expectations — I need availability witnessed by probes and recomputable from hash-chained receipts, not vendor self-reported uptime",
     "If a server goes down, its badge must degrade automatically from witnessed downtime receipts — no manual badge setter and no self-report path may influence it",
@@ -5300,11 +5297,11 @@
    "id": "eclipse-mpp-session-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-mpp-session-witness-mcp.png",
-   "name": "Eclipse MPP Session Witness MCP",
+   "name": "Cyan Eclipse MPP Session Witness MCP",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — witness receipts priced at the witness-receipt pattern and dispute-pack assembly at the Docket pattern in the house price book, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product, and no dollar figures are stated in this listing — figures live in the price book. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — witness receipts priced at the witness-receipt pattern and dispute-pack assembly at the Docket pattern in the house price book, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product, and no dollar figures are stated in this listing — figures live in the price book. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent runs MPP sessions — I need session evidence a neutral witness sealed at draw time, not a log either party can rewrite afterwards",
     "A session dispute needs a pack a third party can recompute offline from the artifact + public keys alone: the sealed mandate, the counter-signed draw chain, and the close receipt bound together",
@@ -5359,11 +5356,11 @@
    "id": "eclipse-feedforge-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-feedforge-mcp.png",
-   "name": "Eclipse Feedforge",
+   "name": "Cyan Eclipse Feedforge",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $49/mo hosted bundle pattern, via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product, and no hosted service is being sold as live in v0.1: v0.1.1 is the local engine and contains no payment, checkout, hosting, metering, or billing code (the price is a stated term for the future hosted form only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — hosted pricing pending Gate B1 hosted bundle pattern, via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product, and no hosted service is being sold as live in v0.1: v0.1.1 is the local engine and contains no payment, checkout, hosting, metering, or billing code (the price is a stated term for the future hosted form only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My merchant catalog uses inconsistent field names, prices as strings (\"$1,299.00\", \"1299 USD\"), units embedded in text, and missing categories — I need an agent-grade, structured (UCP-ready) feed agents can actually buy from",
     "Feed generators rewrite my catalog opaquely — when a price or category is wrong I cannot audit why; I need every attribute to carry its source field, rule, and source value so the whole feed recomputes byte-for-byte",
@@ -5371,7 +5368,7 @@
    ],
    "source_refs": [],
    "status": "in-development",
-   "tagline": "Converts a merchant's messy catalog into an agent-grade product feed with per-attribute provenance: every attribute records {value, source_field, rule_id, source_value} and verify_feed recomputes each byte-for-byte from the source rows and the documented deterministic rule set. LOCAL/fixture scope only — local engine over caller-supplied rows/CSV/JSON + bundled fixtures; deterministic transforms only, no LLM calls, no network calls; attributes no rule can produce are absent, never invented, and unmapped source fields are reported.",
+   "tagline": "Converts a merchant's messy catalog into an agent-grade product feed with per-attribute lineage: every attribute records {value, source_field, rule_id, source_value} and verify_feed recomputes each byte-for-byte from the source rows and the documented deterministic rule set. LOCAL/fixture scope only — local engine over caller-supplied rows/CSV/JSON + bundled fixtures; deterministic transforms only, no LLM calls, no network calls; attributes no rule can produce are absent, never invented, and unmapped source fields are reported.",
    "tools": [
     "ingest_catalog",
     "list_rules",
@@ -5383,7 +5380,7 @@
   },
   {
    "capabilities": [
-    "Read permit status from the jurisdiction's own sanctioned source and seal it as a Herald-signed provenance receipt (status_as_served verbatim beside status_normalized — never merged)",
+    "Read permit status from the jurisdiction's own sanctioned source and seal it as a Herald-signed lineage receipt (status_as_served verbatim beside status_normalized — never merged)",
     "Hash-chained witnessed history under a closed change law: STATUS_TRANSITION FIELD_CHANGE RECORD_ABSENT RECORD_RESTORED; unchanged re-reads mint nothing",
     "Coverage registry naming each covered jurisdiction and its sanctioned route (NYC via Socrata Open Data; Tallahassee–Leon County via Accela Citizen Access); every other jurisdiction is UNWITNESSED, never silently covered",
     "Offline recompute: witness_verify and the standalone recompute.py reproduce payload hash, receipt hash, chain walk and seal state from the spec alone",
@@ -5408,12 +5405,12 @@
    "id": "eclipse-permits-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-permits-mcp.png",
-   "name": "Eclipse Permits",
+   "name": "Cyan Eclipse Permits",
    "name_status": "CONDITIONAL (working name 'Eclipse Permits' — brand §3 screen owed, owner item O1; bench name_status 2026-10-26)",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $10.00 per witnessed read with sealed receipt, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $10.00 per witnessed read with sealed receipt, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I need to prove exactly what a permit office's own system said about a permit at a stated time — not re-ask it later and get a different answer",
     "A permit status changed after the fact and I need a hash-chained history showing every transition, retro-edit and absence",
@@ -5423,7 +5420,7 @@
     "eclipse-permits-mcp/server.json"
    ],
    "status": "in-development",
-   "tagline": "Permit status witnessed: sealed per-read provenance receipts, hash-chained history, offline recompute. The receipt warrants the read; it never warrants the status.",
+   "tagline": "Permit status witnessed: sealed per-read lineage receipts, hash-chained history, offline recompute. The receipt warrants the read; it never warrants the status.",
    "tools": [
     "session_open",
     "coverage_list",
@@ -5469,12 +5466,12 @@
    "id": "eclipse-sec-figure-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-sec-figure-witness-mcp.png",
-   "name": "Eclipse SEC Figure Witness",
+   "name": "Cyan Eclipse SEC Figure Witness",
    "name_status": "Working internal name — brand §3 screen owed (spec D6); the product never implies SEC or auditor endorsement",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.50/receipt with sealed receipt $2.50/chain receipt $5 filing-pack cap, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I need to prove exactly which figure an SEC filing printed at a specific moment — as released, as filed, or as restated — not what a terminal shows today",
     "A figure changed after an Item 4.02 non-reliance event and I need the full restatement chain, sealed and recomputable offline"
@@ -5524,11 +5521,11 @@
    "id": "eclipse-scholarly-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-scholarly-witness-mcp.png",
-   "name": "Eclipse Scholarly Witness",
+   "name": "Cyan Eclipse Scholarly Witness",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I need to know whether a paper my agent cited was retracted, corrected, or flagged — with the notice provenance sealed, not a live search result",
     "Two sources disagree about a paper's disposition and I need the disagreement preserved as data, not silently resolved",
@@ -5538,7 +5535,7 @@
     "eclipse-scholarly-witness-mcp/server.json"
    ],
    "status": "in-development",
-   "tagline": "Disposition-notice witness: sealed retraction/correction/concern events with provenance, open divergences, recomputable reference audits.",
+   "tagline": "Disposition-notice witness: sealed retraction/correction/concern events with lineage, open divergences, recomputable reference audits.",
    "tools": [
     "work_resolve",
     "disposition_lookup",
@@ -5578,12 +5575,12 @@
    "id": "eclipse-patent-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-patent-witness-mcp.png",
-   "name": "Eclipse Patent Witness",
+   "name": "Cyan Eclipse Patent Witness",
    "name_status": "Working name — INTERNAL until the brand §3 + TM screen pass (spec O1; bench name_status 2026-10-26). The name and descriptor never imply USPTO endorsement.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I need the USPTO record of a patent as a sealed sequence of states I can recompute offline — not a live status lookup I have to trust",
     "I need to prove how a patent's claim text diverged between publication and grant, claim by claim",
@@ -5631,11 +5628,11 @@
    "id": "eclipse-trademark-witness-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-trademark-witness-mcp.png",
-   "name": "Eclipse Trademark Witness",
+   "name": "Cyan Eclipse Trademark Witness",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.50/receipt with sealed receipt, via the Cyan Eclipse Bazaar bench-order path (order intake) only. No checkout, payment, or buy-now link exists for this product; intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I screened a candidate mark and need a receipt proving exactly which queries ran against which corpus snapshot and what they returned",
     "I need trademark screening evidence counsel can recompute offline, without the candidate mark ever being transmitted anywhere"
@@ -5681,11 +5678,11 @@
    "id": "eclipse-split-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-split-mcp.png",
-   "name": "Eclipse Split",
+   "name": "Cyan Eclipse Split",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $1.00 per settlement event (Amendment #1: a settlement event is a per-order settlement OR an MPP session close-out — the close-out settles the accumulated session as ONE event, however many draws it contained), via the Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product: v0.1.2 is LOCAL/fixture allocation math + sealed records only and contains no money-movement, payment, checkout, wallet, payout, or MPP network code (the price is a stated commercial term only). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $1.00 per settlement event (Amendment #1: a settlement event is a per-order settlement OR an MPP session close-out — the close-out settles the accumulated session as ONE event, however many draws it contained), via the Cyan Eclipse Bazaar bench-order path only. No checkout, payment, or buy-now link exists for this product: v0.1.2 is LOCAL/fixture allocation math + sealed records only and contains no money-movement, payment, checkout, wallet, payout, or MPP network code (the price is a stated commercial term only). Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My sub-agents collaborate on a paid task and I need the revenue split agreed BEFORE the work starts — sealed at spawn time — so nobody can renegotiate the split after the work is done",
     "I need settlement to divide only across agents with attestation-backed completion records, with the mandate hash, completion record ids, and per-agent amounts bound into one sealed, recomputable record",
@@ -5730,12 +5727,12 @@
    "id": "eclipse-brake-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-brake-mcp.png",
-   "name": "Eclipse Brake",
+   "name": "Cyan Eclipse Brake",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (spec: public use is hard-gated on the name screen; the working name is not a public claim). The name and descriptor never imply a safety certification or a guarantee that any real fleet will stop.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $199/mo per fleet, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The hosted fleet shape waits Gate B1; the local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $199/mo per fleet, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The hosted fleet shape waits Gate B1; the local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My fleet's kill switch is self-operated and self-attested — I need a halt ordered through a neutral third-party authority, executed by the runtime, and proved by a signed receipt bound to the verdict that ordered it",
     "A runtime never responded to a halt order and I need that failure named on the record — UNPROVEN-HALT — not smoothed into a claim that the fleet stopped",
@@ -5787,12 +5784,12 @@
    "id": "eclipse-payseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-payseal-mcp.png",
-   "name": "Eclipse Payseal",
+   "name": "Cyan Eclipse Payseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (spec: name screen pending at build; the working name is not a public claim). The name and descriptor never imply payment execution, authorization, or a guarantee that a payment is safe in the real world — the verdict is evidence over presented fixture documents only.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.10/call, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. v0.1.2 records exactly one metering point per sealed evaluation (metering only — no charge path exists in the build); per-call charging waits a hosted endpoint. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.10/call, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. v0.1.2 records exactly one metering point per sealed evaluation (metering only — no charge path exists in the build); per-call charging waits a hosted endpoint. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent is about to pay an invoice and I need a pre-payment verdict that the purchase order, the spending mandate, and the delivery receipt actually agree — bound into one token over all three hashes, not three separate checks I have to reconcile myself",
     "A supplier's delivery receipt claims the full face value — I need the delivered value derived from the accepted lines at PO prices, so empty lines, over-delivered quantities, or lines that were never ordered cannot seal a MATCH",
@@ -5834,12 +5831,12 @@
    "id": "eclipse-settleseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-settleseal-mcp.png",
-   "name": "Eclipse Settleseal",
+   "name": "Cyan Eclipse Settleseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $299/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $299/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My desk settles across x402, MPP, and card rails at once and reconciles by spreadsheet and sampling — I need the full three-way match (mandate ledger vs rail records vs bank payout) performed neutrally, with the residue sealed as evidence",
     "A settlement was paid but never appears in my ledger — or a payout moved with no mandate behind it — and I need that discrepancy as a sealed exception receipt a third party can recompute, not a count in a report",
@@ -5892,12 +5889,12 @@
    "id": "eclipse-mockmint-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-mockmint-mcp.png",
-   "name": "Eclipse Mockmint",
+   "name": "Cyan Eclipse Mockmint",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — hosted pricing pending Gate B1, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I test agent-commerce flows and need fake merchants, agents and APIs locally — but test artifacts that leak into production-shaped records are indistinguishable from real evidence, and I need every artifact provably synthetic",
     "A test receipt surfaced in my production ingest — I need a contamination check that flags it SYNTHETIC_MOCKMINT from the artifact plus a ledger export, with the detection boundary stated honestly (including the bare-payload level where detection is not claimed)",
@@ -5949,12 +5946,12 @@
    "id": "eclipse-reviewseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-reviewseal-mcp.png",
-   "name": "Eclipse Reviewseal",
+   "name": "Cyan Eclipse Reviewseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.01/review, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.01/review, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My marketplace shows a 'verified purchase' badge, but it is our own self-attestation over a corpus only we can see — I need each review bound to a sealed purchase receipt in a corpus a third party can recompute",
     "A fake-review dispute is an argument about screenshots — I need the verified share of my sealed corpus as an exact rational (numerator / denominator, exclusions on the face) that anyone can recompute from the exported pack alone",
@@ -6007,12 +6004,12 @@
    "id": "eclipse-continuity-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-continuity-mcp.png",
-   "name": "Eclipse Continuity",
+   "name": "Cyan Eclipse Continuity",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/verification, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering shape per SPEC SS9 (one metering point per continuity_verify / continuity_verify_prefix issuance; genesis and appends unmetered in v0.1; v0.1.2 implements no charge path — in-memory metering records only, and per-verification charging waits a hosted endpoint). Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.05/verification, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent.",
    "problem_statements": [
     "My agent changed models last week and every counterparty wants to re-onboard it from zero — I need a signed identity chain so they can verify 'same principal, new model' offline instead",
     "An agent's key rotated and its config changed in the same week and nobody can tell which happened, or in what order — I need rotation and model change as distinct, ordered link types in one recomputable chain",
@@ -6058,12 +6055,12 @@
    "id": "eclipse-regulens-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-regulens-mcp.png",
-   "name": "Eclipse Regulens",
+   "name": "Cyan Eclipse Regulens",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen. The working name is not a public claim.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $199/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $199/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My compliance feed tells me 'this rule changed' and leaves the expensive step to manual reading — I need a receipt naming which of my own declared controls the change touches, with the triggering anchor and passage for each",
     "Our change-to-control mapping lives in a mutable database nobody can audit afterwards — I need the publication, my control set, and the mapping rules all sealed and versioned so a third party recomputes the exact affected set offline",
@@ -6105,12 +6102,12 @@
    "id": "eclipse-scapegoat-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-scapegoat-mcp.png",
-   "name": "Eclipse Scapegoat",
+   "name": "Cyan Eclipse Scapegoat",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $10/verdict, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $10/verdict, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "A multi-agent run failed with money on the table and every party is blaming another from its own logs — I need the blame question collapsed to a recompute over the hash-chained records, naming the causal action with a proof path a third party can re-verify",
     "The records between the last good state and the failure are missing or tampered — I need a signed verdict that says UNATTRIBUTED: CAUSAL_GAP at full standing instead of an engine that guesses a culprit",
@@ -6160,12 +6157,12 @@
    "id": "eclipse-sponsorline-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-sponsorline-mcp.png",
-   "name": "Eclipse Sponsorline",
+   "name": "Cyan Eclipse Sponsorline",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.10/attestation, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.10/attestation, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent platform captured one clickwrap acceptance covering everything an agent might ever do — when a payment is disputed I cannot show what the sponsor actually accepted, for which class, on what terms, or whether it was still live",
     "A sponsor agreed to back an agent's payments but never its publishing or contracting — I need acceptance that is per-class by construction, with the unsigned classes provably UNACCEPTED by derivation over the complete record chain",
@@ -6219,12 +6216,12 @@
    "id": "eclipse-morphguard-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-morphguard-mcp.png",
-   "name": "Eclipse Morphguard",
+   "name": "Cyan Eclipse Morphguard",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.05/check, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "A vendor's bank details were silently changed in our payee records and the next payment went to the wrong account — I need a check before paying that proves the details I am about to pay to are the details that were witnessed, or blocks with a receipt naming exactly which field classes changed",
     "When payee details legitimately change, the change disappears into an edit history nobody can recompute — I need drift absorbed only by an explicit re-enrollment citing the drift receipt, with the seam permanent in a hash-chained fingerprint history",
@@ -6278,12 +6275,12 @@
    "id": "eclipse-adproof-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-adproof-mcp.png",
-   "name": "Eclipse Adproof",
+   "name": "Cyan Eclipse Adproof",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/claim, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.05/claim, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "My agent generates marketing claims and the substantiation lives in a separate folder or an approver's memory — after publication nothing in the artifact itself says which document was supposed to support which claim, and a claim edited after review silently inherits the earlier approval",
     "I need publication gated structurally, not by checklist: an unbound claim cannot pass, an edited claim no longer matches its pointer, and the pointer travels with the published artifact so a later reader can recompute which document was bound to which claim at publish time — offline, from the artifact plus the document and public keys alone",
@@ -6330,12 +6327,12 @@
    "id": "eclipse-feeseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-feeseal-mcp.png",
-   "name": "Eclipse Feeseal",
+   "name": "Cyan Eclipse Feeseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.002/transaction, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. UNVERIFIABLE results, seal operations, and idempotent re-presentations emit no metering point; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.002/transaction, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. UNVERIFIABLE results, seal operations, and idempotent re-presentations emit no metering point; per-call charging waits a hosted endpoint. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "A marketplace publishes a fee schedule and then charges against code, not against the page — a wrong rate, a stale version applied after an update, or a minimum or cap quietly dropped is small, deniable, and undetectable from a receipt that shows only what was charged",
     "I need charges bound to the published version in force, sealed at the time, so an overcharge against that version is a recomputable fact — provable offline, from the sealed schedule version + transaction record + pinned keys alone, to the minor unit — not an allegation against the current (possibly edited) fee page",
@@ -6384,12 +6381,12 @@
    "id": "eclipse-trueprice-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-trueprice-mcp.png",
-   "name": "Eclipse Trueprice",
+   "name": "Cyan Eclipse Trueprice",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC §0.3: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.02/quote, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.02/quote, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Quote-to-checkout drift is a standard dark pattern and agent-exploitable failure: the price ticks up, a fee appears, renewal terms change, quantity or delivery terms shift between the quote the agent (or its principal) approved and the checkout actually presented",
     "I need the quote sealed by a neutral party when it was made — at dispute time the quote otherwise exists only as the merchant's own records or a screenshot: self-attested, contestable, with no per-term hash structure, so drift can be alleged but not located or proven",
@@ -6435,12 +6432,12 @@
    "id": "eclipse-kitseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-kitseal-mcp.png",
-   "name": "Eclipse Kitseal",
+   "name": "Cyan Eclipse Kitseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; public use is hard-gated on the house name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — hosted pricing pending Gate B1, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Agent configurations drift silently and matter enormously: a permission widened on Tuesday is the difference between the agent an insurer priced and the agent that ran on Friday — and today the evidence is an editable config file in a repo, a screenshot in a compliance folder, or the operator's assertion at renewal time",
     "I need a sealed starting point plus an unbroken signed chain of every change, with one signed delta receipt per change streamed to subscribers, so the current configuration is an arithmetic consequence of the chain — recomputable offline from the pack + pinned keys alone — rather than a claim about it",
@@ -6488,12 +6485,12 @@
    "id": "eclipse-shelfprice-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-shelfprice-mcp.png",
-   "name": "Eclipse Shelfprice",
+   "name": "Cyan Eclipse Shelfprice",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.001/seal or $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.001/seal or $99/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "View-to-checkout drift is ordinarily unprovable by the buyer: the listing the agent saw is gone or edited by checkout time, the seller's records are the seller's, and a screenshot is contestable — the party with the grievance holds the weakest evidence",
     "I need the price plus the full terms as displayed sealed by a neutral witness at view time — headline price alone is not enough, because a checkout can match the price while drifting a fee, shipping, returns, or renewal term — so drift can be located term by term and recomputed from the buyer-held pack, with no marketplace or seller cooperation",
@@ -6540,12 +6537,12 @@
    "id": "eclipse-skillseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-skillseal-mcp.png",
-   "name": "Eclipse Skillseal",
+   "name": "Cyan Eclipse Skillseal",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — FREE publication + $0.02/verification, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No price attaches to any bench verdict or receipt itself. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — FREE publication + $0.02/verification, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No price attaches to any bench verdict or receipt itself. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Skill claims in agent cards and marketplace listings are free text: self-asserted, unscoped, and unfilterable — a router cannot distinguish 'benched PASS on scope X by a named bench, recomputable from a receipt' from 'the publisher typed the same words'",
     "I need a claim to be a pointer to a bench-verdict receipt, rendered in one standard format every counterparty produces identically — VERIFIED with the receipt's own verdict + scope on its face, or UNVERIFIED — so routing and filtering are mechanical, not a fresh trust decision per listing",
@@ -6593,12 +6590,12 @@
    "id": "eclipse-namesake-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-namesake-mcp.png",
-   "name": "Eclipse Namesake",
+   "name": "Cyan Eclipse Namesake",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $5/screen, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No price attaches to any verdict outcome. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $5/screen, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No price attaches to any verdict outcome. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Agent registries are filling with look-alike identities — same or near-same names, overlapping purposes, overlapping capability claims — and today the collision is discovered after launch, by a confused counterparty or the impersonated agent, when changing the name is no longer free",
     "I need a cheap, mechanical, recomputable pre-launch screen: score a candidate identity against every identity in a stated registry snapshot and return a signed collision verdict with the full score breakdown, so the discovery happens before launch — not a registry's exact-duplicate check, which lets near-names with overlapping purpose/capabilities pass silently",
@@ -6645,12 +6642,12 @@
    "id": "eclipse-sourceseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-sourceseal-mcp.png",
-   "name": "Eclipse Sourceseal",
+   "name": "Cyan Eclipse Sourceseal",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.01/answer, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.01/answer, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Answers cite sources at document granularity, if at all: a link proves a page existed, not which bytes supported which fact, when they were read, or whether they have since changed",
     "A source my answer relied on changed after I shipped it — I need that surfaced as a named, per-fact verdict with both hashes recorded, not silently hidden and not treated as a defect in the original receipt",
@@ -6660,7 +6657,7 @@
     "eclipse-sourceseal-mcp/server.json"
    ],
    "status": "in-development",
-   "tagline": "Per-fact retrieval receipts over fixture source stores — each answer ships with its primary-source pointer plus a retrieval receipt (fetcher, time, content hash), provenance at the granularity of one fact. PASS(local) — local stdio MCP, fixture stores only, value_class \"test\"; the receipt proves a fetch of specific bytes at a time by a named fetcher — it does not prove the source was truthful, nor that the answer faithfully represents the source.",
+   "tagline": "Per-fact retrieval receipts over fixture source stores — each answer ships with its primary-source pointer plus a retrieval receipt (fetcher, time, content hash), lineage at the granularity of one fact. PASS(local) — local stdio MCP, fixture stores only, value_class \"test\"; the receipt proves a fetch of specific bytes at a time by a named fetcher — it does not prove the source was truthful, nor that the answer faithfully represents the source.",
    "tools": [
     "sourceseal_answer_seal",
     "sourceseal_receipt_get",
@@ -6692,12 +6689,12 @@
    "id": "eclipse-promptseal-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-promptseal-mcp.png",
-   "name": "Eclipse Promptseal",
+   "name": "Cyan Eclipse Promptseal",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $49/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — hosted pricing pending Gate B1, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "System prompts are edited in a console, config file, or chat with no version, no approver, and no way after an incident to answer which prompt was live and who approved it",
     "An approval for one prompt text must not drift onto edited text — approval has to bind the exact byte-sequence hash, so a one-character edit is a new, unapproved version",
@@ -6744,12 +6741,12 @@
    "id": "eclipse-faircharge-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-faircharge-mcp.png",
-   "name": "Eclipse Faircharge",
+   "name": "Cyan Eclipse Faircharge",
    "name_status": "Working name — placeholder pending trademark screen (SPEC §0.3: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $5/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $5/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "A merchant raises a recurring charge in small increments, each individually easy to miss — and after the fact the consumer's evidence of the original authorized price is memory, a signup screenshot, or the merchant's own current records",
     "Subscription trackers alert on change vs the previous charge, so step-wise ratcheting passes silently; nobody measures the whole stream's cumulative drift against a sealed original authorization with the authorization's own thresholds",
@@ -6800,12 +6797,12 @@
    "id": "eclipse-timecapsule-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-timecapsule-mcp.png",
-   "name": "Eclipse Timecapsule",
+   "name": "Cyan Eclipse Timecapsule",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE + $0.10/seal, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "FREE + $0.10/seal, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Agent track records today are self-published: a forecaster posts predictions across channels, later screenshots the winners; an SLA vendor reports its own attainment over a window it chose — the misses were never in the denominator because no complete, timestamped record of all commitments exists anywhere",
     "A scoring service that scores what an author shows it cannot fix selection: winners can be complete and honestly scored while the record is still false, because no registry head anywhere states how many commitments the author made",
@@ -6856,12 +6853,12 @@
    "id": "eclipse-burnline-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-burnline-mcp.png",
-   "name": "Eclipse Burnline",
+   "name": "Cyan Eclipse Burnline",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.01/task, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.01/task, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Budget mandates today are checked at breach: the cap is hit, the draw is refused, the work is already spent up to the cap — nobody projects the sealed record stream forward and intervenes at a stated, recomputable point before the cap, with the intervention itself entered into the evidence chain",
     "Post-hoc budget reports tell you what burned; they are reports, not verdicts — they carry no intervention threshold semantics, are issued after the fact, and cannot prove an operator was warned in time",
@@ -6911,12 +6908,12 @@
    "id": "eclipse-shelfspace-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-shelfspace-mcp.png",
-   "name": "Eclipse Shelfspace",
+   "name": "Cyan Eclipse Shelfspace",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. UNMARKED-PAID derivations emit no metering record (a defect is never a chargeable event). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $99/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. UNMARKED-PAID derivations emit no metering record (a defect is never a chargeable event). The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Paid ranking routinely masquerades as merit ranking on agent-facing marketplaces: a listing is first because it paid, while the surface presents the order as earned — the payment, the placement, and the disclosure (if any) live in three different parties' logs, none binding the others",
     "I need the paid placement, the payment-as-stated, and the disclosure actually rendered bound in one recomputable chain — a sponsorship receipt sealed at placement time that travels with the placement, plus a surfacing proof a third party can verify offline from the pack alone",
@@ -6966,12 +6963,12 @@
    "id": "eclipse-safelist-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-safelist-mcp.png",
-   "name": "Eclipse Safelist",
+   "name": "Cyan Eclipse Safelist",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $149/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $149/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, subscription, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Allowlists rot silently: a static directory lists a service because it once passed something, once; the listing outlives the verdict, the service changes, and the directory still says allowed — with no moment at which that claim mechanically stops being true",
     "I need every listing to be self-expiring — an entry bound to a bench-verdict receipt with a freshness window on its face, renewed only by a fresh re-bench receipt that lands inside the window, with status derived by recompute at a stated evaluation time rather than stored",
@@ -7028,12 +7025,12 @@
    "id": "eclipse-muzzle-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-muzzle-mcp.png",
-   "name": "Eclipse Muzzle",
+   "name": "Cyan Eclipse Muzzle",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.01/scan via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.01/scan via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "I'm about to publish agent- or human-drafted text — I need it scanned for secrets and PII first, with the verdict bound to the exact content hash so the thing that was checked is the thing that ships",
     "A downstream publisher needs proof a scan passed — I need a Herald-signed receipt it can verify offline, where any one-byte change to the content fails verification at step 1",
@@ -7043,7 +7040,7 @@
     "eclipse-muzzle-mcp/server.json"
    ],
    "status": "in-development",
-   "tagline": "Eclipse Muzzle — PASS (local/fixture) — Verity reduced-scope bench, secrets and PII only, ruleset muzzle-rules/0.4. A PASS verdict is scan evidence, not a guarantee of safety or non-defamation.",
+   "tagline": "Cyan Eclipse Muzzle — PASS (local/fixture) — Verity reduced-scope bench, secrets and PII only, ruleset muzzle-rules/0.4. A PASS verdict is scan evidence, not a guarantee of safety or non-defamation.",
    "tools": [
     "muzzle_scan",
     "muzzle_rescan_status",
@@ -7083,12 +7080,12 @@
    "id": "eclipse-sandclock-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-sandclock-mcp.png",
-   "name": "Eclipse Sandclock",
+   "name": "Cyan Eclipse Sandclock",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: public use is hard-gated on the name screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — FREE scorecard/clocking side + $0.01/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering records only in v0.1.2 — no charge path, payment call, or entitlement check is built, no live Meter ingest is claimed, and a check is never refused for non-payment. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — FREE scorecard/clocking side + $0.01/check, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering records only in v0.1.2 — no charge path, payment call, or entitlement check is built, no live Meter ingest is claimed, and a check is never refused for non-payment. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Eval scores are quoted indefinitely while the thing scored drifts underneath them: a model or tool changes, the old scorecard still circulates at face value, and no artifact says when its evidence stopped supporting it",
     "I need every score to carry an expiry computed from its own measured drift — not a fixed calendar TTL that is identical for a frozen tool and a fast-drifting model — recomputable from the scorecard ref + drift evidence alone",
@@ -7137,12 +7134,12 @@
    "id": "eclipse-archivist-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-archivist-mcp.png",
-   "name": "Eclipse Archivist",
+   "name": "Cyan Eclipse Archivist",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.10/capture, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering records only — no charge path, payment call, or entitlement check is built, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.10/capture, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. Metering records only — no charge path, payment call, or entitlement check is built, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Web evidence today is a screenshot, a saved HTML file, or a log line — each separable, alterable, and silent on who served it: a page capture without its certificate cannot prove which server (or which impersonator) supplied the content",
     "I need content, serving context, and server identity bound indivisibly at capture time — one hash-chained, signed bundle artifact — so recombining parts from different captures after the fact breaks verification by name",
@@ -7195,12 +7192,12 @@
    "id": "eclipse-allowance-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-allowance-mcp.png",
-   "name": "Eclipse Allowance",
+   "name": "Cyan Eclipse Allowance",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE + $5/mo premium, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent.",
+   "pricing_model": "FREE + $5/mo premium, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent.",
    "problem_statements": [
     "Household agents are being handed purchasing power under rules that live in a settings screen the agent's operator can change, a prompt the agent can be talked out of, or a log the agent itself writes — parents get a dashboard summary authored by the very system it summarises",
     "I need the three roles separated: the holder seals the rules (category caps, merchant lists, amounts), the mandate check enforces them at spend time before any ledger entry exists, and the ledger is counter-signed by a key the agent does not hold",
@@ -7253,12 +7250,12 @@
    "id": "eclipse-receiptvault-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-receiptvault-mcp.png",
-   "name": "Eclipse Receiptvault",
+   "name": "Cyan Eclipse Receiptvault",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE + $5/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent.",
+   "pricing_model": "FREE + $5/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent.",
    "problem_statements": [
     "Return windows are normally reconstructed later — from a merchant's current terms page, an order email, or memory — after the merchant may have edited the terms, shortened the window, or reworded the day-count basis; the buyer arguing 'it was 30 days when I bought it' has only their word against a live page",
     "I need the return deadline computed at purchase time from the merchant's terms as sealed at that moment, frozen into a hash-chained vault record with its alert schedule, so no later terms edit, re-issue, or refresh can move the deadline or the alerts",
@@ -7313,11 +7310,11 @@
    },
    "id": "eclipse-connect-gemini-mcp",
    "listing_class": "connector",
-   "name": "Eclipse Connect for Gemini",
+   "name": "Cyan Eclipse Connect for Gemini",
    "platforms": [
     "MCP over stdio + HTTP/JSON (hosted relay, staging)"
    ],
-   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the $49/mo hosted bundle as fast-follower (proposed). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
+   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the hosted bundle as fast-follower (proposed; hosted pricing pending Gate B1). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
    "problem_statements": [
     "I need my agent to call Gemini without ever holding my Gemini API key",
     "I need Gemini calls bounded by a model allowlist, a spend cap, and an expiry — with a sealed receipt for every call",
@@ -7369,11 +7366,11 @@
    },
    "id": "eclipse-connect-anthropic-mcp",
    "listing_class": "connector",
-   "name": "Eclipse Connect for Anthropic",
+   "name": "Cyan Eclipse Connect for Anthropic",
    "platforms": [
     "MCP over stdio + HTTP/JSON (hosted relay, staging)"
    ],
-   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the $49/mo hosted bundle as fast-follower (proposed). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
+   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the hosted bundle as fast-follower (proposed; hosted pricing pending Gate B1). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
    "problem_statements": [
     "I need my agent to call the Anthropic Messages API without ever holding my Anthropic API key",
     "I need Anthropic calls bounded by a model allowlist, a spend cap, and an expiry — with a sealed receipt for every call",
@@ -7398,7 +7395,7 @@
     "Every call is pre-checked against the grant and sealed into a content-free Herald-signed receipt; receipts are independently verifiable off-host from the published JWKS surface",
     "Instant kill switch: delete the key and kill every grant instantly; deleting a key cascade-revokes its grants; receipts are retained (they are content-free)",
     "Groq OpenAI-compatible transport with Bearer auth injection on the grant's own key only; catalogue exactly openai/gpt-oss-120b ($0.15/$0.60 per 1M), openai/gpt-oss-20b ($0.075/$0.30) and qwen/qwen3.8-27b ($0.80/$4.00, PREVIEW) — price table groq-prices/2026-10-27 as of 2026-10-27; this is the gpt-oss route, never 'all open weights'",
-    "Trademark: 'Groq' is used as a word mark only (nominative fair use), no Groq logo. Groq is a trademark of Groq LLC and/or its affiliates. Eclipse Connect for Groq is not affiliated with or endorsed by Groq LLC."
+    "Trademark: 'Groq' is used as a word mark only (nominative fair use), no Groq logo. Groq is a trademark of Groq LLC and/or its affiliates. Cyan Eclipse Connect for Groq is not affiliated with or endorsed by Groq LLC."
    ],
    "categories": [
     "Connectors",
@@ -7426,11 +7423,11 @@
    },
    "id": "eclipse-connect-groq-mcp",
    "listing_class": "connector",
-   "name": "Eclipse Connect for Groq",
+   "name": "Cyan Eclipse Connect for Groq",
    "platforms": [
     "MCP over stdio + HTTP/JSON (hosted relay, staging)"
    ],
-   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the $49/mo hosted bundle as fast-follower (proposed). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
+   "pricing_model": "Paid metering $0.001/call beyond the free allowance — COUNSEL-GATED / NOT YET CHARGED (records meter units only, charges nothing) Inclusion in the hosted bundle as fast-follower (proposed; hosted pricing pending Gate B1). Provider token costs are billed by the provider directly to you; no provider funds ever flow through Cyan Eclipse. No checkout, payment, or buy-now link exists for this product.",
    "problem_statements": [
     "I need my agent to call Groq's gpt-oss models without ever holding my Groq API key",
     "I need Groq calls bounded by a model allowlist, a spend cap, and an expiry — with a sealed receipt for every call",
@@ -7480,12 +7477,12 @@
    "id": "eclipse-scamshield-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-scamshield-mcp.png",
-   "name": "Eclipse Scamshield",
+   "name": "Cyan Eclipse Scamshield",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $0.05/check, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "First payments to new payees are the classic consumer-fraud surface (invoice redirection, impersonation, lookalike domains) — and the moment today's flows handle worst: a generic \"are you sure?\" dialog the user clicks through, leaving no evidence of what risk information was shown or whether the specific warnings about this payee were ever seen",
     "I need the first payment to a new payee to trigger a witnessed briefing — fraud reports, payee-continuity, lookalike domains, each excerpt hash-bound with its pointer and witness seal, every source class recorded including its gaps — not a risk score or a safe/unsafe verdict",
@@ -7536,12 +7533,12 @@
    "id": "eclipse-holdfast-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-holdfast-mcp.png",
-   "name": "Eclipse Holdfast",
+   "name": "Cyan Eclipse Holdfast",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $1/settlement + bps, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $1/settlement + bps, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Escrow and milestone-payment flows release on a human's \"looks good\" click or on a seller's self-attested delivery claim — both unrecomputable: neither proves the delivered artifact was ever run against the buyer's acceptance criteria",
     "I need the acceptance evidence itself to be the release key: buyer and seller seal terms embedding the hash of the buyer's own acceptance-test bundle, and release follows if and only if a counter-signed test-run receipt recomputes against those sealed terms and shows a pass — a different bundle, however passing, releases nothing",
@@ -7592,12 +7589,12 @@
    "id": "eclipse-voiceprint-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-voiceprint-mcp.png",
-   "name": "Eclipse Voiceprint",
+   "name": "Cyan Eclipse Voiceprint",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim). The word 'voiceprint' is never glossed as biometric identification (SPEC §11.3).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.03/call, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.03/call, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "A voice agent's voice is its identity to the counterparty, yet nothing binds it across calls — a deployer (or an attacker, or a provider migration) can swap the underlying model or voice between calls and the counterparty has no evidence the voice they trusted is the voice now speaking; call logs are the deployer's self-report",
     "I need each call's attested voice identity made a signed, chained, third-party-recomputable record — provable offline, from the exported pack + pinned keys alone — so a swapped model_id/voice_id is a proven, named fact (SWAP_DETECTED with the changed field), not an allegation against the provider's current log",
@@ -7647,12 +7644,12 @@
    "id": "eclipse-understudy-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-understudy-mcp.png",
-   "name": "Eclipse Understudy",
+   "name": "Cyan Eclipse Understudy",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.02/delegation, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for refusals, verifies, chain verifies/reads, proof_gets, and idempotent resubmissions; a failing proof meters identically to a passing one — the proof is the product, never the outcome. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.02/delegation, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for refusals, verifies, chain verifies/reads, proof_gets, and idempotent resubmissions; a failing proof meters identically to a passing one — the proof is the product, never the outcome. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Delegation is where agent authority silently grows: a sub-agent commissioned for one task ends up holding the delegator's full cap, a longer expiry than the delegator itself, or a counterparty the delegator could never pay — assembled from mandate fields nobody compared as a set",
     "Each mandate verifies fine on its own under Till's grammar; the widening only exists between the two mandates, where no single-mandate verifier looks — platforms currently trust the orchestrator's assertion that it delegated narrowly",
@@ -7699,12 +7696,12 @@
    "id": "eclipse-genesis-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-genesis-mcp.png",
-   "name": "Eclipse Genesis",
+   "name": "Cyan Eclipse Genesis",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE — free local v0.1.0; registration is FREE and emits exactly 1 zero-value FREE Meter record (amount_minor: 0), so the funnel is counted. Verification-class issuances carry a $0.05/verification metering shape, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation.",
+   "pricing_model": "FREE — free local v0.1.0; registration is FREE and emits exactly 1 zero-value FREE Meter record (amount_minor: 0), so the funnel is counted. Verification-class issuances carry a $0.05/verification metering shape, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation.",
    "problem_statements": [
     "Agents appear with self-described identities and purposes that live in editable profile pages and README files — change the description and the past changes with it; a counterparty has no sealed, recomputable record of what was declared at the start",
     "I need the declaration itself made evidence — creator, model, config hash, and declared purpose scope sealed at registration — so any counterparty can verify the certificate offline and detect action outside the declared purpose from presented witnessed records, naming the clause violated",
@@ -7756,12 +7753,12 @@
    "id": "eclipse-slowpay-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-slowpay-mcp.png",
-   "name": "Eclipse Slowpay",
+   "name": "Cyan Eclipse Slowpay",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.25/mandate, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $0.25/mandate, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Recurring payments fail silently in one direction: the payee changes — price creeps, the receiving endpoint moves, the entity is sold — and the standing mandate keeps paying the old agreement's counterparty on autopilot, because a mandate records what was authorized once, not what the counterparty is now",
     "I need a mandate bound to a witnessed baseline with an automatic tripwire: any witnessed counterparty behavior change automatically freezes the schedule until I re-attest — provable offline, from mandate ref + baseline + witness receipt + freeze record + pinned keys alone, with no human step between verification and freeze",
@@ -7813,12 +7810,12 @@
    "id": "eclipse-layaway-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-layaway-mcp.png",
-   "name": "Eclipse Layaway",
+   "name": "Cyan Eclipse Layaway",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE + $0.25/execution, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for refusals and non-executions. The 'execution' is a simulator state transition — NO purchase is executed, no funds move, and nothing is presented as owed for a fixture execution. The local package is the reference implementation. Repository is PRIVATE (priced execution tier).",
+   "pricing_model": "FREE + $0.25/execution, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for refusals and non-executions. The 'execution' is a simulator state transition — NO purchase is executed, no funds move, and nothing is presented as owed for a fixture execution. The local package is the reference implementation. Repository is PRIVATE (priced execution tier).",
    "problem_statements": [
     "Savings goals execute at goal-reached regardless of price (buying high because the money is ready), while price alerts fire regardless of funds (a deal the owner cannot yet take, gone by the time they can) — each half exists separately and fails separately",
     "The conjunction is the product, and it must be witnessed: a self-reported price or a self-reported balance makes any execution claim self-attested",
@@ -7876,12 +7873,12 @@
    "id": "eclipse-duet-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-duet-mcp.png",
-   "name": "Eclipse Duet",
+   "name": "Cyan Eclipse Duet",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for all refusals and for verifies. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
+   "pricing_model": "PRICED — $99/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for all refusals and for verifies. The local package is the reference implementation. Repository is PRIVATE (priced-product policy).",
    "problem_statements": [
     "Four-eyes controls for agents today mean two API keys held by the same operator running the same model — a control that fails as one: a systematic model error, a prompt-injection susceptibility, or a miscalibration is present in both 'independent' reviewers identically",
     "Requiring a second signature without requiring a different kind of signer is decoration — multi-sig counts signatures/keys, identity registries attest who an agent is but issue no pairing artifact, and ensemble tools produce no counter-signed artifact a third party can verify offline",
@@ -7932,12 +7929,12 @@
    "id": "eclipse-crosspay-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-crosspay-mcp.png",
-   "name": "Eclipse Crosspay",
+   "name": "Cyan Eclipse Crosspay",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.10/call, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for no-seal refusals, verifies, verdict-gets, handoff marks, and idempotent re-presentations. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
+   "pricing_model": "PRICED — $0.10/call, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for no-seal refusals, verifies, verdict-gets, handoff marks, and idempotent re-presentations. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
    "problem_statements": [
     "Cross-currency agent payments leak value in the spread, invisibly: the payer sees a rate, not the distance between that rate and the source benchmark, and the mandate that authorized the payment almost never says how much spread is too much",
     "Post-hoc reporting doesn't fix this — by the time an auditor finds a 4% spread on a payment capped at 1%, the money has moved at 4%; nobody seals the three numbers (source, rate, spread) at the moment of decision and refuses before movement when the cap is breached",
@@ -7984,12 +7981,12 @@
    "id": "eclipse-phantom-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-phantom-mcp.png",
-   "name": "Eclipse Phantom",
+   "name": "Cyan Eclipse Phantom",
    "name_status": "Working name — placeholder pending trademark screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $49/mo/program, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for ingestion, matching, receipts, verifications, request artifacts, reads, refusals, idempotent re-ingests, and the CHARGE_CONFLICT path. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
+   "pricing_model": "PRICED — hosted pricing pending Gate B1, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for ingestion, matching, receipts, verifications, request artifacts, reads, refusals, idempotent re-ingests, and the CHARGE_CONFLICT path. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
    "problem_statements": [
     "Agent payment programs accumulate charges — per-call fees, rail charges, tool subscriptions — each of which should trace to a mandate someone authorised; anything that traces to nothing is a phantom, and it is usually found weeks later, by a human, after the statement has closed",
     "Statement review and issuer fraud alerts cannot prove a negative: neither re-runs the mandate ledger as of the charge's timestamp to show that no mandate ever covered this charge, in a form a third party can recompute",
@@ -8048,12 +8045,12 @@
    "id": "eclipse-capline-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-capline-mcp.png",
-   "name": "Eclipse Capline",
+   "name": "Cyan Eclipse Capline",
    "name_status": "Working name — placeholder pending trademark screen (C5: trademark screen on the name \"Capline\" is still pending; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $1/certificate, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for proof builds, refusals, verifications, exports, transcripts, and idempotent re-presentations. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
+   "pricing_model": "PRICED — $1/certificate, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. 0 for proof builds, refusals, verifications, exports, transcripts, and idempotent re-presentations. The local package is the reference implementation. Repository is PRIVATE (priced tier).",
    "problem_statements": [
     "Caps are negotiating intelligence: a merchant who learns an agent's spend cap can price to it, and a policy that circulates cannot be uncirculated — yet a merchant who gets no cap assurance at all must either refuse agent spend or accept unbounded-looking risk",
     "I need the single bound proven without disclosure: the agent proves 'this spend is within my cap' against a previously sealed commitment, revealing neither the cap nor any policy field, in a form the merchant can recompute offline from the seal record + stated spend + proof + pinned keys alone"
@@ -8107,12 +8104,12 @@
    "id": "eclipse-ward-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-ward-mcp.png",
-   "name": "Eclipse Ward",
+   "name": "Cyan Eclipse Ward",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $9/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $9/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "\"Human in the loop\" for agents today usually means a dashboard a human might look at, an approval buried in a log the agent's operator wrote, or nothing — there is no portable, third-party-recomputable record that a named guardian held the right to stop a sensitive action class, and what they did or did not do with it",
     "I need a designated human guardian to hold veto rights over enumerated sealed action classes for my agent — veto inside the window bars the action, approval clears it early, and every outcome is receipted into the agent's own hash-chained record",
@@ -8168,12 +8165,12 @@
    "id": "eclipse-epitaph-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-epitaph-mcp.png",
-   "name": "Eclipse Epitaph",
+   "name": "Cyan Eclipse Epitaph",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "FREE + PRICED — $0.02/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "FREE + PRICED — $0.02/check, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "When an agent identity dies or is compromised today, its outstanding mandates, aliases, and delegations linger — revocation is a scattered, per-registry chore with no single provable moment at which everything bound to that identity stopped being valid",
     "I need one signed death/compromise record to expire every outstanding mandate, alias, and delegation issued to the dead identity atomically — all of them in one cascade, or none, with a signed cascade receipt proving the sweep",
@@ -8207,7 +8204,7 @@
     "Signing is a fixture HMAC stand-in for Herald RS256, disclosed on every artifact face as signature_scheme; verification keys are pinned out-of-band by fixed key ref and never accepted from the record under verification. Herald (signing pattern) and Meter (metering grammar) are consumed by reference only."
    ],
    "categories": [
-    "Compliance, Provenance & the Builder Economy",
+    "Compliance, Lineage & the Builder Economy",
     "Trust & Receipts"
    ],
    "certification": {
@@ -8227,12 +8224,12 @@
    "id": "eclipse-ancestor-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-ancestor-mcp.png",
-   "name": "Eclipse Ancestor",
+   "name": "Cyan Eclipse Ancestor",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/check, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $0.05/check, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Model and agent lineage today is a marketing claim: a model card says 'fine-tuned from X, distilled from Y' and a buyer has no sealed, recomputable record to check that declaration against — or to enforce a policy like 'no models distilled from X' at handshake time",
     "I need the full fine-tune/distillation ancestry chain sealed at registration, so any later edit to a link breaks the seal and refuses the check by name, and handshake checks evaluate my ancestry policy mechanically against the sealed chain with a signed verdict citing the decisive links",
@@ -8257,7 +8254,7 @@
   },
   {
    "id": "eclipse-trust-mcp",
-   "name": "Eclipse Trust MCP",
+   "name": "Cyan Eclipse Trust MCP",
    "tagline": "One call answers whether a bench result is real, who issued it, at what scope — and whether it is anchored on-chain, where.",
    "status": "live",
    "listing_class": "tool",
@@ -8336,12 +8333,12 @@
    "id": "eclipse-greenwash-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-greenwash-mcp.png",
-   "name": "Eclipse Greenwash",
+   "name": "Cyan Eclipse Greenwash",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (SPEC: name is a placeholder pending trademark screen; the working name is not a public claim; trademark screen on the working name pending per the re-bench standing conditions).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.10/claim, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $0.10/claim, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Agent-generated sustainability claims go out with no evidence discipline at all: the claim text is emitted, and whether any source data ever stood behind it is unknowable afterwards — the exact shape of greenwashing risk",
     "I need every sustainability claim bound to its source-data pointer at emission time — claim hash ↔ pointer ↔ emission time, hash-chained and counter-signed — and every unbound claim flagged in the message itself, adjacent to the claim, so no reader can miss that it carries no binding",
@@ -8391,12 +8388,12 @@
    "id": "eclipse-agesure-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-agesure-mcp.png",
-   "name": "Eclipse Agesure",
+   "name": "Cyan Eclipse Agesure",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (condition C7: \"Agesure\" remains a working name pending the house trademark/brand screen; no public claim attaches to the name).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.05/proof, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $0.05/proof, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Age gating today demands the whole identity: a birthdate, a document scan, a name — far more than the one bit a service actually needs (is this person in the 18+ / 21+ band?), and every excess attribute collected is breach and liability surface",
     "I need a band-only attestation — 18+ / 21+, nothing else, no birthdate, no document — sealed to my service's mandate, so the proof cannot be re-presented to a different service or stretched past its expiry",
@@ -8445,12 +8442,12 @@
    "id": "eclipse-fairlend-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-fairlend-mcp.png",
-   "name": "Eclipse Fairlend",
+   "name": "Cyan Eclipse Fairlend",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $0.15/decision (evidence sealing only; no credit decisions), via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $0.15/decision (evidence sealing only; no credit decisions), via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "A lending decision is made from inputs that are never frozen — feature set, model version, reason codes — so a later disparate-impact audit has nothing to recompute from but logs and memory",
     "I need each decision sealed at decision time with the exact inputs that produced it, so the audit is a deterministic recompute over seals — reproducible figures, not an argument",
@@ -8503,12 +8500,12 @@
    "id": "eclipse-awardline-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-awardline-mcp.png",
-   "name": "Eclipse Awardline",
+   "name": "Cyan Eclipse Awardline",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen (condition C5: \"Awardline\" remains a placeholder pending the trademark screen).",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $99/mo, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $99/mo, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Grant reports get assembled at reporting time from spreadsheets and memory — a reconstruction, not evidence — and drawdown audits then re-litigate every line",
     "I need spending sealed against the award's terms as it happens, hash-chained per award with a sealed running total, so the report is generated by recomputing from receipts that already exist",
@@ -8557,12 +8554,12 @@
    "id": "eclipse-insurepack-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-insurepack-mcp.png",
-   "name": "Eclipse Insurepack",
+   "name": "Cyan Eclipse Insurepack",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $149/mo (evidence assembly only; no underwriting), via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $149/mo (evidence assembly only; no underwriting), via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Cyber-insurance evidence gets assembled once, at application or renewal, from whatever screenshots and spreadsheets are at hand — then it goes stale while the insured's actual posture changes underneath it",
     "I need the pack to be a signed, recomputable index over artifacts that already exist — bench verdicts, incident records, control receipts — kept current by change receipts that name the field, the prior value, and the new value whenever a premium-relevant fact changes",
@@ -8612,12 +8609,12 @@
    "id": "eclipse-ballotbox-mcp",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-ballotbox-mcp.png",
-   "name": "Eclipse Ballotbox",
+   "name": "Cyan Eclipse Ballotbox",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen.",
    "platforms": [
     "MCP over stdio"
    ],
-   "pricing_model": "PRICED — $50/election, via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "PRICED — $50/election, via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass: intake orders are reviewed and confirmed by the operator before any payment link is sent. No charge path is built, no payment is taken, and no live Meter ingest is claimed. The local package is the reference implementation. Repository is PRIVATE.",
    "problem_statements": [
     "Agent-electorate votes are counted from mutable tallies — after the fact there is no way to prove a counted ballot came from an agent that actually held a governance mandate at the instant it voted",
     "I need ballots sealed at cast time to vote-time mandate-eligibility proofs, with the tally computed from the sealed ballots alone so any third party can recompute it from the exported pack",
@@ -8646,7 +8643,7 @@
   },
   {
    "id": "eclipse-exportcheck-mcp",
-   "name": "Eclipse Exportcheck",
+   "name": "Cyan Eclipse Exportcheck",
    "listing_class": "mcp",
    "logo": "branding/logos/eclipse-exportcheck-mcp.png",
    "name_status": "Working name — placeholder pending the house brand + trademark/confusion screen.",
@@ -8697,7 +8694,7 @@
     "scorecard_ref": null,
     "scorecard_url": null
    },
-   "pricing_model": "UNPRICED in v0.1.7 — no Exportcheck figure exists in the CETech price book, so no price is stated, charged, or implied. Available via the Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass. The local package is the reference implementation. Repository is PRIVATE.",
+   "pricing_model": "UNPRICED in v0.1.7 — no Exportcheck figure exists in the CETech price book, so no price is stated, charged, or implied. Available via the Cyan Eclipse Bazaar bench-order/intake path only. No checkout, payment, or buy-now link exists for this product, and no Stripe object exists for it in this pass. The local package is the reference implementation. Repository is PRIVATE.",
    "source_refs": [
     "eclipse-exportcheck-mcp/server.json"
    ]

@@ -2566,12 +2566,12 @@
   },
   {
    "capabilities": [
-    "Cross-provider agent spend analytics: ingests cost records from provider-shaped sources (v0 fixture adapters for model-API usage logs, Agent Wallet ledger exports, Eclipse Till receipt exports) into one signed cost-record schema",
-    "Every record ECDSA-signed at ingest and hash-chained, carrying source, lineage, adapter version and methodology version; attestation exports verify offline with the public key only",
-    "Retry attribution is a first-class field: retry records cite parent_call_ref, so the orchestration/retry share of spend is computed from links, not estimated; orphan retries degrade honestly (parent_resolved=false), never dropped",
-    "Rollups by agent/provider/category/period with Decimal totals kept per-unit — USD and test credits never comingled; caller-injected units cannot enter a rollup; unmappable kinds render UNMAPPED with the native label preserved",
-    "Budget posture against owner-stated budgets is arithmetic only (80%/100% boundaries verified); a figure without a methodology_version is refused at render (spec L8)",
-    "Meter REPORTS and never blocks (cluster law L3): no block, freeze, pay, or policy verb exists in the package — enforcement is Tripwire's product, mandates are the Wallet's. v0 is local, fixture-transport only; live ingest is NOT built"
+    "Cross-provider agent spend analytics: cost records from provider-shaped sources (model-API usage logs, agent-wallet ledger exports, receipt exports) are unified into one signed cost-record format",
+    "Every record is signed at ingest and tamper-evident; attestation exports verify offline with the public key only",
+    "Retry attribution is a first-class field, so the retry share of spend is computed from recorded links, not estimated; unresolvable parents are flagged honestly, never dropped",
+    "Rollups by agent, provider, category, and period; currency units are never comingled, and unmappable entries render as UNMAPPED with the original label preserved",
+    "Budget posture against owner-stated budgets is arithmetic only, and every rendered figure carries its methodology version",
+    "Meter reports and never blocks: no block, freeze, pay, or policy action exists in the package. v0 is local and fixture-transport only; live ingest is not built"
    ],
    "categories": [
     "Agent Spend Governance"
@@ -5027,10 +5027,10 @@
   },
   {
    "capabilities": [
-    "A swapped description cannot be quietly un-swapped: swap-back returns VALID again but the INVALIDATED proof record stays in the chain, unaltered.",
-    "Session-bound, not a static scan: a tool list fully clean at pin time whose description is swapped AFTER pinning is caught by verify_call — a static pre-flight scanner (e.g. mcp-scan) has no session state to catch a post-pin swap. Controls bench-verified: verify on an unpinned session = UNKNOWN_SESSION (never VALID), on a never-pinned tool = UNKNOWN_TOOL, with a never-pinned description = INVALIDATED; unknown tool names (e.g. proxy_call) = NO_SUCH_TOOL refusal stating it does not proxy live MCP traffic.",
-    "Independent recompute by design: fingerprint_tool returns the exact canonical JSON preimage of every fingerprint, so any caller can recompute every hash with any SHA-256 implementation; detect_drift reports per-tool SAME / CHANGED / ADDED / REMOVED vs the pin with both fingerprints, read-only (drift checks never append to the chain). Exactly 5 tools on the wire; every envelope carries scope LOCAL + canonicalization toolprint-canonical-v1; clean coded errors with no partial state (a failed pin creates no session, a refused verify appends no record).",
-    "Honest scope: LOCAL only — v0.1.1 operates only on caller-supplied tool lists/descriptions plus the bundled fixtures. It does NOT proxy live MCP traffic, does not connect to remote MCP servers, does not execute any described tool, and makes no network calls. Python 3 standard library only; MCP over stdio; no payment, checkout, metering-enforcement, or billing code — the $0.05/call term is a commercial term for hosted/commercial deployment, not a build feature."
+    "A swapped description cannot be quietly un-swapped: restoring the original returns a valid result, but the invalidation record stays on the record permanently",
+    "Session-bound, not a static scan: a description swapped after pinning is caught at call time — a static pre-flight scanner has no session state to catch a post-pin swap. Bench-verified refusals: unpinned sessions, never-pinned tools, and unknown tool names all fail closed with named results",
+    "Independent recompute by design: callers receive everything needed to recompute every fingerprint themselves; drift checks report per-tool SAME / CHANGED / ADDED / REMOVED against the pin, read-only",
+    "Honest scope: LOCAL only — operates on caller-supplied tool lists and descriptions plus bundled fixtures. It does not proxy live MCP traffic, connect to remote servers, or execute any described tool, and makes no network calls. Commercial terms for hosted deployment are separate from the local build"
    ],
    "categories": [
     "Agent Infrastructure",
@@ -5757,11 +5757,11 @@
   },
   {
    "capabilities": [
-    "Novel mechanism — one token binds three hashes (purchase order, spending mandate, delivery receipt): payseal_token = sha256(po_hash|mandate_hash|delivery_hash), each component hash recomputed over the canonical form of the presented record on every evaluation; a presented hash is a claim, never trusted verbatim. Verdicts: MATCH PARTIAL_DELIVERY (short lines named).",
-    "Derived-valuation amount check (R-P1, re-bench verified) — delivered value is DERIVED as Σ accepted_lines at PO line prices on every path; the face value is never trusted. Accepted quantities are bounded per PO line aggregated per resource, resources must be PO lines, po_total must equal Σ PO lines, and missing/empty accepted_lines fails closed — re-signed forgeries (empty lines, qty-999 over-delivery, unrelated-resource lines, po_total contradicting its own lines) all seal MISMATCH / AMOUNT_EXCEEDS_MANDATE with the sub-failure named in detail.amount_detail.",
-    "Disputes hand off to Eclipse Docket as an evidence pack (adjudication is Docket's, not Payseal's).",
-    "Disjoint surfaces: caller = exactly 4 tools, operator = exactly 2; cross-surface names and every payment verb (pay/settle/transfer/escrow/release) return the identical NO_SUCH_TOOL refusal — no payment-execution code exists in the tree.",
-    "Honest scope — LOCAL/simulator, fixture triples ONLY: v0.1.2 evaluates fixture PO / mandate / delivery-receipt triples only. No live invoice, mandate service, delivery system, or payment rail is touched."
+    "One token ties a purchase order, its spending mandate, and the delivery receipt together, so a payment claim can be checked against all three at once",
+    "Delivered value is derived from the accepted lines at purchase-order prices on every path — the face value is never trusted; over-delivery, unrelated lines, and totals that contradict their own lines all seal as named mismatches",
+    "Disputes hand off to Eclipse Docket as an evidence pack; adjudication is Docket's, not Payseal's",
+    "Caller and operator surfaces are disjoint, and every payment verb returns the identical refusal — no payment-execution code exists in the package",
+    "Honest scope — LOCAL/simulator, fixture triples only: no live invoice, mandate service, delivery system, or payment rail is touched"
    ],
    "categories": [
     "Agent Payments",
@@ -6188,11 +6188,11 @@
   },
   {
    "capabilities": [
-    "Novel mechanism — a continuous fingerprint chain over a payee's bank/rail details; any silent change blocks payment and issues a drift receipt — the classic vendor-bank-fraud pattern becomes impossible to hide.",
-    "Fingerprint chain — fingerprint = sha256(canonical(payee_detail_set)) over a fixed field set (payee_ref, beneficiary_name, bank_id, account_id as fixture tokens only, rail, unit); every witnessed state appends one signed, hash-chained record, so rewriting history breaks every later hash. A check recomputes the presented fingerprint against the chain head: match → CLEAR; mismatch → BLOCK_DRIFT plus a signed drift receipt naming the changed field classes only — never values — with the last agreeing sequence and prior fingerprint.",
-    "Offline recompute with pinned fixture keys — chain_verify recomputes every fingerprint, record hash, changed-field-class list and verdict from the source detail sets in an exported pack, using only the local pinned fixture keys (never keys presented inside a pack; a pack carrying keys fails at keys_pinned). The pinned fixture keys are HMAC secrets — they are NOT public keys, and no public or third-party verifiability is claimed at v0.1.1. An export is labelled witnessed:true / WITNESSED_EXPORT only when its embedded verifier transcript actually verified.",
-    "Export packs are NOT value-free (bench condition C-3, on the face) — chain_export packs contain the full fixture detail sets (enrollment, re-enrollment and check sets) by design, because drift classes and fingerprints are recomputed from them; the values are synthetic fixture tokens only (bank_fixture_…, acct_fixture_…), never real bank data, and packs must be handled as 'fixture tokens only' until a live-scope redesign. What is values-free, accurately, is the drift receipt (and logs): fingerprints + changed field classes only, never detail values.",
-    "Honest scope — LOCAL stdio, fixture payee records ONLY: no live bank, rail, vendor-master, or payment system is touched and no real bank-account number enters any fixture. Morphguard never pays, settles, releases, or holds funds — a drift result is a verdict returned to the caller (CLEAR / BLOCK_DRIFT / BLOCK_UNKNOWN_PAYEE / BLOCK_CHAIN_DEFECT); payment execution, if the caller proceeds on a CLEAR, stays entirely with Till behind Till's existing gates."
+    "A continuous fingerprint record over a payee's bank/rail details; any silent change blocks the payment and issues a drift receipt — the classic vendor-bank-fraud pattern becomes impossible to hide",
+    "Every witnessed state is appended to a signed, tamper-evident chain, so rewriting history is detectable. A check compares the presented details against the chain head: match returns CLEAR; mismatch returns BLOCK_DRIFT plus a signed drift receipt naming the changed field classes only — never values",
+    "Offline recompute: an exported pack can be fully re-verified locally from its source detail sets using pinned fixture keys; exports are labelled as witnessed only when the embedded verification actually verified",
+    "Export packs contain the full fixture detail sets by design (drift is recomputed from them); the values are synthetic fixture tokens only, never real bank data. The drift receipt itself carries fingerprints and changed field classes only, never detail values",
+    "Honest scope — LOCAL stdio, fixture payee records only: no live bank, rail, vendor-master, or payment system is touched. Morphguard never pays, settles, releases, or holds funds; a drift result is a verdict returned to the caller"
    ],
    "categories": [
     "Agent Payments",
@@ -6357,10 +6357,10 @@
   },
   {
    "capabilities": [
-    "Trueprice warrants the pack's recomputability, not its admission.)",
-    "Seal at quote time + term-by-term diff — seal_hash = sha256(canonical(terms)) over the full terms object (price, fees, taxes as stated, quantity, unit, delivery terms, subscription/renewal terms, expiry), each field also hashed individually (term_hashes) so drift is located, not just detected; there is no price-only mode. Verdicts: MATCH EXPIRED_QUOTE SEAL_NOT_FOUND. A quote never sealed at quote time can receive only an unsigned UNSEALED_SUMMARY, which the offline verifier rejects — downgrade law: unverifiable exports downgrade to UNWITNESSED_EXPORT, never upgraded.",
-    "Stored paths enforce the same discipline (delta re-bench C1/C2 closures): stored-chain integrity verifies the counter-signature before any checkout_verify (tamper → SEAL_DEFECT, no verdict), and drift_receipt_get recomputes receipt hash + verifies signature before serving (tamper → RECEIPT_UNVERIFIED, receipt never served).",
-    "Honest scope — LOCAL stdio, fixture quote/checkout pairs ONLY: no live storefront, cart, payment page, price feed, or merchant system is touched, no real quote or checkout is sealed or judged, and every emitted artifact carries value_class \"test\". Trueprice never blocks a checkout, alters a price, contacts a merchant, or executes/refunds any payment."
+    "Trueprice warrants that a quote pack can be recomputed and checked — it does not warrant the quote's admission or fairness",
+    "Quotes are sealed at quote time and later compared term-by-term, so drift is located to the exact term, not just detected; there is no price-only mode. Verdicts: MATCH / EXPIRED_QUOTE / SEAL_NOT_FOUND. A quote never sealed at quote time can only receive an unsigned summary, and unverifiable exports are labelled as unwitnessed, never upgraded",
+    "Stored records enforce the same discipline: tampering with a stored chain or a receipt is detected before any verdict is served, and the tampered artifact is refused by name",
+    "Honest scope — LOCAL stdio, fixture quote/checkout pairs only: no live storefront, cart, payment page, price feed, or merchant system is touched, and every emitted artifact is labelled as test data. Trueprice never blocks a checkout, alters a price, contacts a merchant, or executes or refunds any payment"
    ],
    "categories": [
     "Agent Payments",
@@ -7107,11 +7107,10 @@
   },
   {
    "capabilities": [
-    "Decisive fixture F-A8 stands from the bench record — a fixture capture sealed, exported, and verified in a fresh process from the pack + pinned public keys alone: genuine pack BUNDLE_VALID with independent recompute (sha256(body)=content_hash, sha256(DER)=cert_hash); each single-part substitution from a second sealed capture fails by name (body → step1:content_hash, headers → step1:headers_hash, cert DER → step2:cert_identity).",
-    "Cross-artifact integrity (v0.1.2, R1–R8 closed at re-bench 2) — a signed store head cross-commits the bundle-set head, every per-bundle chain head, the anomaly head, and the sealed metering head; a signed bundle-set anchor binds the full set, so subset deletion, delete-all, metering deletion/fabrication, record alias transplants, and pair-reverts are BUNDLE_DEFECT on every serve/mint surface, never clean serves or plain BUNDLE_NOT_FOUND; the pack face is exact (unknown top-level or capture keys fail by name) and whole-store garbage raises structured BUNDLE_DEFECT on every entry path.",
-    "Condition 1 — Rollback residual (R1c): a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model — fenced verbatim on README + every pack (rollback_fence) + server.json. External anchor required before any live or multi-party use/claim.",
-    "A server may serve different content to other fetchers, at other times, or under other certificates — the bundle says nothing about what anyone else was served. The content-targeting case (a server detecting the fetcher and serving it special content) is the named example of this limit wherever it is explained at length.",
-    "Format attribution is exact and minimal: metering records are emitted in Meter grammar, signing is Herald's pattern (fixture HMAC stand-in), and evidence packs are assembled to Docket's pattern — consumed, never redefined."
+    "A sealed capture can be exported and verified in a fresh process from the pack and pinned public keys alone, with each part of the capture independently checked; substituting any single part from another capture fails by name",
+    "Cross-artifact integrity: the store's signed heads cross-commit, so deleting a subset, deleting everything, or transplanting records between bundles is detected as a defect on every serve path — never served clean",
+    "Rollback limit, stated on the face of every pack: a full coordinated restore of all local artifacts to one consistent earlier snapshot is undetectable in the local file model; an external anchor is required before any live or multi-party use",
+    "A bundle says nothing about what a server served to other fetchers, at other times, or under other certificates — the content-targeting case is the named example of this limit"
    ],
    "categories": [
     "Trust & Receipts",
@@ -8294,7 +8293,7 @@
     "certified": false,
     "certified_scope": "Scope: stdio + HTTP twin over the bundled join index; index recomputed from sources (Bazaar verdict feed, Herald ledger, Anchor batches/proofs, ERC-8004 publisher ledger) by a fail-closed builder. Hosted PHP twin: static parity PASS at bench; execution verified by live smoke at deploy 2026-10-27.",
     "not_tested": [
-     "Ed25519 batch-manifest signature verification — NOT_RUN at bench (no Ed25519 verifier in the bench environment); the bundle's hash / Merkle / calldata / block-hash chain fully recomputes, and the signature is a named verify_recipe step (Anchor anchor_verify)",
+     "Manifest signature verification — not run at bench (no suitable verifier in the bench environment); the rest of the proof bundle recomputed in full, and the signature check is a named step in every verify recipe",
      "Mainnet ERC-8004 validation records — none exist yet; lookups answer typed NOT_PUBLISHED_MAINNET until the publisher's separately-benched mainnet verdict-publishing activation. Testnet records resolve labelled TESTNET",
      "Hosted PHP twin under the local bench — no PHP runtime on the bench VM (execution NOT_RUN); static parity PASS at bench + delta, execution verified by live-endpoint smoke at deploy 2026-10-27"
     ],

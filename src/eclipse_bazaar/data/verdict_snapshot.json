@@ -882,28 +882,6 @@
     "version": "0.1.0"
    }
   },
-  "test-bench/results/eclipse-herald-mcp-2026-10-25.json": {
-   "sha256": "8dc4cabbd58ea1cfd9aa923805c125ae84f195cda23541eda77f460889f7e706",
-   "summary": {
-    "bench_date": "2026-10-25",
-    "bench_version": "0.1.0",
-    "checks_total": 19,
-    "counts": {
-     "fail": 0,
-     "na": 1,
-     "other": 0,
-     "pass": 18
-    },
-    "environment": "local",
-    "failed_checks": [],
-    "not_tested_checks": [
-     "auth enforced"
-    ],
-    "tool": "eclipse-herald-mcp",
-    "verdict": "CERTIFIED(local)",
-    "version": "0.1.0"
-   }
-  },
   "test-bench/results/eclipse-keyhold-mcp-2026-10-25-4.json": {
    "sha256": "e9c414a98d20a61018e19aa12df3f4b6f7d12d676b020d340e8d8d842b99115b",
    "summary": {
@@ -1819,7 +1797,7 @@
   }
  },
  "catalog_built": "2026-10-27",
- "generated_at": "2026-10-27T17:52:10Z",
+ "generated_at": "2026-11-01T21:36:23Z",
  "generator": "tools/make_verdict_snapshot.py",
  "source": "test-bench/results (referenced by catalog.json scorecard_ref)"
 }

@@ -5453,10 +5453,16 @@
     "Document Analysis"
    ],
    "certification": {
-    "bench_verdict": null,
+    "bench_verdict": "PASS-CONDITIONAL (local, interim-sealed snapshot)",
     "certified": false,
-    "certified_scope": null,
-    "not_tested": [],
+    "certified_scope": "INCLUDED in this certification (benched 2026-10-28, BENCH-V2): EDGAR-self divergence observations (spec 14.2) and the divergence_edgar_self verb — 219,953 sealed observation rows, each comparing the sealed as-filed value against the companyfacts-served latest-vintage value in a hash-pinned capture: 90,938 MATCHES_OBSERVED (41.3%) and 129,015 DIVERGES_FROM_OBSERVED (58.7%). The split is source-reprocessing data (the derived view reflects later vintages), not an error rate.",
+    "not_tested": [
+     "Vendor-leg divergence (spec 14.1) — a P1 boundary statement only, not built and not claimed; the certified observation leg is EDGAR-self divergence (spec 14.2) via divergence_edgar_self only.",
+     "Release-leg coverage completeness — 153 of 262 release accessions extracted (41.6% not-extracted, above the product's own spec-17 O4 40% bar); per-figure release receipts are certified, release coverage completeness is not (BENCH-V2 condition C3).",
+     "Live ingestion and any coverage beyond the sealed snapshot secfig-2026-10-28-eb66332db1 — figures outside the named snapshot are named as gaps, never fetched (serving modules unchanged since the v1 bench's no-live-path audit).",
+     "Known limitations disclosed per C3 (v1 bench findings B1-1 LOW, B1-2 MEDIUM, both reproduced under v2): release figures sealed with period_end = null are served by accession via release_figures, not via figure_at_moment (which returns a generic -32602 for them); where a release repeats a figure label across passages, figure_at_moment returns the first sealed match without an ambiguity signal — both figures are enumerable via release_figures and each is individually recomputable.",
+     "Full-corpus per-figure recompute by the bench — the v2 bench verified recompute on its own samples (18 figures in-server, 15 receipts via the shipped offline verify.py, 80 of 80 sampled observation rows) plus a full manifest-entries audit; the seal-time batched probe record (716 of 716 files, 0 not-recomputable) is the seal's own coverage record (BENCH-V2 NOT_RUN disclosure)."
+    ],
     "scorecard_ref": null,
     "scorecard_url": null
    },

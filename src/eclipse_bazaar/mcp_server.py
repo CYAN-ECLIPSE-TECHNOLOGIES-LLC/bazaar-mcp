@@ -164,6 +164,18 @@ def t_get_product(args, cat=None):
         raise ToolError("id is required")
     cat = cat if cat is not None else load_catalog()
     p = dict(_get(cat, pid))
+    # Ryan QA #4: not_tested entries refer readers to `live_state_note`;
+    # surface it at the product level too (it also stays inside the
+    # certification block) so no rendering can drop it silently.
+    p["live_state_note"] = (p.get("certification") or {}).get(
+        "live_state_note")
+    # Ryan QA #2: no install-plan exists on any surface yet. Say so in
+    # the record itself rather than letting a tagline imply one.
+    p["install_plan"] = {
+        "status": "not_available",
+        "note": ("not available yet — no install plan exists for this "
+                 "listing: no package command, client config snippet, "
+                 "or install steps are provided")}
     p["honesty_note"] = (
         "certification.bench_verdict is null when no Test Bench run exists; "
         "not_tested lists what the bench did not cover — absence of a verdict "
@@ -239,30 +251,50 @@ def t_list_categories(args, cat=None):
 
 TOOLS = {
     "search_products": (t_search_products,
-                        "Keyword search over the Bazaar catalog (names, capabilities, categories, problem statements). Every hit carries match_reasons — why it matched is never hidden. Optional category filter.",
-                        {"query": {"type": "string"}, "category": {"type": "string"}}, ["query"]),
+                        "Keyword search over the Bazaar catalog (names, capabilities, categories, problem statements). Every hit carries match_reasons — why it matched is never hidden. Optional category filter. Use find_solutions instead when you have a problem to describe rather than keywords; use get_product once you have a product id.",
+                        {"query": {"type": "string",
+                                   "description": "Keyword or phrase matched against product names, capabilities, categories, and problem statements."},
+                         "category": {"type": "string",
+                                      "description": "Optional exact category name, as returned by list_categories, to restrict the search; omit to search the whole catalog."}}, ["query"]),
     "find_solutions": (t_find_solutions,
-                       "Describe a problem in plain language; get ranked products with a fit explanation, status, and certification badge inline. Spec-stage products are labelled spec-stage, uncertified products say so.",
-                       {"problem": {"type": "string"}}, ["problem"]),
+                       "Describe a problem in plain language; get ranked products with a fit explanation, status, and certification badge inline. Spec-stage products are labelled spec-stage, uncertified products say so. Use search_products instead when you already have keywords or a category in mind; use get_product once you have a product id.",
+                       {"problem": {"type": "string",
+                                    "description": "The problem to solve, in plain language — a sentence or two works best."}}, ["problem"]),
     "get_product": (t_get_product,
-                    "Full catalog entry for one product id: capabilities, problem statements, pricing model, platforms, tools, and the certification block including what was NOT tested.",
-                    {"id": {"type": "string"}}, ["id"]),
+                    "Full catalog entry for one product id: capabilities, problem statements, pricing model, platforms, tools, and the certification block including what was NOT tested, plus the product's live_state_note and its explicit install_plan status (no install plan exists yet). Use get_certification instead when you only need the bench verdict, scope, and not_tested list for the same id.",
+                    {"id": {"type": "string",
+                            "description": "Catalog product id, as returned by search_products, find_solutions, or list_categories."}}, ["id"]),
     "compare_products": (t_compare_products,
-                         "Side-by-side comparison of 2+ product ids: status, pricing model, certification verdict and scope, platforms, categories.",
-                         {"ids": {"type": "array", "items": {"type": "string"}}}, ["ids"]),
+                         "Side-by-side comparison of 2+ product ids: status, pricing model, certification verdict and scope, platforms, categories. Use get_product instead when you need one product's full entry.",
+                         {"ids": {"type": "array", "items": {"type": "string"},
+                                  "description": "Two or more catalog product ids, as returned by search_products, find_solutions, or list_categories."}}, ["ids"]),
     "get_certification": (t_get_certification,
-                          "The latest Test Bench verdict for a product, with a live scorecard summary, the certified scope, and the not_tested list. Returns an explicit NOT YET CERTIFIED answer when no verdict exists.",
-                          {"id": {"type": "string"}}, ["id"]),
+                          "The latest Test Bench verdict for a product, with a live scorecard summary, the certified scope, and the not_tested list. Returns an explicit NOT YET CERTIFIED answer when no verdict exists. Use get_product instead when you need the full catalog entry for the same id.",
+                          {"id": {"type": "string",
+                                  "description": "Catalog product id, as returned by search_products, find_solutions, or list_categories."}}, ["id"]),
     "list_categories": (t_list_categories,
-                        "All catalog categories with product counts broken down by status (live / dogfood / in-development / spec).",
+                        "All catalog categories with product counts broken down by status (live / dogfood / in-development / spec), plus the product ids in each category. Start here to browse the catalog; use the returned ids with get_product or get_certification, and the category names as search_products' category filter.",
                         {}, []),
+}
+
+TITLES = {
+    "search_products": "Search Products",
+    "find_solutions": "Find Solutions",
+    "get_product": "Get Product",
+    "compare_products": "Compare Products",
+    "get_certification": "Get Certification",
+    "list_categories": "List Categories",
 }
 
 
 def tool_list():
     return [{"name": name,
+             "title": TITLES[name],
              "description": desc,
-             "inputSchema": {"type": "object", "properties": props, "required": req}}
+             "inputSchema": {"type": "object", "properties": props, "required": req},
+             "annotations": {"title": TITLES[name], "readOnlyHint": True,
+                             "destructiveHint": False, "idempotentHint": True,
+                             "openWorldHint": False}}
             for name, (_, desc, props, req) in TOOLS.items()]
 
 

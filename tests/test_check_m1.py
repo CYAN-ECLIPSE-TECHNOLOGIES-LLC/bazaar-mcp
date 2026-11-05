@@ -72,6 +72,12 @@ def shape_entry(i, rec):
 
 class ShapeMatrix(unittest.TestCase):
     def test_all_101_listings_classify(self):
+        # Name kept for bench reference. Count pinned to the corpus as
+        # shipped on this line: the 0.1.5 port carries origin's
+        # containment-trimmed corpus (145 records over a 155-product
+        # catalog — the trim is deliberate, see corpus manifest). The
+        # local fix-round tree asserted a catalog-derived count against
+        # its own 155-record corpus; that form does not hold here.
         records = corpus_records()
         self.assertEqual(len(records), 145)
         servers = {}
@@ -84,14 +90,15 @@ class ShapeMatrix(unittest.TestCase):
             cfg = Path(td) / "mcp.json"
             cfg.write_text(json.dumps({"mcpServers": servers}))
             rep = check_mod.run_check(config_paths=[str(cfg)])
-        self.assertEqual(len(rep["entries"]), 145)
+        self.assertEqual(len(rep["entries"]), len(records))
         for row in rep["entries"]:
             self.assertEqual(row["class"], expect[row["config_name"]],
                              f"{row['config_name']}: {row}")
             self.assertEqual(row["listing"]["id"],
                              row["config_name"].split("-", 1)[1])
         s = rep["summary"]
-        self.assertEqual(s[check_mod.CERTIFIED] + s[check_mod.LISTED], 145)
+        self.assertEqual(s[check_mod.CERTIFIED] + s[check_mod.LISTED],
+                         len(records))
         self.assertEqual(s[check_mod.NOT_LISTED], 0)
         self.assertEqual(s[check_mod.UNRESOLVABLE], 0)
 
@@ -111,16 +118,21 @@ class Traps(unittest.TestCase):
         self.assertIsNone(row["listing"])
 
     def test_stale_pin_flags_drift(self):
+        # Listed version is corpus-derived, not pinned in the test:
+        # the listing's own server.json is the source of truth and
+        # moves (0.2.1 -> 0.2.2 on the 2026-11-04 corpus resync).
+        listed = next(r["listing_version"] for r in corpus_records()
+                      if r["id"] == "eclipse-procure-mcp")
         rep = self._run({"stale": {"command": "uvx",
                                    "args": ["eclipse-procure-mcp@0.1.0"]}})
         row = rep["entries"][0]
         self.assertEqual(row["class"], check_mod.CERTIFIED)
         self.assertIsNotNone(row["drift"])
         self.assertEqual(row["drift"]["pinned"], "0.1.0")
-        self.assertEqual(row["drift"]["listed"], "0.2.1")
+        self.assertEqual(row["drift"]["listed"], listed)
         # a current pin produces no drift note
         rep2 = self._run({"cur": {"command": "uvx",
-                                  "args": ["eclipse-procure-mcp@0.2.1"]}})
+                                  "args": [f"eclipse-procure-mcp@{listed}"]}})
         self.assertIsNone(rep2["entries"][0]["drift"])
 
     def test_shell_wrapper_is_unresolvable(self):
@@ -197,8 +209,16 @@ class Vocabulary(unittest.TestCase):
             cfg = Path(td) / "empty.json"
             cfg.write_text(json.dumps({"mcpServers": {}}))
             rep = check_mod.run_check(config_paths=[str(cfg)])
-        self.assertEqual({r["class"] for r in rep["entries"]} |
-                         set(rep["summary"]), set(check_mod.CLASSES))
+        # Closed vocabulary, deliberately restated for the Ryan QA #5
+        # shape: entry classes stay within CLASSES, and the summary
+        # carries exactly the four class counts PLUS the load_failures
+        # count (a count, not a class).
+        self.assertTrue({r["class"] for r in rep["entries"]}
+                        <= set(check_mod.CLASSES))
+        self.assertEqual(set(rep["summary"]),
+                         set(check_mod.CLASSES) | {"load_failures"})
+        self.assertEqual(rep["summary"]["load_failures"],
+                         len(rep["file_notes"]))
         surfaces = [json.dumps(rep)]
         for py in (ROOT / "src/eclipse_bazaar").rglob("*.py"):
             surfaces.append(py.read_text())
@@ -363,11 +383,107 @@ class VersionNotChecked(unittest.TestCase):
         self.assertIn("version not checked", cli_mod._render_check(rep))
 
     def test_pin_against_versioned_listing_has_no_note(self):
+        listed = next(r["listing_version"] for r in corpus_records()
+                      if r["id"] == "eclipse-procure-mcp")
         rep = self._run1({"command": "uvx",
-                          "args": ["eclipse-procure-mcp@0.2.1"]})
+                          "args": [f"eclipse-procure-mcp@{listed}"]})
         row = rep["entries"][0]
         self.assertIsNone(row["version_note"])
+        self.assertIsNone(row["drift"])
         self.assertNotIn("version not checked", cli_mod._render_check(rep))
+
+
+class RyanQaDiagnostics(unittest.TestCase):
+    """Ryan Owens external QA, 2026-11-04 (locked-down container,
+    eclipse-bazaar 0.1.1): diagnostics must not read clean over broken
+    input, and a scope qualifier must never detach from its verdict."""
+
+    def _run(self, servers):
+        with tempfile.TemporaryDirectory() as td:
+            cfg = Path(td) / "mcp.json"
+            cfg.write_text(json.dumps({"mcpServers": servers}))
+            return check_mod.run_check(config_paths=[str(cfg)])
+
+    def test_scoped_verdict_travels_in_text_render(self):
+        # QA #1: JSON class stays the canonical CERTIFIED; the TEXT
+        # class column and summary carry CERTIFIED(staging).
+        rep = self._run({"cb": {"command": "uvx",
+                                "args": ["certbridge-mcp"]}})
+        row = rep["entries"][0]
+        self.assertEqual(row["class"], check_mod.CERTIFIED)
+        self.assertEqual(rep["summary"][check_mod.CERTIFIED], 1)
+        text = cli_mod._render_check(rep)
+        # Entry line selected by its leading config-name column: a
+        # bare "cb" substring search can collide with the corpus sha
+        # printed in the header line (bit on the 0.1.5 port, where the
+        # merged corpus sha begins 9cbb…).
+        entry_line = next(l for l in text.splitlines()
+                          if l.strip().startswith("cb "))
+        self.assertIn("CERTIFIED(staging)", entry_line)
+        summary_line = next(l for l in text.splitlines()
+                            if l.startswith("Summary:"))
+        self.assertIn("CERTIFIED(staging) 1", summary_line)
+        self.assertNotIn(" CERTIFIED 1", summary_line)
+
+    def test_load_failure_counted_and_position_named(self):
+        # QA #5 + #6: a broken file counts in the summary (never an
+        # all-zeros skim) and the parse error names line + column.
+        with tempfile.TemporaryDirectory() as td:
+            good = Path(td) / "good.json"
+            good.write_text(json.dumps({"mcpServers": {
+                "bz": {"command": "uvx", "args": ["eclipse-bazaar"]}}}))
+            bad = Path(td) / "bad.json"
+            bad.write_text('{\n  "mcpServers": {\n    "broken": }\n}\n')
+            rep = check_mod.run_check(config_paths=[str(good), str(bad)])
+        self.assertEqual(rep["summary"]["load_failures"], 1)
+        self.assertEqual(len(rep["file_notes"]), 1)
+        self.assertRegex(rep["file_notes"][0]["error"],
+                         r"line \d+, column \d+")
+        text = cli_mod._render_check(rep)
+        self.assertIn("LOAD FAILURES 1", text)
+
+    def test_unpinned_certified_carries_caveat(self):
+        # QA #7: no pin -> the verdict may not match what installs.
+        rep = self._run({"cb": {"command": "uvx",
+                                "args": ["certbridge-mcp"]}})
+        note = rep["entries"][0]["version_note"]
+        self.assertIsNotNone(note)
+        self.assertIn("version not pinned", note)
+        self.assertIn("may differ", note)
+        listed = next(r["listing_version"] for r in corpus_records()
+                      if r["id"] == "certbridge-mcp")
+        rep2 = self._run({"cb": {"command": "uvx",
+                                 "args": [f"certbridge-mcp@{listed}"]}})
+        self.assertIsNone(rep2["entries"][0]["version_note"])
+        self.assertIsNone(rep2["entries"][0]["drift"])
+
+    def test_all_faults_per_entry_reported(self):
+        # QA #8: every shape/type fault in an entry, not just the
+        # first — and a non-object entry is reported, not dropped.
+        rep = self._run({
+            "multi": {"command": 123, "args": "certbridge-mcp",
+                      "url": 456, "env": ["x"]},
+            "notanobject": 42,
+        })
+        by_name = {r["config_name"]: r for r in rep["entries"]}
+        faults = by_name["multi"]["faults"]
+        self.assertEqual(by_name["multi"]["class"],
+                         check_mod.UNRESOLVABLE)
+        for field in ("command", "args", "url", "env"):
+            self.assertTrue(any(f.startswith(field) for f in faults),
+                            f"no fault reported for {field}: {faults}")
+        self.assertEqual(by_name["notanobject"]["class"],
+                         check_mod.UNRESOLVABLE)
+        self.assertTrue(any("must be an object"
+                            in f for f in by_name["notanobject"]["faults"]))
+        text = cli_mod._render_check(rep)
+        self.assertGreaterEqual(text.count("fault:"), 5)
+
+    def test_well_shaped_entry_has_no_faults(self):
+        rep = self._run({"bz": {"command": "uvx",
+                                "args": ["eclipse-bazaar"],
+                                "env": {"K": "v"}}})
+        self.assertEqual(rep["entries"][0]["faults"], [])
 
 
 class RepoModeGate(unittest.TestCase):

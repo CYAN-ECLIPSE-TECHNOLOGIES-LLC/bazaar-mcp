@@ -2,8 +2,9 @@
 
 mcp-name: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar
 
-**Eclipse Bazaar is Cyan Eclipse Technologies' marketplace** for its own
-bench-verified MCP servers, connectors, and tools (157 listings). Every
+**Cyan Eclipse Bazaar is Cyan Eclipse Technologies' marketplace** for its own
+bench-verified MCP servers, connectors, and tools (155 listings —
+bundled catalog snapshot, catalog build 2026-10-27). Every
 listing is a Cyan Eclipse Technologies product today — third-party
 listings are not yet open — and every listing carries its Test Bench
 verdict and scope, or states plainly that it has none. Priced items are
@@ -54,6 +55,13 @@ Privacy, by construction: config `env` **values are never read, copied,
 hashed, logged, or transmitted** — the parser redacts them structurally
 before anything else runs. There is no telemetry. The check never
 executes a configured server and never contacts one.
+
+Setup notes: in current Claude Desktop, the local MCP server config
+opens via **Settings → Desktop app → Extensions (Manage) → Local MCP
+servers → Edit config** (there is no "Developer" menu). Running
+`bazaar check` inside Docker? It sees only the container's filesystem
+and cannot see the host's client config — mount or copy the config in
+and pass it with `--config PATH`.
 
 ## 3. The Python SDK
 

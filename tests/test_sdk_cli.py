@@ -48,7 +48,21 @@ class SdkParity(unittest.TestCase):
         self.assertEqual(cert["bench_verdict"], "CERTIFIED(local)")
         self.assertIsNotNone(cert["scorecard_summary"])
         cats = bz.categories()
-        self.assertEqual(cats["product_total"], 155)
+        catalog = json.loads((ROOT / "catalog.json").read_text())
+        self.assertEqual(cats["product_total"], len(catalog["products"]))
+
+    def test_listing_install_plan_and_live_state(self):
+        # Ryan QA #2 + #4: get_product states plainly that no
+        # install-plan exists yet, and surfaces live_state_note at
+        # the product level (not_tested refers readers to it).
+        bz = Bazaar()
+        prod = bz.get_listing("certbridge-mcp")["product"]
+        self.assertEqual(prod["install_plan"]["status"], "not_available")
+        self.assertIn("no install plan exists",
+                      prod["install_plan"]["note"])
+        self.assertTrue(prod["live_state_note"])
+        self.assertEqual(prod["live_state_note"],
+                         prod["certification"]["live_state_note"])
 
     def test_sdk_check(self):
         with tempfile.TemporaryDirectory() as td:
@@ -57,6 +71,7 @@ class SdkParity(unittest.TestCase):
                 "bz": {"command": "uvx", "args": ["eclipse-bazaar"]}}}))
             rep = Bazaar().check(config_paths=[str(cfg)])
         self.assertEqual(rep["summary"]["CERTIFIED"], 1)
+        self.assertEqual(rep["summary"]["load_failures"], 0)
 
 
 class CliSurface(unittest.TestCase):
@@ -72,7 +87,16 @@ class CliSurface(unittest.TestCase):
         out = json.loads(cli("product", "certbridge-mcp", "--json"))
         self.assertEqual(out["product"]["id"], "certbridge-mcp")
         cats = json.loads(cli("categories", "--json"))
-        self.assertEqual(cats["product_total"], 155)
+        catalog = json.loads((ROOT / "catalog.json").read_text())
+        self.assertEqual(cats["product_total"], len(catalog["products"]))
+
+    def test_product_text_render_honesty(self):
+        # Ryan QA #2 + #4 on the CLI face: install plan stated as
+        # not-available, live_state_note rendered next to the verdict.
+        text = cli("product", "certbridge-mcp")
+        self.assertIn("install plan:", text)
+        self.assertIn("not available yet", text)
+        self.assertIn("live state:", text)
 
     def test_check_json_and_outfile(self):
         with tempfile.TemporaryDirectory() as td:

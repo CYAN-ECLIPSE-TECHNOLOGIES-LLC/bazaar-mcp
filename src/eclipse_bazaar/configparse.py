@@ -94,17 +94,99 @@ def redact_config(node, _prev=None):
 
 
 def server_entries(doc):
-    """Yield (config_name, entry_dict) from a parsed client config.
+    """Yield (config_name, entry) from a parsed client config.
     Supports the `mcpServers` shape (Claude Desktop/Code, Cursor,
-    Windsurf, project .mcp.json) and the `servers` shape (VS Code)."""
+    Windsurf, project .mcp.json) and the `servers` shape (VS Code).
+    Non-object entries are yielded too: they are shape faults the
+    check must report, not entries to silently drop."""
     if not isinstance(doc, dict):
         return
     for key in ("mcpServers", "servers"):
         block = doc.get(key)
         if isinstance(block, dict):
             for name, entry in block.items():
-                if isinstance(entry, dict):
-                    yield str(name), entry
+                yield str(name), entry
+
+
+def _type_name(value):
+    if value is None:
+        return "null"
+    if isinstance(value, bool):
+        return "boolean"
+    if isinstance(value, str):
+        return "string"
+    if isinstance(value, int):
+        return "integer"
+    if isinstance(value, float):
+        return "number"
+    if isinstance(value, list):
+        return "list"
+    if isinstance(value, dict):
+        return "object"
+    return type(value).__name__
+
+
+def validate_entry(entry):
+    """All shape/type faults in one redacted config entry.
+
+    Faults name the field, the expected shape, and the actual *type*
+    only — never a value (gate S3: this runs on the redacted copy, and
+    its output must stay value-free). An empty list means the entry's
+    known fields are well-shaped; identity extraction is a separate
+    question (an entry can be well-shaped yet UNRESOLVABLE)."""
+    if not isinstance(entry, dict):
+        return [f"entry must be an object, got {_type_name(entry)}"]
+    faults = []
+
+    def expect_string(field):
+        if field in entry and not isinstance(entry[field], str):
+            faults.append(f"{field} must be a string, "
+                          f"got {_type_name(entry[field])}")
+
+    def expect_object(field):
+        if field in entry and not isinstance(entry[field], dict):
+            faults.append(f"{field} must be an object, "
+                          f"got {_type_name(entry[field])}")
+
+    def expect_string_list(field):
+        if field not in entry:
+            return
+        value = entry[field]
+        if not isinstance(value, list):
+            faults.append(f"{field} must be a list of strings, "
+                          f"got {_type_name(value)}")
+            return
+        for i, item in enumerate(value):
+            if not isinstance(item, str):
+                faults.append(f"{field}[{i}] must be a string, "
+                              f"got {_type_name(item)}")
+
+    for field in ("command", "url", "httpUrl", "serverUrl", "cwd", "type"):
+        expect_string(field)
+    expect_string_list("args")
+    expect_object("env")
+    expect_object("headers")
+    expect_string_list("alwaysAllow")
+    expect_string_list("always_allow")
+    if "envFile" in entry:
+        env_file = entry["envFile"]
+        if isinstance(env_file, list):
+            for i, item in enumerate(env_file):
+                if not isinstance(item, str):
+                    faults.append(f"envFile[{i}] must be a string, "
+                                  f"got {_type_name(item)}")
+        elif not isinstance(env_file, str):
+            faults.append(f"envFile must be a string or a list of strings, "
+                          f"got {_type_name(env_file)}")
+    if "disabled" in entry and not isinstance(entry["disabled"], bool):
+        faults.append(f"disabled must be a boolean, "
+                      f"got {_type_name(entry['disabled'])}")
+    for field in ("timeout", "startup_timeout_sec"):
+        if field in entry and (isinstance(entry[field], bool)
+                               or not isinstance(entry[field], (int, float))):
+            faults.append(f"{field} must be a number, "
+                          f"got {_type_name(entry[field])}")
+    return faults
 
 
 # ------------------------------------------------------------- identity
@@ -308,6 +390,12 @@ def load_config_entries(path):
     """(entries, error) — entries are (name, redacted_entry) pairs."""
     try:
         doc = json.loads(Path(path).read_text())
+    except json.JSONDecodeError as e:
+        # Position included: "line X, column Y" is what lets the user
+        # find the fault in their own file (Ryan QA #6). e.msg names
+        # the JSON problem only — no document content is echoed.
+        return [], (f"unparseable config (JSONDecodeError at line "
+                    f"{e.lineno}, column {e.colno}: {e.msg})")
     except Exception as e:
         return [], f"unparseable config ({type(e).__name__})"
     redacted = redact_config(doc)

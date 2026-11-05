@@ -3,7 +3,7 @@
  "name": "io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar",
  "title": "Eclipse Bazaar MCP",
  "description": "Discover agent tools by problem: every listing carries its Test Bench verdict or says it has none.",
- "version": "0.1.4",
+ "version": "0.1.5",
  "websiteUrl": "https://eclipsebazaar.com",
  "icons": [
   {
@@ -39,7 +39,7 @@
   {
    "registryType": "pypi",
    "identifier": "eclipse-bazaar",
-   "version": "0.1.4",
+   "version": "0.1.5",
    "runtimeHint": "uvx",
    "transport": {
     "type": "stdio"

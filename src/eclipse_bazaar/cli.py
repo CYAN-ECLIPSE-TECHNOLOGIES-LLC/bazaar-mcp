@@ -49,8 +49,17 @@ def _render_product(res):
              f"  {p['tagline']}",
              f"  pricing: {p['pricing_model']}",
              f"  categories: {', '.join(p['categories'])}",
-             f"  certification: {c['bench_verdict'] or 'NOT YET CERTIFIED'}",
-             "  capabilities:"]
+             f"  certification: {c['bench_verdict'] or 'NOT YET CERTIFIED'}"]
+    live_note = p.get("live_state_note") or c.get("live_state_note")
+    if live_note:
+        lines.append(f"  live state: {live_note}")
+    install = p.get("install_plan") or {}
+    lines.append("  install plan: " + (
+        install.get("note") or
+        "not available yet — no install plan exists for this listing: "
+        "no package command, client config snippet, or install steps "
+        "are provided"))
+    lines.append("  capabilities:")
     lines += [f"    - {cap}" for cap in p["capabilities"]]
     if c.get("not_tested"):
         lines.append("  not tested:")
@@ -65,6 +74,23 @@ def _render_categories(res):
         by = ", ".join(f"{k}={v}" for k, v in sorted(c["by_status"].items()))
         lines.append(f"  {c['category']}: {c['total']} ({by})")
     return "\n".join(lines)
+
+
+def _display_class(entry):
+    """Text-render label for one check row (Ryan QA #1).
+
+    The JSON report's `class` stays in the closed canonical vocabulary
+    (CERTIFIED / LISTED / NOT LISTED / UNRESOLVABLE — a gate fence).
+    The *text* render must never print a bare CERTIFIED: for a
+    certified row the scoped verdict from the listing's bench record
+    (e.g. CERTIFIED(local), CERTIFIED(staging)) IS the label, in the
+    class column and in the summary alike, so the scope qualifier
+    cannot detach from the claim."""
+    if entry["class"] == "CERTIFIED" and entry.get("listing"):
+        verdict = entry["listing"].get("bench_verdict")
+        if verdict:
+            return verdict
+    return entry["class"]
 
 
 def _render_check(rep):
@@ -82,7 +108,7 @@ def _render_check(rep):
         idtxt = "—" if ident is None else \
             f"{ident['kind']}:{ident['name']}" + \
             (f"@{ident['pin']}" if ident.get("pin") else "")
-        lines.append(f"  {e['config_name']:<28} {e['class']:<13} {idtxt}")
+        lines.append(f"  {e['config_name']:<28} {_display_class(e):<28} {idtxt}")
         if e["listing"]:
             li = e["listing"]
             verdict = li["bench_verdict"] or "no Tier-2 verdict"
@@ -93,8 +119,31 @@ def _render_check(rep):
             lines.append(f"      {e['version_note']}")
         if e["reason"] and e["class"] in ("UNRESOLVABLE",):
             lines.append(f"      reason: {e['reason']}")
+        for fault in e.get("faults") or []:
+            lines.append(f"      fault: {fault}")
     s = rep["summary"]
-    lines.append("\nSummary: " + " · ".join(f"{k} {v}" for k, v in s.items()))
+    # Summary aggregates by the same scoped display labels as the
+    # class column; canonical classes keep their report order, and
+    # load failures are counted in the same line (Ryan QA #5).
+    scoped = {}
+    for e in rep["entries"]:
+        label = _display_class(e)
+        scoped[label] = scoped.get(label, 0) + 1
+    labels = []
+    for cls in ("CERTIFIED", "LISTED", "NOT LISTED", "UNRESOLVABLE"):
+        if cls == "CERTIFIED":
+            cert_labels = sorted(l for l in scoped
+                                 if l.startswith("CERTIFIED"))
+            # C1-a (owner disposition 2026-11-05, fix in code): the
+            # certified summary line renders ONLY from scoped labels
+            # actually present — with zero certified rows there is no
+            # certified line at all, never a bare "CERTIFIED 0".
+            labels.extend(cert_labels)
+        else:
+            labels.append(cls)
+    parts = [f"{label} {scoped.get(label, 0)}" for label in labels]
+    parts.append(f"LOAD FAILURES {s.get('load_failures', 0)}")
+    lines.append("\nSummary: " + " · ".join(parts))
     lines += [f"Note: {n}" for n in rep["notes"]]
     return "\n".join(lines)
 

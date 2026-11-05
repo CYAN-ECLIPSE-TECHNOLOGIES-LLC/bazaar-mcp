@@ -133,7 +133,8 @@
     "not_tested": [
      "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
      "cPanel UAPI install — declared in the server, returns explicit not-live errors; not scored by the bench. Live production issuance itself was proven separately by dogfood (see live_state_note)",
-     "Production CA account on the BENCH run (bench created a staging account only); the dogfood run created a production account outside the bench"
+     "Production CA account on the BENCH run (bench created a staging account only); the dogfood run created a production account outside the bench",
+     "Certificate revocation — no revocation tool exists in this version (the tool surface has no revoke verb); revocation is not offered."
     ],
     "scorecard_ref": "test-bench/results/certbridge-mcp-2026-10-24-2.json",
     "scorecard_url": "https://eclipsebazaar.com/cards/certbridge-mcp-2026-10-24-2.json"
@@ -157,7 +158,7 @@
     "certbridge-mcp/bazaar-manifest.json"
    ],
    "status": "in-development",
-   "tagline": "The padlock, without the paywall — agent-native ACME issuance, challenge placement, install, and renewal watching for shared-hosting sites.",
+   "tagline": "The padlock, without the paywall — agent-native ACME issuance, challenge placement, and renewal watching for shared-hosting sites.",
    "tools": [
     "register_account",
     "request_certificate",

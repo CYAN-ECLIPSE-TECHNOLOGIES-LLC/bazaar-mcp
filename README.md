@@ -25,9 +25,9 @@ This MCP server is how agents query that catalog:
 | `get_certification(id)` | Latest bench verdict + scorecard summary + scope + not_tested; explicit "NOT YET CERTIFIED" when none exists. |
 | `list_categories()` | Categories with counts by status. |
 
-Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries are read live from `../test-bench/results/` at call time.
+Every response includes a `data_freshness` note (catalog build date + source references). Scorecard summaries ship as a bundled snapshot in the installed package; in a source checkout they are read live from `../test-bench/results/` at call time.
 
-## Catalog (157 products — CETech first-party)
+## Catalog (155 products — CETech first-party, catalog build 2026-10-27)
 
 Seeded only from real sources — each product's `bazaar-manifest.json`, the latest Test Bench scorecard, the MCP product slate, and the Eclipse Mail spec. No invented products, no invented verdicts.
 
@@ -63,9 +63,9 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Trunk MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Connect MCP | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood-facade) |
 | Eclipse Connect · Beyond Compare MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulated) |
-| AgentReady MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| AgentReady MCP | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Florida Bid Intel MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
-| Eclipse Bazaar MCP (this server) | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
+| Eclipse Bazaar MCP (this server) | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Envoy MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Fathom MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Codex MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |

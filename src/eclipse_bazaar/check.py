@@ -35,7 +35,8 @@ from pathlib import Path
 
 from .catalog import DATA_DIR
 from .configparse import (default_config_paths, extract_identity,
-                          load_config_entries, unresolvable_reason)
+                          load_config_entries, unresolvable_reason,
+                          validate_entry)
 
 CERTIFIED = "CERTIFIED"
 LISTED = "LISTED"
@@ -135,12 +136,20 @@ def build_index(records):
 
 # ------------------------------------------------------------ classify
 def classify(config_name, entry, index):
+    faults = validate_entry(entry)
+    if not isinstance(entry, dict):
+        return {"config_name": config_name, "class": UNRESOLVABLE,
+                "identity": None,
+                "reason": unresolvable_reason(entry),
+                "listing": None, "drift": None, "version_note": None,
+                "faults": faults}
     identity = extract_identity(entry)
     if identity is None:
         return {"config_name": config_name, "class": UNRESOLVABLE,
                 "identity": None,
                 "reason": unresolvable_reason(entry),
-                "listing": None, "drift": None, "version_note": None}
+                "listing": None, "drift": None, "version_note": None,
+                "faults": faults}
     rec = index.get(identity["name"])
     if rec is None and "/" in identity["name"]:
         # Qualified reference (registry/owner image path, npm scope,
@@ -161,12 +170,14 @@ def classify(config_name, entry, index):
                               f"listed under a different source ({hint}) "
                               "— standing does not transfer across "
                               "registries, owners, or scopes",
-                    "listing": None, "drift": None, "version_note": None}
+                    "listing": None, "drift": None, "version_note": None,
+                    "faults": faults}
     if rec is None:
         return {"config_name": config_name, "class": NOT_LISTED,
                 "identity": identity,
                 "reason": "no Bazaar listing record for this identity",
-                "listing": None, "drift": None, "version_note": None}
+                "listing": None, "drift": None, "version_note": None,
+                "faults": faults}
     cls = CERTIFIED if (rec.get("certified") and rec.get("bench_verdict")) else LISTED
     drift = None
     version_note = None
@@ -181,6 +192,21 @@ def classify(config_name, entry, index):
         # check it against. Disclose, never imply verification (PY-D5).
         version_note = ("version not checked: the listing carries no "
                         "version, so the pin cannot be checked against it")
+    elif not pin and cls == CERTIFIED:
+        # No pin: the resolver installs whatever is current at install
+        # time, which may have moved past the version the bench
+        # verdict was recorded against. Disclose, never imply the
+        # verdict covers the version that actually installs (Ryan QA #7).
+        if listed:
+            version_note = ("version not pinned: the verdict on record "
+                            f"belongs to the listing version {listed} — "
+                            "the version that actually installs is not "
+                            "pinned by this config and may differ")
+        else:
+            version_note = ("version not pinned: the verdict on record "
+                            "is not tied to a pinned version — the "
+                            "version that actually installs is not "
+                            "pinned by this config and may differ")
     listing = {"id": rec["id"], "name": rec["name"], "status": rec["status"],
                "bench_verdict": rec.get("bench_verdict"),
                "certified_scope": rec.get("certified_scope"),
@@ -189,7 +215,7 @@ def classify(config_name, entry, index):
                "listing_url": rec.get("listing_url")}
     return {"config_name": config_name, "class": cls, "identity": identity,
             "reason": None, "listing": listing, "drift": drift,
-            "version_note": version_note}
+            "version_note": version_note, "faults": faults}
 
 
 def run_check(config_paths=None, corpus_path=None, refresh_corpus=False):
@@ -212,6 +238,12 @@ def run_check(config_paths=None, corpus_path=None, refresh_corpus=False):
     summary = {c: 0 for c in CLASSES}
     for row in entries:
         summary[row["class"]] += 1
+    # Load failures ride IN the summary (Ryan QA #5): a file that
+    # failed to load produced no entries, so class counts alone read
+    # all-zeros over a broken input. `load_failures` is a count, not
+    # a class — the closed class vocabulary (CLASSES) is unchanged,
+    # and the text renderer labels this count separately.
+    summary["load_failures"] = len(file_notes)
     return {
         "tool": "eclipse-bazaar check (phase 1)",
         "corpus": {"records": len(records),

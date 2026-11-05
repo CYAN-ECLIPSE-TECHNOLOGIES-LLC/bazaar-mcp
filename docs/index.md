@@ -23,7 +23,7 @@ listings are not yet open.
 
 Catalog snapshot: <img src="../seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> Agent Wallet CERTIFIED(sandbox), CertBridge
 CERTIFIED(staging), HostBridge CERTIFIED(simulator), Eclipse Connect
-CERTIFIED(dogfood), White Report MCP PARTIAL (logic-level); AgentReady,
+CERTIFIED(first-party), White Report MCP PARTIAL (logic-level); AgentReady,
 Florida Bid Intel and this server not yet certified (bench pending); six
 spec-stage products (BidMatrix, Section 508 Evidence, FedScope, MCP Health
 Check, Legacy Recon, Eclipse Mail) are labelled `spec`, `certified: false`.

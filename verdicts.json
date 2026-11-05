@@ -50,8 +50,8 @@
    "scope": "Test Bench v0.1.0, 2026-10-24, Let's Encrypt STAGING environment: end-to-end staging order, byte-exact challenge placement, staging/production labelling, renewal-due detection, audit completeness — 12 pass, 1 na of 13 checks",
    "not_tested": [
     "Auth enforcement (bench U1 = na: local stdio transport has no credential layer to test)",
-    "cPanel UAPI install — declared in the server, returns explicit not-live errors; not scored by the bench. Live production issuance itself was proven separately by dogfood (see live_state_note)",
-    "Production CA account on the BENCH run (bench created a staging account only); the dogfood run created a production account outside the bench"
+    "cPanel UAPI install — declared in the server, returns explicit not-live errors; not scored by the bench. Live production issuance itself was proven separately by first-party (see live_state_note)",
+    "Production CA account on the BENCH run (bench created a staging account only); the first-party run created a production account outside the bench"
    ],
    "bench_date": "2026-10-24",
    "bench_version": "0.1.0",
@@ -80,9 +80,9 @@
    "status": "current",
    "product": "eclipse-connect",
    "name": "Eclipse Connect",
-   "verdict": "CERTIFIED(dogfood)",
+   "verdict": "CERTIFIED(first-party)",
    "certified": true,
-   "scope": "Test Bench v0.1.0, 2026-10-24, dogfood environment (simulator-verified, 14 tests): fail-closed auth, upload validation, public-approval gating, revoke, audit hygiene, authorize/callback grant flow — 14 pass, 1 na of 15 checks",
+   "scope": "Test Bench v0.1.0, 2026-10-24, first-party environment (simulator-verified, 14 tests): fail-closed auth, upload validation, public-approval gating, revoke, audit hygiene, authorize/callback grant flow — 14 pass, 1 na of 15 checks",
    "not_tested": [
     "MCP schema surface (bench U2 = na: Eclipse Connect is an HTTP relay, not an MCP server)",
     "Multi-user / production scale — P1 scope is a single user, single channel (@TheWhiteReport)"
@@ -269,7 +269,7 @@
    "certified": true,
    "scope": "CERTIFIED(local / fixture-only) — Eclipse Bazaar Test Bench 2026-10-25, 48 pass, 0 na of 49 checks (score 99/100: 48 pass / 1 partial / 0 fail). NO live mailbox exists;",
    "not_tested": [
-    "Live mailbox IMAP/SMTP — NOT built. v0.1 ships the fixture transport only; parent-spec dogfood acceptance (live mailbox, send/receive/reply, 7-day run) requires the owner-created cetech.ai mailbox and a separate go — NOT certified.",
+    "Live mailbox IMAP/SMTP — NOT built. v0.1 ships the fixture transport only; parent-spec first-party acceptance (live mailbox, send/receive/reply, 7-day run) requires the owner-created cetech.ai mailbox and a separate go — NOT certified.",
     "Live sending of any kind — no live mailbox exists in v0.1 and no real credential exists in the package; the certified send gate ran over the fixture transport only.",
     "Network Herald card lookup / Envoy registry — v0.1 uses local fixture JWKS + Envoy-shaped local registry; migration lands with Envoy E0.",
     "Attachment content retrieval, delete tool, Gmail/Outlook OAuth, hosted relay — parent-spec P2.",
@@ -677,9 +677,9 @@
    "status": "current",
    "product": "eclipse-connect-mcp",
    "name": "Eclipse Connect MCP",
-   "verdict": "CERTIFIED(dogfood-facade)",
+   "verdict": "CERTIFIED(first-party-facade)",
    "certified": true,
-   "scope": "CERTIFIED(dogfood-facade) — Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: vault surrogate stubbed). Facade only — the relay holds its own CERTIFIED(dogfood) card (eclipse-connect).",
+   "scope": "CERTIFIED(first-party-facade) — Eclipse Bazaar Test Bench 2026-10-25, 14/15 checks pass, 1 na (U1 auth: vault surrogate stubbed). Facade only — the relay holds its own CERTIFIED(first-party) card (eclipse-connect).",
    "not_tested": [
     "Live relay / YouTube calls — transport stubbed at server.send (the product's single network seam); no live call made or claimed",
     "Vault surrogate credential attachment inside the real send() — stubbed out in this bench, not exercised"
@@ -855,7 +855,7 @@
    "scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 19 pass, 1 na of 20 checks (U1 auth: stdio process boundary). Run 1 PARTIAL card retained append-only (bench-suite self-defect in the M11 hash assumption, disclosed on the card); run 2 is the standing card; zero product defects.",
    "not_tested": [
     "A live transport must be implemented and benched before any ingest is called live.",
-    "Dogfood wiring — the dispatcher/worker spend ingest (cluster law L10: CETech's own agent spend as the first real source) is a LATER step and is not wired in v0; no own-spend claim is made from this build.",
+    "First-party wiring — the dispatcher/worker spend ingest (cluster law L10: CETech's own agent spend as the first real source) is a LATER step and is not wired in v0; no own-spend claim is made from this build.",
     "Production signing-key custody — v0 signs with a local seed key (keys/, gitignored, chmod 600); custody is a gated decision, Fathom D0 precedent.",
     "Hosted/multi-tenant operation and auth beyond the stdio process boundary (bench U1 class)"
    ],
@@ -914,7 +914,7 @@
    "not_tested": [
     "OS-level isolation on a shared host — v0.1 isolates by recorder-held key + credential scoping + an append-only engine with no mutation code path; it does not claim an OS boundary the build does not create.",
     "Concurrent writers — the store is a single JSON file grown per call; one recorder process at a time.",
-    "Dogfood wiring (recording worker runs) — a later ops step per the build brief; this build ships the recorder plus its fixture stream only."
+    "First-party wiring (recording worker runs) — a later ops step per the build brief; this build ships the recorder plus its fixture stream only."
    ],
    "bench_date": "2026-10-25",
    "bench_version": "0.1.0",
@@ -1131,7 +1131,7 @@
     "Connector fetch — P1/D3-gated, absent at P0.",
     "Watch — D4-gated, absent at P0.",
     "commerce_verify_offer against live commerce — P2 surface; simulator-proven at P0 only.",
-    "The owner's real book as dogfood — deferred by the owner; P0 fixtures are synthetic."
+    "The owner's real book as first-party — deferred by the owner; P0 fixtures are synthetic."
    ],
    "bench_date": "2026-10-25",
    "bench_version": "independent-bench-1 (Verity phase, own fixtures)",
@@ -1336,7 +1336,7 @@
     "Third-party custody — NOT built and HELD (G-COUNSEL + G-OWNER + Verity security review; may conclude never); custody_scope=third_party refuses THIRD_PARTY_CUSTODY_HELD by name",
     "Additional redemption target classes — NOT built (per class, G-OWNER); v0 redeems exactly one class: https_static_key",
     "Production key custody — v0 uses local seed keys (keys/, gitignored, chmod 600); password-manager custody and rotation rehearsal are later gate decisions",
-    "Envelope construction review — the v0 seal/open construction is a local reference construction for the fixture/dogfood scope; the held security review may replace it",
+    "Envelope construction review — the v0 seal/open construction is a local reference construction for the fixture/first-party scope; the held security review may replace it",
     "Trademark/name screen — NOT done (G-TM owed before any public surface); name is a CONDITIONAL PASS and the descriptor always reads 'credential leases, never raw keys'"
    ],
    "bench_date": "2026-10-25",
@@ -1358,7 +1358,7 @@
     "Real Moonraker / OctoPrint endpoints and vendor clouds.",
     "Herald signer — P0 uses the local Ed25519 PinSigner fallback behind the production port; Herald custody is a later phase.",
     "Blackbox custody of packs (packs are Blackbox-form; the Blackbox product is not in the P0 path).",
-    "P1/P2 adapters — including Bambu (owner-Developer-Mode-only posture per spec) and the Elegoo Neptune 4 dogfood purchase (owner decision D2).",
+    "P1/P2 adapters — including Bambu (owner-Developer-Mode-only posture per spec) and the Elegoo Neptune 4 first-party purchase (owner decision D2).",
     "Unattended real printing — mandates default ATTENDED-required; UNATTENDED_RATED is explicitly signed per site."
    ],
    "bench_date": "2026-10-25",
@@ -1377,10 +1377,10 @@
    "not_tested": [
     "Real-device / hosted evidence class: P2 seam only (HOSTED_MATRIX_NOT_AVAILABLE verified); no hosted pack exists or was certified.",
     "Semantic correctness of any asset — never claimed: a pack proves identity and mechanical soundness of the pinned bytes; semantic approval is the separate human act on the contact sheet.",
-    "Sentinel-mode UNSTYLED_RENDER on the live dogfood sites: sentinels not yet adopted on cetech.ai / thewhitereport.com / eclipsebazaar.com (owner site edits + publish outstanding); dogfood packs exercised heuristic mode only.",
-    "Served-class rendering of Chromium/Firefox cells on GoDaddy-hosted dogfood sites from the bench VM: transport-blocked by the host, sealed honestly as PAGE_UNREACHABLE; served certification rests on the rendered cells plus loopback shapes.",
+    "Sentinel-mode UNSTYLED_RENDER on the live first-party sites: sentinels not yet adopted on cetech.ai / thewhitereport.com / eclipsebazaar.com (owner site edits + publish outstanding); first-party packs exercised heuristic mode only.",
+    "Served-class rendering of Chromium/Firefox cells on GoDaddy-hosted first-party sites from the bench VM: transport-blocked by the host, sealed honestly as PAGE_UNREACHABLE; served certification rests on the rendered cells plus loopback shapes.",
     "ENFORCE posture as a flipped production state: mechanics benched in both modes; the flip is an owner config act (D2) and has not occurred.",
-    "Herald-signed packs: bench and dogfood packs are local-signer packs (signer_type=local) verified through the PinSigner port grammar; no Herald custody exercised.",
+    "Herald-signed packs: bench and first-party packs are local-signer packs (signer_type=local) verified through the PinSigner port grammar; no Herald custody exercised.",
     "Trademark screen for the name 'Eclipse Corona' (D1): still CONDITIONAL — Chaos Corona / Corona beer screen outstanding before any public surface; certification covers function, not the name.",
     "Third-party subjects, Bazaar listing mechanics, scheduled re-verification, public proof pages, CI adapters: P1/P2, not built, not certified."
    ],
@@ -1396,7 +1396,7 @@
    "name": "Eclipse Crosslist MCP",
    "verdict": "CERTIFIED(split per facet)",
    "certified": true,
-   "scope": "CERTIFIED(split per facet) — Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-crosslist-mcp-2026-10-26-4.json: 39 pass, 0 na of 40 checks (1 partial — the builder-suite re-run line, whose sole failure was the stale fixed-count dogfood assert; fixed in this listing pass, suite now 50/50, smoke PASS). PER-FACET SCOPES — read exactly: root+ledger CERTIFIED(local): submit acceptance is identity-bound on every write facet (the observed registry record must match the submitted name + version + payload hash;",
+   "scope": "CERTIFIED(split per facet) — Eclipse Bazaar Test Bench 2026-10-26, standing card eclipse-crosslist-mcp-2026-10-26-4.json: 39 pass, 0 na of 40 checks (1 partial — the builder-suite re-run line, whose sole failure was the stale fixed-count first-party assert; fixed in this listing pass, suite now 50/50, smoke PASS). PER-FACET SCOPES — read exactly: root+ledger CERTIFIED(local): submit acceptance is identity-bound on every write facet (the observed registry record must match the submitted name + version + payload hash;",
    "not_tested": [
     "Live writes on any facet — none exist or were exercised; Official/Smithery writes are fixture-scope only and refuse REGISTRY_WRITE_UNAVAILABLE live.",
     "Glama live API — 401 without a key, none held; Glama is fixture-read only at every scope.",

@@ -273,7 +273,7 @@ TOOLS = {
                           {"id": {"type": "string",
                                   "description": "Catalog product id, as returned by search_products, find_solutions, or list_categories."}}, ["id"]),
     "list_categories": (t_list_categories,
-                        "All catalog categories with product counts broken down by status (live / dogfood / in-development / spec), plus the product ids in each category. Start here to browse the catalog; use the returned ids with get_product or get_certification, and the category names as search_products' category filter.",
+                        "All catalog categories with product counts broken down by status (live / first-party / in-development / spec), plus the product ids in each category. Start here to browse the catalog; use the returned ids with get_product or get_certification, and the category names as search_products' category filter.",
                         {}, []),
 }
 

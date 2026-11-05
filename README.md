@@ -36,7 +36,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Agent Wallet MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
 | CertBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(staging) |
 | HostBridge MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local-real) |
-| Eclipse Connect | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood) |
+| Eclipse Connect | first-party | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(first-party) |
 | The White Report MCP | live | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(live) |
 | Eclipse Apply MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(sandbox) |
 | Eclipse Beacon MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
@@ -61,7 +61,7 @@ Seeded only from real sources — each product's `bazaar-manifest.json`, the lat
 | Eclipse Orbit MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
 | Eclipse Voice Core MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Eclipse Trunk MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulator) |
-| Eclipse Connect MCP | dogfood | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(dogfood-facade) |
+| Eclipse Connect MCP | first-party | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(first-party-facade) |
 | Eclipse Connect · Beyond Compare MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(simulated) |
 | AgentReady MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
 | Florida Bid Intel MCP | in-development | <img src="seal-certified.svg" width="20" alt="Cyan Eclipse Certified"> CERTIFIED(local) |
@@ -209,7 +209,7 @@ Catalog lives in `catalog.json` beside the server (override with `$BAZAAR_CATALO
 
 ## Verdict sync (EB-09)
 
-Bench verdicts have ONE source of truth: the newest scorecard per tool in `../test-bench/results/` (run-sequence suffix decides — a `-11` card supersedes `-2`). `python3 sync_verdicts.py` rebuilds `verdict-ledger.json` and checks catalog.json, product `bazaar-manifest.json` files, this README's table, and the storefront bench lines against it (exit 1 on drift); `--apply` fixes the machine-safe fields. Dogfood logs annotate live state only — they never change a bench verdict. Run it after every bench run.
+Bench verdicts have ONE source of truth: the newest scorecard per tool in `../test-bench/results/` (run-sequence suffix decides — a `-11` card supersedes `-2`). `python3 sync_verdicts.py` rebuilds `verdict-ledger.json` and checks catalog.json, product `bazaar-manifest.json` files, this README's table, and the storefront bench lines against it (exit 1 on drift); `--apply` fixes the machine-safe fields. First-party logs annotate live state only — they never change a bench verdict. Run it after every bench run.
 
 ## Scope
 

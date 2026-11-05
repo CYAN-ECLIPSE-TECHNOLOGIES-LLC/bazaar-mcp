@@ -398,13 +398,13 @@
      "other": 0,
      "pass": 14
     },
-    "environment": "dogfood",
+    "environment": "first-party",
     "failed_checks": [],
     "not_tested_checks": [
      "schema valid"
     ],
     "tool": "eclipse-connect",
-    "verdict": "CERTIFIED(dogfood)",
+    "verdict": "CERTIFIED(first-party)",
     "version": "P1"
    }
   },
@@ -440,13 +440,13 @@
      "other": 0,
      "pass": 14
     },
-    "environment": "dogfood-facade",
+    "environment": "first-party-facade",
     "failed_checks": [],
     "not_tested_checks": [
      "auth enforced"
     ],
     "tool": "eclipse-connect-mcp",
-    "verdict": "CERTIFIED(dogfood-facade)",
+    "verdict": "CERTIFIED(first-party-facade)",
     "version": "0.1.0"
    }
   },
@@ -570,7 +570,7 @@
      "other": 1,
      "pass": 39
     },
-    "environment": "local (stdio/in-process, isolated mkdtemp fixture state for ALL bench harnesses) + builder suite/smoke re-run unmodified; real dogfood ledger verified READ-ONLY only; NO live writes anywhere",
+    "environment": "local (stdio/in-process, isolated mkdtemp fixture state for ALL bench harnesses) + builder suite/smoke re-run unmodified; real first-party ledger verified READ-ONLY only; NO live writes anywhere",
     "failed_checks": [],
     "not_tested_checks": [],
     "tool": "eclipse-crosslist-mcp",

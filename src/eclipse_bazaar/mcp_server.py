@@ -254,7 +254,7 @@ TOOLS = {
                           "The latest Test Bench verdict for a product, with a live scorecard summary, the certified scope, and the not_tested list. Returns an explicit NOT YET CERTIFIED answer when no verdict exists.",
                           {"id": {"type": "string"}}, ["id"]),
     "list_categories": (t_list_categories,
-                        "All catalog categories with product counts broken down by status (live / dogfood / in-development / spec).",
+                        "All catalog categories with product counts broken down by status (live / first-party / in-development / spec).",
                         {}, []),
 }
 

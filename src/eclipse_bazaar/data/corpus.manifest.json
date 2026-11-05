@@ -1,8 +1,8 @@
 {
  "catalog_built": "2026-10-27",
  "file": "corpus.jsonl",
- "generated_at": "2026-11-01T21:36:23Z",
- "generator": "containment-restore 2026-11-01 (field-preserving trim; manifest re-pinned)",
+ "generated_at": "2026-11-05T18:50:00Z",
+ "generator": "dogfood->first-party label rename 2026-11-05 (owner opsec directive; word-level only, manifest re-pinned)",
  "records": 145,
- "sha256": "2c14b98e4c6ded8bdc94f5597afab60b941dbef8e77b75db56ba451f7d40c576"
+ "sha256": "bc7fd967610b1dff5eaf68a6b31f1cbb5b278afc053715f76f25dd98dce18e99"
 }

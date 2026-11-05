@@ -1,6 +1,6 @@
 {
  "source_of_truth": "test-bench/results/*.json (newest card per tool by bench_date + run-sequence suffix)",
- "dogfood_rule": "dogfood logs annotate live state only; they never change a bench verdict",
+ "first_party_rule": "first-party logs annotate live state only; they never change a bench verdict",
  "tools": {
   "agent-ready-mcp": {
    "tool": "agent-ready-mcp",
@@ -422,12 +422,12 @@
   },
   "eclipse-connect": {
    "tool": "eclipse-connect",
-   "verdict": "CERTIFIED(dogfood)",
+   "verdict": "CERTIFIED(first-party)",
    "certified": true,
    "bench_date": "2026-10-26",
    "bench_version": "0.1.0",
-   "environment": "dogfood",
-   "qualifier": "dogfood",
+   "environment": "first-party",
+   "qualifier": "first-party",
    "seq": 2,
    "counts": {
     "pass": 14,
@@ -460,12 +460,12 @@
   },
   "eclipse-connect-mcp": {
    "tool": "eclipse-connect-mcp",
-   "verdict": "CERTIFIED(dogfood-facade)",
+   "verdict": "CERTIFIED(first-party-facade)",
    "certified": true,
    "bench_date": "2026-10-25",
    "bench_version": "0.1.0",
-   "environment": "dogfood-facade",
-   "qualifier": "dogfood-facade",
+   "environment": "first-party-facade",
+   "qualifier": "first-party-facade",
    "seq": 1,
    "counts": {
     "pass": 14,
@@ -992,7 +992,7 @@
   },
   "eclipse-hosted-tier": {
    "tool": "eclipse-hosted-tier",
-   "verdict": "CERTIFIED(hosted) — bundle complete. HostBridge hosted form CERTIFIED(hosted) (card -1, stands). AgentReady hosted form CERTIFIED(hosted) (card -2, stands). The $49/mo hosted tier's full launch bundle — gateway substrate + all three hosted forms — now stands CERTIFIED(hosted); the only remaining signup gates are the dogfood calendar (Thu Oct 29, no reset) and P3 Stripe wiring under owner approval cards.",
+   "verdict": "CERTIFIED(hosted) — bundle complete. HostBridge hosted form CERTIFIED(hosted) (card -1, stands). AgentReady hosted form CERTIFIED(hosted) (card -2, stands). The $49/mo hosted tier's full launch bundle — gateway substrate + all three hosted forms — now stands CERTIFIED(hosted); the only remaining signup gates are the first-party calendar (Thu Oct 29, no reset) and P3 Stripe wiring under owner approval cards.",
    "certified": true,
    "bench_date": "2026-10-26",
    "bench_version": "",
@@ -2002,7 +2002,7 @@
   "certbridge-mcp": {
    "log_ref": "test-bench/results/certbridge-mcp-dogfood-2026-10-25.md",
    "date": "2026-10-25",
-   "label": "live issuance PROVEN by dogfood"
+   "label": "live issuance PROVEN by first-party"
   }
  },
  "unmapped_tools": [

@@ -2,7 +2,7 @@
  "catalog_built": "2026-10-27",
  "file": "corpus.jsonl",
  "generated_at": "2026-11-05T18:50:00Z",
- "generator": "dogfood->first-party label rename 2026-11-05 (owner opsec directive; word-level only, manifest re-pinned)",
+ "generator": "public label rename 2026-11-05 (owner opsec directive; word-level only, manifest re-pinned)",
  "records": 145,
  "sha256": "bc7fd967610b1dff5eaf68a6b31f1cbb5b278afc053715f76f25dd98dce18e99"
 }

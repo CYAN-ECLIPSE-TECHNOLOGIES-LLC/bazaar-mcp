@@ -1,8 +1,8 @@
 {
  "catalog_built": "2026-10-27",
  "file": "corpus.jsonl",
- "generated_at": "2026-11-05T19:21:40Z",
- "generator": "containment-restore 2026-11-01 (field-preserving trim; manifest re-pinned) + delta-015 port 2026-11-05 (certbridge not_tested revocation line; manifest re-pinned); eclipse-bazaar listing_version stamped 0.1.5 + public label rename 2026-11-05 (owner opsec directive; word-level only, manifest re-pinned)",
- "records": 145,
- "sha256": "af7eece76d187f6d369cb40bb8bb2b8cdf3055285f769e10da2eb86ee5f96403"
+ "generated_at": "2026-11-06T23:41:51Z",
+ "generator": "tools/make_corpus.py",
+ "records": 155,
+ "sha256": "62eda4e16c0b2b1dfe67ad7992881b5a2e7fb966bcd554f03e4af90ea4fe12f9"
 }

@@ -2410,9 +2410,10 @@
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
     "certified": true,
-    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 16 pass, 1 na of 17 checks (U1 auth: stdio process boundary). Non-failing bench observation: the probability-field guard runs post-commit (a poisoned instrument persists in state; every read of it fails closed) — pre-commit move queued for M1 hardening.",
+    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 16 pass, 1 na of 17 checks (U1 auth: stdio process boundary). Non-failing bench observation: the probability-field guard runs post-commit (a poisoned instrument persists in state; every read of it fails closed) — pre-commit move queued for M1 hardening. Verity bench 2026-11-02: PASS-WITH-CONDITIONS — independent bench, 28 checks with own recomputation (fee math, quote fields, criteria hashes, receipt chain), over the local build plus live Kalshi + Polymarket public reads fed through the transport seam; the probability guard now refuses pre-commit (the 2026-10-25 observation is closed). Conditions: max_payout_for_size attaches only under a FRESH fee schedule (C-B1); server.json/pyproject version drift 0.1.1 vs 0.1.0 (C-B2). See eclipse-book-mcp/BENCH-VERITY.md.",
+    "live_state_note": "Verity bench 2026-11-02 PASS-WITH-CONDITIONS (local build + live Kalshi/Polymarket public reads via the transport seam). PyPI publish staged: OWNER-HANDS ship-day preconditions (Trusted Publisher + version reconciliation) not yet met — see eclipse-book-mcp/OWNER-HANDS.md + BENCH-VERITY.md.",
     "not_tested": [
-     "Live venue reads of any kind — M0 contains no network code path; adapters run against fixtures shaped like the real public API responses behind a transport seam. Live public-read verification is a later M0-exit step.",
+     "Live venue reads inside the shipped build — M0 contains no network code path; live Kalshi/Polymarket public payloads were verified through the transport seam from the Verity bench seat 2026-11-02 (BENCH-VERITY.md), but no in-build live adapter ships in v0.1.0.",
      "Order placement, account reads, and the Wallet mandate gate — M2/M1 scope, owner-gated (spec 18, decision D3). M0 order_draft records an unsubmitted DRAFT with mandate_pre_eval NOT_EVALUATED; no submission path exists.",
      "Fee schedules as live data — shipped schedules are fixture-shaped records with provenance labels saying so; the live fetch + account-specific tier provenance lands with the adapters' live step.",
      "Kalshi / Polymarket US / Kraken / Binance.US / Alpaca chapters — specced (suite spec 10-12), not built in M0."
@@ -2437,7 +2438,7 @@
    "source_refs": [
     "eclipse-book-mcp/bazaar-manifest.json"
    ],
-   "status": "in-development",
+   "status": "live",
    "tagline": "Market data + venue access layer — not an exchange: one book, one fee truth, one ledger of record.",
    "tools": [
     "instrument_ingest",
@@ -2474,11 +2475,12 @@
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
     "certified": true,
-    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary).",
+    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary). Verity bench 2026-11-02: PASS-WITH-CONDITIONS — independent bench, 16 checks with own recomputation, over the local build plus live Gamma/CLOB payloads driven through the transport seam (criteria hash, token-outcome pinning, quote + stale-fee honesty, live UMA state, gate-fence probes incl. recommendation/signal/probability names). Conditions: live sync covers only Gamma markets that name a resolution source — empty-source markets refuse by name, fail-closed (C-F1); venue_status transport string still self-reports not_tested (C-F2). See eclipse-forecast-mcp/BENCH-VERITY.md.",
+    "live_state_note": "Verity bench 2026-11-02 PASS-WITH-CONDITIONS (local build + live Polymarket public reads via the transport seam). Distribution staged: MCP Registry publish is the repo's manually-dispatched GitHub Actions workflow (OIDC) + Glama indexing — repo-side steps, see eclipse-forecast-mcp/BENCH-VERITY.md.",
     "not_tested": [
-     "Live Gamma / CLOB public reads — M0 runs against fixtures shaped like the real public API responses behind a transport seam (load_fixtures); the live public-read transport is a later verification step.",
+     "Live Gamma / CLOB public reads inside the shipped build — no in-build live transport ships in v0.1.0; live payloads were verified through the transport seam from the Verity bench seat 2026-11-02 (BENCH-VERITY.md).",
      "Polymarket US (QCX) data or trading — a separate CFTC-designated venue with its own chapter (spec 12.1), M2+ phase; Global and US data never blend in one Quote.",
-     "UMA oracle state beyond the fixture set — dispute windows/finalization tracked as fixture-shaped Resolution records in M0.",
+     "UMA verification (REPORTED -> VERIFIED) against live markets — live UMA state ingested as REPORTED records 2026-11-02; verification is a core act against a named source and most live Gamma markets name none in the payload field this adapter reads (BENCH-VERITY C-F1).",
      "Any trading surface — absent by design (Grade X for US persons, spec 4.2/8.2); nothing to test because the capability does not exist."
     ],
     "scorecard_ref": "test-bench/results/eclipse-forecast-mcp-2026-10-25.json",
@@ -2500,7 +2502,7 @@
    "source_refs": [
     "eclipse-forecast-mcp/bazaar-manifest.json"
    ],
-   "status": "in-development",
+   "status": "live",
    "tagline": "The Polymarket adapter: the venue's prices, with their criteria and liquidity attached.",
    "tools": [
     "forecast_sync",
@@ -2528,9 +2530,10 @@
    "certification": {
     "bench_verdict": "CERTIFIED(local)",
     "certified": true,
-    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary). Run 1 PARTIAL card retained append-only (bench-suite parity assertion defect); run 2 is the standing card.",
+    "certified_scope": "CERTIFIED(local) — Eclipse Bazaar Test Bench 2026-10-25, 13 pass, 1 na of 14 checks (U1 auth: stdio process boundary). Run 1 PARTIAL card retained append-only (bench-suite parity assertion defect); run 2 is the standing card. Verity bench 2026-11-02: PASS-WITH-CONDITIONS — independent bench, 12 checks with own recomputation, over the local build plus live Coinbase public payloads driven through the transport seam (full 40k-level BTC book recompute, fee-staleness honesty, account-surface absence probes, UNMAPPED on shipped fixtures). Condition: venue_status transport string still self-reports not_tested (C-S1). See eclipse-strike-mcp/BENCH-VERITY.md.",
+    "live_state_note": "Verity bench 2026-11-02 PASS-WITH-CONDITIONS (local build + live Coinbase public reads via the transport seam). Distribution staged: MCP Registry publish is the repo's manually-dispatched GitHub Actions workflow (OIDC) + Glama indexing — repo-side steps, see eclipse-strike-mcp/BENCH-VERITY.md.",
     "not_tested": [
-     "Live Coinbase public reads — M0 runs against fixtures shaped like the real public product/book responses behind a transport seam (load_fixtures); live public-read verification is a later step.",
+     "Live Coinbase public reads inside the shipped build — no in-build live transport ships in v0.1.0; live payloads were verified through the transport seam from the Verity bench seat 2026-11-02 (BENCH-VERITY.md).",
      "Account anything — Coinbase's official account MCP exists and Strike's account posture is a governed WRAP of it (spec 10.1), M1+ scope. No account tool exists in this build; the vendor's Wallet/CDP MCP surfaces are other suites' chapters and are out of scope here.",
      "Account-specific fee tiers — M0 uses the public schedule shape, labeled as such; the account's own reported rates supersede at M1."
     ],
@@ -2553,7 +2556,7 @@
    "source_refs": [
     "eclipse-strike-mcp/bazaar-manifest.json"
    ],
-   "status": "in-development",
+   "status": "live",
    "tagline": "The Coinbase exchange adapter: spot products and books, normalized into the suite's one book.",
    "tools": [
     "product_list",
@@ -4612,7 +4615,7 @@
    "source_refs": [
     "eclipse-verbatim-mcp/bazaar-manifest.json"
    ],
-   "status": "in-development",
+   "status": "live",
    "tagline": "Title 26 as a sealed object: per-section hashes, a recomputable signed manifest, and byte-for-byte cite-check verdicts.",
    "tools": [
     "get_section",

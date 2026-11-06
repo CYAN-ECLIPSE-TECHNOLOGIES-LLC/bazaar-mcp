@@ -111,7 +111,25 @@
     "audit_storefront",
     "list_checks"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "cli": {
+     "pypi": "eclipse-agentready",
+     "version": "0.1.1",
+     "install": "pip install eclipse-agentready",
+     "commands": [
+      "eclipse-agentready list-checks",
+      "eclipse-agentready audit https://your-store-address"
+     ],
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.1; wheel contents inspected (CLI only); CLI --help run from the installed wheel"
+    },
+    "first_call": {
+     "tool": "eclipse-agentready list-checks",
+     "arguments": {},
+     "try": "Run list-checks first — it prints every check the audit runs, in plain language."
+    },
+    "note": "AgentReady also exists as a chat plug-in (an MCP server with tools audit_storefront and list_checks). That form is not inside the published download yet, so there is no settings block to copy for it. The two commands above are the live way to use it today — same checks, same scores."
+   }
   },
   {
    "capabilities": [
@@ -491,7 +509,29 @@
     "get_certification",
     "list_categories"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "hosted": {
+     "url": "https://hosted.cetech.ai/mcp/bazaar",
+     "key": "bazaar",
+     "transport": "streamable-http",
+     "auth": "none",
+     "tools_line": "six tools: search_products, find_solutions, get_product, compare_products, get_certification, list_categories",
+     "verified": "verified 2026-11-02: keyless initialize + tools/list, HTTP 200"
+    },
+    "package": {
+     "pypi": "eclipse-bazaar",
+     "version": "0.1.4",
+     "install": "pip install eclipse-bazaar",
+     "command": "eclipse-bazaar",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.4; isolated stdio probe, server eclipse-bazaar, tools match catalog"
+    },
+    "first_call": {
+     "tool": "list_categories",
+     "arguments": {},
+     "try": "Ask your assistant: “What kinds of tools are in the Cyan Eclipse Bazaar?”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -874,7 +914,21 @@
     "radar_report",
     "gap_report"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-beacon",
+     "version": "0.1.0",
+     "install": "pip install eclipse-beacon",
+     "command": "eclipse-beacon",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-beacon, tools match catalog"
+    },
+    "first_call": {
+     "tool": "policy_list",
+     "arguments": {},
+     "try": "Ask your assistant: “List the policies Beacon can see.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1022,7 +1076,21 @@
     "fleet_snapshot",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-constellation",
+     "version": "0.1.0",
+     "install": "pip install eclipse-constellation",
+     "command": "eclipse-constellation",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-constellation, tools match catalog"
+    },
+    "first_call": {
+     "tool": "target_list",
+     "arguments": {},
+     "try": "Ask your assistant: “List the targets Constellation can see.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1232,7 +1300,21 @@
     "analytics_report",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-dispatch",
+     "version": "0.1.0",
+     "install": "pip install eclipse-dispatch",
+     "command": "eclipse-dispatch",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-dispatch, tools match catalog"
+    },
+    "first_call": {
+     "tool": "analytics_report",
+     "arguments": {},
+     "try": "Ask your assistant: “Show me the Dispatch analytics report.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1293,7 +1375,21 @@
     "adapter_kill_switch",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-social-core",
+     "version": "0.1.0",
+     "install": "pip install eclipse-social-core",
+     "command": "eclipse-social-core",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-social-core, tools match catalog"
+    },
+    "first_call": {
+     "tool": "account_inventory",
+     "arguments": {},
+     "try": "Ask your assistant: “List the accounts Social Core knows about.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1341,7 +1437,21 @@
     "preview_pack",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-aperture",
+     "version": "0.1.0",
+     "install": "pip install eclipse-aperture",
+     "command": "eclipse-aperture",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-aperture, tools match catalog"
+    },
+    "first_call": {
+     "tool": "capability_probe",
+     "arguments": {},
+     "try": "Ask your assistant: “Run Aperture's capability probe.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1550,7 +1660,21 @@
     "review_draft",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-gig-core",
+     "version": "0.1.0",
+     "install": "pip install eclipse-gig-core",
+     "command": "eclipse-gig-core",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-gig-core, tools match catalog"
+    },
+    "first_call": {
+     "tool": "receipt_list",
+     "arguments": {},
+     "try": "Ask your assistant: “Show me Gig Core's receipts.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -1771,7 +1895,21 @@
     "policy_show",
     "receipt_list"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "package": {
+     "pypi": "eclipse-muster",
+     "version": "0.1.0",
+     "install": "pip install eclipse-muster",
+     "command": "eclipse-muster",
+     "verified": "verified 2026-11-02: PyPI 200 v0.1.0; isolated stdio probe, server eclipse-muster, tools match catalog"
+    },
+    "first_call": {
+     "tool": "record_search",
+     "arguments": {},
+     "try": "Ask your assistant: “Search Muster's records.”"
+    }
+   }
   },
   {
    "capabilities": [
@@ -4629,7 +4767,20 @@
     "snapshot_list",
     "lineage"
    ],
-   "vendor": "Cyan Eclipse Technologies"
+   "vendor": "Cyan Eclipse Technologies",
+   "use": {
+    "first_call": {
+     "tool": "corpus_status",
+     "arguments": {},
+     "try": ""
+    },
+    "note": "This page's product is the Title 26 (tax code) package. A public download of it is not published yet, so there is no install line to copy — when it publishes, this block will carry it. The Verbatim you can use today is the hosted Enacted Laws endpoint: enacted federal law (bills as passed, and the laws they became), a different shelf from Title 26. Plain steps for it are on the hosted use page.",
+    "related_hosted": {
+     "label": "Cyan Eclipse Verbatim — Enacted Laws (hosted)",
+     "url": "https://hosted.cetech.ai/mcp/verbatim",
+     "use_page": "https://hosted.cetech.ai/use#verbatim"
+    }
+   }
   },
   {
    "capabilities": [
@@ -8304,6 +8455,22 @@
     "live_state_note": "Hosted twin live at https://cetech.ai/trust/mcp (+ GET twin under https://cetech.ai/trust/); official MCP Registry: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/trust v0.1.0 (remote entry).",
     "scorecard_ref": null,
     "card_url": null
+   },
+   "use": {
+    "hosted": {
+     "url": "https://cetech.ai/trust/mcp",
+     "key": "trust",
+     "transport": "streamable-http",
+     "auth": "none",
+     "tools_line": "five tools: trust_status, trust_verify_receipt, trust_get_bench_verdict, trust_get_validation_record, trust_resolve_agent",
+     "verified": "verified 2026-11-02: keyless initialize + tools/list, HTTP 200"
+    },
+    "first_call": {
+     "tool": "trust_status",
+     "arguments": {},
+     "try": "Ask your assistant: “What is the status of the Cyan Eclipse trust index?”"
+    },
+    "note": "A download of this one is not published yet. The hosted form above is the live way to use it — same tools, same answers."
    }
   },
   {

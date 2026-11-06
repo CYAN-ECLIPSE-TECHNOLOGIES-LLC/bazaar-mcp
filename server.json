@@ -1,9 +1,15 @@
 {
  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
  "name": "io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar",
- "title": "Eclipse Bazaar MCP",
+ "title": "Cyan Eclipse Bazaar MCP",
  "description": "Discover agent tools by problem: every listing carries its Test Bench verdict or says it has none.",
  "version": "0.1.5",
+ "remotes": [
+  {
+   "type": "streamable-http",
+   "url": "https://hosted.cetech.ai/mcp/bazaar"
+  }
+ ],
  "websiteUrl": "https://eclipsebazaar.com",
  "icons": [
   {

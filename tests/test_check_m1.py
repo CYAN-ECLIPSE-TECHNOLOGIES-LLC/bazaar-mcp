@@ -2,7 +2,7 @@
 # Eclipse Bazaar — C-M1 correctness matrix + fences (gate §7, §5.2, S1–S3).
 # Copyright © 2026 Cyan Eclipse Technologies LLC · cetech.ai
 """M1 for `bazaar check` (Phase 1), all on our own estate:
-  * a generated config references all 145 catalog listings across the
+  * a generated config references all 155 catalog listings across the
     shape matrix (uvx / npx / docker image / local path / bare command)
     — every entry must classify to its listing (CERTIFIED when a Tier-2
     verdict is on record, else LISTED);
@@ -73,13 +73,13 @@ def shape_entry(i, rec):
 class ShapeMatrix(unittest.TestCase):
     def test_all_101_listings_classify(self):
         # Name kept for bench reference. Count pinned to the corpus as
-        # shipped on this line: the 0.1.5 port carries origin's
+        # shipped on this line: the 0.1.5 port carried origin's
         # containment-trimmed corpus (145 records over a 155-product
-        # catalog — the trim is deliberate, see corpus manifest). The
-        # local fix-round tree asserted a catalog-derived count against
-        # its own 155-record corpus; that form does not hold here.
+        # catalog). The §3.4 port (owner ruling 2026-11-06) then ported
+        # the local 155-record corpus, so the pin now reads 155 — the
+        # full-corpus form the local fix-round tree originally asserted.
         records = corpus_records()
-        self.assertEqual(len(records), 145)
+        self.assertEqual(len(records), 155)
         servers = {}
         expect = {}
         for i, rec in enumerate(records):

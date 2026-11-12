@@ -286,12 +286,231 @@ TITLES = {
     "list_categories": "List Categories",
 }
 
+# ------------------------------------------------------------- output schemas
+# Derived from the return construction of each t_* function above and the
+# catalog record shape; verified against real tool outputs in the audit of
+# 2026-11-12. Fields whose values are copied verbatim from catalog records
+# carry a description instead of a guessed type where the catalog itself
+# allows more than one JSON type.
+_FRESHNESS = {
+    "type": "object",
+    "description": "Catalog snapshot provenance for this answer.",
+    "properties": {
+        "catalog_built": {"type": ["string", "null"],
+                          "description": "Build date of the catalog snapshot served."},
+        "sources": {"type": "array", "items": {"type": "string"},
+                    "description": "Source descriptions the catalog was built from."},
+        "served_from": {"type": "string",
+                        "description": "Which catalog copy was served (bundled snapshot, repo catalog, or refreshed source)."},
+        "note": {"type": "string"}},
+    "required": ["catalog_built", "sources", "served_from", "note"]}
+
+_CERT_SUMMARY = {
+    "type": "object",
+    "properties": {
+        "bench_verdict": {"type": ["string", "null"],
+                          "description": "Test Bench verdict text, or null when no bench run exists."},
+        "certified": {"type": "boolean"}},
+    "required": ["bench_verdict", "certified"]}
+
+_BRIEF = {
+    "type": "object",
+    "description": "Catalog brief for one product (the search/find result row shape).",
+    "properties": {
+        "id": {"type": "string"}, "name": {"type": "string"},
+        "vendor": {"type": "string"}, "tagline": {"type": "string"},
+        "status": {"type": "string"}, "pricing_model": {"type": "string"},
+        "categories": {"type": "array", "items": {"type": "string"}},
+        "platforms": {"type": "array", "items": {"type": "string"}},
+        "certification": _CERT_SUMMARY},
+    "required": ["id", "name", "vendor", "tagline", "status", "pricing_model",
+                 "categories", "platforms", "certification"]}
+
+_SCORECARD_SUMMARY = {
+    "type": "object",
+    "description": "Summary of the stamped Test Bench scorecard for the product.",
+    "properties": {
+        "tool": {"description": "Product/tool name as recorded on the scorecard."},
+        "version": {"description": "Product version as recorded on the scorecard."},
+        "bench_date": {"type": ["string", "null"]},
+        "bench_version": {"type": ["string", "null"]},
+        "environment": {"description": "Bench environment as recorded on the scorecard."},
+        "verdict": {"type": ["string", "null"]},
+        "checks_total": {"type": "integer"},
+        "counts": {"type": "object",
+                   "properties": {"pass": {"type": "integer"},
+                                  "fail": {"type": "integer"},
+                                  "na": {"type": "integer"},
+                                  "other": {"type": "integer"}},
+                   "required": ["pass", "fail", "na", "other"]},
+        "not_tested_checks": {"type": "array",
+                              "description": "Names of checks the bench marked not-applicable / not tested."},
+        "failed_checks": {"type": "array",
+                          "description": "Names of checks the bench marked failed."}},
+    "required": ["tool", "version", "bench_date", "bench_version", "environment",
+                 "verdict", "checks_total", "counts", "not_tested_checks",
+                 "failed_checks"]}
+
+OUTPUT_SCHEMAS = {
+    "search_products": {
+        "type": "object",
+        "properties": {
+            "query": {"type": "string"},
+            "count": {"type": "integer",
+                      "description": "Number of matching products returned."},
+            "results": {"type": "array", "items": {
+                "type": "object",
+                "allOf": [_BRIEF],
+                "properties": {
+                    "score": {"type": "integer",
+                              "description": "Weighted field-match score; higher is a stronger match."},
+                    "match_reasons": {"type": "array", "items": {"type": "string"},
+                                      "description": "One entry per matched field, naming the matched terms."}},
+                "required": ["score", "match_reasons"]}},
+            "data_freshness": _FRESHNESS},
+        "required": ["query", "count", "results", "data_freshness"],
+        "additionalProperties": False},
+    "find_solutions": {
+        "type": "object",
+        "properties": {
+            "problem": {"type": "string"},
+            "count": {"type": "integer",
+                      "description": "Total number of matching products; solutions is capped at 8."},
+            "solutions": {"type": "array", "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"}, "name": {"type": "string"},
+                    "score": {"type": "integer"},
+                    "fit": {"type": "string",
+                            "description": "One-line fit explanation naming the matching fields."},
+                    "match_reasons": {"type": "array", "items": {"type": "string"}},
+                    "status": {"type": "string"},
+                    "certification_badge": {"type": "string",
+                                            "description": "Bench verdict, or an explicit not-certified / spec-stage label."},
+                    "certified": {"type": "boolean"},
+                    "pricing_model": {"type": "string"},
+                    "top_capabilities": {"type": "array", "items": {"type": "string"},
+                                         "description": "Up to the product's first three capabilities."}},
+                "required": ["id", "name", "score", "fit", "match_reasons", "status",
+                             "certification_badge", "certified", "pricing_model",
+                             "top_capabilities"]}},
+            "data_freshness": _FRESHNESS},
+        "required": ["problem", "count", "solutions", "data_freshness"],
+        "additionalProperties": False},
+    "get_product": {
+        "type": "object",
+        "properties": {
+            "product": {
+                "type": "object",
+                "description": "The full catalog entry for the product, copied from the catalog record, plus live_state_note, install_plan, and honesty_note added by this tool. Catalog entries may carry further record fields beyond those listed here.",
+                "properties": {
+                    "id": {"type": "string"}, "name": {"type": "string"},
+                    "vendor": {"type": "string"}, "tagline": {"type": "string"},
+                    "status": {"type": "string"},
+                    "pricing_model": {"type": "string"},
+                    "listing_class": {"type": "string"},
+                    "categories": {"type": "array", "items": {"type": "string"}},
+                    "platforms": {"type": "array", "items": {"type": "string"}},
+                    "capabilities": {"type": "array", "items": {"type": "string"}},
+                    "problem_statements": {"type": "array", "items": {"type": "string"}},
+                    "tools": {"type": "array", "items": {"type": "string"}},
+                    "source_refs": {"type": "array", "items": {"type": "string"}},
+                    "certification": {
+                        "type": "object",
+                        "properties": {
+                            "bench_verdict": {"type": ["string", "null"]},
+                            "certified": {"type": "boolean"},
+                            "certified_scope": {"type": ["string", "null"]},
+                            "not_tested": {"type": ["array", "null"],
+                                           "items": {"type": "string"},
+                                           "description": "What the bench did not cover; null on a small number of records."},
+                            "scorecard_ref": {"type": ["string", "null"]},
+                            "live_state_note": {"type": ["string", "null"]}},
+                        "required": ["bench_verdict", "certified"]},
+                    "live_state_note": {"type": ["string", "null"],
+                                        "description": "The certification block's live-state note, surfaced at product level."},
+                    "install_plan": {
+                        "type": "object",
+                        "properties": {"status": {"type": "string"},
+                                       "note": {"type": "string"}},
+                        "required": ["status", "note"]},
+                    "honesty_note": {"type": "string"}},
+                "required": ["id", "name", "vendor", "tagline", "status",
+                             "pricing_model", "categories", "platforms",
+                             "capabilities", "problem_statements", "tools",
+                             "certification", "live_state_note", "install_plan",
+                             "honesty_note"]},
+            "data_freshness": _FRESHNESS},
+        "required": ["product", "data_freshness"],
+        "additionalProperties": False},
+    "compare_products": {
+        "type": "object",
+        "properties": {
+            "comparison": {"type": "array", "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"}, "name": {"type": "string"},
+                    "status": {"type": "string"},
+                    "pricing_model": {"type": "string"},
+                    "certification": {"type": "string",
+                                      "description": "Bench verdict text, or 'none on record'."},
+                    "certified": {"type": "boolean"},
+                    "certified_scope": {"type": ["string", "null"]},
+                    "platforms": {"type": "array", "items": {"type": "string"}},
+                    "categories": {"type": "array", "items": {"type": "string"}},
+                    "capability_count": {"type": "integer"},
+                    "tools": {"type": "array", "items": {"type": "string"}}},
+                "required": ["id", "name", "status", "pricing_model", "certification",
+                             "certified", "certified_scope", "platforms", "categories",
+                             "capability_count", "tools"]}},
+            "data_freshness": _FRESHNESS},
+        "required": ["comparison", "data_freshness"],
+        "additionalProperties": False},
+    "get_certification": {
+        "type": "object",
+        "properties": {
+            "id": {"type": "string"}, "name": {"type": "string"},
+            "status": {"type": "string"},
+            "bench_verdict": {"type": ["string", "null"]},
+            "certified": {"type": "boolean"},
+            "certified_scope": {"type": ["string", "null"]},
+            "scorecard_ref": {"type": ["string", "null"]},
+            "not_tested": {"type": ["array", "null"], "items": {"type": "string"}},
+            "certification_status": {"type": "string",
+                                     "description": "Either the on-record verdict statement or an explicit NOT YET CERTIFIED statement."},
+            "scorecard_summary": {"anyOf": [_SCORECARD_SUMMARY, {"type": "null"}],
+                                  "description": "Scorecard summary when a verdict is on record; null when not yet certified."},
+            "data_freshness": _FRESHNESS},
+        "required": ["id", "name", "status", "bench_verdict", "certified",
+                     "certified_scope", "scorecard_ref", "not_tested",
+                     "certification_status", "scorecard_summary", "data_freshness"],
+        "additionalProperties": False},
+    "list_categories": {
+        "type": "object",
+        "properties": {
+            "categories": {"type": "array", "items": {
+                "type": "object",
+                "properties": {
+                    "category": {"type": "string"},
+                    "total": {"type": "integer"},
+                    "by_status": {"type": "object",
+                                  "additionalProperties": {"type": "integer"},
+                                  "description": "Product counts keyed by status."},
+                    "products": {"type": "array", "items": {"type": "string"}}},
+                "required": ["category", "total", "by_status", "products"]}},
+            "product_total": {"type": "integer"},
+            "data_freshness": _FRESHNESS},
+        "required": ["categories", "product_total", "data_freshness"],
+        "additionalProperties": False},
+}
+
 
 def tool_list():
     return [{"name": name,
              "title": TITLES[name],
              "description": desc,
              "inputSchema": {"type": "object", "properties": props, "required": req},
+             "outputSchema": OUTPUT_SCHEMAS[name],
              "annotations": {"title": TITLES[name], "readOnlyHint": True,
                              "destructiveHint": False, "idempotentHint": True,
                              "openWorldHint": False}}

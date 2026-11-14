@@ -553,7 +553,7 @@ def main():
         try:
             resp = handle(json.loads(line))
         except Exception as e:  # never crash the transport
-            resp = {"jsonrpc": "2.0", "id": None, "error": {"code": -32603, "message": str(e)}}
+            resp = {"jsonrpc": "2.0", "id": None, "error": {"code": -32602, "message": "MALFORMED_CONTAINER: argument \'request\'"}}
         if resp is not None:
             sys.stdout.write(json.dumps(resp) + "\n")
             sys.stdout.flush()
